@@ -1,0 +1,2390 @@
+* SPICE export by:  S-Edit 15.10
+* Export time:      Mon Jun 20 10:16:59 2011
+* Design:           SERDES_V01_VCO_AF
+* Cell:             vco_carac
+* Interface:        schematic
+* View:             schematic
+* View type:        connectivity
+* Export as:        top-level cell
+* Export mode:      hierarchical
+* Exclude empty cells: yes
+* Exclude .model:   yes
+* Exclude .end:     yes
+* Exclude simulator commands:     yes
+* Expand paths:     yes
+* Wrap lines:       80 characters
+* Root path:        \\VBOXSVR\virtualbox\SERDES_V01\tanner\sedit\SERDES_V01_VCO_AF
+* Exclude global pins:   yes
+* Exclude instance locations: yes
+* Control property name: SPICE
+
+*************** Subcircuits *****************
+.subckt bias_buffer SUB VDD VSS bias_buffer iref_buffer  
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+XMN1 bias_buffer bias_buffer VSS  SUB nch_mac l=100n w=1.5u m=1 nf=4 as=93.75f ad=75f 
++ps=2.75u pd=1.7u sa=375n sb=375n
+XMN2<0> bias_buffer GP VDD  VDD pch_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMN2<1> bias_buffer GP VDD  VDD pch_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMN2<2> bias_buffer GP VDD  VDD pch_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMN2<3> bias_buffer GP VDD  VDD pch_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMN2<4> bias_buffer GP VDD  VDD pch_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMN2<5> bias_buffer GP VDD  VDD pch_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMN3 GP GP VDD  VDD pch_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u pd=1.2u sa=300n 
++sb=300n
+XMN4 GP iref_buffer VSS  SUB nch_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u pd=1.2u 
++sa=300n sb=300n
+XMN5 iref_buffer iref_buffer VSS  SUB nch_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f 
++ps=2u pd=1.2u sa=300n sb=300n
+XMN6<0> N_10 SUB SUB  SUB nch_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u pd=1.2u 
++sa=300n sb=300n
+XMN6<1> N_9 SUB SUB  SUB nch_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u pd=1.2u 
++sa=300n sb=300n
+XMN6<2> N_8 SUB SUB  SUB nch_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u pd=1.2u 
++sa=300n sb=300n
+XMN6<3> N_7 SUB SUB  SUB nch_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u pd=1.2u 
++sa=300n sb=300n
+XMN6<4> N_6 SUB SUB  SUB nch_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u pd=1.2u 
++sa=300n sb=300n
+XMN6<5> N_5 SUB SUB  SUB nch_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u pd=1.2u 
++sa=300n sb=300n
+XMN6<6> N_4 SUB SUB  SUB nch_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u pd=1.2u 
++sa=300n sb=300n
+XMN6<7> N_3 SUB SUB  SUB nch_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u pd=1.2u 
++sa=300n sb=300n
+XMN6<8> N_2 SUB SUB  SUB nch_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u pd=1.2u 
++sa=300n sb=300n
+XMN6<9> N_1 SUB SUB  SUB nch_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u pd=1.2u 
++sa=300n sb=300n
+XMN7<0> N_28 VDD VDD  VDD pch_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u pd=1.2u 
++sa=300n sb=300n
+XMN7<1> N_27 VDD VDD  VDD pch_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u pd=1.2u 
++sa=300n sb=300n
+XMN7<2> N_26 VDD VDD  VDD pch_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u pd=1.2u 
++sa=300n sb=300n
+XMN7<3> N_25 VDD VDD  VDD pch_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u pd=1.2u 
++sa=300n sb=300n
+XMN7<4> N_24 VDD VDD  VDD pch_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u pd=1.2u 
++sa=300n sb=300n
+XMN7<5> N_23 VDD VDD  VDD pch_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u pd=1.2u 
++sa=300n sb=300n
+XMN7<6> N_22 VDD VDD  VDD pch_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u pd=1.2u 
++sa=300n sb=300n
+XMN7<7> N_21 VDD VDD  VDD pch_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u pd=1.2u 
++sa=300n sb=300n
+XMN7<8> N_20 VDD VDD  VDD pch_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u pd=1.2u 
++sa=300n sb=300n
+XMN7<9> N_19 VDD VDD  VDD pch_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u pd=1.2u 
++sa=300n sb=300n
+XMN7<10> N_18 VDD VDD  VDD pch_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u pd=1.2u 
++sa=300n sb=300n
+XMN7<11> N_17 VDD VDD  VDD pch_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u pd=1.2u 
++sa=300n sb=300n
+XMN7<12> N_16 VDD VDD  VDD pch_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u pd=1.2u 
++sa=300n sb=300n
+XMN7<13> N_15 VDD VDD  VDD pch_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u pd=1.2u 
++sa=300n sb=300n
+XMN7<14> N_14 VDD VDD  VDD pch_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u pd=1.2u 
++sa=300n sb=300n
+XMN7<15> N_13 VDD VDD  VDD pch_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u pd=1.2u 
++sa=300n sb=300n
+XMN7<16> N_12 VDD VDD  VDD pch_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u pd=1.2u 
++sa=300n sb=300n
+XMN7<17> N_11 VDD VDD  VDD pch_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u pd=1.2u 
++sa=300n sb=300n
+XMN8<0> N_36 SUB SUB  SUB nch_mac l=100n w=1.5u m=1 nf=4 as=93.75f ad=75f ps=2.75u 
++pd=1.7u sa=375n sb=375n
+XMN8<1> N_35 SUB SUB  SUB nch_mac l=100n w=1.5u m=1 nf=4 as=93.75f ad=75f ps=2.75u 
++pd=1.7u sa=375n sb=375n
+XMN8<2> N_34 SUB SUB  SUB nch_mac l=100n w=1.5u m=1 nf=4 as=93.75f ad=75f ps=2.75u 
++pd=1.7u sa=375n sb=375n
+XMN8<3> N_33 SUB SUB  SUB nch_mac l=100n w=1.5u m=1 nf=4 as=93.75f ad=75f ps=2.75u 
++pd=1.7u sa=375n sb=375n
+XMN8<4> N_32 SUB SUB  SUB nch_mac l=100n w=1.5u m=1 nf=4 as=93.75f ad=75f ps=2.75u 
++pd=1.7u sa=375n sb=375n
+XMN8<5> N_31 SUB SUB  SUB nch_mac l=100n w=1.5u m=1 nf=4 as=93.75f ad=75f ps=2.75u 
++pd=1.7u sa=375n sb=375n
+XMN8<6> N_30 SUB SUB  SUB nch_mac l=100n w=1.5u m=1 nf=4 as=93.75f ad=75f ps=2.75u 
++pd=1.7u sa=375n sb=375n
+XMN8<7> N_29 SUB SUB  SUB nch_mac l=100n w=1.5u m=1 nf=4 as=93.75f ad=75f ps=2.75u 
++pd=1.7u sa=375n sb=375n
+.ends
+
+.subckt buffer_v1 INN INP OUTN OUTP SUB VBIAS VDD VSS  
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+XMN1<0> ds1 VBIAS VSS  SUB nch_mac l=100n w=1.5u m=1 nf=4 as=93.75f ad=75f ps=2.75u 
++pd=1.7u sa=375n sb=375n
+XMN1<1> ds1 VBIAS VSS  SUB nch_mac l=100n w=1.5u m=1 nf=4 as=93.75f ad=75f ps=2.75u 
++pd=1.7u sa=375n sb=375n
+XMN1<2> ds1 VBIAS VSS  SUB nch_mac l=100n w=1.5u m=1 nf=4 as=93.75f ad=75f ps=2.75u 
++pd=1.7u sa=375n sb=375n
+XMN1<3> ds1 VBIAS VSS  SUB nch_mac l=100n w=1.5u m=1 nf=4 as=93.75f ad=75f ps=2.75u 
++pd=1.7u sa=375n sb=375n
+XMN1<4> ds1 VBIAS VSS  SUB nch_mac l=100n w=1.5u m=1 nf=4 as=93.75f ad=75f ps=2.75u 
++pd=1.7u sa=375n sb=375n
+XMN1<5> ds1 VBIAS VSS  SUB nch_mac l=100n w=1.5u m=1 nf=4 as=93.75f ad=75f ps=2.75u 
++pd=1.7u sa=375n sb=375n
+XMN1<6> ds1 VBIAS VSS  SUB nch_mac l=100n w=1.5u m=1 nf=4 as=93.75f ad=75f ps=2.75u 
++pd=1.7u sa=375n sb=375n
+XMN1<7> ds1 VBIAS VSS  SUB nch_mac l=100n w=1.5u m=1 nf=4 as=93.75f ad=75f ps=2.75u 
++pd=1.7u sa=375n sb=375n
+XMN1<8> ds1 VBIAS VSS  SUB nch_mac l=100n w=1.5u m=1 nf=4 as=93.75f ad=75f ps=2.75u 
++pd=1.7u sa=375n sb=375n
+XMN1<9> ds1 VBIAS VSS  SUB nch_mac l=100n w=1.5u m=1 nf=4 as=93.75f ad=75f ps=2.75u 
++pd=1.7u sa=375n sb=375n
+XMN1<10> ds1 VBIAS VSS  SUB nch_mac l=100n w=1.5u m=1 nf=4 as=93.75f ad=75f ps=2.75u 
++pd=1.7u sa=375n sb=375n
+XMN1<11> ds1 VBIAS VSS  SUB nch_mac l=100n w=1.5u m=1 nf=4 as=93.75f ad=75f ps=2.75u 
++pd=1.7u sa=375n sb=375n
+XMN1<12> ds1 VBIAS VSS  SUB nch_mac l=100n w=1.5u m=1 nf=4 as=93.75f ad=75f ps=2.75u 
++pd=1.7u sa=375n sb=375n
+XMN1<13> ds1 VBIAS VSS  SUB nch_mac l=100n w=1.5u m=1 nf=4 as=93.75f ad=75f ps=2.75u 
++pd=1.7u sa=375n sb=375n
+XMN1<14> ds1 VBIAS VSS  SUB nch_mac l=100n w=1.5u m=1 nf=4 as=93.75f ad=75f ps=2.75u 
++pd=1.7u sa=375n sb=375n
+XMN1<15> ds1 VBIAS VSS  SUB nch_mac l=100n w=1.5u m=1 nf=4 as=93.75f ad=75f ps=2.75u 
++pd=1.7u sa=375n sb=375n
+XMN2<0> OUTP INN ds1  SUB nch_mac l=30n w=2.24u m=1 nf=8 as=126f ad=112f ps=3.7u 
++pd=2.44u sa=530n sb=530n
+XMN2<1> OUTP INN ds1  SUB nch_mac l=30n w=2.24u m=1 nf=8 as=126f ad=112f ps=3.7u 
++pd=2.44u sa=530n sb=530n
+XMN2<2> OUTP INN ds1  SUB nch_mac l=30n w=2.24u m=1 nf=8 as=126f ad=112f ps=3.7u 
++pd=2.44u sa=530n sb=530n
+XMN2<3> OUTP INN ds1  SUB nch_mac l=30n w=2.24u m=1 nf=8 as=126f ad=112f ps=3.7u 
++pd=2.44u sa=530n sb=530n
+XMN2<4> OUTP INN ds1  SUB nch_mac l=30n w=2.24u m=1 nf=8 as=126f ad=112f ps=3.7u 
++pd=2.44u sa=530n sb=530n
+XMN2<5> OUTP INN ds1  SUB nch_mac l=30n w=2.24u m=1 nf=8 as=126f ad=112f ps=3.7u 
++pd=2.44u sa=530n sb=530n
+XMN2<6> OUTP INN ds1  SUB nch_mac l=30n w=2.24u m=1 nf=8 as=126f ad=112f ps=3.7u 
++pd=2.44u sa=530n sb=530n
+XMN2<7> OUTP INN ds1  SUB nch_mac l=30n w=2.24u m=1 nf=8 as=126f ad=112f ps=3.7u 
++pd=2.44u sa=530n sb=530n
+XMN3<0> OUTN INP ds1  SUB nch_mac l=30n w=2.24u m=1 nf=8 as=126f ad=112f ps=3.7u 
++pd=2.44u sa=530n sb=530n
+XMN3<1> OUTN INP ds1  SUB nch_mac l=30n w=2.24u m=1 nf=8 as=126f ad=112f ps=3.7u 
++pd=2.44u sa=530n sb=530n
+XMN3<2> OUTN INP ds1  SUB nch_mac l=30n w=2.24u m=1 nf=8 as=126f ad=112f ps=3.7u 
++pd=2.44u sa=530n sb=530n
+XMN3<3> OUTN INP ds1  SUB nch_mac l=30n w=2.24u m=1 nf=8 as=126f ad=112f ps=3.7u 
++pd=2.44u sa=530n sb=530n
+XMN3<4> OUTN INP ds1  SUB nch_mac l=30n w=2.24u m=1 nf=8 as=126f ad=112f ps=3.7u 
++pd=2.44u sa=530n sb=530n
+XMN3<5> OUTN INP ds1  SUB nch_mac l=30n w=2.24u m=1 nf=8 as=126f ad=112f ps=3.7u 
++pd=2.44u sa=530n sb=530n
+XMN3<6> OUTN INP ds1  SUB nch_mac l=30n w=2.24u m=1 nf=8 as=126f ad=112f ps=3.7u 
++pd=2.44u sa=530n sb=530n
+XMN3<7> OUTN INP ds1  SUB nch_mac l=30n w=2.24u m=1 nf=8 as=126f ad=112f ps=3.7u 
++pd=2.44u sa=530n sb=530n
+XMN4<0> N_26 SUB SUB  SUB nch_mac l=30n w=280n m=8 nf=1
+XMN4<1> N_25 SUB SUB  SUB nch_mac l=30n w=280n m=8 nf=1
+XMN4<2> N_24 SUB SUB  SUB nch_mac l=30n w=280n m=8 nf=1
+XMN4<3> N_23 SUB SUB  SUB nch_mac l=30n w=280n m=8 nf=1
+XMN4<4> N_22 SUB SUB  SUB nch_mac l=30n w=280n m=8 nf=1
+XMN4<5> N_21 SUB SUB  SUB nch_mac l=30n w=280n m=8 nf=1
+XMN4<6> N_20 SUB SUB  SUB nch_mac l=30n w=280n m=8 nf=1
+XMN4<7> N_19 SUB SUB  SUB nch_mac l=30n w=280n m=8 nf=1
+XMN4<8> N_18 SUB SUB  SUB nch_mac l=30n w=280n m=8 nf=1
+XMN4<9> N_17 SUB SUB  SUB nch_mac l=30n w=280n m=8 nf=1
+XMN4<10> N_16 SUB SUB  SUB nch_mac l=30n w=280n m=8 nf=1
+XMN4<11> N_15 SUB SUB  SUB nch_mac l=30n w=280n m=8 nf=1
+XMN4<12> N_14 SUB SUB  SUB nch_mac l=30n w=280n m=8 nf=1
+XMN4<13> N_13 SUB SUB  SUB nch_mac l=30n w=280n m=8 nf=1
+XMN4<14> N_12 SUB SUB  SUB nch_mac l=30n w=280n m=8 nf=1
+XMN4<15> N_11 SUB SUB  SUB nch_mac l=30n w=280n m=8 nf=1
+XMN4<16> N_10 SUB SUB  SUB nch_mac l=30n w=280n m=8 nf=1
+XMN4<17> N_9 SUB SUB  SUB nch_mac l=30n w=280n m=8 nf=1
+XMN4<18> N_8 SUB SUB  SUB nch_mac l=30n w=280n m=8 nf=1
+XMN4<19> N_7 SUB SUB  SUB nch_mac l=30n w=280n m=8 nf=1
+XMN4<20> N_6 SUB SUB  SUB nch_mac l=30n w=280n m=8 nf=1
+XMN4<21> N_5 SUB SUB  SUB nch_mac l=30n w=280n m=8 nf=1
+XMN4<22> N_4 SUB SUB  SUB nch_mac l=30n w=280n m=8 nf=1
+XMN4<23> N_3 SUB SUB  SUB nch_mac l=30n w=280n m=8 nf=1
+XMN4<24> N_2 SUB SUB  SUB nch_mac l=30n w=280n m=8 nf=1
+XMN4<25> N_1 SUB SUB  SUB nch_mac l=30n w=280n m=8 nf=1
+XMN5<0> N_66 SUB SUB  SUB nch_mac l=100n w=375n m=4 nf=1
+XMN5<1> N_65 SUB SUB  SUB nch_mac l=100n w=375n m=4 nf=1
+XMN5<2> N_64 SUB SUB  SUB nch_mac l=100n w=375n m=4 nf=1
+XMN5<3> N_63 SUB SUB  SUB nch_mac l=100n w=375n m=4 nf=1
+XMN5<4> N_62 SUB SUB  SUB nch_mac l=100n w=375n m=4 nf=1
+XMN5<5> N_61 SUB SUB  SUB nch_mac l=100n w=375n m=4 nf=1
+XMN5<6> N_60 SUB SUB  SUB nch_mac l=100n w=375n m=4 nf=1
+XMN5<7> N_59 SUB SUB  SUB nch_mac l=100n w=375n m=4 nf=1
+XMN5<8> N_58 SUB SUB  SUB nch_mac l=100n w=375n m=4 nf=1
+XMN5<9> N_57 SUB SUB  SUB nch_mac l=100n w=375n m=4 nf=1
+XMN5<10> N_56 SUB SUB  SUB nch_mac l=100n w=375n m=4 nf=1
+XMN5<11> N_55 SUB SUB  SUB nch_mac l=100n w=375n m=4 nf=1
+XMN5<12> N_54 SUB SUB  SUB nch_mac l=100n w=375n m=4 nf=1
+XMN5<13> N_53 SUB SUB  SUB nch_mac l=100n w=375n m=4 nf=1
+XMN5<14> N_52 SUB SUB  SUB nch_mac l=100n w=375n m=4 nf=1
+XMN5<15> N_51 SUB SUB  SUB nch_mac l=100n w=375n m=4 nf=1
+XMN5<16> N_50 SUB SUB  SUB nch_mac l=100n w=375n m=4 nf=1
+XMN5<17> N_49 SUB SUB  SUB nch_mac l=100n w=375n m=4 nf=1
+XMN5<18> N_48 SUB SUB  SUB nch_mac l=100n w=375n m=4 nf=1
+XMN5<19> N_47 SUB SUB  SUB nch_mac l=100n w=375n m=4 nf=1
+XMN5<20> N_46 SUB SUB  SUB nch_mac l=100n w=375n m=4 nf=1
+XMN5<21> N_45 SUB SUB  SUB nch_mac l=100n w=375n m=4 nf=1
+XMN5<22> N_44 SUB SUB  SUB nch_mac l=100n w=375n m=4 nf=1
+XMN5<23> N_43 SUB SUB  SUB nch_mac l=100n w=375n m=4 nf=1
+XMN5<24> N_42 SUB SUB  SUB nch_mac l=100n w=375n m=4 nf=1
+XMN5<25> N_41 SUB SUB  SUB nch_mac l=100n w=375n m=4 nf=1
+XMN5<26> N_40 SUB SUB  SUB nch_mac l=100n w=375n m=4 nf=1
+XMN5<27> N_39 SUB SUB  SUB nch_mac l=100n w=375n m=4 nf=1
+XMN5<28> N_38 SUB SUB  SUB nch_mac l=100n w=375n m=4 nf=1
+XMN5<29> N_37 SUB SUB  SUB nch_mac l=100n w=375n m=4 nf=1
+XMN5<30> N_36 SUB SUB  SUB nch_mac l=100n w=375n m=4 nf=1
+XMN5<31> N_35 SUB SUB  SUB nch_mac l=100n w=375n m=4 nf=1
+XMP1<0> OUTP INN VDD  VDD pch_mac l=30n w=1.68u m=1 nf=8 as=94.5f ad=84f ps=3u pd=1.88u 
++sa=530n sb=530n
+XMP1<1> OUTP INN VDD  VDD pch_mac l=30n w=1.68u m=1 nf=8 as=94.5f ad=84f ps=3u pd=1.88u 
++sa=530n sb=530n
+XMP1<2> OUTP INN VDD  VDD pch_mac l=30n w=1.68u m=1 nf=8 as=94.5f ad=84f ps=3u pd=1.88u 
++sa=530n sb=530n
+XMP1<3> OUTP INN VDD  VDD pch_mac l=30n w=1.68u m=1 nf=8 as=94.5f ad=84f ps=3u pd=1.88u 
++sa=530n sb=530n
+XMP1<4> OUTP INN VDD  VDD pch_mac l=30n w=1.68u m=1 nf=8 as=94.5f ad=84f ps=3u pd=1.88u 
++sa=530n sb=530n
+XMP1<5> OUTP INN VDD  VDD pch_mac l=30n w=1.68u m=1 nf=8 as=94.5f ad=84f ps=3u pd=1.88u 
++sa=530n sb=530n
+XMP1<6> OUTP INN VDD  VDD pch_mac l=30n w=1.68u m=1 nf=8 as=94.5f ad=84f ps=3u pd=1.88u 
++sa=530n sb=530n
+XMP1<7> OUTP INN VDD  VDD pch_mac l=30n w=1.68u m=1 nf=8 as=94.5f ad=84f ps=3u pd=1.88u 
++sa=530n sb=530n
+XMP2<0> OUTN INP VDD  VDD pch_mac l=30n w=1.68u m=1 nf=8 as=94.5f ad=84f ps=3u pd=1.88u 
++sa=530n sb=530n
+XMP2<1> OUTN INP VDD  VDD pch_mac l=30n w=1.68u m=1 nf=8 as=94.5f ad=84f ps=3u pd=1.88u 
++sa=530n sb=530n
+XMP2<2> OUTN INP VDD  VDD pch_mac l=30n w=1.68u m=1 nf=8 as=94.5f ad=84f ps=3u pd=1.88u 
++sa=530n sb=530n
+XMP2<3> OUTN INP VDD  VDD pch_mac l=30n w=1.68u m=1 nf=8 as=94.5f ad=84f ps=3u pd=1.88u 
++sa=530n sb=530n
+XMP2<4> OUTN INP VDD  VDD pch_mac l=30n w=1.68u m=1 nf=8 as=94.5f ad=84f ps=3u pd=1.88u 
++sa=530n sb=530n
+XMP2<5> OUTN INP VDD  VDD pch_mac l=30n w=1.68u m=1 nf=8 as=94.5f ad=84f ps=3u pd=1.88u 
++sa=530n sb=530n
+XMP2<6> OUTN INP VDD  VDD pch_mac l=30n w=1.68u m=1 nf=8 as=94.5f ad=84f ps=3u pd=1.88u 
++sa=530n sb=530n
+XMP2<7> OUTN INP VDD  VDD pch_mac l=30n w=1.68u m=1 nf=8 as=94.5f ad=84f ps=3u pd=1.88u 
++sa=530n sb=530n
+XMP3<0> N_34 VDD VDD  VDD pch_mac l=30n w=210n m=8 nf=1
+XMP3<1> N_33 VDD VDD  VDD pch_mac l=30n w=210n m=8 nf=1
+XMP3<2> N_32 VDD VDD  VDD pch_mac l=30n w=210n m=8 nf=1
+XMP3<3> N_31 VDD VDD  VDD pch_mac l=30n w=210n m=8 nf=1
+XMP3<4> N_30 VDD VDD  VDD pch_mac l=30n w=210n m=8 nf=1
+XMP3<5> N_29 VDD VDD  VDD pch_mac l=30n w=210n m=8 nf=1
+XMP3<6> N_28 VDD VDD  VDD pch_mac l=30n w=210n m=8 nf=1
+XMP3<7> N_27 VDD VDD  VDD pch_mac l=30n w=210n m=8 nf=1
+.ends
+
+.subckt cpar_delay INN INP OUTN OUTP SDIFF SUB VDD VSS VTUNE  
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+CC_1 INN VSS 20.1f
+CC_2 INN VDD 27f
+CC_3 INN VTUNE 0
+CC_4 INN SDIFF 30f
+CC_5 INP VSS 20.1f
+CC_6 INP VDD 27f
+CC_7 INP VTUNE 0
+CC_8 INP SDIFF 30f
+CC_9 OUTN VSS 7f
+CC_10 OUTN VDD 10f
+CC_11 OUTN VTUNE 0
+CC_12 OUTN SDIFF 9.7f
+CC_13 OUTP VSS 7f
+CC_14 OUTP VDD 10f
+CC_15 OUTP VTUNE 0
+CC_16 OUTP SDIFF 9.7f
+CC_17 INN INP 0
+CC_18 OUTN OUTP 0
+CC_19 INN OUTN 1.9f
+CC_20 INN OUTP 26.7f
+CC_21 INP OUTP 1.9f
+CC_22 INP OUTN 26.7f
+DDN1 INN  VDD pdio area=18f pj=560n m=10
+DDN2 SUB  VDD dnwpsub area=1.10864n pj=133.19u m=1
+DDN3 INP  VDD pdio area=18f pj=560n m=10
+DDP1 SDIFF  VDD pwdnw area=558.33p pj=296.34u m=1
+DDP2 SDIFF  INN ndio area=18f pj=560n m=10
+DDP3 SDIFF  INP ndio area=18f pj=560n m=10
+DDP4 SUB  VTUNE ndio area=34f pj=880n m=48
+XM6<0> N_56 SDIFF SDIFF  SDIFF nch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f 
++ps=13.9u pd=1.12u sa=500n sb=1.58u
+XM6<1> N_55 SDIFF SDIFF  SDIFF nch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f 
++ps=13.9u pd=1.12u sa=500n sb=1.58u
+XM6<2> N_54 SDIFF SDIFF  SDIFF nch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f 
++ps=13.9u pd=1.12u sa=500n sb=1.58u
+XM6<3> N_53 SDIFF SDIFF  SDIFF nch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f 
++ps=13.9u pd=1.12u sa=500n sb=1.58u
+XM6<4> N_52 SDIFF SDIFF  SDIFF nch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f 
++ps=13.9u pd=1.12u sa=500n sb=1.58u
+XM6<5> N_51 SDIFF SDIFF  SDIFF nch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f 
++ps=13.9u pd=1.12u sa=500n sb=1.58u
+XM6<6> N_50 SDIFF SDIFF  SDIFF nch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f 
++ps=13.9u pd=1.12u sa=500n sb=1.58u
+XM6<7> N_49 SDIFF SDIFF  SDIFF nch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f 
++ps=13.9u pd=1.12u sa=500n sb=1.58u
+XM6<8> N_48 SDIFF SDIFF  SDIFF nch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f 
++ps=13.9u pd=1.12u sa=500n sb=1.58u
+XM6<9> N_47 SDIFF SDIFF  SDIFF nch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f 
++ps=13.9u pd=1.12u sa=500n sb=1.58u
+XM6<10> N_46 SDIFF SDIFF  SDIFF nch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f 
++ps=13.9u pd=1.12u sa=500n sb=1.58u
+XM6<11> N_45 SDIFF SDIFF  SDIFF nch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f 
++ps=13.9u pd=1.12u sa=500n sb=1.58u
+XM6<12> N_44 SDIFF SDIFF  SDIFF nch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f 
++ps=13.9u pd=1.12u sa=500n sb=1.58u
+XM6<13> N_43 SDIFF SDIFF  SDIFF nch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f 
++ps=13.9u pd=1.12u sa=500n sb=1.58u
+XM6<14> N_42 SDIFF SDIFF  SDIFF nch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f 
++ps=13.9u pd=1.12u sa=500n sb=1.58u
+XM6<15> N_41 SDIFF SDIFF  SDIFF nch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f 
++ps=13.9u pd=1.12u sa=500n sb=1.58u
+XM6<16> N_40 SDIFF SDIFF  SDIFF nch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f 
++ps=13.9u pd=1.12u sa=500n sb=1.58u
+XM6<17> N_39 SDIFF SDIFF  SDIFF nch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f 
++ps=13.9u pd=1.12u sa=500n sb=1.58u
+XM6<18> N_38 SDIFF SDIFF  SDIFF nch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f 
++ps=13.9u pd=1.12u sa=500n sb=1.58u
+XM6<19> N_37 SDIFF SDIFF  SDIFF nch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f 
++ps=13.9u pd=1.12u sa=500n sb=1.58u
+XM6<20> N_36 SDIFF SDIFF  SDIFF nch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f 
++ps=13.9u pd=1.12u sa=500n sb=1.58u
+XM6<21> N_35 SDIFF SDIFF  SDIFF nch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f 
++ps=13.9u pd=1.12u sa=500n sb=1.58u
+XM6<22> N_34 SDIFF SDIFF  SDIFF nch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f 
++ps=13.9u pd=1.12u sa=500n sb=1.58u
+XM6<23> N_33 SDIFF SDIFF  SDIFF nch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f 
++ps=13.9u pd=1.12u sa=500n sb=1.58u
+XM6<24> N_32 SDIFF SDIFF  SDIFF nch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f 
++ps=13.9u pd=1.12u sa=500n sb=1.58u
+XM6<25> N_31 SDIFF SDIFF  SDIFF nch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f 
++ps=13.9u pd=1.12u sa=500n sb=1.58u
+XM6<26> N_30 SDIFF SDIFF  SDIFF nch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f 
++ps=13.9u pd=1.12u sa=500n sb=1.58u
+XM6<27> N_29 SDIFF SDIFF  SDIFF nch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f 
++ps=13.9u pd=1.12u sa=500n sb=1.58u
+XM7<0> N_84 VDD VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f ps=13.9u 
++pd=1.12u sa=500n sb=1.58u
+XM7<1> N_83 VDD VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f ps=13.9u 
++pd=1.12u sa=500n sb=1.58u
+XM7<2> N_82 VDD VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f ps=13.9u 
++pd=1.12u sa=500n sb=1.58u
+XM7<3> N_81 VDD VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f ps=13.9u 
++pd=1.12u sa=500n sb=1.58u
+XM7<4> N_80 VDD VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f ps=13.9u 
++pd=1.12u sa=500n sb=1.58u
+XM7<5> N_79 VDD VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f ps=13.9u 
++pd=1.12u sa=500n sb=1.58u
+XM7<6> N_78 VDD VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f ps=13.9u 
++pd=1.12u sa=500n sb=1.58u
+XM7<7> N_77 VDD VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f ps=13.9u 
++pd=1.12u sa=500n sb=1.58u
+XM7<8> N_76 VDD VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f ps=13.9u 
++pd=1.12u sa=500n sb=1.58u
+XM7<9> N_75 VDD VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f ps=13.9u 
++pd=1.12u sa=500n sb=1.58u
+XM7<10> N_74 VDD VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f ps=13.9u 
++pd=1.12u sa=500n sb=1.58u
+XM7<11> N_73 VDD VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f ps=13.9u 
++pd=1.12u sa=500n sb=1.58u
+XM7<12> N_72 VDD VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f ps=13.9u 
++pd=1.12u sa=500n sb=1.58u
+XM7<13> N_71 VDD VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f ps=13.9u 
++pd=1.12u sa=500n sb=1.58u
+XM7<14> N_70 VDD VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f ps=13.9u 
++pd=1.12u sa=500n sb=1.58u
+XM7<15> N_69 VDD VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f ps=13.9u 
++pd=1.12u sa=500n sb=1.58u
+XM7<16> N_68 VDD VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f ps=13.9u 
++pd=1.12u sa=500n sb=1.58u
+XM7<17> N_67 VDD VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f ps=13.9u 
++pd=1.12u sa=500n sb=1.58u
+XM7<18> N_66 VDD VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f ps=13.9u 
++pd=1.12u sa=500n sb=1.58u
+XM7<19> N_65 VDD VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f ps=13.9u 
++pd=1.12u sa=500n sb=1.58u
+XM7<20> N_64 VDD VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f ps=13.9u 
++pd=1.12u sa=500n sb=1.58u
+XM7<21> N_63 VDD VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f ps=13.9u 
++pd=1.12u sa=500n sb=1.58u
+XM7<22> N_62 VDD VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f ps=13.9u 
++pd=1.12u sa=500n sb=1.58u
+XM7<23> N_61 VDD VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f ps=13.9u 
++pd=1.12u sa=500n sb=1.58u
+XM7<24> N_60 VDD VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f ps=13.9u 
++pd=1.12u sa=500n sb=1.58u
+XM7<25> N_59 VDD VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f ps=13.9u 
++pd=1.12u sa=500n sb=1.58u
+XM7<26> N_58 VDD VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f ps=13.9u 
++pd=1.12u sa=500n sb=1.58u
+XM7<27> N_57 VDD VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=68.8f ad=60f ps=13.9u 
++pd=1.12u sa=500n sb=1.58u
+XM8<0> N_28 VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=49.8f ad=43.5f 
++ps=1.06u pd=845n sa=2.62u sb=2.62u
+XM8<1> N_27 VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=49.8f ad=43.5f 
++ps=1.06u pd=845n sa=2.62u sb=2.62u
+XM8<2> N_26 VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=49.8f ad=43.5f 
++ps=1.06u pd=845n sa=2.62u sb=2.62u
+XM8<3> N_25 VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=49.8f ad=43.5f 
++ps=1.06u pd=845n sa=2.62u sb=2.62u
+XM8<4> N_24 VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=49.8f ad=43.5f 
++ps=1.06u pd=845n sa=2.62u sb=2.62u
+XM8<5> N_23 VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=49.8f ad=43.5f 
++ps=1.06u pd=845n sa=2.62u sb=2.62u
+XM8<6> N_22 VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=49.8f ad=43.5f 
++ps=1.06u pd=845n sa=2.62u sb=2.62u
+XM8<7> N_21 VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=49.8f ad=43.5f 
++ps=1.06u pd=845n sa=2.62u sb=2.62u
+XM8<8> N_20 VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=49.8f ad=43.5f 
++ps=1.06u pd=845n sa=2.62u sb=2.62u
+XM8<9> N_19 VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=49.8f ad=43.5f 
++ps=1.06u pd=845n sa=2.62u sb=2.62u
+XM8<10> N_18 VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=49.8f ad=43.5f 
++ps=1.06u pd=845n sa=2.62u sb=2.62u
+XM8<11> N_17 VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=49.8f ad=43.5f 
++ps=1.06u pd=845n sa=2.62u sb=2.62u
+XM8<12> N_16 VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=49.8f ad=43.5f 
++ps=1.06u pd=845n sa=2.62u sb=2.62u
+XM8<13> N_15 VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=49.8f ad=43.5f 
++ps=1.06u pd=845n sa=2.62u sb=2.62u
+XM8<14> N_14 VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=49.8f ad=43.5f 
++ps=1.06u pd=845n sa=2.62u sb=2.62u
+XM8<15> N_13 VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=49.8f ad=43.5f 
++ps=1.06u pd=845n sa=2.62u sb=2.62u
+XM8<16> N_12 VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=49.8f ad=43.5f 
++ps=1.06u pd=845n sa=2.62u sb=2.62u
+XM8<17> N_11 VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=49.8f ad=43.5f 
++ps=1.06u pd=845n sa=2.62u sb=2.62u
+XM8<18> N_10 VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=49.8f ad=43.5f 
++ps=1.06u pd=845n sa=2.62u sb=2.62u
+XM8<19> N_9 VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=49.8f ad=43.5f 
++ps=1.06u pd=845n sa=2.62u sb=2.62u
+XM8<20> N_8 VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=49.8f ad=43.5f 
++ps=1.06u pd=845n sa=2.62u sb=2.62u
+XM8<21> N_7 VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=49.8f ad=43.5f 
++ps=1.06u pd=845n sa=2.62u sb=2.62u
+XM8<22> N_6 VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=49.8f ad=43.5f 
++ps=1.06u pd=845n sa=2.62u sb=2.62u
+XM8<23> N_5 VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=49.8f ad=43.5f 
++ps=1.06u pd=845n sa=2.62u sb=2.62u
+XM8<24> N_4 VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=49.8f ad=43.5f 
++ps=1.06u pd=845n sa=2.62u sb=2.62u
+XM8<25> N_3 VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=49.8f ad=43.5f 
++ps=1.06u pd=845n sa=2.62u sb=2.62u
+XM8<26> N_2 VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=49.8f ad=43.5f 
++ps=1.06u pd=845n sa=2.62u sb=2.62u
+XM8<27> N_1 VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=49.8f ad=43.5f 
++ps=1.06u pd=845n sa=2.62u sb=2.62u
+.ends
+
+.subckt decode_2b b<0> b<1> code=0 vout=1 
+EE13 b<1> 0 two 0 {vout/2}  MIN=0  MAX=vout
+EE14 two 0 incode ref2 10k  MIN=0  MAX=2
+EE15 res1 0 incode two 1  MIN=0  MAX=2
+EE17 one 0 res1 ref1 10k  MIN=0  MAX=1
+EE18 b<0> 0 one 0 {vout}  MIN=0  MAX=vout
+VV5 ref2 0 DC 1.9 AC 0 0
+VV6 ref1 0 DC 900m AC 0 0
+VVcode incode 0 DC code AC 0 0
+.ends
+
+.subckt decode_13b b<0> b<1> b<2> b<3> b<4> b<5> b<6> b<7> b<8> b<9> b<10> b<11> 
++b<12> code=0 vout=1 
+EE0 b4 0 res5 ref4 10k  MIN=0  MAX=16
+EE1 b5 0 res6 ref5 10k  MIN=0  MAX=32
+EE2 res5 0 res6 b5 1  MIN=0  MAX=32
+EE3 b<5> 0 b5 0 {vout/32}  MIN=0  MAX=vout
+EE4 b<8> 0 b8 0 {vout/256}  MIN=0  MAX=vout
+EE5 res4 0 res5 b4 1  MIN=0  MAX=16
+EE6 b3 0 res4 ref3 10k  MIN=0  MAX=8
+EE7 res3 0 res4 b3 1  MIN=0  MAX=8
+EE8 res2 0 res3 b2 1  MIN=0  MAX=4
+EE9 b2 0 res3 ref2 10k  MIN=0  MAX=4
+EE10 b<4> 0 b4 0 {vout/16}  MIN=0  MAX=vout
+EE11 b<3> 0 b3 0 {vout/8}  MIN=0  MAX=vout
+EE12 b<2> 0 b2 0 {vout/4}  MIN=0  MAX=vout
+EE13 b<1> 0 b1 0 {vout/2}  MIN=0  MAX=vout
+EE14 b1 0 res2 ref1 10k  MIN=0  MAX=2
+EE15 res1 0 res2 b1 1  MIN=0  MAX=2
+EE16 b<7> 0 b7 0 {vout/128}  MIN=0  MAX=vout
+EE17 b0 0 res1 ref0 10k  MIN=0  MAX=1
+EE18 b<0> 0 b0 0 {vout}  MIN=0  MAX=vout
+EE19 b<6> 0 b6 0 {vout/64}  MIN=0  MAX=vout
+EE20 b8 0 res9 ref8 10k  MIN=0  MAX=256
+EE21 res8 0 res9 b8 1  MIN=0  MAX=256
+EE22 b6 0 res7 ref6 10k  MIN=0  MAX=64
+EE23 res6 0 res7 b6 1  MIN=0  MAX=64
+EE24 b7 0 res8 ref7 10k  MIN=0  MAX=128
+EE25 res7 0 res8 b7 1  MIN=0  MAX=128
+EE28 b<10> 0 b10 0 {vout/1024}  MIN=0  MAX=vout
+EE29 b<9> 0 b9 0 {vout/512}  MIN=0  MAX=vout
+EE30 b<12> 0 b12 0 {vout/4096}  MIN=0  MAX=vout
+EE31 b<11> 0 b11 0 {vout/2048}  MIN=0  MAX=vout
+EE32 b10 0 res11 ref10 10k  MIN=0  MAX=1.024k
+EE33 res10 0 res11 b10 1  MIN=0  MAX=1.024k
+EE34 b9 0 res10 ref9 10k  MIN=0  MAX=512
+EE35 res9 0 res10 b9 1  MIN=0  MAX=512
+EE36 b12 0 incode ref12 10k  MIN=0  MAX=4.096k
+EE37 res12 0 incode b12 1  MIN=0  MAX=4.096k
+EE38 b11 0 res12 ref11 10k  MIN=0  MAX=2.048k
+EE39 res11 0 res12 b11 1  MIN=0  MAX=2.048k
+VV1 ref4 0 DC 15.9 AC 0 0
+VV2 ref5 0 DC 31.9 AC 0 0
+VV3 ref3 0 DC 7.9 AC 0 0
+VV4 ref2 0 DC 3.9 AC 0 0
+VV5 ref1 0 DC 1.9 AC 0 0
+VV6 ref0 0 DC 900m AC 0 0
+VV7 ref8 0 DC 255.9 AC 0 0
+VV8 ref6 0 DC 63.9 AC 0 0
+VV9 ref7 0 DC 127.9 AC 0 0
+VV11 ref10 0 DC 1.0239k AC 0 0
+VV12 ref9 0 DC 511.9 AC 0 0
+VV13 ref12 0 DC 4.0959k AC 0 0
+VV14 ref11 0 DC 2.0479k AC 0 0
+VVcode incode 0 DC code AC 0 0
+.ends
+
+.subckt inv0 In Out SUB VCC0 VSS  
+XMP1 Out In VCC0  VCC0 pch_mac l=30n w=200n m=1 nf=1
+XMP2 Out In VSS  SUB nch_mac l=30n w=100n m=1 nf=1
+.ends
+
+.subckt inv2 In Out SUB VCC0 VSS  
+XMP1 Out In VCC0  VCC0 pch_mac l=30n w=100n m=8 nf=1
+XMP2 Out In VSS  SUB nch_mac l=30n w=100n m=4 nf=1
+.ends
+
+.subckt inv_unit In Out SUB VCC0 VSS  
+XMP1 Out In VCC0  VCC0 pch_mac l=30n w=100n m=2 nf=1
+XMP2 Out In VSS  SUB nch_mac l=30n w=100n m=1 nf=1
+.ends
+
+.subckt bias_delay_sub BIAS<0> BIAS<1> SUB VDD VSS bias_delay iref_delay  
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+CC1 bias_delay VSS 60p
+DDP4 SUB  VGTUNE ndio area=34f pj=880n m=4
+XC2 bias_delay  VSS nmoscap_18 lr=1.02u wr=1.56u m=2.91k
+Xinv2_1 BIAS<0> B0b SUB VDD VSS inv2
+Xinv2_2 BIAS<1> B1b SUB VDD VSS inv2
+XM1 D3 VGTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=2 nf=8 as=326.25f ad=290f ps=8.15u 
++pd=6u sa=2.525u sb=2.525u
+XM2 VGTUNE GP VDD  VDD pch_lvt_mac l=100n w=1u m=3 nf=4 as=62.5f ad=50f ps=2u pd=1.2u 
++sa=375n sb=375n
+XM3 D2 GP VDD  VDD pch_lvt_mac l=100n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u pd=1.2u 
++sa=375n sb=375n
+XM4 GP iref_delay VSS  SUB nch_lvt_mac l=100n w=1u m=4 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=375n sb=375n
+XM5 D1 iref_delay VSS  SUB nch_lvt_mac l=100n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=375n sb=375n
+XM6 VGTUNE VCAS1 D3  SUB nch_lvt_mac l=50n w=1u m=40 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XM7 GP VCAS2 D2  VDD pch_lvt_mac l=50n w=1u m=8 nf=4 as=62.5f ad=50f ps=2u pd=1.2u 
++sa=300n sb=300n
+XM8 iref_delay VCAS1 D1  SUB nch_lvt_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XM9 VGTUNE N_1 VDD  VDD pch_lvt_mac l=100n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u pd=1.2u 
++sa=375n sb=375n
+XM10 VGTUNE N_2 VDD  VDD pch_lvt_mac l=100n w=1u m=2 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=375n sb=375n
+XMB1 GP BIAS<0> N_1  SUB nch_mac l=30n w=400n m=1 nf=4 as=25f ad=20f ps=1.1u pd=600n 
++sa=270n sb=270n
+XMB2 VDD B0b N_1  SUB nch_mac l=30n w=400n m=1 nf=4 as=25f ad=20f ps=1.1u pd=600n 
++sa=270n sb=270n
+XMB3 GP BIAS<1> N_2  SUB nch_mac l=30n w=400n m=1 nf=4 as=25f ad=20f ps=1.1u pd=600n 
++sa=270n sb=270n
+XMB4 VDD B1b N_2  SUB nch_mac l=30n w=400n m=1 nf=4 as=25f ad=20f ps=1.1u pd=600n 
++sa=270n sb=270n
+XMD1<0> N_10 VGTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XMD1<1> N_9 VGTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XMD1<2> N_8 VGTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XMD1<3> N_7 VGTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XMD2<0> N_26 SUB SUB  SUB nch_lvt_mac l=100n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=375n sb=375n
+XMD2<1> N_25 SUB SUB  SUB nch_lvt_mac l=100n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=375n sb=375n
+XMD2<2> N_24 SUB SUB  SUB nch_lvt_mac l=100n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=375n sb=375n
+XMD2<3> N_23 SUB SUB  SUB nch_lvt_mac l=100n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=375n sb=375n
+XMD2<4> N_22 SUB SUB  SUB nch_lvt_mac l=100n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=375n sb=375n
+XMD2<5> N_21 SUB SUB  SUB nch_lvt_mac l=100n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=375n sb=375n
+XMD2<6> N_20 SUB SUB  SUB nch_lvt_mac l=100n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=375n sb=375n
+XMD2<7> N_19 SUB SUB  SUB nch_lvt_mac l=100n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=375n sb=375n
+XMD2<8> N_18 SUB SUB  SUB nch_lvt_mac l=100n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=375n sb=375n
+XMD2<9> N_17 SUB SUB  SUB nch_lvt_mac l=100n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=375n sb=375n
+XMD2<10> N_16 SUB SUB  SUB nch_lvt_mac l=100n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=375n sb=375n
+XMD2<11> N_15 SUB SUB  SUB nch_lvt_mac l=100n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=375n sb=375n
+XMD2<12> N_14 SUB SUB  SUB nch_lvt_mac l=100n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=375n sb=375n
+XMD2<13> N_13 SUB SUB  SUB nch_lvt_mac l=100n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=375n sb=375n
+XMD2<14> N_12 SUB SUB  SUB nch_lvt_mac l=100n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=375n sb=375n
+XMD2<15> N_11 SUB SUB  SUB nch_lvt_mac l=100n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=375n sb=375n
+XMD3<0> N_57 SUB SUB  SUB nch_lvt_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMD3<1> N_56 SUB SUB  SUB nch_lvt_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMD3<2> N_55 SUB SUB  SUB nch_lvt_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMD3<3> N_54 SUB SUB  SUB nch_lvt_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMD3<4> N_53 SUB SUB  SUB nch_lvt_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMD3<5> N_52 SUB SUB  SUB nch_lvt_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMD3<6> N_51 SUB SUB  SUB nch_lvt_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMD3<7> N_50 SUB SUB  SUB nch_lvt_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMD3<8> N_49 SUB SUB  SUB nch_lvt_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMD3<9> N_48 SUB SUB  SUB nch_lvt_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMD3<10> N_47 SUB SUB  SUB nch_lvt_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMD3<11> N_46 SUB SUB  SUB nch_lvt_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMD3<12> N_45 SUB SUB  SUB nch_lvt_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMD3<13> N_44 SUB SUB  SUB nch_lvt_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMD3<14> N_43 SUB SUB  SUB nch_lvt_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMD3<15> N_42 SUB SUB  SUB nch_lvt_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMD3<16> N_41 SUB SUB  SUB nch_lvt_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMD3<17> N_40 SUB SUB  SUB nch_lvt_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMD3<18> N_39 SUB SUB  SUB nch_lvt_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMD3<19> N_38 SUB SUB  SUB nch_lvt_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMD3<20> N_37 SUB SUB  SUB nch_lvt_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMD3<21> N_36 SUB SUB  SUB nch_lvt_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMD3<22> N_35 SUB SUB  SUB nch_lvt_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMD3<23> N_34 SUB SUB  SUB nch_lvt_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMD3<24> N_33 SUB SUB  SUB nch_lvt_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMD3<25> N_32 SUB SUB  SUB nch_lvt_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMD3<26> N_31 SUB SUB  SUB nch_lvt_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMD3<27> N_30 SUB SUB  SUB nch_lvt_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMD3<28> N_29 SUB SUB  SUB nch_lvt_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMD3<29> N_28 SUB SUB  SUB nch_lvt_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMD3<30> N_27 SUB SUB  SUB nch_lvt_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMD4<0> N_74 VDD VDD  VDD pch_lvt_mac l=100n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=375n sb=375n
+XMD4<1> N_73 VDD VDD  VDD pch_lvt_mac l=100n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=375n sb=375n
+XMD4<2> N_72 VDD VDD  VDD pch_lvt_mac l=100n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=375n sb=375n
+XMD4<3> N_71 VDD VDD  VDD pch_lvt_mac l=100n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=375n sb=375n
+XMD4<4> N_70 VDD VDD  VDD pch_lvt_mac l=100n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=375n sb=375n
+XMD4<5> N_69 VDD VDD  VDD pch_lvt_mac l=100n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=375n sb=375n
+XMD4<6> N_68 VDD VDD  VDD pch_lvt_mac l=100n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=375n sb=375n
+XMD4<7> N_67 VDD VDD  VDD pch_lvt_mac l=100n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=375n sb=375n
+XMD4<8> N_66 VDD VDD  VDD pch_lvt_mac l=100n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=375n sb=375n
+XMD4<9> N_65 VDD VDD  VDD pch_lvt_mac l=100n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=375n sb=375n
+XMD4<10> N_64 VDD VDD  VDD pch_lvt_mac l=100n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=375n sb=375n
+XMD4<11> N_63 VDD VDD  VDD pch_lvt_mac l=100n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=375n sb=375n
+XMD4<12> N_62 VDD VDD  VDD pch_lvt_mac l=100n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=375n sb=375n
+XMD4<13> N_61 VDD VDD  VDD pch_lvt_mac l=100n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=375n sb=375n
+XMD4<14> N_60 VDD VDD  VDD pch_lvt_mac l=100n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=375n sb=375n
+XMD4<15> N_59 VDD VDD  VDD pch_lvt_mac l=100n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=375n sb=375n
+XMD4<16> N_58 VDD VDD  VDD pch_lvt_mac l=100n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=375n sb=375n
+XMD5<0> N_90 VDD VDD  VDD pch_lvt_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMD5<1> N_89 VDD VDD  VDD pch_lvt_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMD5<2> N_88 VDD VDD  VDD pch_lvt_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMD5<3> N_87 VDD VDD  VDD pch_lvt_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMD5<4> N_86 VDD VDD  VDD pch_lvt_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMD5<5> N_85 VDD VDD  VDD pch_lvt_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMD5<6> N_84 VDD VDD  VDD pch_lvt_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMD5<7> N_83 VDD VDD  VDD pch_lvt_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMD5<8> N_82 VDD VDD  VDD pch_lvt_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMD5<9> N_81 VDD VDD  VDD pch_lvt_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMD5<10> N_80 VDD VDD  VDD pch_lvt_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMD5<11> N_79 VDD VDD  VDD pch_lvt_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMD5<12> N_78 VDD VDD  VDD pch_lvt_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMD5<13> N_77 VDD VDD  VDD pch_lvt_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMD5<14> N_76 VDD VDD  VDD pch_lvt_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMD5<15> N_75 VDD VDD  VDD pch_lvt_mac l=50n w=1u m=1 nf=4 as=62.5f ad=50f ps=2u 
++pd=1.2u sa=300n sb=300n
+XMP0 VGTUNE VSS N_3  N_3 pch_18ud15_mac l=200n w=450n m=1 nf=1
+XMP01 N_3 VSS bias_delay  bias_delay pch_18ud15_mac l=200n w=450n m=1 nf=1
+XMP1 VCAS1 VCAS1 VDD  VDD pch_18ud15_mac l=1u w=1u m=1 nf=1
+XMP2 N_4 N_4 VCAS1  VCAS1 pch_18ud15_mac l=1u w=1u m=1 nf=1
+XMP3 N_5 N_5 N_4  N_4 pch_18ud15_mac l=1u w=1u m=1 nf=1
+XMP4 N_6 N_6 N_5  N_5 pch_18ud15_mac l=1u w=1u m=1 nf=1
+XMP5 VCAS2 VCAS2 N_6  N_6 pch_18ud15_mac l=1u w=1u m=1 nf=1
+XMP6 VSS VSS VCAS2  VCAS2 pch_18ud15_mac l=1u w=1u m=1 nf=1
+.ends
+
+.subckt capa_drv_eq OUTN OUTP SUB VC VDD VSS Vctrl  
+XC3 OUTN  VC nmoscap lr=400n wr=400n m=1
+XC14 OUTP  VC nmoscap lr=400n wr=400n m=1
+Xinv0_1<0> Vctrl VC SUB VDD VSS inv0
+Xinv0_1<1> Vctrl VC SUB VDD VSS inv0
+.ends
+
+.subckt cpar_rcapa_rdrv OUTN OUTP SUB VC0 VC11 VC12 VC21 VC22 VC31 VC32 VC33 VC34 
++VC41 VC42 VC43 VC44 VC51 VC52 VC53 VC54 VC55 VC56 VC57 VC58 VC59 VC61 VC62 VC63 
++VC64 VC65 VC66 VC67 VC68 VC71 VC72 VC73 VC74 VC75 VC76 VC77 VC78 VC81 VC82 VC83 
++VC84 VC85 VC86 VC87 VC88 VC91 VC92 VC93 VC94 VC101 VC102 VC103 VC104 VC105 VC111 
++VC112 VC113 VC114 VC115 VC121 VC122 VC123 VC124 VC125 VC126 VC127 VC128 VC129 VDD 
++VSS  
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+CC_1 VC0 OUTN 230a
+CC_2 VC0 OUTP 230a
+CC_3 VC11 OUTN 250a
+CC_4 VC11 OUTP 250a
+CC_5 VC12 OUTN 250a
+CC_6 VC12 OUTP 250a
+CC_7 VC21 OUTN 300a
+CC_8 VC21 OUTP 300a
+CC_9 OUTP VSS 94f
+CC_10 VC22 OUTN 300a
+CC_11 VC22 OUTP 300a
+CC_12 VC31 OUTN 330a
+CC_13 OUTN VSS 94f
+CC_14 VC31 OUTP 330a
+CC_15 VC32 OUTN 330a
+CC_16 VC32 OUTP 330a
+CC_17 VC33 OUTN 330a
+CC_18 VC33 OUTP 330a
+CC_19 VC34 OUTN 330a
+CC_20 VC34 OUTP 330a
+CC_21 VC41 OUTN 460a
+CC_22 VC41 OUTP 460a
+CC_23 VC42 OUTN 460a
+CC_24 VC42 OUTP 460a
+CC_25 VC43 OUTN 460a
+CC_26 VC43 OUTP 460a
+CC_27 VC44 OUTN 460a
+CC_28 VC44 OUTP 460a
+CC_29 VC51 OUTN 760a
+CC_30 VC51 OUTP 760a
+CC_31 VC52 OUTN 750a
+CC_32 VC52 OUTP 750a
+CC_33 VC53 OUTN 300a
+CC_34 VC53 OUTP 300a
+CC_35 VC54 OUTN 330a
+CC_36 VC54 OUTP 330a
+CC_37 VC55 OUTN 330a
+CC_38 VC55 OUTP 330a
+CC_39 VC56 OUTN 330a
+CC_40 VC56 OUTP 330a
+CC_41 VC57 OUTN 340a
+CC_42 VC57 OUTP 340a
+CC_43 VC58 OUTN 330a
+CC_44 VC58 OUTP 330a
+CC_45 VC59 OUTN 340a
+CC_46 VC59 OUTP 340a
+CC_47 VC61 OUTN 720a
+CC_48 VC61 OUTP 720a
+CC_49 VC62 OUTN 720a
+CC_50 VC62 OUTP 720a
+CC_51 VC63 OUTN 720a
+CC_52 VC63 OUTP 720a
+CC_53 VC64 OUTN 720a
+CC_54 VC64 OUTP 720a
+CC_55 VC65 OUTN 720a
+CC_56 VC65 OUTP 720a
+CC_57 VC66 OUTN 720a
+CC_58 VC66 OUTP 720a
+CC_59 VC67 OUTN 720a
+CC_60 VC67 OUTP 720a
+CC_61 VC68 OUTN 720a
+CC_62 VC68 OUTP 720a
+CC_63 VC71 OUTN 710a
+CC_64 VC71 OUTP 710a
+CC_65 VC72 OUTN 720a
+CC_66 VC72 OUTP 720a
+CC_67 VC73 OUTN 720a
+CC_68 VC73 OUTP 720a
+CC_69 VC74 OUTN 700a
+CC_70 VC74 OUTP 700a
+CC_71 VC75 OUTN 700a
+CC_72 VC75 OUTP 700a
+CC_73 VC76 OUTN 720a
+CC_74 VC76 OUTP 720a
+CC_75 VC77 OUTN 720a
+CC_76 VC77 OUTP 720a
+CC_77 VC78 OUTN 710a
+CC_78 VC78 OUTP 710a
+CC_79 VC81 OUTN 720a
+CC_80 VC81 OUTP 720a
+CC_81 VC82 OUTN 720a
+CC_82 VC82 OUTP 720a
+CC_83 VC83 OUTN 720a
+CC_84 VC83 OUTP 720a
+CC_85 VC84 OUTN 720a
+CC_86 VC84 OUTP 720a
+CC_87 VC85 OUTN 720a
+CC_88 VC85 OUTP 720a
+CC_89 VC86 OUTN 720a
+CC_90 VC86 OUTP 720a
+CC_91 VC87 OUTN 720a
+CC_92 VC87 OUTP 720a
+CC_93 VC88 OUTN 720a
+CC_94 VC88 OUTP 720a
+CC_95 VC91 OUTN 1.7f
+CC_96 VC91 OUTP 1.7f
+CC_97 VC92 OUTN 1.7f
+CC_98 VC92 OUTP 1.7f
+CC_99 VC93 OUTN 1.7f
+CC_100 VC93 OUTP 1.7f
+CC_101 VC94 OUTN 1.4f
+CC_102 VC94 OUTP 1.4f
+CC_103 VC101 OUTN 1.6f
+CC_104 VC101 OUTP 1.6f
+CC_105 VC102 OUTN 1.4f
+CC_106 VC102 OUTP 1.4f
+CC_107 VC103 OUTN 1.4f
+CC_108 VC103 OUTP 1.4f
+CC_109 VC104 OUTN 1.3f
+CC_110 VC104 OUTP 1.3f
+CC_111 VC105 OUTN 1.4f
+CC_112 VC105 OUTP 1.4f
+CC_113 VC111 OUTN 1.7f
+CC_114 VC111 OUTP 1.7f
+CC_115 VC112 OUTN 1.4f
+CC_116 VC112 OUTP 1.4f
+CC_117 VC113 OUTN 1.4f
+CC_118 VC113 OUTP 1.4f
+CC_119 VC114 OUTN 1.4f
+CC_120 VC114 OUTP 1.4f
+CC_121 VC115 OUTN 1f
+CC_122 VC115 OUTP 1f
+CC_123 VC121 OUTN 1f
+CC_124 VC121 OUTP 1f
+CC_125 VC122 OUTN 1f
+CC_126 VC122 OUTP 1f
+CC_127 VC123 OUTN 1f
+CC_128 VC123 OUTP 1f
+CC_129 VC124 OUTN 1f
+CC_130 VC124 OUTP 1f
+CC_131 VC125 OUTN 1f
+CC_132 VC125 OUTP 1f
+CC_133 VC126 OUTN 1f
+CC_134 VC126 OUTP 1f
+CC_135 VC127 OUTN 1f
+CC_136 VC127 OUTP 1f
+CC_137 VC128 OUTN 1f
+CC_138 VC128 OUTP 1f
+CC_139 VC129 OUTN 1f
+CC_140 VC129 OUTP 1f
+CC_141 OUTP VDD 0
+CC_142 OUTN VDD 0
+CC_143 OUTP OUTN 5f
+XC1 SUB  SUB nmoscap lr=400n wr=400n m=114
+XC2 SUB  SUB nmoscap lr=400n wr=400n m=114
+Xinv_unit_4<0> VSS D<0> SUB VDD VSS inv_unit
+Xinv_unit_4<1> VSS D<1> SUB VDD VSS inv_unit
+Xinv_unit_4<2> VSS D<2> SUB VDD VSS inv_unit
+Xinv_unit_4<3> VSS D<3> SUB VDD VSS inv_unit
+Xinv_unit_4<4> VSS D<4> SUB VDD VSS inv_unit
+Xinv_unit_4<5> VSS D<5> SUB VDD VSS inv_unit
+Xinv_unit_4<6> VSS D<6> SUB VDD VSS inv_unit
+Xinv_unit_4<7> VSS D<7> SUB VDD VSS inv_unit
+Xinv_unit_4<8> VSS D<8> SUB VDD VSS inv_unit
+Xinv_unit_4<9> VSS D<9> SUB VDD VSS inv_unit
+Xinv_unit_4<10> VSS D<10> SUB VDD VSS inv_unit
+Xinv_unit_4<11> VSS D<11> SUB VDD VSS inv_unit
+Xinv_unit_4<12> VSS D<12> SUB VDD VSS inv_unit
+Xinv_unit_4<13> VSS D<13> SUB VDD VSS inv_unit
+Xinv_unit_4<14> VSS D<14> SUB VDD VSS inv_unit
+Xinv_unit_4<15> VSS D<15> SUB VDD VSS inv_unit
+Xinv_unit_4<16> VSS D<16> SUB VDD VSS inv_unit
+Xinv_unit_4<17> VSS D<17> SUB VDD VSS inv_unit
+Xinv_unit_4<18> VSS D<18> SUB VDD VSS inv_unit
+Xinv_unit_4<19> VSS D<19> SUB VDD VSS inv_unit
+Xinv_unit_4<20> VSS D<20> SUB VDD VSS inv_unit
+Xinv_unit_4<21> VSS D<21> SUB VDD VSS inv_unit
+Xinv_unit_4<22> VSS D<22> SUB VDD VSS inv_unit
+Xinv_unit_4<23> VSS D<23> SUB VDD VSS inv_unit
+Xinv_unit_4<24> VSS D<24> SUB VDD VSS inv_unit
+Xinv_unit_4<25> VSS D<25> SUB VDD VSS inv_unit
+Xinv_unit_4<26> VSS D<26> SUB VDD VSS inv_unit
+Xinv_unit_4<27> VSS D<27> SUB VDD VSS inv_unit
+Xinv_unit_4<28> VSS D<28> SUB VDD VSS inv_unit
+Xinv_unit_4<29> VSS D<29> SUB VDD VSS inv_unit
+Xinv_unit_4<30> VSS D<30> SUB VDD VSS inv_unit
+Xinv_unit_4<31> VSS D<31> SUB VDD VSS inv_unit
+Xinv_unit_4<32> VSS D<32> SUB VDD VSS inv_unit
+Xinv_unit_4<33> VSS D<33> SUB VDD VSS inv_unit
+Xinv_unit_4<34> VSS D<34> SUB VDD VSS inv_unit
+Xinv_unit_4<35> VSS D<35> SUB VDD VSS inv_unit
+Xinv_unit_4<36> VSS D<36> SUB VDD VSS inv_unit
+Xinv_unit_4<37> VSS D<37> SUB VDD VSS inv_unit
+Xinv_unit_4<38> VSS D<38> SUB VDD VSS inv_unit
+Xinv_unit_4<39> VSS D<39> SUB VDD VSS inv_unit
+Xinv_unit_4<40> VSS D<40> SUB VDD VSS inv_unit
+Xinv_unit_4<41> VSS D<41> SUB VDD VSS inv_unit
+Xinv_unit_4<42> VSS D<42> SUB VDD VSS inv_unit
+Xinv_unit_4<43> VSS D<43> SUB VDD VSS inv_unit
+Xinv_unit_4<44> VSS D<44> SUB VDD VSS inv_unit
+Xinv_unit_4<45> VSS D<45> SUB VDD VSS inv_unit
+Xinv_unit_4<46> VSS D<46> SUB VDD VSS inv_unit
+Xinv_unit_4<47> VSS D<47> SUB VDD VSS inv_unit
+Xinv_unit_4<48> VSS D<48> SUB VDD VSS inv_unit
+Xinv_unit_4<49> VSS D<49> SUB VDD VSS inv_unit
+Xinv_unit_4<50> VSS D<50> SUB VDD VSS inv_unit
+Xinv_unit_4<51> VSS D<51> SUB VDD VSS inv_unit
+Xinv_unit_4<52> VSS D<52> SUB VDD VSS inv_unit
+Xinv_unit_4<53> VSS D<53> SUB VDD VSS inv_unit
+Xinv_unit_4<54> VSS D<54> SUB VDD VSS inv_unit
+Xinv_unit_4<55> VSS D<55> SUB VDD VSS inv_unit
+Xinv_unit_4<56> VSS D<56> SUB VDD VSS inv_unit
+Xinv_unit_4<57> VSS D<57> SUB VDD VSS inv_unit
+Xinv_unit_4<58> VSS D<58> SUB VDD VSS inv_unit
+Xinv_unit_4<59> VSS D<59> SUB VDD VSS inv_unit
+Xinv_unit_4<60> VSS D<60> SUB VDD VSS inv_unit
+Xinv_unit_4<61> VSS D<61> SUB VDD VSS inv_unit
+Xinv_unit_4<62> VSS D<62> SUB VDD VSS inv_unit
+Xinv_unit_4<63> VSS D<63> SUB VDD VSS inv_unit
+Xinv_unit_4<64> VSS D<64> SUB VDD VSS inv_unit
+Xinv_unit_4<65> VSS D<65> SUB VDD VSS inv_unit
+Xinv_unit_4<66> VSS D<66> SUB VDD VSS inv_unit
+Xinv_unit_4<67> VSS D<67> SUB VDD VSS inv_unit
+Xinv_unit_4<68> VSS D<68> SUB VDD VSS inv_unit
+Xinv_unit_4<69> VSS D<69> SUB VDD VSS inv_unit
+Xinv_unit_4<70> VSS D<70> SUB VDD VSS inv_unit
+Xinv_unit_4<71> VSS D<71> SUB VDD VSS inv_unit
+Xinv_unit_4<72> VSS D<72> SUB VDD VSS inv_unit
+Xinv_unit_4<73> VSS D<73> SUB VDD VSS inv_unit
+Xinv_unit_4<74> VSS D<74> SUB VDD VSS inv_unit
+Xinv_unit_4<75> VSS D<75> SUB VDD VSS inv_unit
+Xinv_unit_4<76> VSS D<76> SUB VDD VSS inv_unit
+Xinv_unit_4<77> VSS D<77> SUB VDD VSS inv_unit
+Xinv_unit_4<78> VSS D<78> SUB VDD VSS inv_unit
+Xinv_unit_4<79> VSS D<79> SUB VDD VSS inv_unit
+Xinv_unit_4<80> VSS D<80> SUB VDD VSS inv_unit
+Xinv_unit_4<81> VSS D<81> SUB VDD VSS inv_unit
+.ends
+
+.subckt delay_cc0_b0 INN INP OUTN OUTP SUB VDD VSS VTUNE  
+Xcpar_delay_1 INN INP OUTN OUTP SDiff SUB VDD VSS VTUNE cpar_delay
+XM1<0> OUTP INN SDiff  SDiff nch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM1<1> OUTP INN SDiff  SDiff nch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM1<2> OUTP INN SDiff  SDiff nch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM1<3> OUTP INN SDiff  SDiff nch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM1<4> OUTP INN SDiff  SDiff nch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM1<5> OUTP INN SDiff  SDiff nch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM1<6> OUTP INN SDiff  SDiff nch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM1<7> OUTP INN SDiff  SDiff nch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM1<8> OUTP INN SDiff  SDiff nch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM1<9> OUTP INN SDiff  SDiff nch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM1<10> OUTP INN SDiff  SDiff nch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM1<11> OUTP INN SDiff  SDiff nch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM1<12> OUTP INN SDiff  SDiff nch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM1<13> OUTP INN SDiff  SDiff nch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM1<14> OUTP INN SDiff  SDiff nch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM1<15> OUTP INN SDiff  SDiff nch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM2<0> OUTN INP SDiff  SDiff nch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM2<1> OUTN INP SDiff  SDiff nch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM2<2> OUTN INP SDiff  SDiff nch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM2<3> OUTN INP SDiff  SDiff nch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM2<4> OUTN INP SDiff  SDiff nch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM2<5> OUTN INP SDiff  SDiff nch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM2<6> OUTN INP SDiff  SDiff nch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM2<7> OUTN INP SDiff  SDiff nch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM2<8> OUTN INP SDiff  SDiff nch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM2<9> OUTN INP SDiff  SDiff nch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM2<10> OUTN INP SDiff  SDiff nch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM2<11> OUTN INP SDiff  SDiff nch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM2<12> OUTN INP SDiff  SDiff nch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM2<13> OUTN INP SDiff  SDiff nch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM2<14> OUTN INP SDiff  SDiff nch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM2<15> OUTN INP SDiff  SDiff nch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM3<0> OUTP INN VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM3<1> OUTP INN VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM3<2> OUTP INN VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM3<3> OUTP INN VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM3<4> OUTP INN VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM3<5> OUTP INN VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM3<6> OUTP INN VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM3<7> OUTP INN VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM3<8> OUTP INN VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM3<9> OUTP INN VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM3<10> OUTP INN VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM3<11> OUTP INN VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM3<12> OUTP INN VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM3<13> OUTP INN VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM3<14> OUTP INN VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM3<15> OUTP INN VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM4<0> OUTN INP VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM4<1> OUTN INP VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM4<2> OUTN INP VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM4<3> OUTN INP VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM4<4> OUTN INP VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM4<5> OUTN INP VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM4<6> OUTN INP VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM4<7> OUTN INP VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM4<8> OUTN INP VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM4<9> OUTN INP VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM4<10> OUTN INP VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM4<11> OUTN INP VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM4<12> OUTN INP VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM4<13> OUTN INP VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM4<14> OUTN INP VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM4<15> OUTN INP VDD  VDD pch_lvt_mac l=140n w=8u m=1 nf=8 as=450f ad=400f ps=10.9u 
++pd=8.2u sa=915n sb=915n
+XM5<0> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<1> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<2> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<3> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<4> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<5> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<6> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<7> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<8> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<9> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<10> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<11> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<12> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<13> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<14> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<15> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<16> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<17> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<18> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<19> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<20> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<21> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<22> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<23> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<24> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<25> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<26> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<27> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<28> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<29> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<30> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<31> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<32> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<33> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<34> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<35> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<36> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<37> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<38> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<39> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<40> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<41> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<42> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<43> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<44> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<45> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<46> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<47> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<48> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<49> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<50> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<51> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<52> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<53> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<54> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<55> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<56> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<57> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<58> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<59> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<60> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<61> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<62> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<63> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<64> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<65> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<66> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<67> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<68> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<69> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<70> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<71> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<72> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<73> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<74> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<75> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<76> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<77> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<78> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<79> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<80> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<81> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<82> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<83> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<84> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<85> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<86> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<87> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<88> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<89> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<90> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<91> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<92> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<93> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<94> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<95> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<96> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<97> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<98> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<99> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<100> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<101> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<102> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<103> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<104> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<105> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<106> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<107> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<108> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<109> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<110> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<111> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<112> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<113> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<114> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<115> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<116> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<117> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<118> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<119> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<120> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<121> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<122> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<123> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<124> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<125> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<126> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+XM5<127> SDiff VTUNE VSS  SUB nch_lvt_mac l=600n w=5.8u m=1 nf=8 as=326.25f ad=290f 
++ps=8.15u pd=6u sa=2.525u sb=2.525u
+.ends
+
+.subckt inv_the INTHE<0> INTHE<1> INTHE<2> INTHE<3> INTHE<4> INTHE<5> INTHE<6> INTHE<7> 
++INTHE<8> INTHE<9> INTHE<10> INTHE<11> INTHE<12> SUB VC<0> VC<1> VC<2> VC<3> VC<4> 
++VC<5> VC<6> VC<7> VC<8> VC<9> VC<10> VC<11> VC<12> VDD VSS  
+Xinv1_2<0> INTHE<0> VC<0> SUB VDD VSS inv2
+Xinv1_2<1> INTHE<1> VC<1> SUB VDD VSS inv2
+Xinv1_2<2> INTHE<2> VC<2> SUB VDD VSS inv2
+Xinv1_2<3> INTHE<3> VC<3> SUB VDD VSS inv2
+Xinv1_2<4> INTHE<4> VC<4> SUB VDD VSS inv2
+Xinv1_2<5> INTHE<5> VC<5> SUB VDD VSS inv2
+Xinv1_2<6> INTHE<6> VC<6> SUB VDD VSS inv2
+Xinv1_2<7> INTHE<7> VC<7> SUB VDD VSS inv2
+Xinv1_2<8> INTHE<8> VC<8> SUB VDD VSS inv2
+Xinv1_2<9> INTHE<9> VC<9> SUB VDD VSS inv2
+Xinv1_2<10> INTHE<10> VC<10> SUB VDD VSS inv2
+Xinv1_2<11> INTHE<11> VC<11> SUB VDD VSS inv2
+Xinv1_2<12> INTHE<12> VC<12> SUB VDD VSS inv2
+.ends
+
+.subckt bias_coupling BIAS<0> BIAS<1> SUB VDD VSS bias_buffer bias_delay iref_buffer 
++iref_delay  
+Xbias_buffer_1 SUB VDD VSS bias_buffer iref_buffer bias_buffer
+Xbias_delay_sub_1 BIAS<0> BIAS<1> SUB VDD VSS bias_delay iref_delay bias_delay_sub
+.ends
+
+.subckt Rcapa_drv_the OUTN OUTP SUB VC<0> VC<1> VC<2> VC<3> VC<4> VC<5> VC<6> VC<7> 
++VC<8> VC<9> VC<10> VC<11> VC<12> VDD VSS  
+DDP1 SUB  VC<1> ndio area=18f pj=560n m=4
+DDP2 SUB  VC<0> ndio area=18f pj=560n m=2
+DDP3 SUB  VC<3> ndio area=18f pj=560n m=8
+DDP4 SUB  VC<2> ndio area=18f pj=560n m=4
+DDP5 SUB  VC<5> ndio area=18f pj=560n m=18
+DDP6 SUB  VC<4> ndio area=18f pj=560n m=8
+DDP7 SUB  VC<7> ndio area=18f pj=560n m=16
+DDP8 SUB  VC<6> ndio area=18f pj=560n m=16
+DDP9 SUB  VC<9> ndio area=18f pj=560n m=8
+DDP10 SUB  VC<8> ndio area=18f pj=560n m=16
+DDP11 SUB  VC<11> ndio area=18f pj=560n m=10
+DDP12 SUB  VC<10> ndio area=18f pj=560n m=10
+DDP13 SUB  VC<12> ndio area=18f pj=560n m=18
+Xcapa_drv_0 OUTN OUTP SUB VC0 VDD VSS VC<0> capa_drv_eq
+Xcapa_drv_11 OUTN OUTP SUB VC11 VDD VSS VC<1> capa_drv_eq
+Xcapa_drv_12 OUTN OUTP SUB VC12 VDD VSS VC<1> capa_drv_eq
+Xcapa_drv_21<0> OUTN OUTP SUB VC21 VDD VSS VC<2> capa_drv_eq
+Xcapa_drv_21<1> OUTN OUTP SUB VC21 VDD VSS VC<2> capa_drv_eq
+Xcapa_drv_22<0> OUTN OUTP SUB VC22 VDD VSS VC<2> capa_drv_eq
+Xcapa_drv_22<1> OUTN OUTP SUB VC22 VDD VSS VC<2> capa_drv_eq
+Xcapa_drv_31<0> OUTN OUTP SUB VC31 VDD VSS VC<3> capa_drv_eq
+Xcapa_drv_31<1> OUTN OUTP SUB VC31 VDD VSS VC<3> capa_drv_eq
+Xcapa_drv_32<0> OUTN OUTP SUB VC32 VDD VSS VC<3> capa_drv_eq
+Xcapa_drv_32<1> OUTN OUTP SUB VC32 VDD VSS VC<3> capa_drv_eq
+Xcapa_drv_33<0> OUTN OUTP SUB VC33 VDD VSS VC<3> capa_drv_eq
+Xcapa_drv_33<1> OUTN OUTP SUB VC33 VDD VSS VC<3> capa_drv_eq
+Xcapa_drv_34<0> OUTN OUTP SUB VC34 VDD VSS VC<3> capa_drv_eq
+Xcapa_drv_34<1> OUTN OUTP SUB VC34 VDD VSS VC<3> capa_drv_eq
+Xcapa_drv_41<0> OUTN OUTP SUB VC41 VDD VSS VC<4> capa_drv_eq
+Xcapa_drv_41<1> OUTN OUTP SUB VC41 VDD VSS VC<4> capa_drv_eq
+Xcapa_drv_41<2> OUTN OUTP SUB VC41 VDD VSS VC<4> capa_drv_eq
+Xcapa_drv_41<3> OUTN OUTP SUB VC41 VDD VSS VC<4> capa_drv_eq
+Xcapa_drv_42<0> OUTN OUTP SUB VC42 VDD VSS VC<4> capa_drv_eq
+Xcapa_drv_42<1> OUTN OUTP SUB VC42 VDD VSS VC<4> capa_drv_eq
+Xcapa_drv_42<2> OUTN OUTP SUB VC42 VDD VSS VC<4> capa_drv_eq
+Xcapa_drv_42<3> OUTN OUTP SUB VC42 VDD VSS VC<4> capa_drv_eq
+Xcapa_drv_43<0> OUTN OUTP SUB VC43 VDD VSS VC<4> capa_drv_eq
+Xcapa_drv_43<1> OUTN OUTP SUB VC43 VDD VSS VC<4> capa_drv_eq
+Xcapa_drv_43<2> OUTN OUTP SUB VC43 VDD VSS VC<4> capa_drv_eq
+Xcapa_drv_43<3> OUTN OUTP SUB VC43 VDD VSS VC<4> capa_drv_eq
+Xcapa_drv_44<0> OUTN OUTP SUB VC44 VDD VSS VC<4> capa_drv_eq
+Xcapa_drv_44<1> OUTN OUTP SUB VC44 VDD VSS VC<4> capa_drv_eq
+Xcapa_drv_44<2> OUTN OUTP SUB VC44 VDD VSS VC<4> capa_drv_eq
+Xcapa_drv_44<3> OUTN OUTP SUB VC44 VDD VSS VC<4> capa_drv_eq
+Xcapa_drv_51<0> OUTN OUTP SUB VC51 VDD VSS VC<5> capa_drv_eq
+Xcapa_drv_51<1> OUTN OUTP SUB VC51 VDD VSS VC<5> capa_drv_eq
+Xcapa_drv_51<2> OUTN OUTP SUB VC51 VDD VSS VC<5> capa_drv_eq
+Xcapa_drv_51<3> OUTN OUTP SUB VC51 VDD VSS VC<5> capa_drv_eq
+Xcapa_drv_51<4> OUTN OUTP SUB VC51 VDD VSS VC<5> capa_drv_eq
+Xcapa_drv_51<5> OUTN OUTP SUB VC51 VDD VSS VC<5> capa_drv_eq
+Xcapa_drv_51<6> OUTN OUTP SUB VC51 VDD VSS VC<5> capa_drv_eq
+Xcapa_drv_51<7> OUTN OUTP SUB VC51 VDD VSS VC<5> capa_drv_eq
+Xcapa_drv_51<8> OUTN OUTP SUB VC51 VDD VSS VC<5> capa_drv_eq
+Xcapa_drv_52<0> OUTN OUTP SUB VC52 VDD VSS VC<5> capa_drv_eq
+Xcapa_drv_52<1> OUTN OUTP SUB VC52 VDD VSS VC<5> capa_drv_eq
+Xcapa_drv_52<2> OUTN OUTP SUB VC52 VDD VSS VC<5> capa_drv_eq
+Xcapa_drv_52<3> OUTN OUTP SUB VC52 VDD VSS VC<5> capa_drv_eq
+Xcapa_drv_52<4> OUTN OUTP SUB VC52 VDD VSS VC<5> capa_drv_eq
+Xcapa_drv_52<5> OUTN OUTP SUB VC52 VDD VSS VC<5> capa_drv_eq
+Xcapa_drv_52<6> OUTN OUTP SUB VC52 VDD VSS VC<5> capa_drv_eq
+Xcapa_drv_52<7> OUTN OUTP SUB VC52 VDD VSS VC<5> capa_drv_eq
+Xcapa_drv_52<8> OUTN OUTP SUB VC52 VDD VSS VC<5> capa_drv_eq
+Xcapa_drv_53<0> OUTN OUTP SUB VC53 VDD VSS VC<5> capa_drv_eq
+Xcapa_drv_53<1> OUTN OUTP SUB VC53 VDD VSS VC<5> capa_drv_eq
+Xcapa_drv_54<0> OUTN OUTP SUB VC54 VDD VSS VC<5> capa_drv_eq
+Xcapa_drv_54<1> OUTN OUTP SUB VC54 VDD VSS VC<5> capa_drv_eq
+Xcapa_drv_55<0> OUTN OUTP SUB VC55 VDD VSS VC<5> capa_drv_eq
+Xcapa_drv_55<1> OUTN OUTP SUB VC55 VDD VSS VC<5> capa_drv_eq
+Xcapa_drv_56<0> OUTN OUTP SUB VC56 VDD VSS VC<5> capa_drv_eq
+Xcapa_drv_56<1> OUTN OUTP SUB VC56 VDD VSS VC<5> capa_drv_eq
+Xcapa_drv_57<0> OUTN OUTP SUB VC57 VDD VSS VC<5> capa_drv_eq
+Xcapa_drv_57<1> OUTN OUTP SUB VC57 VDD VSS VC<5> capa_drv_eq
+Xcapa_drv_58<0> OUTN OUTP SUB VC58 VDD VSS VC<5> capa_drv_eq
+Xcapa_drv_58<1> OUTN OUTP SUB VC58 VDD VSS VC<5> capa_drv_eq
+Xcapa_drv_59<0> OUTN OUTP SUB VC59 VDD VSS VC<5> capa_drv_eq
+Xcapa_drv_59<1> OUTN OUTP SUB VC59 VDD VSS VC<5> capa_drv_eq
+Xcapa_drv_61<0> OUTN OUTP SUB VC61 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_61<1> OUTN OUTP SUB VC61 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_61<2> OUTN OUTP SUB VC61 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_61<3> OUTN OUTP SUB VC61 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_61<4> OUTN OUTP SUB VC61 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_61<5> OUTN OUTP SUB VC61 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_61<6> OUTN OUTP SUB VC61 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_61<7> OUTN OUTP SUB VC61 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_62<0> OUTN OUTP SUB VC62 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_62<1> OUTN OUTP SUB VC62 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_62<2> OUTN OUTP SUB VC62 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_62<3> OUTN OUTP SUB VC62 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_62<4> OUTN OUTP SUB VC62 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_62<5> OUTN OUTP SUB VC62 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_62<6> OUTN OUTP SUB VC62 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_62<7> OUTN OUTP SUB VC62 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_63<0> OUTN OUTP SUB VC63 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_63<1> OUTN OUTP SUB VC63 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_63<2> OUTN OUTP SUB VC63 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_63<3> OUTN OUTP SUB VC63 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_63<4> OUTN OUTP SUB VC63 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_63<5> OUTN OUTP SUB VC63 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_63<6> OUTN OUTP SUB VC63 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_63<7> OUTN OUTP SUB VC63 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_64<0> OUTN OUTP SUB VC64 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_64<1> OUTN OUTP SUB VC64 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_64<2> OUTN OUTP SUB VC64 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_64<3> OUTN OUTP SUB VC64 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_64<4> OUTN OUTP SUB VC64 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_64<5> OUTN OUTP SUB VC64 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_64<6> OUTN OUTP SUB VC64 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_64<7> OUTN OUTP SUB VC64 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_65<0> OUTN OUTP SUB VC65 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_65<1> OUTN OUTP SUB VC65 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_65<2> OUTN OUTP SUB VC65 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_65<3> OUTN OUTP SUB VC65 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_65<4> OUTN OUTP SUB VC65 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_65<5> OUTN OUTP SUB VC65 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_65<6> OUTN OUTP SUB VC65 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_65<7> OUTN OUTP SUB VC65 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_66<0> OUTN OUTP SUB VC66 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_66<1> OUTN OUTP SUB VC66 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_66<2> OUTN OUTP SUB VC66 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_66<3> OUTN OUTP SUB VC66 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_66<4> OUTN OUTP SUB VC66 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_66<5> OUTN OUTP SUB VC66 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_66<6> OUTN OUTP SUB VC66 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_66<7> OUTN OUTP SUB VC66 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_67<0> OUTN OUTP SUB VC67 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_67<1> OUTN OUTP SUB VC67 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_67<2> OUTN OUTP SUB VC67 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_67<3> OUTN OUTP SUB VC67 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_67<4> OUTN OUTP SUB VC67 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_67<5> OUTN OUTP SUB VC67 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_67<6> OUTN OUTP SUB VC67 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_67<7> OUTN OUTP SUB VC67 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_68<0> OUTN OUTP SUB VC68 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_68<1> OUTN OUTP SUB VC68 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_68<2> OUTN OUTP SUB VC68 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_68<3> OUTN OUTP SUB VC68 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_68<4> OUTN OUTP SUB VC68 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_68<5> OUTN OUTP SUB VC68 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_68<6> OUTN OUTP SUB VC68 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_68<7> OUTN OUTP SUB VC68 VDD VSS VC<6> capa_drv_eq
+Xcapa_drv_71<0> OUTN OUTP SUB VC71 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_71<1> OUTN OUTP SUB VC71 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_71<2> OUTN OUTP SUB VC71 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_71<3> OUTN OUTP SUB VC71 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_71<4> OUTN OUTP SUB VC71 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_71<5> OUTN OUTP SUB VC71 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_71<6> OUTN OUTP SUB VC71 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_71<7> OUTN OUTP SUB VC71 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_72<0> OUTN OUTP SUB VC72 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_72<1> OUTN OUTP SUB VC72 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_72<2> OUTN OUTP SUB VC72 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_72<3> OUTN OUTP SUB VC72 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_72<4> OUTN OUTP SUB VC72 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_72<5> OUTN OUTP SUB VC72 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_72<6> OUTN OUTP SUB VC72 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_72<7> OUTN OUTP SUB VC72 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_73<0> OUTN OUTP SUB VC73 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_73<1> OUTN OUTP SUB VC73 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_73<2> OUTN OUTP SUB VC73 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_73<3> OUTN OUTP SUB VC73 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_73<4> OUTN OUTP SUB VC73 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_73<5> OUTN OUTP SUB VC73 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_73<6> OUTN OUTP SUB VC73 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_73<7> OUTN OUTP SUB VC73 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_74<0> OUTN OUTP SUB VC74 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_74<1> OUTN OUTP SUB VC74 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_74<2> OUTN OUTP SUB VC74 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_74<3> OUTN OUTP SUB VC74 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_74<4> OUTN OUTP SUB VC74 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_74<5> OUTN OUTP SUB VC74 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_74<6> OUTN OUTP SUB VC74 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_74<7> OUTN OUTP SUB VC74 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_75<0> OUTN OUTP SUB VC75 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_75<1> OUTN OUTP SUB VC75 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_75<2> OUTN OUTP SUB VC75 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_75<3> OUTN OUTP SUB VC75 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_75<4> OUTN OUTP SUB VC75 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_75<5> OUTN OUTP SUB VC75 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_75<6> OUTN OUTP SUB VC75 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_75<7> OUTN OUTP SUB VC75 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_76<0> OUTN OUTP SUB VC76 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_76<1> OUTN OUTP SUB VC76 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_76<2> OUTN OUTP SUB VC76 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_76<3> OUTN OUTP SUB VC76 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_76<4> OUTN OUTP SUB VC76 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_76<5> OUTN OUTP SUB VC76 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_76<6> OUTN OUTP SUB VC76 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_76<7> OUTN OUTP SUB VC76 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_77<0> OUTN OUTP SUB VC77 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_77<1> OUTN OUTP SUB VC77 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_77<2> OUTN OUTP SUB VC77 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_77<3> OUTN OUTP SUB VC77 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_77<4> OUTN OUTP SUB VC77 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_77<5> OUTN OUTP SUB VC77 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_77<6> OUTN OUTP SUB VC77 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_77<7> OUTN OUTP SUB VC77 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_78<0> OUTN OUTP SUB VC78 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_78<1> OUTN OUTP SUB VC78 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_78<2> OUTN OUTP SUB VC78 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_78<3> OUTN OUTP SUB VC78 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_78<4> OUTN OUTP SUB VC78 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_78<5> OUTN OUTP SUB VC78 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_78<6> OUTN OUTP SUB VC78 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_78<7> OUTN OUTP SUB VC78 VDD VSS VC<7> capa_drv_eq
+Xcapa_drv_81<0> OUTN OUTP SUB VC81 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_81<1> OUTN OUTP SUB VC81 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_81<2> OUTN OUTP SUB VC81 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_81<3> OUTN OUTP SUB VC81 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_81<4> OUTN OUTP SUB VC81 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_81<5> OUTN OUTP SUB VC81 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_81<6> OUTN OUTP SUB VC81 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_81<7> OUTN OUTP SUB VC81 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_82<0> OUTN OUTP SUB VC82 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_82<1> OUTN OUTP SUB VC82 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_82<2> OUTN OUTP SUB VC82 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_82<3> OUTN OUTP SUB VC82 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_82<4> OUTN OUTP SUB VC82 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_82<5> OUTN OUTP SUB VC82 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_82<6> OUTN OUTP SUB VC82 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_82<7> OUTN OUTP SUB VC82 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_83<0> OUTN OUTP SUB VC83 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_83<1> OUTN OUTP SUB VC83 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_83<2> OUTN OUTP SUB VC83 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_83<3> OUTN OUTP SUB VC83 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_83<4> OUTN OUTP SUB VC83 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_83<5> OUTN OUTP SUB VC83 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_83<6> OUTN OUTP SUB VC83 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_83<7> OUTN OUTP SUB VC83 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_84<0> OUTN OUTP SUB VC84 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_84<1> OUTN OUTP SUB VC84 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_84<2> OUTN OUTP SUB VC84 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_84<3> OUTN OUTP SUB VC84 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_84<4> OUTN OUTP SUB VC84 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_84<5> OUTN OUTP SUB VC84 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_84<6> OUTN OUTP SUB VC84 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_84<7> OUTN OUTP SUB VC84 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_85<0> OUTN OUTP SUB VC85 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_85<1> OUTN OUTP SUB VC85 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_85<2> OUTN OUTP SUB VC85 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_85<3> OUTN OUTP SUB VC85 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_85<4> OUTN OUTP SUB VC85 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_85<5> OUTN OUTP SUB VC85 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_85<6> OUTN OUTP SUB VC85 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_85<7> OUTN OUTP SUB VC85 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_86<0> OUTN OUTP SUB VC86 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_86<1> OUTN OUTP SUB VC86 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_86<2> OUTN OUTP SUB VC86 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_86<3> OUTN OUTP SUB VC86 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_86<4> OUTN OUTP SUB VC86 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_86<5> OUTN OUTP SUB VC86 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_86<6> OUTN OUTP SUB VC86 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_86<7> OUTN OUTP SUB VC86 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_87<0> OUTN OUTP SUB VC87 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_87<1> OUTN OUTP SUB VC87 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_87<2> OUTN OUTP SUB VC87 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_87<3> OUTN OUTP SUB VC87 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_87<4> OUTN OUTP SUB VC87 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_87<5> OUTN OUTP SUB VC87 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_87<6> OUTN OUTP SUB VC87 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_87<7> OUTN OUTP SUB VC87 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_88<0> OUTN OUTP SUB VC88 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_88<1> OUTN OUTP SUB VC88 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_88<2> OUTN OUTP SUB VC88 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_88<3> OUTN OUTP SUB VC88 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_88<4> OUTN OUTP SUB VC88 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_88<5> OUTN OUTP SUB VC88 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_88<6> OUTN OUTP SUB VC88 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_88<7> OUTN OUTP SUB VC88 VDD VSS VC<8> capa_drv_eq
+Xcapa_drv_91<0> OUTN OUTP SUB VC91 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_91<1> OUTN OUTP SUB VC91 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_91<2> OUTN OUTP SUB VC91 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_91<3> OUTN OUTP SUB VC91 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_91<4> OUTN OUTP SUB VC91 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_91<5> OUTN OUTP SUB VC91 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_91<6> OUTN OUTP SUB VC91 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_91<7> OUTN OUTP SUB VC91 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_91<8> OUTN OUTP SUB VC91 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_91<9> OUTN OUTP SUB VC91 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_91<10> OUTN OUTP SUB VC91 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_91<11> OUTN OUTP SUB VC91 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_91<12> OUTN OUTP SUB VC91 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_91<13> OUTN OUTP SUB VC91 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_91<14> OUTN OUTP SUB VC91 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_91<15> OUTN OUTP SUB VC91 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_91<16> OUTN OUTP SUB VC91 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_92<0> OUTN OUTP SUB VC92 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_92<1> OUTN OUTP SUB VC92 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_92<2> OUTN OUTP SUB VC92 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_92<3> OUTN OUTP SUB VC92 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_92<4> OUTN OUTP SUB VC92 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_92<5> OUTN OUTP SUB VC92 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_92<6> OUTN OUTP SUB VC92 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_92<7> OUTN OUTP SUB VC92 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_92<8> OUTN OUTP SUB VC92 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_92<9> OUTN OUTP SUB VC92 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_92<10> OUTN OUTP SUB VC92 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_92<11> OUTN OUTP SUB VC92 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_92<12> OUTN OUTP SUB VC92 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_92<13> OUTN OUTP SUB VC92 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_92<14> OUTN OUTP SUB VC92 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_92<15> OUTN OUTP SUB VC92 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_92<16> OUTN OUTP SUB VC92 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_93<0> OUTN OUTP SUB VC93 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_93<1> OUTN OUTP SUB VC93 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_93<2> OUTN OUTP SUB VC93 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_93<3> OUTN OUTP SUB VC93 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_93<4> OUTN OUTP SUB VC93 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_93<5> OUTN OUTP SUB VC93 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_93<6> OUTN OUTP SUB VC93 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_93<7> OUTN OUTP SUB VC93 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_93<8> OUTN OUTP SUB VC93 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_93<9> OUTN OUTP SUB VC93 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_93<10> OUTN OUTP SUB VC93 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_93<11> OUTN OUTP SUB VC93 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_93<12> OUTN OUTP SUB VC93 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_93<13> OUTN OUTP SUB VC93 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_93<14> OUTN OUTP SUB VC93 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_93<15> OUTN OUTP SUB VC93 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_93<16> OUTN OUTP SUB VC93 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_94<0> OUTN OUTP SUB VC94 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_94<1> OUTN OUTP SUB VC94 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_94<2> OUTN OUTP SUB VC94 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_94<3> OUTN OUTP SUB VC94 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_94<4> OUTN OUTP SUB VC94 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_94<5> OUTN OUTP SUB VC94 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_94<6> OUTN OUTP SUB VC94 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_94<7> OUTN OUTP SUB VC94 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_94<8> OUTN OUTP SUB VC94 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_94<9> OUTN OUTP SUB VC94 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_94<10> OUTN OUTP SUB VC94 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_94<11> OUTN OUTP SUB VC94 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_94<12> OUTN OUTP SUB VC94 VDD VSS VC<9> capa_drv_eq
+Xcapa_drv_101<0> OUTN OUTP SUB VC101 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_101<1> OUTN OUTP SUB VC101 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_101<2> OUTN OUTP SUB VC101 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_101<3> OUTN OUTP SUB VC101 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_101<4> OUTN OUTP SUB VC101 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_101<5> OUTN OUTP SUB VC101 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_101<6> OUTN OUTP SUB VC101 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_101<7> OUTN OUTP SUB VC101 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_101<8> OUTN OUTP SUB VC101 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_101<9> OUTN OUTP SUB VC101 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_101<10> OUTN OUTP SUB VC101 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_101<11> OUTN OUTP SUB VC101 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_101<12> OUTN OUTP SUB VC101 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_101<13> OUTN OUTP SUB VC101 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_101<14> OUTN OUTP SUB VC101 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_101<15> OUTN OUTP SUB VC101 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_102<0> OUTN OUTP SUB VC102 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_102<1> OUTN OUTP SUB VC102 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_102<2> OUTN OUTP SUB VC102 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_102<3> OUTN OUTP SUB VC102 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_102<4> OUTN OUTP SUB VC102 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_102<5> OUTN OUTP SUB VC102 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_102<6> OUTN OUTP SUB VC102 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_102<7> OUTN OUTP SUB VC102 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_102<8> OUTN OUTP SUB VC102 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_102<9> OUTN OUTP SUB VC102 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_102<10> OUTN OUTP SUB VC102 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_102<11> OUTN OUTP SUB VC102 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_103<0> OUTN OUTP SUB VC103 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_103<1> OUTN OUTP SUB VC103 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_103<2> OUTN OUTP SUB VC103 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_103<3> OUTN OUTP SUB VC103 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_103<4> OUTN OUTP SUB VC103 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_103<5> OUTN OUTP SUB VC103 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_103<6> OUTN OUTP SUB VC103 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_103<7> OUTN OUTP SUB VC103 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_103<8> OUTN OUTP SUB VC103 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_103<9> OUTN OUTP SUB VC103 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_103<10> OUTN OUTP SUB VC103 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_103<11> OUTN OUTP SUB VC103 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_104<0> OUTN OUTP SUB VC104 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_104<1> OUTN OUTP SUB VC104 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_104<2> OUTN OUTP SUB VC104 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_104<3> OUTN OUTP SUB VC104 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_104<4> OUTN OUTP SUB VC104 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_104<5> OUTN OUTP SUB VC104 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_104<6> OUTN OUTP SUB VC104 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_104<7> OUTN OUTP SUB VC104 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_104<8> OUTN OUTP SUB VC104 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_104<9> OUTN OUTP SUB VC104 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_104<10> OUTN OUTP SUB VC104 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_104<11> OUTN OUTP SUB VC104 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_105<0> OUTN OUTP SUB VC105 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_105<1> OUTN OUTP SUB VC105 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_105<2> OUTN OUTP SUB VC105 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_105<3> OUTN OUTP SUB VC105 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_105<4> OUTN OUTP SUB VC105 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_105<5> OUTN OUTP SUB VC105 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_105<6> OUTN OUTP SUB VC105 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_105<7> OUTN OUTP SUB VC105 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_105<8> OUTN OUTP SUB VC105 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_105<9> OUTN OUTP SUB VC105 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_105<10> OUTN OUTP SUB VC105 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_105<11> OUTN OUTP SUB VC105 VDD VSS VC<10> capa_drv_eq
+Xcapa_drv_111<0> OUTN OUTP SUB VC111 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_111<1> OUTN OUTP SUB VC111 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_111<2> OUTN OUTP SUB VC111 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_111<3> OUTN OUTP SUB VC111 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_111<4> OUTN OUTP SUB VC111 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_111<5> OUTN OUTP SUB VC111 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_111<6> OUTN OUTP SUB VC111 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_111<7> OUTN OUTP SUB VC111 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_111<8> OUTN OUTP SUB VC111 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_111<9> OUTN OUTP SUB VC111 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_111<10> OUTN OUTP SUB VC111 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_111<11> OUTN OUTP SUB VC111 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_111<12> OUTN OUTP SUB VC111 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_111<13> OUTN OUTP SUB VC111 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_111<14> OUTN OUTP SUB VC111 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_111<15> OUTN OUTP SUB VC111 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_111<16> OUTN OUTP SUB VC111 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_112<0> OUTN OUTP SUB VC112 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_112<1> OUTN OUTP SUB VC112 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_112<2> OUTN OUTP SUB VC112 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_112<3> OUTN OUTP SUB VC112 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_112<4> OUTN OUTP SUB VC112 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_112<5> OUTN OUTP SUB VC112 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_112<6> OUTN OUTP SUB VC112 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_112<7> OUTN OUTP SUB VC112 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_112<8> OUTN OUTP SUB VC112 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_112<9> OUTN OUTP SUB VC112 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_112<10> OUTN OUTP SUB VC112 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_112<11> OUTN OUTP SUB VC112 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_112<12> OUTN OUTP SUB VC112 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_113<0> OUTN OUTP SUB VC113 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_113<1> OUTN OUTP SUB VC113 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_113<2> OUTN OUTP SUB VC113 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_113<3> OUTN OUTP SUB VC113 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_113<4> OUTN OUTP SUB VC113 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_113<5> OUTN OUTP SUB VC113 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_113<6> OUTN OUTP SUB VC113 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_113<7> OUTN OUTP SUB VC113 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_113<8> OUTN OUTP SUB VC113 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_113<9> OUTN OUTP SUB VC113 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_113<10> OUTN OUTP SUB VC113 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_113<11> OUTN OUTP SUB VC113 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_113<12> OUTN OUTP SUB VC113 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_114<0> OUTN OUTP SUB VC114 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_114<1> OUTN OUTP SUB VC114 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_114<2> OUTN OUTP SUB VC114 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_114<3> OUTN OUTP SUB VC114 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_114<4> OUTN OUTP SUB VC114 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_114<5> OUTN OUTP SUB VC114 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_114<6> OUTN OUTP SUB VC114 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_114<7> OUTN OUTP SUB VC114 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_114<8> OUTN OUTP SUB VC114 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_114<9> OUTN OUTP SUB VC114 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_114<10> OUTN OUTP SUB VC114 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_114<11> OUTN OUTP SUB VC114 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_114<12> OUTN OUTP SUB VC114 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_115<0> OUTN OUTP SUB VC115 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_115<1> OUTN OUTP SUB VC115 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_115<2> OUTN OUTP SUB VC115 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_115<3> OUTN OUTP SUB VC115 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_115<4> OUTN OUTP SUB VC115 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_115<5> OUTN OUTP SUB VC115 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_115<6> OUTN OUTP SUB VC115 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_115<7> OUTN OUTP SUB VC115 VDD VSS VC<11> capa_drv_eq
+Xcapa_drv_121<0> OUTN OUTP SUB VC121 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_121<1> OUTN OUTP SUB VC121 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_121<2> OUTN OUTP SUB VC121 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_121<3> OUTN OUTP SUB VC121 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_121<4> OUTN OUTP SUB VC121 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_121<5> OUTN OUTP SUB VC121 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_121<6> OUTN OUTP SUB VC121 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_122<0> OUTN OUTP SUB VC122 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_122<1> OUTN OUTP SUB VC122 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_122<2> OUTN OUTP SUB VC122 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_122<3> OUTN OUTP SUB VC122 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_122<4> OUTN OUTP SUB VC122 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_122<5> OUTN OUTP SUB VC122 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_122<6> OUTN OUTP SUB VC122 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_123<0> OUTN OUTP SUB VC123 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_123<1> OUTN OUTP SUB VC123 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_123<2> OUTN OUTP SUB VC123 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_123<3> OUTN OUTP SUB VC123 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_123<4> OUTN OUTP SUB VC123 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_123<5> OUTN OUTP SUB VC123 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_123<6> OUTN OUTP SUB VC123 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_124<0> OUTN OUTP SUB VC124 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_124<1> OUTN OUTP SUB VC124 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_124<2> OUTN OUTP SUB VC124 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_124<3> OUTN OUTP SUB VC124 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_124<4> OUTN OUTP SUB VC124 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_124<5> OUTN OUTP SUB VC124 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_124<6> OUTN OUTP SUB VC124 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_125<0> OUTN OUTP SUB VC125 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_125<1> OUTN OUTP SUB VC125 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_125<2> OUTN OUTP SUB VC125 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_125<3> OUTN OUTP SUB VC125 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_125<4> OUTN OUTP SUB VC125 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_125<5> OUTN OUTP SUB VC125 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_125<6> OUTN OUTP SUB VC125 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_126<0> OUTN OUTP SUB VC126 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_126<1> OUTN OUTP SUB VC126 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_126<2> OUTN OUTP SUB VC126 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_126<3> OUTN OUTP SUB VC126 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_126<4> OUTN OUTP SUB VC126 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_126<5> OUTN OUTP SUB VC126 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_126<6> OUTN OUTP SUB VC126 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_127<0> OUTN OUTP SUB VC127 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_127<1> OUTN OUTP SUB VC127 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_127<2> OUTN OUTP SUB VC127 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_127<3> OUTN OUTP SUB VC127 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_127<4> OUTN OUTP SUB VC127 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_127<5> OUTN OUTP SUB VC127 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_127<6> OUTN OUTP SUB VC127 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_128<0> OUTN OUTP SUB VC128 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_128<1> OUTN OUTP SUB VC128 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_128<2> OUTN OUTP SUB VC128 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_128<3> OUTN OUTP SUB VC128 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_128<4> OUTN OUTP SUB VC128 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_128<5> OUTN OUTP SUB VC128 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_128<6> OUTN OUTP SUB VC128 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_129<0> OUTN OUTP SUB VC129 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_129<1> OUTN OUTP SUB VC129 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_129<2> OUTN OUTP SUB VC129 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_129<3> OUTN OUTP SUB VC129 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_129<4> OUTN OUTP SUB VC129 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_129<5> OUTN OUTP SUB VC129 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_129<6> OUTN OUTP SUB VC129 VDD VSS VC<12> capa_drv_eq
+Xcapa_drv_129<7> OUTN OUTP SUB VC129 VDD VSS VC<12> capa_drv_eq
+Xcpar_rcapa_rdrv_1 OUTN OUTP SUB VC0 VC11 VC12 VC21 VC22 VC31 VC32 VC33 VC34 VC41 
++VC42 VC43 VC44 VC51 VC52 VC53 VC54 VC55 VC56 VC57 VC58 VC59 VC61 VC62 VC63 VC64 
++VC65 VC66 VC67 VC68 VC71 VC72 VC73 VC74 VC75 VC76 VC77 VC78 VC81 VC82 VC83 VC84 
++VC85 VC86 VC87 VC88 VC91 VC92 VC93 VC94 VC101 VC102 VC103 VC104 VC105 VC111 VC112 
++VC113 VC114 VC115 VC121 VC122 VC123 VC124 VC125 VC126 VC127 VC128 VC129 VDD VSS 
++cpar_rcapa_rdrv
+.ends
+
+.subckt delay_rcapa_rdrv INN INP OUTN OUTP SUB VC<0> VC<1> VC<2> VC<3> VC<4> VC<5> 
++VC<6> VC<7> VC<8> VC<9> VC<10> VC<11> VC<12> VDD VSS VTUNE  
+Xdelay_cc0_b0_1 INN INP OUTN OUTP SUB VDD VSS VTUNE delay_cc0_b0
+XRcapa_drv_the_1 OUTN OUTP SUB VC<0> VC<1> VC<2> VC<3> VC<4> VC<5> VC<6> VC<7> VC<8> 
++VC<9> VC<10> VC<11> VC<12> VDD VSS Rcapa_drv_the
+.ends
+
+.subckt vco_core_0 INN1 INN2 INN3 INP1 INP2 INP3 SUB VC<0> VC<1> VC<2> VC<3> VC<4> 
++VC<5> VC<6> VC<7> VC<8> VC<9> VC<10> VC<11> VC<12> VDD VSS bias_delay  
+Xdelay_rcapa_rdrv_1 INN3 INP3 INN1 INP1 SUB VC<0> VC<1> VC<2> VC<3> VC<4> VC<5> 
++VC<6> VC<7> VC<8> VC<9> VC<10> VC<11> VC<12> VDD VSS bias_delay delay_rcapa_rdrv
+Xdelay_rcapa_rdrv_2 INN1 INP1 INN2 INP2 SUB VC<0> VC<1> VC<2> VC<3> VC<4> VC<5> 
++VC<6> VC<7> VC<8> VC<9> VC<10> VC<11> VC<12> VDD VSS bias_delay delay_rcapa_rdrv
+Xdelay_rcapa_rdrv_3 INN2 INP2 INP3 INN3 SUB VC<0> VC<1> VC<2> VC<3> VC<4> VC<5> 
++VC<6> VC<7> VC<8> VC<9> VC<10> VC<11> VC<12> VDD VSS bias_delay delay_rcapa_rdrv
+.ends
+
+.subckt b_vco_1 OUTN1 OUTN2 OUTN3 OUTP1 OUTP2 OUTP3 SUB VDD VFILT<0> VFILT<1> VFILT<2> 
++VFILT<3> VFILT<4> VFILT<5> VFILT<6> VFILT<7> VFILT<8> VFILT<9> VFILT<10> VFILT<11> 
++VFILT<12> VSS bias_buffer bias_delay  
+Xbuffer_v1_1 INN1 INP1 OUTN1 OUTP1 SUB bias_buffer VDD VSS buffer_v1
+Xbuffer_v1_2 INN2 INP2 OUTN2 OUTP2 SUB bias_buffer VDD VSS buffer_v1
+Xbuffer_v1_3 INN3 INP3 OUTN3 OUTP3 SUB bias_buffer VDD VSS buffer_v1
+XC2 VDD  VSS nmoscap_18 lr=1.3u wr=2.06u m=310
+Xinv_the_1 VFILT<0> VFILT<1> VFILT<2> VFILT<3> VFILT<4> VFILT<5> VFILT<6> VFILT<7> 
++VFILT<8> VFILT<9> VFILT<10> VFILT<11> VFILT<12> SUB VC<0> VC<1> VC<2> VC<3> VC<4> 
++VC<5> VC<6> VC<7> VC<8> VC<9> VC<10> VC<11> VC<12> VDD VSS inv_the
+Xvco_core_0_1 INN1 INN2 INN3 INP1 INP2 INP3 SUB VC<0> VC<1> VC<2> VC<3> VC<4> VC<5> 
++VC<6> VC<7> VC<8> VC<9> VC<10> VC<11> VC<12> VDD VSS bias_delay vco_core_0
+.ends
+
+*.subckt vco_v1 OUTN1 OUTN2 OUTN3 OUTP1 OUTP2 OUTP3 SUB VB<0> VB<1> VDD VFILT<0> 
+*+VFILT<1> VFILT<2> VFILT<3> VFILT<4> VFILT<5> VFILT<6> VFILT<7> VFILT<8> VFILT<9> 
+*+VFILT<10> VFILT<11> VFILT<12> VSS iref_buffer iref_delay  
+*Xb_vco_1_1 OUTN1 OUTN2 OUTN3 OUTP1 OUTP2 OUTP3 SUB VDD VFILT<0> VFILT<1> VFILT<2> 
+*+VFILT<3> VFILT<4> VFILT<5> VFILT<6> VFILT<7> VFILT<8> VFILT<9> VFILT<10> VFILT<11> 
+*+VFILT<12> VSS bias_buffer bias_delay b_vco_1
+*Xbias_coupling_1 VB<0> VB<1> SUB VDD VSS bias_buffer bias_delay iref_buffer iref_delay 
+*+bias_coupling
+*.ends
+
+
+***** Top Level *****
+*
+*
+*
+*
+*
+*
+.include /work/hardware/users/aferret/virtualbox/include/vco_carac.inc
+Cmom12C1 OUTP1 INPI {nc*0.0814e-15}
+Cmom12C3 OUTN1 INNI {nc*0.0814e-15}
+II1 VDD iref_buffer DC 50u AC 0 0
+II2 VDD iref_delay DC 50u AC 0 0
+VV1 VDD VSS DC alim1 AC 0 0
+Xdecode_2b_1 VB<0> VB<1> decode_2b code=code_bias vout=alim1
+Xdecode_13b_1 VFILT<0> VFILT<1> VFILT<2> VFILT<3> VFILT<4> VFILT<5> VFILT<6> VFILT<7> 
++VFILT<8> VFILT<9> VFILT<10> VFILT<11> VFILT<12> decode_13b code=code vout=850m
+Xinv2_1 OUTNB N_1 SUB VDD VSS inv2
+Xinv2_1<0> INNI OUTNB SUB VDD VSS inv2
+Xinv2_1<1> INNI OUTNB SUB VDD VSS inv2
+Xinv2_1<2> INNI OUTNB SUB VDD VSS inv2
+Xinv2_1<3> INNI OUTNB SUB VDD VSS inv2
+Xinv2_2<0> INPI OUTPB SUB VDD VSS inv2
+Xinv2_2<1> INPI OUTPB SUB VDD VSS inv2
+Xinv2_2<2> INPI OUTPB SUB VDD VSS inv2
+Xinv2_2<3> INPI OUTPB SUB VDD VSS inv2
+Xinv2_3 OUTPB N_2 SUB VDD VSS inv2
+XR1 INPI  OUTPB rupolym l=lr w=wr
+XR3 INNI  OUTNB rupolym l=lr w=wr
+Xvco_v1_1 OUTN1 OUTN2 OUTN3 OUTP1 OUTP2 OUTP3 SUB VB<0> VB<1> VDD VFILT<0> VFILT<1> 
++VFILT<2> VFILT<3> VFILT<4> VFILT<5> VFILT<6> VFILT<7> VFILT<8> VFILT<9> VFILT<10> 
++VFILT<11> VFILT<12> VSS iref_buffer iref_delay vco_v1
+
+

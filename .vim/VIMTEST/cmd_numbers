@@ -1,0 +1,9 @@
+" Numbers, all with engineering suffixes and optional units
+"==========================================================
+"floating point number, with dot, optional exponent
+syn match spiceNumber  "\<[0-9]\+\.[0-9]*\(e[-+]\=[0-9]\+\)\=\(meg\=\|[afpnumkg]\)\="
+"floating point number, starting with a dot, optional exponent
+syn match spiceNumber  "\.[0-9]\+\(e[-+]\=[0-9]\+\)\=\(meg\=\|[afpnumkg]\)\="
+"integer number with optional exponent
+syn match spiceNumber  "\<[0-9]\+\(e[-+]\=[0-9]\+\)\=\(meg\=\|[afpnumkg]\)\="
+

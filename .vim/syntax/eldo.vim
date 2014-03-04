@@ -1,4 +1,4 @@
-"""""""" Fichier de configuration de VIM pour les fichiers SPICE """"""""
+"""""""" Fichier de configuration de VIM pour la syntaxe ELDO """"""""
 
 "Ignore Maj / Min
 syntax case ignore

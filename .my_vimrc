@@ -1,0 +1,363 @@
+""""""""""""""""""MY VIMRC FILE""""""""""""""""""""
+set fileformat=unix
+" ':help options.txt' ou ':help nom_du_paramètre' dans Vim
+" pour avoir de l'aide sur les paramètres de ce fichier de configuration
+
+" Avertissement par flash (visual bell) plutôt que par beep
+set vb
+
+" N'autorise pas à garder des buffers cachés modifiés
+set nohidden
+
+"Active la numérotation de ligne
+set number
+
+""""""""""" Couleurs """""""""""
+" Utiliser un jeu de couleurs sur fond sombre (plutôt que le jeu Sun)
+" au lieu de colorscheme default
+colorscheme desert256
+"colorscheme shine
+" Coloration "sombre"
+set background=dark
+" A voir terminal, colors, etc
+set t_co=256
+"set t_AB=^[[48;5;%dm
+"set t_AF=^[[38;5;%dm
+"colorscheme burnttoast256 
+" Surligne ou cache les résultats de la dernière recherche
+set nohlsearch
+map <silent> <C-n> :se invhlsearch<CR>
+highlight search cterm=none ctermfg=16 ctermbg=15
+" Active la coloration syntaxique
+" A mettre après le réglage des couleurs visiblement ... cf aide color xterm
+syntax on
+
+" Affiche la position du curseur 'ligne,colonne'
+set ruler
+set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " a ruler on steroids ??
+" Affiche une barre de status en bas de l'écran
+set laststatus=2
+" Contenu de la barre de status
+set statusline=%<%f%h%m%r%=%l,%c\ %P
+
+" Contenu des onglets
+set guitablabel=%t%m
+
+" Largeur maxi du texte inséré
+" '72' permet de wrapper automatiquement à 72 caractères
+" '0' désactive la fonction
+set textwidth=0
+
+" Ne pas assurer la compatibilité avec l'ancien Vi
+set nocompatible
+" Nombre de colonnes
+"set columns=80
+" Nombre de commandes dans l'historique
+set history=50
+" Options du fichier ~/.viminfo
+"set viminfo='20,\"50 option de base, qq problems avec ce fichier...
+" Du coup, inactif
+set viminfo=
+" Active la touche Backspace
+set backspace=2
+set backspace=indent,eol,start
+" Autorise le passage d'une ligne à l'autre avec les flèches gauche et droite
+set whichwrap=<,>,[,]
+" Garde toujours une ligne visible à l'écran au dessus du curseur
+set scrolloff=1
+" Affiche les commandes dans la barre de status
+set showcmd
+" Affiche la paire de parenthèses
+set showmatch
+" Essaye de garder le curseur dans la même colonne quand on change de ligne
+set nostartofline
+" Recherche incrémentale
+set incsearch
+" Option de la complétion automatique
+
+" Ouvre le fichier dont le nom est sous le curseur et split
+map <F8> :vertical wincmd f<CR>
+map <F7> :wincmd f<CR>
+
+"A voir
+map <F6> [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
+"
+" Affiche le nombre d'occurence et les lignes ou
+" est présent le mot sous le curseur
+map <F5> [I
+
+" Ctrl-j/k deletes blank line below/above, and Alt-j/k inserts.
+"
+"nnoremap <silent><C-j> m`:silent +g/\m^\s*$/d<CR>``:noh<CR>
+"nnoremap <silent><C-k> m`:silent -g/\m^\s*$/d<CR>``:noh<CR>
+"nnoremap <silent><A-j> :set paste<CR>m`o<Esc>``:set nopaste<CR>
+"nnoremap <silent><A-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
+"à retravailler, marche pas bien
+
+" En mode normal, insère 1 ligne vide au niveau du curseur
+nmap <SPACE> O<ESC>
+" Saut par paragraphes relocalisés
+"map + }
+map <C-UP> {
+"map - {
+map <C-DOWN> }
+
+" Mapping pour la manipulation des tabs
+" Probleme avec la description des touches
+:fixdel
+" Mapping sur del, end .... marche pas, que insert qui marche (avec alt ??)
+"map <A-Insert> :tabnew <CR>
+"map <A-Backspace> :tabclose <CR>
+"map <A-End> :tabclose <CR>
+"map <A-Del> :tabclose <CR>
+map + :tabnew <CR>
+map - :tabclose <CR>
+map <A-LEFT> :tabp <CR>
+map <A-RIGHT> :tabn <CR>
+map <A-UP> :tablast <CR>
+map <A-DOWN> :tabfirst <CR>
+
+"Copier-Coller temporaire dans le fichier CC
+"map <C-p> y :sp ~/.vim/CC/.cc<ESC>P :x<ENTER>
+":!rm ~/.vim/CC/.cc<CR>
+"map <silent> <C-l> :sp ~/.vim/CC/.cc<ESC>ggVG"yy :q<ENTER>P
+"map <F11> :.w ~/.vim/CC/.cc<CR>
+"map <F11> :e ~/.vim/CC/.cc
+"
+" Ouvrir le fichier courant avec nedit ou gedit
+:map <F11> :!nedit % &<CR><CR>
+:map <S-F11> :!gedit % &<CR><CR>
+
+" Copier Coller avec l'aide de xclip
+":map <F12> :w !xclip<CR><CR>
+":vmap <F12> "*y
+" 2 premiers marchent pas très bien à cause de "* qui fonctionne pas trop
+"COPIER touche F12
+:map <F12> y:call system("xclip -i -selection clipboard", getreg("\""))<CR>:call system("xclip -i", getreg("\""))<CR>
+" "COLLER touche Shift+F12
+:map <S-F12> :r!xclip -o<CR>
+
+set wildmode=list:longest,full
+" Par défaut, garde l'indentation de la ligne précédente
+" quand on commence une nouvelle ligne
+set autoindent
+" Arrondit à shiftwidth << et >>
+set shiftround
+" Options d'indentation pour un fichier C
+set cinoptions=(0
+
+" Autorise la souris
+set mouse=a
+
+" Change le titre de la fenêtre
+set title
+set titleold=
+
+" Garde la taille des fenêtres précédentes à l'ouverture d'une nouvelle
+" fenêtre
+set noea
+ 
+set ttymouse=xterm2
+
+" Décommentez les 2 lignes suivantes si vous voulez avoir les tabulations et
+" les espaces marqués en caractères bleus
+"set list
+set listchars=eol:$,tab:>.,trail:.
+
+" Les recherches sont 'case sensitives'
+" set noignorecase
+" les recherches 'case insensitives'
+set ignorecase
+
+" Imprimante pour :hardcopy
+set pdev=bca_hpc_428
+
+" Fichier d'aide
+set helpfile=$VIMRUNTIME/doc/help.txt
+
+" Le découpage des folders se base sur l'indentation
+set foldmethod=manual
+
+" 40 niveaux d'indentation par défaut pour les folders
+set foldlevel=40
+
+" split preferentially above/right
+set splitright
+
+" vertical split for diff
+set diffopt=filler,vertical,iwhite
+
+" Police de caractère pour Gvim qui supporte le symbole euro
+"set guifont=-misc-fixed-medium-r-semicondensed-*-*-111-75-75-c-*-iso8859-15
+"set guifont=Monospace\ 10
+set guifont=Deja\ Vu\ Sans\ Bold\ 9
+" charge automatiquement les plugins associés aux types de fichier
+filetype plugin on
+
+" Indentation par défaut
+set smartindent expandtab shiftwidth=2 tabstop=2
+
+autocmd BufNewfile,BufRead *Makefile* set syntax=make
+autocmd BufNewfile,BufRead *.c   set smartindent expandtab shiftwidth=2 tabstop=4 cindent
+autocmd BufNewfile,BufRead *.c++ set smartindent expandtab shiftwidth=2 tabstop=4 cindent
+autocmd BufNewfile,BufRead *.h   set smartindent expandtab shiftwidth=2 tabstop=4 cindent 
+autocmd BufNewfile,BufRead *.cpp set smartindent expandtab shiftwidth=2 tabstop=4 cindent
+autocmd BufNewfile,BufRead *.v   set smartindent expandtab shiftwidth=2 tabstop=2
+autocmd BufNewfile,BufRead *.sh  set smartindent expandtab shiftwidth=2 tabstop=2
+autocmd BufNewfile,BufRead *.sv  set smartindent expandtab shiftwidth=2 tabstop=2
+autocmd BufNewfile,BufRead *.sv  set syntax=verilog
+autocmd BufNewfile,BufRead *.sv  call SVAsyncColors()
+autocmd BufNewfile,BufRead *.p?  set smartindent expandtab shiftwidth=2 tabstop=8
+autocmd BufNewfile,BufRead *.vhd set smartindent expandtab shiftwidth=2 tabstop=2
+autocmd BufNewfile,BufRead *.vhd call VHDLMappings()
+autocmd BufNewfile,BufRead *.vhd call InitTaglist()
+"autocmd BufNewfile,BufRead *.vhd TlistToggle
+autocmd BufNewfile,BufRead *.template set smartindent expandtab shiftwidth=2 tabstop=8
+autocmd BufNewfile,BufRead *.template set fdc=4 fdm=syntax
+
+" Définition des fichiers type SPICE
+au BufRead,BufNewFile *.cir set filetype=cir
+au BufRead,BufNewFile *.sp set filetype=cir
+au BufRead,BufNewFile *.cdl set filetype=cir
+au BufRead,BufNewFile *.inc set filetype=cir
+au BufRead,BufNewFile *.pex set filetype=cir
+au BufRead,BufNewFile *.pxi set filetype=cir
+au BufRead,BufNewFile *.typ set filetype=cir
+au BufRead,BufNewFile *.lib set filetype=cir
+au BufRead,BufNewFile *.ext set filetype=cir
+au BufRead,BufNewFile *.ckt set filetype=cir
+au BufRead,BufNewFile *.sp2 set filetype=cir
+au BufRead,BufNewFile *.sp3 set filetype=cir
+
+" Source du fichier de coloration syntaxique
+au! Syntax cir source ~aferret/.env/My_env/.vim/syntax/eldo.vim
+
+function! Fill(nbchar)
+  let str = substitute(submatch(0), '\s*$', '', '')
+  return str . repeat (' ', a:nbchar - strlen(str))
+endfunc
+
+function! SVAsyncColors()
+  syntax keyword SVAsyncComPrimitives Write BeginWrite EndWrite Read BeginRead EndRead
+  highlight link SVAsyncComPrimitives Function
+endfunction
+
+
+"function! VHDLMappings()
+  "command! -nargs=0 En :call NewEnt()
+  "command! -nargs=0 Er :call ReadEnt()
+  "command! -nargs=1 -complete=customlist,ListEnt Ee :call EntAsEntity('<args>')
+  "command! -nargs=1 -complete=customlist,ListEnt Ec :call EntAsComponent('<args>')
+  "command! -nargs=1 -complete=customlist,ListEnt Ei :call EntAsInstance('<args>')
+  "vmap <buffer> a :Align : => <= ; , --<CR>
+  "nmap <buffer> <C-_>n  :call    NewEnt()<CR>
+  "nmap <buffer> <C-_>r  :call    ReadEnt()<CR>
+  "nmap <buffer> <C-_>e  mz:call    EntAsEntity(expand('<cword>'))<CR>`zdd
+  "nmap <buffer> <C-_>c  mz:call EntAsComponent(expand('<cword>'))<CR>`zdd
+  "nmap <buffer> <C-_>i  mz:call  EntAsInstance(expand('<cword>'))<CR>`zdd
+  "imap <buffer> <C-_>e  <Esc>dd:call    EntAsEntity(substitute(getreg(v:register,1),'\(\W\+\)','\1','')<CR>o
+  "imap <buffer> <C-_>c  <Esc>dd:call EntAsComponent(substitute(getreg(v:register,1),'\(\W\+\)','\1','')<CR>o
+  "imap <buffer> <C-_>i  <Esc>dd:call  EntAsInstance(substitute(getreg(v:register,1),'\(\W\+\)','\1','')<CR>o
+  "imap <buffer> <C-_>ne <Esc>bdw0iENTITY <Esc>pa IS<CR>  PORT (<CR>  <CR><BS><BS>);<CR><BS><BS>END ENTITY <Esc>pa;<CR><Esc>kkkA
+  "imap <buffer> <C-_>na <Esc>b"ydw0iARCHITECTURE <Esc>pa OF <Esc>mz?\cENTITY<CR>wyw`zpa IS<CR>BEGIN<CR>  <CR><BS><BS>END ARCHITECTURE <Esc>"ypa; -- OF <Esc>pa<CR><Esc>kkA
+  "imap <buffer> <C-_>np <Esc>bdw0i  <Esc>pa : PROCESS ()<CR>BEGIN<CR>  <CR><BS><BS>END PROCESS <Esc>pa;<CR><Esc>kkA
+  "iabbr DT  DOWNTO
+  "iabbr SIG SIGNAL
+  "iabbr GEN GENERATE
+  "iabbr OT  OTHERS
+  "iabbr SL  STD_LOGIC
+  "iabbr SLV STD_LOGIC_VECTOR
+  "iabbr UNS UNSIGNED
+"endfunction
+
+
+"" An example for a vimrc file.
+""
+"" Maintainer:	Bram Moolenaar <Bram@vim.org>
+"" Last change:	2006 Aug 12
+""
+"" To use it, copy it to
+""     for Unix and OS/2:  ~/.vimrc
+""	      for Amiga:  s:.vimrc
+""  for MS-DOS and Win32:  $VIM\_vimrc
+""	    for OpenVMS:  sys$login:.vimrc
+"
+"" When started as "evim", evim.vim will already have done these settings.
+"if v:progname =~? "evim"
+"  finish
+"endif
+"
+"" Use Vim settings, rather then Vi settings (much better!).
+"" This must be first, because it changes other options as a side effect.
+"set nocompatible
+"
+"" allow backspacing over everything in insert mode
+"set backspace=indent,eol,start
+"
+"if has("vms")
+"  set nobackup		" do not keep a backup file, use versions instead
+"else
+"  set backup		" keep a backup file
+"endif
+"set history=50		" keep 50 lines of command line history
+"set ruler		" show the cursor position all the time
+"set showcmd		" display incomplete commands
+"set incsearch		" do incremental searching
+"
+"" For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
+"" let &guioptions = substitute(&guioptions, "t", "", "g")
+"
+"" Don't use Ex mode, use Q for formatting
+"map Q gq
+"
+"" In an xterm the mouse should work quite well, thus enable it.
+"set mouse=a
+"
+"" This is an alternative that also works in block mode, but the deleted
+"" text is lost and it only works for putting the current register.
+""vnoremap p "_dp
+"
+"" Switch syntax highlighting on, when the terminal has colors
+"" Also switch on highlighting the last used search pattern.
+"if &t_Co > 2 || has("gui_running")
+"  syntax on
+"  set hlsearch
+"endif
+"
+"" Only do this part when compiled with support for autocommands.
+"if has("autocmd")
+"
+"  " Enable file type detection.
+"  " Use the default filetype settings, so that mail gets 'tw' set to 72,
+"  " 'cindent' is on in C files, etc.
+"  " Also load indent files, to automatically do language-dependent indenting.
+"  filetype plugin indent on
+"
+"  " Put these in an autocmd group, so that we can delete them easily.
+"  augroup vimrcEx
+"  au!
+"
+"  " For all text files set 'textwidth' to 78 characters.
+"  autocmd FileType text setlocal textwidth=78
+"
+"  " When editing a file, always jump to the last known cursor position.
+"  " Don't do it when the position is invalid or when inside an event handler
+"  " (happens when dropping a file on gvim).
+"  autocmd BufReadPost *
+"    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+"    \   exe "normal g`\"" |
+"    \ endif
+"
+"  augroup END
+"
+"else
+"
+"  set autoindent		" always set autoindenting on
+"
+"endif " has("autocmd")
+"
+"" Convenient command to see the difference between the current buffer and the
+"" file it was loaded from, thus the changes you made.
+"command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
+"	 	\ | wincmd p | diffthis
+

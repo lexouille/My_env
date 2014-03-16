@@ -49,15 +49,15 @@ sub printv {
   print @_ if (defined $o_verb) ;
 }
 
-#sub help() {
-  #print "$0\n";
-  #print <<EOT;
-#-v, --verbose
-#print extra debugging information
-#-h, --help
-#print this help message
-#EOT
-#}
+sub help() {
+ print "$0\n";
+ print <<EOT;
+-v, --verbose
+print extra debugging information
+-h, --help
+print this help message
+EOT
+}
 
 sub print_usage() {
   print "Usage: $0 [-v] ]\n";

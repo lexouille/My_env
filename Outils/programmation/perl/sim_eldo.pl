@@ -25,10 +25,24 @@ print ("\n");
 my ($index,$choice);
 
 my %alim_def = (
+"dvss" =>
+  { "vhdl" => 
+    { "min" => -0.01 ,
+      "max" => 0.01 }
+} ,
 "avss" =>
   { "vhdl" => 
+    { "min" => -0.01 ,
+      "max" => 0.01 }
+} ,
+"dvddgo1" =>
+  { "vhdl" => 
     { "min" => 1.0 ,
-      "max" => 2.0 }
+      "max" => 2.0 } ,
+    "process" => 
+    { "vnom" => 1.5 ,
+      "vmin" => 1.35 ,
+      "vmax" => 1.65 }
 } ,
 "avddgo1" =>
   { "vhdl" => 
@@ -43,6 +57,10 @@ my %alim_def = (
   { "vhdl" => 
     { "min" => 1.8 ,
       "max" => 3.2 }
+    "process" => 
+    { "vnom" => 2.5 ,
+      "vmin" => 2.25 ,
+      "vmax" => 2.75 }
 } ,
 "avddio" =>
   { "vhdl" => 
@@ -65,6 +83,7 @@ my %temp_def = ( "tnom"  => 0  ,
                  "tmin"  => 25 ,
                  "tmax"  => 50 );
 
+## Ici inutile à terme ; voir alim_def au dessus
 my %vhdl_def = ( "avddgo1" => 
                 { "min" => 1.0 ,
                   "max" => 2.0 } ,
@@ -78,7 +97,8 @@ my %vhdl_def = ( "avddgo1" =>
 #print Dumper \%voltage_def;
 #print Dumper \%temp_def; exit ;
 #print Dumper \%vhdl_def; exit;
-my $eldo_sep="\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*";
+my $eldo_sep='********************************************************************************';
+my $vhdl_sep='--------------------------------------------------------------------------------';
 my $term_sep='################################################################################';
 
 my ($verbose,$help,$scan,$init)=(0,0,0,0);
@@ -150,7 +170,7 @@ sub filehandle {
 # Définition des fonctions
 ################################################################################
 sub doublons_grep {
-## Fonction suppression des doublons dans un tableau
+## Fonction suppression des doublons dans un hash. Retourne les clés dans l'ordre.
 ## usage : @tableau_sans_doublons = doublons_grep (\@tableau_avec_doublons?);
   my ($ref_tabeau) = @_;
   my %hash_sans_doublon;
@@ -220,8 +240,8 @@ sub outputfile { # prend en parametre un nom de fichier pour écriture
     system ( "touch" , $path.$_outputfile) ;
     open ($_outputfile_filehandle, ">$_outputfile") or die ("Open : $!");
   } else {
-    my $choice = stdin_answer ("le fichier existe déjà remplacer ?",'Yes','No');
-    if ($choice eq "yes") {
+    my $choice = stdin_answer ("le fichier existe déjà remplacer ?",'Yes','No','y','n');
+    if ($choice eq "yes"||"y") {
       open ($_outputfile_filehandle, ">$_outputfile") or die ("Open : $!") ;
       } else {
         while ($_other_outputfile eq $_outputfile) { print "Select new name :\n" ; $_other_outputfile = <STDIN> ; chomp $_other_outputfile ;}
@@ -491,27 +511,69 @@ sub gen_model { # Génération des modèles VHDL et Verilog à partir des subckt
   my ($bextension,$bname); my @bmodel ;
   print "\n$term_sep\n";
   print "\nNo Subckt definition found in the netlist. Check file or scan.\n\n" and exit unless (%subckt) ; 
+
+#Génération des modèles veriloga
   if ($bmodel eq "veri") {
     $bname = "Verilog" and $bextension = ".va";
     print ("Generation of $bname behavioral models ...\n") ; 
   } elsif ($bmodel eq "vhdl") { 
+
+#Génération des modèles vhdl
     $bname = "VHDL" and $bextension = ".hdl";
     print ("Generation of $bname behavioral models ...\n") ; 
+#Sélection des instance à modéliser
     print "\tSubckt list :\n" ; print "$_\n" foreach ( keys %subckt ) ;
-    my @bmodel = stdin_answer_mult ('Select subckt to be modeled',( keys %subckt ));
-    foreach (@bmodel) {
-      print $_,"\n";
-      $bmodel_FH = outputfile("$_".$bextension) ;
-      print ($bmodel_FH "ENTITY $_ IS \n GENERIC (\n");
-      foreach ( keys %{$subckt{$_}{'pinlist'}} ) {
-        print $_,"\n";
+    my @bmodel = stdin_answer_mult ('Select subckt to be modeled',( keys %subckt )); my $model ;
+
+#Génération des fichiers modèle
+    foreach $model (@bmodel) {
+      print "Generation of vhdl model file for $model\n" if ( $verbose == 1 ) ;
+      $bmodel_FH = outputfile($model.$bextension) ;
+      print ($bmodel_FH "$vhdl_sep\n--\n--\tBLOCK : $_\n--\tVHDL AMS FILE : $model".$bextension."\n--\n--\tDESCRIPTION :\n--\n--\n$vhdl_sep\n\n\n"); #Entête
+      print ($bmodel_FH "library ieee, discipline;\n--Insert here other libraires definition\n\n\n"); #Définition des librairies communes
+      print ($bmodel_FH "ENTITY $model is \n\n--Generic variable definition\ngeneric (\n"); #Définition des génériques
+      foreach ( keys %{$subckt{$model}{'pinlist'}} ) { ## Définitions des génériques de tests sur les alims si on les trouve dans le hash alim_def
         if ($alim_def{$_}) {
-          print "Alim pin found : $_ Max / Min value for vhdl test : $alim_def{$_}{'vhdl'}{'max'} $alim_def{$_}{'vhdl'}{'min'}\n" if ( $verbose ==1 ) ; getc;
-          print ($bmodel_FH "g_$_"."_min : REAL := $alim_def{$_}{'vhdl'}{'min'} ;\n");
-          print ($bmodel_FH "g_$_"."_max : REAL := $alim_def{$_}{'vhdl'}{'max'} ;\n");
+          print "Alim pin found : $_ Max / Min value for vhdl test : $alim_def{$_}{'vhdl'}{'max'} $alim_def{$_}{'vhdl'}{'min'}\n" if ( $verbose ==1 ) ;
+          print ($bmodel_FH "g_$_"."_min : real := $alim_def{$_}{'vhdl'}{'min'} ; -- Generic for power tests\n");
+          print ($bmodel_FH "g_$_"."_max : real := $alim_def{$_}{'vhdl'}{'max'} ; -- Generic for power tests\n");
         }
-        print ($bmodel_FH "-- g_generic_name : REAL := generic_value ;\n);\n\n");
       }
+      print ($bmodel_FH "-- g_generic_name : real := generic_value ;\n-- g_generic_name : realvector (0 TO XX) := (gen_val1, gen_val2, ...,gen_valXX) ;\n);\n\n"); #Fin de définintion des génériques
+
+      print ($bmodel_FH "--Block port définition\nPORT(\n"); #Début de définintion des ports
+      foreach ( keys %{$subckt{$model}{'pinlist'}} ) { ## Définition des alims comme des ports de type terminal - electrical
+        if ($alim_def{$_}) {
+          print "Alim pin found : $_ will be defined as terminal, type electrical\n" if ( $verbose ==1 ) ;
+          print ($bmodel_FH "terminal $_ : electrical ; -- Power port\n");
+        }
+      }
+      foreach ( keys %{$subckt{$model}{'pinlist'}} ) { ## Définitions des autres ports
+        if (!$alim_def{$_}) {
+          print "Standard pin found : $_ Custom definition\n" if ( $verbose ==1 ) ;
+#Ici, faire des tests avec patterns particuliers type ia_ => input analog ....
+          print ($bmodel_FH "terminal/signal $_ : in/out std_ulogic/electrical ;\n");
+        }
+      }
+      print ($bmodel_FH ");\n\nEND ENTITY $model;\n\nARCHITECTURE FUNCTIONNAL OF $model IS\n\n--Quantity and signal definitions\n");
+      foreach ( keys %{$subckt{$model}{'pinlist'}} ) { ## Définition des signaux pour les power tests
+        if ($alim_def{$_}) {
+          print ($bmodel_FH "signal s_test_$_ : boolean = false ; -- Power test purpose\nquantity v_$_ --To be completed acoording to alim type : power/ground\n");
+        }
+      }
+      print ($bmodel_FH "--signal s_signalname : boolean/std_ulogic/integer/real := basevalue ;\n\nBEGIN\n\n--Power tests\n");
+      foreach ( keys %{$subckt{$model}{'pinlist'}} ) { ## Ecriture des power tests
+        if ($alim_def{$_}) {
+          print ($bmodel_FH "s_test_$_ <= true when v_$_\'above(g_${_}_min)\nand not v_$_\'above(g_${_}_max) and domain=time_domain\nelse false;\n");
+        }
+      }
+      print ($bmodel_FH "--Repports in transcript for power tests\n");
+      foreach ( keys %{$subckt{$model}{'pinlist'}} ) { ## Ecriture repports de power tests dans le transcript
+        if ($alim_def{$_}) {
+          print ($bmodel_FH "assert s_test_$_ or s_enable_fct = 0.0 \nreport \"$model  : $_ powercheck failure ; voltage value out of bound\" severity warning;\n");
+        }
+      }
+      print ($bmodel_FH "\nEND ARCHITECTURE FUNCTIONNAL\n\n");
       close $bmodel_FH;
     }
     #print Dumper \%subckt;
@@ -1098,9 +1160,9 @@ print "$term_sep\n\n";
 
 make_eldofile();
 my %h = (  "ELDO" => [ "/home/wiking/freedkits/PTM-MG/library/spice_models.lib" ]  ) ;
-my %techno = analyze_techno(\%h);
+#my %techno = analyze_techno(\%h);
 
-print Dumper \%techno ;
+#print Dumper \%techno ;
 
 close ( $netlistFH ) ;
 close ( $caracFH ) ;

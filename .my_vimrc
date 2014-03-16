@@ -137,6 +137,18 @@ map <A-DOWN> :tabfirst <CR>
 " "COLLER touche Shift+F12
 :map <S-F12> :r!xclip -o<CR>
 
+" Complétion des chemins dans la barre de commande et en insert
+" A compléter, corriger
+if has("wildmenu")
+    set wildignore+=*.a,*.o
+    set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png
+    set wildignore+=.DS_Store,.git,.hg,.svn
+    set wildignore+=*~,*.swp,*.tmp
+    set wildmenu
+    set wildmode=longest,list
+endif
+inoremap <Tab> <C-X><C-F>
+
 set wildmode=list:longest,full
 " Par défaut, garde l'indentation de la ligne précédente
 " quand on commence une nouvelle ligne

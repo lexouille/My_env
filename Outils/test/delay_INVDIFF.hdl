@@ -1,6 +1,68 @@
-ENTITY delay_INVDIFF IS 
- GENERIC (
-g_avss_min : REAL := 1
-g_avss_max : REAL := 2
-g_avddgo1_min : REAL := 1
-g_avddgo1_max : REAL := 2
+--------------------------------------------------------------------------------
+--
+--	BLOCK : vhdl
+--	VHDL AMS FILE : delay_INVDIFF.hdl
+--
+--	DESCRIPTION :
+--
+--
+--------------------------------------------------------------------------------
+
+
+library ieee, discipline;
+--Insert here other libraires definition
+
+
+ENTITY delay_INVDIFF is 
+
+--Generic variable definition
+generic (
+g_avss_min : real := -0.01 ; -- Generic for power tests
+g_avss_max : real := 0.01 ; -- Generic for power tests
+g_avddgo1_min : real := 1 ; -- Generic for power tests
+g_avddgo1_max : real := 2 ; -- Generic for power tests
+-- g_generic_name : real := generic_value ;
+-- g_generic_name : realvector (0 TO XX) := (gen_val1, gen_val2, ..., gen_valXX) ;
+);
+
+--Block port définition
+PORT(
+terminal avss : electrical ; -- Power port
+terminal avddgo1 : electrical ; -- Power port
+terminal/signal VDD : in/out std_ulogic/electrical ;
+terminal/signal SUB : in/out std_ulogic/electrical ;
+terminal/signal OUTN : in/out std_ulogic/electrical ;
+terminal/signal INN : in/out std_ulogic/electrical ;
+terminal/signal TAIL : in/out std_ulogic/electrical ;
+terminal/signal OUTP : in/out std_ulogic/electrical ;
+terminal/signal INP : in/out std_ulogic/electrical ;
+);
+
+END ENTITY delay_INVDIFF;
+
+ARCHITECTURE FUNCTIONNAL OF delay_INVDIFF IS
+
+--Quantity and signal definitions
+signal s_test_avss : boolean = false ; -- Power test purpose
+quantity v_avss --To be completed acoording to alim type : power/ground
+signal s_test_avddgo1 : boolean = false ; -- Power test purpose
+quantity v_avddgo1 --To be completed acoording to alim type : power/ground
+--signal s_signalname : boolean/std_ulogic/integer/real := basevalue ;
+
+BEGIN
+
+--Power tests
+s_test_avss <= true when v_avss'above(g_avss_min)
+and not v_avss'above(g_avss_max) and domain=time_domain
+else false;
+s_test_avddgo1 <= true when v_avddgo1'above(g_avddgo1_min)
+and not v_avddgo1'above(g_avddgo1_max) and domain=time_domain
+else false;
+--Repports in transcript for power tests
+assert s_test_avss or s_enable_fct = 0.0 
+repport "delay_INVDIFF  : avss powercheck faileure ; voltage value out of bound" severity warning;
+assert s_test_avddgo1 or s_enable_fct = 0.0 
+repport "delay_INVDIFF  : avddgo1 powercheck faileure ; voltage value out of bound" severity warning;
+
+END ARCHITECTURE FUNCTIONNAL
+

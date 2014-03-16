@@ -1,8 +1,8 @@
 # My alias definition
 # To be sourced by main bashrc file
 
-alias lkj='ls -alrth'
-alias lk='ls -lrth'
+alias lk='ls -alrth'
+alias l='ls -lrth'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias dua='du -ahc'

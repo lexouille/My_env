@@ -1,0 +1,35 @@
+* SPICE export by:  S-Edit 15.10
+* Export time:      Wed Dec 21 12:08:45 2011
+* Design:           rtest
+* Cell:             carac_mos
+* Interface:        schematic
+* View:             schematic
+* View type:        connectivity
+* Export as:        top-level cell
+* Export mode:      hierarchical
+* Exclude empty cells: yes
+* Exclude .model:   yes
+* Exclude .end:     yes
+* Exclude simulator commands:     yes
+* Expand paths:     yes
+* Wrap lines:       80 characters
+* Root path:        \\VBOXSVR\aferret\virtualbox\tanner\sedit\rtest
+* Exclude global pins:   yes
+* Exclude instance locations: yes
+* Control property name: SPICE
+
+***** Top Level *****
+.include /work/hardware/users/aferret/include/carac_mos.inc
+VVALIM VDD SUB DC valim AC 0 0
+CCLOAD_DC dc_VD SUB cload
+CCLOAD_AC ac_VD SUB cload
+IID_AC VDD ac_VD DC id AC 0 0
+VVDS_DC dc_VD dc_VS DC vds AC 0 0
+VVG_AC ac_VG SUB DC vgs AC 1 0
+VVG_DC dc_VG SUB DC vgs AC 0 0
+VVS_AC ac_VS SUB DC vs AC 0 0
+VVS_DC dc_VS SUB DC vs AC 0 0
+XMN_AC ac_VD ac_VG ac_VS  SUB nmodel l=ln w='wnf*nnf' m=mn nf=nnf
+XMN_DC dc_VD dc_VG dc_VS  SUB nmodel l=ln w='wnf*nnf' m=mn nf=nnf
+
+

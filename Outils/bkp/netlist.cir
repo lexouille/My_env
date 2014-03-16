@@ -1,0 +1,118 @@
+********************************************************************************
+**** Subcircuit definition
+********************************************************************************
+
+.subckt delay_INVDIFF
++ ! Pin List
++ INN INP OUTN OUTP VDD TAIL SUB
++ ! Param List
++ wpinv=1u lpinv=50n mpinv=16 wninv=1u lninv=50n mninv=8 cpar=50f
++ ! Comments
+
+XMNINV1 OUTP INN TAIL SUB nch_mac l=lninv w=wninv m=mninv nf=1
+XMNINV2 OUTN INP TAIL SUB nch_mac l=lninv w=wninv m=mninv nf=1
+XMPINV1 OUTP INN VDD VDD pch_mac l=lpinv w=wpinv m=mpinv nf=1
+XMPINV2 OUTN INP VDD VDD pch_mac l=lpinv w=wpinv m=mpinv nf=1
+
+.ends 
+
+.subckt tail_SDCMOS
++ ! Pin List
++ IREF TAIL1 TAIL2 TAIL3 TAIL4 VSS SUB
++ ! Param List
++ wnsdc=200n lnsdc=100n mnsdc=8
++ ! Comments
+
+XMNSDC IREF IREF VSS SUB nch_mac l=lnsdc w=wnsdc m=mnsdc nf=1 nonoise
+XMNTAIL1 TAIL1 IREF VSS SUB nch_mac l=lnsdc w=wnsdc m=mnsdc nf=1
+XMNTAIL2 TAIL2 IREF VSS SUB nch_mac l=lnsdc w=wnsdc m=mnsdc nf=1
+XMNTAIL3 TAIL3 IREF VSS SUB nch_mac l=lnsdc w=wnsdc m=mnsdc nf=1
+XMNTAIL4 TAIL4 IREF VSS SUB nch_mac l=lnsdc w=wnsdc m=mnsdc nf=1
+
+.ends 
+
+.subckt CVARNLOAD
++ ! Pin List
++ INN INP VTUNE
++ ! Param List
++ lvarn=400n wvarn=400n mvarn=16
++ ! Comments
+
+XCNMOSCAP_1 INN VTUNE nmoscap lr=lvarn wr=wvarn m=mvarn
+XCNMOSCAP_2 INP VTUNE nmoscap lr=lvarn wr=wvarn m=mvarn
+
+.ends 
+
+.subckt VCO_3STINV
++ ! Pin List
++ NIP1 NIN1 NIP2 NIN2 NIP3 NIN3 VDD VSS VTUNE VTUNEDIG<0> VTUNEDIG<1>
++ VTUNEDIG<2> VTUNEDIG<3> VTUNEDIG<4> VCA<0> VCA<1> VCA<2> VCA<3> VCD<0> VCD<1>
++ VCD<2> VCD<3>
++ ! Param List
++ ! Comments
+
+Xdelay1 NIN1 NIP1 NIN2 NIP2 VDD TAIL1 SUB delay_INVDIFF
++ wninv=wninv lninv=lninv mninv=mninv
++ wpinv=wpinv lpinv=lpinv mpinv=mpinv
++ cpar=cpar
+Xdelay2 NIN2 NIP2 NIN3 NIP3 VDD TAIL2 SUB delay_INVDIFF
++ wninv=wninv lninv=lninv mninv=mninv
++ wpinv=wpinv lpinv=lpinv mpinv=mpinv
++ cpar=cpar
+Xdelay3 NIN3 NIP3 NIP1 NIN1 VDD TAIL3 SUB delay_INVDIFF
++ wninv=wninv lninv=lninv mninv=mninv
++ wpinv=wpinv lpinv=lpinv mpinv=mpinv
++ cpar=cpar
+Xtail IREF TAIL1 TAIL2 TAIL3 VSS VSS SUB tail_SDCMOS
++ wnsdc=wnsdc lnsdc=lnsdc mnsdc=mnsdc
+IIREF VDD IREF DC iref
+XCload1 NIP1 NIN1 vtune CVARNLOAD
++ lvarn=lvarn wvarn=wvarn mvarn=mvarn
+XCload2 NIP2 NIN2 vtune CVARNLOAD
++ lvarn=lvarn wvarn=wvarn mvarn=mvarn
+XCload3 NIP3 NIN3 vtune CVARNLOAD
++ lvarn=lvarn wvarn=wvarn mvarn=mvarn
+
+.ends 
+
+.subckt sckttest
++ ! Pin List
++ INN INP VTUNE
++ ! Param List
++ lvarn=400n wvarn=400n mvarn=16
++ ! Comments
++ ! Et la je fais un commentaire vicieux voire 2  Et je saute un ligne pour en
++ ! faire un dernier
+
+XCNMOSCAP_1 INN VTUNE nmoscap lr=lvarn wr=wvarn m=mvarn
+XCNMOSCAP_2 INP VTUNE nmoscap lr=lvarn wr=wvarn m=mvarn
+Xtestvicieux
++ lajeplaceuntruchrriblequiprendspleindeplaceyahooooooooooooooooooooooooooo
++ plus dautre pins
++  etencore dautres
+
+.ends 
+
+********************************************************************************
+**** Main netlist section
+********************************************************************************
+
+.include VCO_CVtest.inc
+VVDD vdd vss DC vddgo1
+VVTUNE vtune vss DC vtune
+XVCO_3STINV NIP1 NIN1 NIN2 NIP2 NIP3 NIN3 VDD VSS VTUNE
++ VTUNEDIG<0> VTUNEDIG<1> VTUNEDIG<2> VTUNEDIG<3> VTUNEDIG<4>
++ VCA<0> VCA<1> VCA<2> VCA<3> 
++ VCD<0> VCD<1> VCD<2> VCD<3> 
++ VCO_3STINV
+.param iref=4m
+.param wpinv=1u lpinv=120n mpinv=96
+.param wninv=1u lninv=lpinv mninv=mpinv
+.param wnsdc=1u lnsdc=750n mnsdc=512 mpref=mnsdc
+.param lvarn=400n wvarn=400n mvarn=200
+.sigbus VTUNEDIG<4:0> base=dec VHI=vddgo1 VLO=0
++ PATTERN ${vtunedig}
+.sigbus VCA<3:0> base=dec VHI=vddgo1 VLO=0
++ PATTERN ${vca}
+.sigbus VCD<3:0> base=dec VHI=vddgo1 VLO=0
++ PATTERN ${vcd}

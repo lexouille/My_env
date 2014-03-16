@@ -1,0 +1,47 @@
+#!/usr/bin/perl -w
+
+use strict;
+use warnings;
+use feature qw/switch/; #Pour given ... when
+
+my $arg;
+
+#Main function start
+
+print ("\n");
+
+if ( ! @ARGV)
+#if ( !defined @ARGV) anciennement, mais mis à jour avec version et maintenant plus besoin de defined
+{
+  print ( "\nNo input argument\n" ) ;
+}
+else
+{
+  foreach $arg (@ARGV)
+  {
+    print ( "$arg\n" ) ;
+    f_help() if ( $arg =~ m/-help/ ) ;
+    f_check() if ( $arg =~ m/-check/ ) ;
+    f_param() if ( $arg =~ m/-param/ ) ;
+    f_bkp() if ( $arg =~ m/-bkp/ ) ;
+    push @args, "$arg";
+  }
+  f_getargs(\@args) ;
+}
+
+print("\n");
+
+#Debug
+#print ( "Print de sortie \n@args\n" ) ;
+
+#die("Usage $0 : <n> <n> \n") if ( !defined (@ARGV));
+#
+#foreach my $i ( 1 .. $ARGV[0] )
+#{
+#  foreach my $j ( 1 .. $ARGV[1] ) 
+#  {
+#    printf ( "%4d" , $i*$j ) ;
+#  }
+#  print("\n") ;
+#}
+

@@ -1,0 +1,168 @@
+#!/usr/bin/perl -w
+
+use strict;
+use warnings;
+use Text::Wrap;
+#my @text=qw(Ceci est une ligne de texte longue pour tester wrap. Avec certains caractères spéciaux comme . , ; + * / \, on pourrait en rajouter d'autres);
+#my @text=qw(Ceci est une ligne de texte longue pour tester wrap Avec certains caractères spéciaux mais on va commencer avec une longue liste de mots);
+local $Text::Wrap::columns = 80;
+my $initial_tab = "";	# Tab before first line
+my $subsequent_tab = "+";	# All other lines flush left
+#print wrap($initial_tab, $subsequent_tab, @text);
+#print fill($initial_tab, $subsequent_tab, @text);
+
+my $filename = "/nfs/home/aferret/Documents/Outils/programmation/perl/test_rep/VCO_CVtest.cir";
+my $filetest = "/nfs/home/aferret/Documents/Outils/programmation/perl/test_rep/test.cir";
+my $file = "./filetest.txt";
+
+my $text;
+
+my ($line,$word,@words,$s_words);
+my ($subckt,@subckt,@subckterr,$subcktin);
+my (@arglist,@arglist2,$arg,$s_arglist);
+my (@subckt_pin_list,@subckt_param_list,@subckt_body);
+my ($subckt_pos,$subckt_occur);
+my (%hsubckt,$hsubckt_key,$hsubckt_ref);
+my @grabbed;
+my $grab;
+
+$hsubckt_ref=\%hsubckt;
+
+## Manipulation subckt
+open (FILEr, "<$filename") or die ("open : $!");
+open (FILEw, ">$filetest") or die ("open : $!");
+
+$subckt=0;
+
+print "\n";
+
+while (<FILEr>) {
+    if (/^\.SUBCKT|^\.subckt/) {
+## Detection structure commençant par .subckt
+## Increment de l'indice subckt, reset du tableau arglist et des autres tables
+        $subckt++;
+        @arglist=();@subckt_pin_list=();@subckt_param_list=();@subckt_body=();
+## Split de la ligne sans . et affectation de @words, taille du tableau
+        $line = substr( $_ , 1 ) ;
+        @words = split( /\s+/, $line ) ;
+        $s_words=scalar(@words);
+
+### Méthode originale avec tableaux
+### Affectation du nom du subckt, de sa position dans le fichier
+### 2 shift : le premier retire subckt, l'autre retire sub_name et le stocke
+### On stocke la position dans la netlist de base
+        #shift (@words);
+        #$subckt[$subckt][0]=shift(@words);
+        #$subckt[$subckt][1]=$.;
+### Debut de l'affectation de la arglist (le reste doit venir dans le while suivant
+        #push @arglist, @words;
+        #print ( "Subckt n° $subckt : name : $subckt[$subckt][0] \n" ) ;
+        #print ( "Subckt n° $subckt : ligne position : $subckt[$subckt][1] \n" ) ;
+### Fin traitement première ligne de structure
+
+### Traitement de la suite de la arglist
+        #print ( "Entree test arglist +\n" ) ;
+        #while (<FILEr>) {
+            #last if !(/^\+/);
+            #print ( "Ce subckt a une arglist sur plusieurs lignes\n" ) ;
+        #my $line = substr( $_ , 1 ) ;
+        #@words = split( /\s+/, $line ) ;
+        #@words = grep { /.+/ } @words ;
+        #push @arglist, @words;
+        #}
+        #@arglist2 = grep { /.+/ } @arglist ;
+        #$s_arglist=scalar(@arglist);
+        #print ( "Subckt n° $subckt : arglist : @arglist \n" ) ;
+        #foreach $arg (@arglist)
+        #{
+          #print ( "$arg\n" );
+        #}
+        #print ( "Nombre de args : $s_arglist \n" ) ;
+### Fin traitement de la suite de la arglist
+
+### Traitement du coeur du subckt
+        #while (<FILEr>) {
+            #push @grabbed, $_;
+            #last if /^\.ENDS|^\.ends/;
+        #}
+### FIN traitement du coeur du subckt
+        #push @grabbed, "\n";
+    #}
+
+## Méthode avec hash
+## Affectation du nom du subckt, de sa position dans le fichier
+## 2 shift : le premier retire subckt, l'autre retire sub_name et le stocke
+## On stocke la position dans la netlist de base
+        shift (@words);
+        my $subckt_name=shift(@words);
+        $hsubckt{$subckt_name}{'subckt_pos'}=$.;
+## Debut de l'affectation de la arglist, traitement première ligne
+        push @arglist, @words;
+        print ( "Subckt n° $subckt : name : $subckt_name \n" ) ;
+        print ( "Subckt n° $subckt : ligne position : $hsubckt{$subckt_name}{'subckt_pos'} \n" ) ;
+## Fin traitement première ligne de structure
+
+## Traitement de la suite de la arglist
+        print ( "Entree test arglist +\n" ) ;
+        while (<FILEr>)
+        {
+            last if !(/^\+/);
+            #print ( "Ce subckt a une arglist sur plusieurs lignes\n" ) ;
+## Split de la ligne sans + et affectation de @words, taille du tableau
+            my $line = substr( $_ , 1 ) ;
+            @words = split( /\s+/, $line ) ;
+            @words = grep { /.+/ } @words ;
+            push @arglist, @words;
+        }
+        $s_arglist=scalar(@arglist);
+        print ( "Subckt n° $subckt : arglist : @arglist \n" ) ;
+        $hsubckt_key='pinlist';
+        foreach $arg (@arglist)
+        {
+          if ( $arg =~ m/param/ )
+          {
+            $hsubckt_key='paramlist' ; next
+          }
+          push @{$hsubckt_ref->{$subckt_name}{$hsubckt_key}}, $arg;
+          print ( "Argument de type : $hsubckt_key ; valeur : $arg\n" );
+        }
+        print ( "Nombre de args : $s_arglist \n" ) ;
+        if ( exists $hsubckt{$subckt_name}{'pinlist'} )
+        {
+          print ( "Liste des pins : @{$hsubckt_ref->{$subckt_name}{'pinlist'}}\n");
+        } else 
+        {
+          print ("Le subckt $subckt_name ne possède pas de pins\n");
+        }
+        if ( exists $hsubckt{$subckt_name}{'paramlist'} )
+        {
+          print ( "Liste des params : @{$hsubckt_ref->{$subckt_name}{'paramlist'}}\n");
+        } else 
+        {
+          print ("Le subckt $subckt_name ne possède pas de paramètres\n");
+        }
+## Fin traitement de la suite de la arglist
+
+## Traitement du coeur du subckt
+        while (<FILEr>) {
+            push @grabbed, $_;
+            last if /^\.ENDS|^\.ends/;
+        }
+## FIN traitement du coeur du subckt
+        push @grabbed, "\n";
+    }
+}
+
+foreach $grab (@grabbed)
+{
+  print ( FILEw "$grab" ) ;
+}
+
+print ( "Nombre de subckt dans le fichier $filename : $subckt \n" ) ;
+
+print "\n";
+
+close ( FILEr ) ;
+close ( FILEw ) ;
+
+

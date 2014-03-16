@@ -1,0 +1,6 @@
+ENTITY delay_INVDIFF IS 
+ GENERIC (
+g_avss_min : REAL := 1
+g_avss_max : REAL := 2
+g_avddgo1_min : REAL := 1
+g_avddgo1_max : REAL := 2

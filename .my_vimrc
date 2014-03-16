@@ -20,7 +20,7 @@ colorscheme desert256
 " Coloration "sombre"
 set background=dark
 " A voir terminal, colors, etc
-set t_co=256
+"set t_co=256
 "set t_AB=^[[48;5;%dm
 "set t_AF=^[[38;5;%dm
 "colorscheme burnttoast256 
@@ -230,7 +230,7 @@ au BufRead,BufNewFile *.sp2 set filetype=cir
 au BufRead,BufNewFile *.sp3 set filetype=cir
 
 " Source du fichier de coloration syntaxique
-au! Syntax cir source ~aferret/.env/My_env/.vim/syntax/eldo.vim
+au! Syntax cir source ~/.env/.vim/syntax/eldo.vim
 
 function! Fill(nbchar)
   let str = substitute(submatch(0), '\s*$', '', '')

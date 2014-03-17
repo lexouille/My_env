@@ -56,7 +56,7 @@ my %alim_def = (
 "avddgo2" =>
   { "vhdl" => 
     { "min" => 1.8 ,
-      "max" => 3.2 }
+      "max" => 3.2 } ,
     "process" => 
     { "vnom" => 2.5 ,
       "vmin" => 2.25 ,
@@ -508,7 +508,9 @@ sub analyze_techno {
 sub gen_model { # Génération des modèles VHDL et Verilog à partir des subckt de la netlist
   my $bmodel ; my $bmodel_FH ;
   ($bmodel)=@_;
+  my @key;
   my ($bextension,$bname); my @bmodel ;
+  my %pin ; my @pin ; my $pintype ;
   print "\n$term_sep\n";
   print "\nNo Subckt definition found in the netlist. Check file or scan.\n\n" and exit unless (%subckt) ; 
 
@@ -548,13 +550,27 @@ sub gen_model { # Génération des modèles VHDL et Verilog à partir des subckt
           print ($bmodel_FH "terminal $_ : electrical ; -- Power port\n");
         }
       }
-      foreach ( keys %{$subckt{$model}{'pinlist'}} ) { ## Définitions des autres ports
+      foreach ( sort { $subckt{$model}{'pinlist'}{$a}{position} <=> $subckt{$model}{'pinlist'}{$b}{position} } keys %{$subckt{$model}{'pinlist'}} ) { ## Définitions des autres ports, ordre original
         if (!$alim_def{$_}) {
-          print "Standard pin found : $_ Custom definition\n" if ( $verbose ==1 ) ;
-#Ici, faire des tests avec patterns particuliers type ia_ => input analog ....
+          print "Standard pin found : $_ Custom definition\n" if ( $verbose == 1 ) ;
           print ($bmodel_FH "terminal/signal $_ : in/out std_ulogic/electrical ;\n");
         }
-      }
+    }
+## Ici, à retravailler : dans cette version du code, ça ne sert à rien de décrire dans l'ordre. Le format de pin n'est pas bon et devrait de toute façon être mergé avec
+      #la partie pinlist de subckt ................ oui mais en fait, bon c'est pas générique, si un vicieux déclare VTUNE<1> VDD VTUNE<2> ça risque de merder quelques soit la stratégie
+      #foreach ( sort { $subckt{$model}{'pinlist'}{$a}{position} <=> $subckt{$model}{'pinlist'}{$b}{position} } keys %{$subckt{$model}{'pinlist'}} ) { ## Définitions des autres ports, ordre original
+        #if ($alim_def{$_} ) {
+          #$pin{$_} = { "type" => "alim" , "dir" => "io" , "min" => 1 , "max" => 1 };
+        #} elsif (/^(io|i|o)(a|d)_(\w+)[<>]{0}$/) {
+          #$pin{$3} = { "type" => $2 , "dir" => $1 , "min" => 1 , "max" => 1  };
+        #} elsif (/^(io|i|o)(a|d)_(\w+)<(\d+)>$/) {
+          #$pin{$3} = { "type" => $2 , "dir" => $1 , "min" => $4 , "max" => $4  } if (!$pin{$3}) ;
+          #$pin{$3}{min} = $4 if ( $4<$pin{$3}{min} ) ;
+          #$pin{$3}{max} = $4 if ( $4>$pin{$3}{max} ) ;
+        #} else {
+          #$pin{$_} = { "type" => "custom" , "min" => 1 , "max" => 1 , "fullname" => $_ };
+        #}
+      #}
       print ($bmodel_FH ");\n\nEND ENTITY $model;\n\nARCHITECTURE FUNCTIONNAL OF $model IS\n\n--Quantity and signal definitions\n");
       foreach ( keys %{$subckt{$model}{'pinlist'}} ) { ## Définition des signaux pour les power tests
         if ($alim_def{$_}) {
@@ -576,7 +592,9 @@ sub gen_model { # Génération des modèles VHDL et Verilog à partir des subckt
       print ($bmodel_FH "\nEND ARCHITECTURE FUNCTIONNAL\n\n");
       close $bmodel_FH;
     }
-    #print Dumper \%subckt;
+    print Dumper \%subckt;
+    print Dumper \%pin;
+    print Dumper \@pin;
   }
 } # End sub gen_model
 
@@ -1159,8 +1177,9 @@ print "$term_sep\n\n";
 ################################################################################
 
 make_eldofile();
-my %h = (  "ELDO" => [ "/home/wiking/freedkits/PTM-MG/library/spice_models.lib" ]  ) ;
-#my %techno = analyze_techno(\%h);
+#my %h = (  "ELDO" => [ "/home/wiking/freedkits/PTM-MG/library/spice_models.lib" ]  ) ;
+my %h = (  "ELDO" => [ "/nfs/work-crypt/ic/common/altis/1.2.2/eldo/models/c11n_reg_sf_v3-14_07jun_bsim4v43.eldo" ]  ) ;
+my %techno = analyze_techno(\%h);
 
 #print Dumper \%techno ;
 

@@ -1,0 +1,87 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+
+################################################################################
+#### Test doublons dans les tableaux
+################################################################################
+#sub doublons_tranche {
+  #my ($ref_tabeau) = @_;
+
+  #my %hash_sans_doublon;    # Comme un hash ne peut pas avoir deux clés identiques,
+                            ## utilser ces clé permet d'avoir un tableau unique
+  #@hash_sans_doublon{ @{$ref_tabeau} } = ();    # Pas besoin de surcharger le hash avec des valeurs inutiles
+                                                ## et ensuite, on renvoie le tableau des clés uniques
+  #return keys %hash_sans_doublon;
+#}
+
+#sub doublons_grep {
+  #my ($ref_tabeau) = @_;
+
+  #my %hash_sans_doublon;
+
+  #return grep { !$hash_sans_doublon{$_}++ } @{$ref_tabeau};
+#}
+
+#my @tab1=(1,2,3,"mot1","mot2","MOT1");
+#my @tab2=(1,1,2,3,3,"mot1","mot2","mot2","MOT1");
+
+#my @tab1_dt=doublons_tranche(\@tab1);
+#my @tab1_dg=doublons_grep(\@tab1);
+#my @tab2_dt=doublons_tranche(\@tab2);
+#my @tab2_dg=doublons_grep(\@tab2);
+
+#print ("tab originaux : \n@tab1\n@tab2\n");
+
+#print ("tab1_dt : @tab1_dt\n");
+#print ("tab1_dg : @tab1_dg\n");
+#print ("tab2_dt : @tab2_dt\n");
+#print ("tab2_dg : @tab2_dg\n");
+
+#foreach my $id (@tab2_dt)
+#{
+  #print("$id\n");
+#}
+#foreach my $id (@tab2_dg)
+#{
+  #print("$id\n");
+#}
+
+# En principe, tranche un peu plus rapide que grep, mais ça reste comparable
+
+################################################################################
+
+################################################################################
+#### Test pour wrapper du texte
+################################################################################
+
+#Part1
+use Text::Wrap;
+my @text=qw(Ceci est une ligne de texte longue pour tester wrap. Avec certains caractères spéciaux comme . , ; + * / \, on pourrait en rajouter d'autres);
+#my @text=qw(Ceci est une ligne de texte longue pour tester wrap Avec certains caractères spéciaux mais on va commencer avec une longue liste de mots);
+local $Text::Wrap::columns = 80;
+my $initial_tab = "";	# Tab before first line
+my $subsequent_tab = "+";	# All other lines flush left
+print wrap($initial_tab, $subsequent_tab, @text);
+print fill($initial_tab, $subsequent_tab, @text);
+#my $lines = wrap($initial_tab, $subsequent_tab, @text);
+#my @paragraphs = fill($initial_tab, $subsequent_tab, @text);
+
+#Part2
+#use Text::Wrap qw(wrap $columns $huge);
+#$columns = 132;	# Wrap at 132 characters
+#$huge = 'die';
+#$huge = 'wrap';
+#$huge = 'overflow';
+
+#Part3
+#use Text::Wrap;
+#$Text::Wrap::columns = 72;
+#print wrap('', '', @text);
+
+# Références intéressantes ici
+# http://perldoc.perl.org/Text/Wrap.html
+#http://www.perlmonks.org/?node_id=37337
+
+################################################################################
+#

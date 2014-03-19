@@ -123,12 +123,6 @@ my ($pin_index,$param_index) = (0,0) ;
 my ($instance,$instance_type,$instance_name);
 
 my $numberspice=qr/(?:[+-]?\d+(?:\.\d+)?(?:meg|[afgnmpu]|e[+-]?\d+)?)|(?:[+-]?\.\d+(?:meg|[afgnmpu]|e[+-]?\d+)?)/i;
-#my $number=qr/[+-]?\d+(?:\.\d)?(?:meg|[afgnmpu])*/; #A compléter avec les exposants
-#syn match s_number  "\<[0-9]\+\.[0-9]*\(e[-+]\=[0-9]\+\)\=\(meg\=\|[afpnumkg]\)\="
-#"floating point number, starting with a dot, optional exponent
-#syn match s_number  "\.[0-9]\+\(e[-+]\=[0-9]\+\)\=\(meg\=\|[afpnumkg]\)\="
-#"integer number with optional exponent
-#syn match s_number  "\<[0-9]\+\(e[-+]\=[0-9]\+\)\=\(meg\=\|[afpnumkg]\)\="
 
 ################################################################################
 # Gestion des fichiers d'entrée sortie
@@ -137,9 +131,9 @@ my $numberspice=qr/(?:[+-]?\d+(?:\.\d+)?(?:meg|[afgnmpu]|e[+-]?\d+)?)|(?:[+-]?\.
 #my $path="/nfs/work-crypt/ic/usr/aferret/altis/simulation/inv/eldoD/schematic/netlist/";
 my $path=`pwd`; chomp $path; $path .="/" ;
 ## Boulot
-#my $commonpath = "/nfs/home/aferret/Documents/Outils/programmation/perl/";
+my $commonpath = "/nfs/home/aferret/Documents/Outils/programmation/perl/";
 ## Home
-my $commonpath = $path;
+#my $commonpath = $path;
 
 opendir (PATH, $path) or die $!;
 
@@ -512,7 +506,7 @@ sub gen_model { # Génération des modèles VHDL et Verilog à partir des subckt
   my ($bextension,$bname); my @bmodel ;
   my %pin ; my @pin ; my $pintype ;
   print "\n$term_sep\n";
-  print "\nNo Subckt definition found in the netlist. Check file or scan.\n\n" and exit unless (%subckt) ; 
+  print "\nNo Subckt definition found in the netlist. Check file or scan.\n\n" and exit unless (%subckt) ; ## Ici, à check ?
 
 #Génération des modèles veriloga
   if ($bmodel eq "veri") {
@@ -550,27 +544,25 @@ sub gen_model { # Génération des modèles VHDL et Verilog à partir des subckt
           print ($bmodel_FH "terminal $_ : electrical ; -- Power port\n");
         }
       }
+      #foreach ( sort { $subckt{$model}{'pinmod'}{$a}{position} <=> $subckt{$model}{'pinmod'}{$b}{position} } keys %{$subckt{$model}{'pinmod'}} ) { ## Définitions des autres ports, ordre original
+        #if ($subckt{$model}{'pinmod'}{$_}{type} ne "alim") {
+          #print "Standard pin found : $_ type $subckt{$model}{'pinmod'}{$_}{type}\n" if ( $verbose == 1 ) ;
+          #print ($bmodel_FH "terminal") if ($subckt{$model}{'pinmod'}{$_}{type} eq "a");
+          #print ($bmodel_FH "signal") if ($subckt{$model}{'pinmod'}{$_}{type} eq "d");
+          #print ($bmodel_FH " $_ : in") if ($subckt{$model}{'pinmod'}{$_}{dir} eq "i");
+          #print ($bmodel_FH " $_ : out") if ($subckt{$model}{'pinmod'}{$_}{dir} eq "o");
+          #print ($bmodel_FH " $_ : inout") if ($subckt{$model}{'pinmod'}{$_}{dir} eq "io");
+          #print ($bmodel_FH " electrical ;\n") if ($subckt{$model}{'pinmod'}{$_}{type} eq "a");
+          #print ($bmodel_FH " std_ulogic ;\n") if ($subckt{$model}{'pinmod'}{$_}{type} eq "d");
+        #}
+    #} #Fin des définitions des ports, fin de l'ENTITY, passage à la suite
+      ## Original
       foreach ( sort { $subckt{$model}{'pinlist'}{$a}{position} <=> $subckt{$model}{'pinlist'}{$b}{position} } keys %{$subckt{$model}{'pinlist'}} ) { ## Définitions des autres ports, ordre original
         if (!$alim_def{$_}) {
           print "Standard pin found : $_ Custom definition\n" if ( $verbose == 1 ) ;
           print ($bmodel_FH "terminal/signal $_ : in/out std_ulogic/electrical ;\n");
         }
-    }
-## Ici, à retravailler : dans cette version du code, ça ne sert à rien de décrire dans l'ordre. Le format de pin n'est pas bon et devrait de toute façon être mergé avec
-      #la partie pinlist de subckt ................ oui mais en fait, bon c'est pas générique, si un vicieux déclare VTUNE<1> VDD VTUNE<2> ça risque de merder quelques soit la stratégie
-      #foreach ( sort { $subckt{$model}{'pinlist'}{$a}{position} <=> $subckt{$model}{'pinlist'}{$b}{position} } keys %{$subckt{$model}{'pinlist'}} ) { ## Définitions des autres ports, ordre original
-        #if ($alim_def{$_} ) {
-          #$pin{$_} = { "type" => "alim" , "dir" => "io" , "min" => 1 , "max" => 1 };
-        #} elsif (/^(io|i|o)(a|d)_(\w+)[<>]{0}$/) {
-          #$pin{$3} = { "type" => $2 , "dir" => $1 , "min" => 1 , "max" => 1  };
-        #} elsif (/^(io|i|o)(a|d)_(\w+)<(\d+)>$/) {
-          #$pin{$3} = { "type" => $2 , "dir" => $1 , "min" => $4 , "max" => $4  } if (!$pin{$3}) ;
-          #$pin{$3}{min} = $4 if ( $4<$pin{$3}{min} ) ;
-          #$pin{$3}{max} = $4 if ( $4>$pin{$3}{max} ) ;
-        #} else {
-          #$pin{$_} = { "type" => "custom" , "min" => 1 , "max" => 1 , "fullname" => $_ };
-        #}
-      #}
+    } #Fin des définitions des ports, fin de l'ENTITY, passage à la suite
       print ($bmodel_FH ");\n\nEND ENTITY $model;\n\nARCHITECTURE FUNCTIONNAL OF $model IS\n\n--Quantity and signal definitions\n");
       foreach ( keys %{$subckt{$model}{'pinlist'}} ) { ## Définition des signaux pour les power tests
         if ($alim_def{$_}) {
@@ -729,7 +721,30 @@ sub scan_netlist {
         push @netlist_comment , $_ if /^\*/;
       }
   } # Fin de boucle sur le fichier
+## Traitements supplémentaires sur les subckt : redéfinition des pins et analyse des dépendaces / autres subckt
   foreach $sckt_name (keys %subckt) {
+## Redéfinition des pins : On associe I/O, A/D et pin unique si vecteur. Attention, io_Vect<3:0> (io) écrase Vect (custom)
+    foreach ( keys %{$subckt{$sckt_name}{pinlist}} ) { 
+      if ($alim_def{$_} ) {
+        $subckt{$sckt_name}{pinmod}{$_} = { "type" => "alim" , "dir" => "io" , "min" => 1 , "max" => 1 , "pos" => $subckt{$sckt_name}{'pinlist'}{$_}{position} };
+      } elsif (/^(io|i|o)(a|d)_([0-9a-zA-Z_]+)[<>]{0}$/) {
+        $subckt{$sckt_name}{pinmod}{$3} = { "type" => $2 , "dir" => $1 , "min" => 1 , "max" => 1 , "pos" => $subckt{$sckt_name}{'pinlist'}{$_}{position} };
+      } elsif (/^(io|i|o)(a|d)_([0-9a-zA-Z_]+)<(\d+)>$/) {
+        $subckt{$sckt_name}{pinmod}{$3} = { "type" => $2 , "dir" => $1 , "min" => $4 , "max" => $4 , "pos" => $subckt{$sckt_name}{'pinlist'}{$_}{position} } if (!$subckt{$sckt_name}{pinmod}{$3}) ;
+        $subckt{$sckt_name}{pinmod}{$3}{min} = $4 if ( $4<$subckt{$sckt_name}{pinmod}{$3}{min} ) ;
+        $subckt{$sckt_name}{pinmod}{$3}{max} = $4 if ( $4>$subckt{$sckt_name}{pinmod}{$3}{max} ) ;
+        #Ici, on peut mettre à jour la pos ... pas vraiment utile étant donné l'ordre de défilement.
+        #$subckt{$sckt_name}{pinmod}{$3}{pos} = $subckt{$sckt_name}{'pinlist'}{$_}{position} if ( $subckt{$sckt_name}{pinmod}{$3}{pos} > $subckt{$sckt_name}{'pinlist'}{$_}{position}) ;
+      } elsif (/^([0-9a-zA-Z_]+)[<>]{0}$/) {
+        $subckt{$sckt_name}{pinmod}{$1} = { "type" => "custom" , "dir" => "unknown" , "min" => 1 , "max" => 1 , "pos" => $subckt{$sckt_name}{'pinlist'}{$_}{position} };
+      } elsif (/^([0-9a-zA-Z_]+)<(\d+)>$/) {
+        $subckt{$sckt_name}{pinmod}{$1} = { "type" => "custom" , "dir" => "unknwon" , "min" => $2 , "max" => $2 , "pos" => $subckt{$sckt_name}{'pinlist'}{$_}{position} } if (!$subckt{$sckt_name}{pinmod}{$3}) ;
+        $subckt{$sckt_name}{pinmod}{$1}{min} = $2 if ( $2<$subckt{$sckt_name}{pinmod}{$3}{min} ) ;
+        $subckt{$sckt_name}{pinmod}{$1}{max} = $2 if ( $2>$subckt{$sckt_name}{pinmod}{$3}{max} ) ;
+      } else {
+        $subckt{$sckt_name}{pinmod}{$_} = { "type" => "custom" , "min" => 1 , "max" => 1 , "fullname" => $_ };
+      }
+    }
     $instance = 0;
     print "Analysis of $sckt_name subckt :\n";
     foreach (@{$subckt{$sckt_name}{'body'}}) {
@@ -760,7 +775,7 @@ sub scan_netlist {
         $subckt{$sckt_name}{'instance'}{$instance_name}{'pos'}=$instance;
         chomp $_ and $subckt{$sckt_name}{'instance'}{$instance_name}{'declaration'}=$_;
       } elsif (/^\+\s+(.*)/) { # Si la ligne commence par un + : la déclaration de l'instance continue
-        print "Instance declaration goes on\n";
+        print "Instance declaration goes on\n" if ( $verbose == 1 );
         chomp $1 ;
         $subckt{$sckt_name}{'instance'}{$instance_name}{'declaration'} .= " ".$1 ; # On concatène la suite
       } else { next } # Ici, prendre en compte les commentaires ?
@@ -770,7 +785,7 @@ sub scan_netlist {
     print "\n";
   }
 #Debug
-  #print Dumper \%subckt ;
+  print Dumper \%subckt ;
   print ("Ending netlist file scan phase.\n");
   print "$term_sep\n\n";
 } # end scan_netlist
@@ -846,7 +861,7 @@ sub make_eldofile {
 #Traitement des appels de testbenches
     } elsif (/^\.(\w+).*/i) {
       my $t = $1;
-      $t =~ tr/A-Z/a-z/;
+      #$t =~ tr/A-Z/a-z/;
       if ( exists $tbenchlist{$t} ) {
         print "\tFound $1 testbench call line $.\n" if ($verbose == 1 ) ; 
         if ( !@testbench ) {

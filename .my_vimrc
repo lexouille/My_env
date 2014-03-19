@@ -240,6 +240,7 @@ au BufRead,BufNewFile *.ext set filetype=cir
 au BufRead,BufNewFile *.ckt set filetype=cir
 au BufRead,BufNewFile *.sp2 set filetype=cir
 au BufRead,BufNewFile *.sp3 set filetype=cir
+au BufRead,BufNewFile carac set filetype=cir
 
 " Source du fichier de coloration syntaxique
 au! Syntax cir source ~/.env/My_env/.vim/syntax/eldo.vim

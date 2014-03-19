@@ -1,5 +1,5 @@
 #!/usr/bin/perl -w
-# This is a template for perl scripts
+# Script d'extraction des fichiers .op. Fonctionnel pour les transistors MOS
 
 use strict;
 use warnings;
@@ -18,6 +18,10 @@ use Getopt::Long; ## Fonctions pour les récupérations d'arguments ; GetOptions
 my ($o_verb, $o_help, $o_debug);
 my $term_sep='################################################################################';
 my $numberspice=qr/(?:[+-]?\d+(?:\.\d+)?(?:meg|[afgnmpu]|e[+-]?\d+)?)|(?:[+-]?\.\d+(?:meg|[afgnmpu]|e[+-]?\d+)?)/i;
+
+my %file;
+my $fh;
+my %h;
 
 ################################################################################
 # Gestion des fichiers d'entrée sortie
@@ -50,13 +54,44 @@ sub help() {
 sub printv { print @_ if (defined $o_verb || defined $o_debug) ; }
 sub printd { print @_ if (defined $o_debug) ; }
 
-sub print_usage() {
-  print "Usage: $0 [-v] ]\n";
-}
-
 ################################################################################
 #Main function start
 ################################################################################
 check_options();
 
-#...code...#
+#my $path = '/nfs/work-crypt/ic/common/xfab/xh018/mentor/v4_0/eldo/v4_0_4/lpmos' ;
+my $path=`pwd`; chomp $path; $path .="/" ;
+printv("Directory under scan : $path\n");
+
+find ( sub { if (/\.op(\d+)$/i ) {  ## On va chercher dans path les fichiers de type .op
+    $file{$_}=$1;
+  }
+}
+, $path ) ;
+
+print Dumper \%file ;
+
+printv ("$term_sep\nProcessing .op files ...\n");
+foreach my $filepath ( keys %file ) {
+  open ($fh, "<", "$filepath") or die ("Failed to open $_ : $!");
+  while (<$fh>) { ## while sur le fichier
+    $h{$file{$filepath}}{param}{$1}=$2 if /(temp)\s*:\s*($numberspice)/i ;
+    if ( /param\s*:((?:\s*\w+\s*=\s*$numberspice,?)+)/i ) {
+      my %split = split /[\s=,]+/,$1;
+      $h{$file{$filepath}}{param}{$_}=$split{$_} foreach (keys %split) ;
+    }
+    if (/^\("(X_\w+\.\w+)"/i) { ## On trouve un device
+      my $name = $1;
+      while (<$fh>) { ## while sur le device
+        $h{$file{$filepath}}{device}{$name}{model}=$1 if /^\("model"\s+"([\w.]+)\s*"\)/i ;
+        $h{$file{$filepath}}{device}{$name}{type}=$1 if /^\("type\s*"\s+"([\w.]+)\s*"\)/i ;
+        $h{$file{$filepath}}{device}{$name}{carac}{$1}=$2 if ( /^\("\s*(\w+)\s*"\s*"\s*($numberspice)\s*"\)/i ) ;
+        $h{$file{$filepath}}{device}{$name}{region}=$1 if /^\("region"\s+"(\w+)\s*"\s*\)/i ;
+        last if /^\)$/ ;
+      } ## End while sur le device
+    } ## End if
+  } ## End while sur le fichier
+}
+
+print Dumper \%h ;
+

@@ -75,6 +75,7 @@ printv ("$term_sep\nProcessing .op files ...\n");
 foreach my $filepath ( keys %file ) {
   open ($fh, "<", "$filepath") or die ("Failed to open $_ : $!");
   while (<$fh>) { ## while sur le fichier
+    $h{$file{$filepath}}{alter}=$1 if /alter\s*:\s*(\d+)/i ;
     $h{$file{$filepath}}{param}{$1}=$2 if /(temp)\s*:\s*($numberspice)/i ;
     if ( /param\s*:((?:\s*\w+\s*=\s*$numberspice,?)+)/i ) {
       my %split = split /[\s=,]+/,$1;

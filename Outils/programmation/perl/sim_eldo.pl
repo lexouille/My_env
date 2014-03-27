@@ -25,52 +25,29 @@ print ("\n");
 my ($index,$choice);
 
 my %alim_def = (
-"dvss" =>
-  { "vhdl" => 
-    { "min" => -0.01 ,
-      "max" => 0.01 }
-} ,
-"avss" =>
-  { "vhdl" => 
-    { "min" => -0.01 ,
-      "max" => 0.01 }
-} ,
-"dvddgo1" =>
-  { "vhdl" => 
-    { "min" => 1.0 ,
-      "max" => 2.0 } ,
-    "process" => 
-    { "vnom" => 1.5 ,
-      "vmin" => 1.35 ,
-      "vmax" => 1.65 }
-} ,
-"avddgo1" =>
-  { "vhdl" => 
-    { "min" => 1.0 ,
-      "max" => 2.0 } ,
-    "process" => 
-    { "vnom" => 1.5 ,
-      "vmin" => 1.35 ,
-      "vmax" => 1.65 }
-} ,
-"avddgo2" =>
-  { "vhdl" => 
-    { "min" => 1.8 ,
-      "max" => 3.2 } ,
-    "process" => 
-    { "vnom" => 2.5 ,
-      "vmin" => 2.25 ,
-      "vmax" => 2.75 }
-} ,
-"avddio" =>
-  { "vhdl" => 
-    { "min" => 2.2 ,
-      "max" => 4.4 }
-} ) ;
+"ats130rf" => { ## begin ats130rf
+  "dvss" => { "vhdl" => { "min" => -0.01 , "max" => 0.01 } } ,
+  "avss" => { "vhdl" => { "min" => -0.01 , "max" => 0.01 } } ,
+  "dvddgo1" => { "vhdl" => { "min" => 1.0 , "max" => 2.0 } , "process" => { "vnom" => 1.5 , "vmin" => 1.35 , "vmax" => 1.65 } } ,
+  "dvddgo2" => { "vhdl" => { "min" => 1.8 , "max" => 3.2 } , "process" => { "vnom" => 2.5 , "vmin" => 2.25 , "vmax" => 2.75 } } ,
+  "avddgo1" => { "vhdl" => { "min" => 1.0 , "max" => 2.0 } , "process" => { "vnom" => 1.5 , "vmin" => 1.35 , "vmax" => 1.65 } } ,
+  "avddgo2" => { "vhdl" => { "min" => 1.8 , "max" => 3.2 } , "process" => { "vnom" => 2.5 , "vmin" => 2.25 , "vmax" => 2.75 } } ,
+  "avddio" =>  { "vhdl" => { "min" => 2.2 , "max" => 4.4 } , "process" => { "vnom" => 3.3 , "vmin" => 2.97 , "vmax" => 3.63 } } 
+} , ## end ats130rf
+"xh018" => { ## begin xh018
+  "dvss" => { "vhdl" => { "min" => -0.01 , "max" => 0.01 } } ,
+  "avss" => { "vhdl" => { "min" => -0.01 , "max" => 0.01 } } ,
+  "dvddgo1" => { "vhdl" => { "min" => 1.0 , "max" => 2.0 } , "process" => { "vnom" => 1.5 , "vmin" => 1.35 , "vmax" => 1.65 } } ,
+  "dvddgo2" => { "vhdl" => { "min" => 1.8 , "max" => 3.2 } , "process" => { "vnom" => 2.5 , "vmin" => 2.25 , "vmax" => 2.75 } } ,
+  "avddgo1" => { "vhdl" => { "min" => 1.0 , "max" => 2.0 } , "process" => { "vnom" => 1.5 , "vmin" => 1.35 , "vmax" => 1.65 } } ,
+  "avddgo2" => { "vhdl" => { "min" => 1.8 , "max" => 3.2 } , "process" => { "vnom" => 2.5 , "vmin" => 2.25 , "vmax" => 2.75 } } ,
+  "avddio" =>  { "vhdl" => { "min" => 2.2 , "max" => 4.4 } , "process" => { "vnom" => 3.3 , "vmin" => 2.97 , "vmax" => 3.63 } } 
+} ## end xh018
+) ;
 
 #print Dumper \%alim_def and exit ;
 
-## Ici, je pense qu'on eut mettre tout ça dans un tableau unique
+## Ici, je pense qu'on peut mettre tout ça dans un tableau unique
 ## Je le commence au dessus, il faudra migrer et faire de le non reg plus tard
 my %voltage_def = ( "vnom"  => [ 1.5, 2.5 , 3.3 ] , 
                     "vmin"  => [1.35, 2.25, 2.97] ,
@@ -99,13 +76,17 @@ my %vhdl_def = ( "avddgo1" =>
 #print Dumper \%vhdl_def; exit;
 my $eldo_sep='********************************************************************************';
 my $vhdl_sep='--------------------------------------------------------------------------------';
+my $veri_sep='////////////////////////////////////////////////////////////////////////////////';
 my $term_sep='################################################################################';
 
 my ($verbose,$help,$scan,$init)=(0,0,0,0);
+my $techno = "xh018";
 my (@gen,@process,@voltage,@temp,@pvt,@mc,@param,@testbench);
 my (@corner_mos,@corner_bip,@corner_res,@corner_cap);
 my (@paramlist,%paramlist,%tbenchlist);
 my ($mc,$step_param,@step,@step_param);
+
+my $key ;
 
 my ($t1,$t2,$t3,$t4);
 my (@t1,@t2,@t3,@t4);
@@ -250,18 +231,14 @@ sub init { # Initialisation du répertoire
 # Génération du carac.inc et du carac à partir des templates s'ils n'existent pas
   print "$term_sep\n";
   print ("Initialization phase : Generation of simulation files...\n");
-  print "\nFile and Directory list found :\n";
-  my %file = ();
+  print "\nFiles found :\n";
+  my %file; 
   my @file = readdir PATH;
-  $index=0;
   foreach (@file) {
-    $index++;
-    $file{$_}=$index;
-    print "\n\t$index --> $_";
+    printf ("%-40s", "\n\t --> $_") and $file{$_}++ if (-f $_);
     print "\t-- .cir file found" if /\.cir$/; 
     print "\t-- .inc file found" if /\.inc$/; }
   print "\n";
-  #print Dumper \%file if ($verbose == 1 ); 
   my @cirfile = grep /\.cir$/, @file;
   my @incfile = grep /\.inc$/, @file;
   if ($file{'netlist.cir'}) {
@@ -269,13 +246,9 @@ sub init { # Initialisation du répertoire
     if ($choice eq 'yes') {
       system ( "rm" , $path."netlist.cir") ;
       opendir (PATH, $path) or die $!;
-      %file = ();
       @file = readdir PATH;
-      $index=0;
       foreach (@file) {
-        $index++;
-        $file{$_}=$index;
-        print "\n\t$index --> $_"; }
+        printf ("%-40s", "\n\t --> $_") if (-f $_);}
       print "\n";
       $choice = stdin_answer ('Select file to use for generation of netlist.cir',@file);
       $basenetlistfile = $path.$choice ;
@@ -287,13 +260,10 @@ sub init { # Initialisation du répertoire
         if ( $choice == 1 ) { # Backup et régén
           system ( "cp", $path."netlist.cir", $path."netlist_bkp".$date.".cir");
           opendir (PATH, $path) or die $!;
-          %file = ();
           @file = readdir PATH;
           $index=0;
           foreach (@file) {
-            $index++;
-            $file{$_}=$index;
-            print "\n\t$index --> $_"; }
+            printf ("%-40s", "\n\t --> $_") if (-f $_);}
           print "\n";
           $choice = stdin_answer ('Select file to use for generation of netlist.cir',@file);
           $basenetlistfile = $path.$choice ;
@@ -332,262 +302,245 @@ sub init { # Initialisation du répertoire
   print "$term_sep\n\n";
 } # End sub init
 
-####################################
-push(@EXPORT,'analyze_techno') ;
-sub analyze_techno {
-  my $debug=1;
-  if ( $debug ) { print "DBG BEGIN analyze_techno\n" ; }
-  my %res  = () ;
-  my $return = 0 ;
-  my $ref_to_conf = shift ;
-  my @models = () ;
-  my %corners = () ;
-
-  # Name
-  $res{name} = $ref_to_conf->{name} ;
-
-  # Modèles analogiques (Eldo pour le moment)
-  foreach (@{$ref_to_conf->{ELDO}}) {
-    push(@models,map {s/\s*$//;$_;} qx/grep -i "^\\.model" $_/) ;
-    push(@models,map {s/\s*$//;$_;} qx/grep -i "^\\.subckt" $_/) ;
-  }
-  @models=uniq(@models) ;
-  if ( $debug ) { print "DBG ici models :\n" ; print Dumper \@models ; }
-
-  my @mods = @models ;
-  foreach (@mods) {
-    if ( /^\s*\.model\s/ ) {
-      my ($n,$t) = ( /^\s*\.model\s+(\S+)\s+(\S+)/ ) ;
-      die ("$_ : ligne model non reconnue\n") unless ( (defined $n) and (defined $t) ) ;
-# TODO case et nfet
-      if    ( $t eq "PMOS" ) { $res{devices}{$n}{nbpin} = 4 ; }
-      elsif ( $t eq "NMOS" ) { $res{devices}{$n}{nbpin} = 4 ; }
-      elsif ( $t eq "PNP" )  { $res{devices}{$n}{nbpin} = 3 ; }
-      elsif ( $t eq "NPN" )  { $res{devices}{$n}{nbpin} = 3 ; }
-      elsif ( $t eq "D" )    { $res{devices}{$n}{nbpin} = 2 ; }
-      else { die("$t : model inconnu\n") ; }
-    }
-    elsif ( /^\s*\.subckt\s/ ) {
-      my $t=0 ;
-      s/\w+=.*// ;
-      my ($n) = ( /^\s*\.subckt\s+(\S+)/ ) ;
-      s/^\s*\.subckt\s+(\S+)// ;
-      while ( /[^\s]/ ) { s/\s*(\S+)// ; $t++ ; }
-      $res{devices}{$n}{nbpin} = $t ;
-    }
-  }
-
-  $res{anamod} = [ keys(%{$res{devices}}) ] ;
-
-  map { s/^\s*\.(:?subckt|model)\s*(\w+).*/$2/ } @models ;
-  if ( $debug ) { print "DBG là models :\n" ; print Dumper \@models ; }
-  
-  my @pmos = grep {/\bp(mos|fet)\b/i} @models ;
-  my @nmos = grep {/\bn(mos|fet)\b/i} @models ;
-  my @pnp  = grep {/\bpnp\b/i}  @models ;
-  my @npn  = grep {/\bnpn\b/i}  @models ;
-
-  $res{pmos_all} = [ @pmos ] ;
-  $res{nmos_all} = [ @nmos ] ;
-  $res{pnp_all}  = [ @pnp  ] ;
-  $res{npn_all}  = [ @npn  ] ;
-
-  if ( $debug ) { print Dumper \@nmos ; }
-
-  # Corners
-  my %files = () ;
-  foreach (@{$ref_to_conf->{ELDO}}) {
-    my $fileorig = $_ ;
-    my %decount = () ;
-    #my $file = $fileorig ;
-    my $file = "" ;
-    my $corner = "" ;
-    my @tab = map {s/^\s*//;s/\s*$//;$_;} grep {!/^\s*$/} qx/grep -iPx '^\\s*\\.\(lib\|endl\|include\|model\|subckt\)\\b.*\$' $_/ ;
-    if ( $debug ) { print Dumper \@tab ; }
-    while ( my $line = shift(@tab) ) {
-      if ( $debug ) { print "DBG Treating $line\n" ; }
-
-      #if ( $file eq $fileorig )      {}
-      #elsif ( $decount{$file} == 0 ) { $file = $fileorig ; }
-      #else                           { $decount{$file}--;  }
-      #if ( $debug ) { print "DBG Décompte de $file : $decount{$file}\n" unless ( $file eq $fileorig ) ; }
-      #if ( $debug ) { print "DBG " ; print Dumper \%decount ; }
-
-      if ( $line =~ m=^\s*\.(model|subckt)\s+(\S+)=i ) {
-        if ( $debug ) { print "DBG line : $2 est un MODEL ou un SUBCKT\n" ; }
-        if ( $corner ne "" ) {
-          $corners{$2} = [] unless ( exists $corners{$2} ) ;
-          #print "On a $2 et $corner et $file\n" ;
-          $files{$2}{$corner} = $file unless ( exists $files{$2}{$corner} ) ;
-          push ( @{$corners{$2}} , $corner ) ;
-        }
-      }
-      elsif ( $line =~ m=^\s*\.include\s+(\S+)=i ) {
-        if ( $debug ) { print "DBG line : $1 est INCLUDED\n" ; }
-        my $inc = $1 ;
-        while ( $inc =~ /^['"]/ ) { $inc =~ s/^'(.*)'$/$1/ ; $inc =~ s/^"(.*)"$/$1/ ; }
-        $inc = dirname($_)."/".$inc ;
-        my @inc = map {s/^\s*//;s/\s*$//;$_;} grep {!/^\s*$/} qx/grep -iPx '^\\s*\\.\(lib\|endl\|include\|model\|subckt\)\\b.*\$' $inc/ ;
-        @tab = ( @inc , @tab ) ;
-        #$decount{$inc} = scalar(@inc) ;
-        #$file = $inc ;
-      }
-      elsif ( $line =~ m=^\s*\.lib\s+(\S+)(?:\s+(\S+))?=i ) {
-        if ( $corner eq "" ) {
-          $corner = uc($1) ;
-          $file = $_ ;
-        }
-        else {
-          if ( $debug ) { print "DBG $1 est INCLUDE (LIB) avec '$2' \n" ; }
-          my $inc = $1 ;
-          while ( $inc =~ /^['"]/ ) { $inc =~ s/^'(.*)'$/$1/ ; $inc =~ s/^"(.*)"$/$1/ ; }
-          my $typ = $2 if ( $2 ) ;
-          if ( $debug ) { print "DBG file : $_\n" ; }
-          if ( $debug ) { print "DBG add  : $inc\n" ; }
-          if ( $debug ) { print "DBG sec  : $typ\n" if ( $typ ) ; }
-          if ( $debug ) { print "DBG final : ".dirname($_)."/".$inc."\n" ; }
-          $inc = dirname($_)."/".$inc ;
-          
-          my @inc = map {s/^\s*//;s/\s*$//;$_;} grep {!/^\s*$/} qx/grep -iPx '^\\s*\\.\(lib\|endl\|include\|model\|subckt\)\\b.*\$' $inc/ ;
-          my @add = () ;
-
-          #getc error quand pas de fichier include bien défini !-f
-          if ( $typ ) {
-            shift(@inc) while ( $inc[0] !~ m/^\s*\.lib\s+$typ/i ) ;
-            shift(@inc) ;
-            push(@add,shift(@inc)) while ( $inc[0] !~ m/^\s*\.endl/i ) ;
-          }
-
-          @tab = ( @add , @tab ) ;
-          #$decount{$inc} = scalar(@add) ;
-          #$file = $inc ;
-        }
-      }
-      elsif ( $line =~ m=^\s*\.endl=i ) {
-        $corner = "" ;
-      }
-      else { die ("$line : ligne non reconnue\n") ; }
-    }
-  }
-  #foreach (keys(%corners)) { $corners{$_} = [ uniq(map {$_ = uc($_) ;$_;} @{$corners{$_}}) ] ; }
-  #if ( $debug ) { print Dumper \%corners ; }
-
-  my @corners = () ;
-  foreach (keys(%corners)) {
-    die("$_ : Le composant a des corners mais n'a pas été détecté durant la recherche du nombre d'IO") unless ( exists $res{devices}{$_} ) ;
-    $res{devices}{$_}{corners} = [ uniq(map {$_ = uc($_) ;$_;} @{$corners{$_}}) ] ;
-    push(@corners,@{$res{devices}{$_}{corners}});
-  }
-
-  foreach (keys(%files)) {
-    die ("$_ : device inconnu\n") unless ( exists ( $res{devices}{$_} ) ) ;
-    foreach my $c (keys(%{$files{$_}})) {
-      die($res{devices}{$_}{files}{$c}." : valeur déjà attribuée et différente de ce qu'on veut y mettre : $files{$_}{$c}\n") if ( ( exists $res{devices}{$_}{files}{$c} ) and ( $res{devices}{$_}{files}{$c} ne $files{$_}{$c} ) ) ;
-      $res{devices}{$_}{files}{$c} = $files{$_}{$c} ;
-    }
-  }
-  # Champ "corners"
-  $res{corners} = [ uniq(@corners) ] ;
-
-  ## Numérique
-  my @digmod = () ;
-  foreach (@{$ref_to_conf->{rtl}}) { push(@digmod,map { m/^\s*module\s+(\w+)\s*(?:\(|;)/ ; } grep {!/^\s*$/} qx/grep -P "^\\s*module\\s+\\w+\\s*(\\(\|;)" $_/) ; }
-  $res{digmod} = [ @digmod ] ;
-
-  if ( $debug ) { print "DBG END analyze_techno\n" ; }
-  return %res ;
-}
-
-
 sub gen_model { # Génération des modèles VHDL et Verilog à partir des subckt de la netlist
   my $bmodel ; my $bmodel_FH ;
-  ($bmodel)=@_;
+  ($bmodel)=@_; #Ici, faire un foreach ?
   my @key;
   my ($bextension,$bname); my @bmodel ;
   my %pin ; my @pin ; my $pintype ;
   print "\n$term_sep\n";
   print "\nNo Subckt definition found in the netlist. Check file or scan.\n\n" and exit unless (%subckt) ; ## Ici, à check ?
 
-#Génération des modèles veriloga
+##Génération des modèles veriloga
   if ($bmodel eq "veri") {
-    $bname = "Verilog" and $bextension = ".va";
+    $bname = "Verilog" ; $bextension = ".va";
     print ("Generation of $bname behavioral models ...\n") ; 
-  } elsif ($bmodel eq "vhdl") { 
-
-#Génération des modèles vhdl
-    $bname = "VHDL" and $bextension = ".hdl";
-    print ("Generation of $bname behavioral models ...\n") ; 
-#Sélection des instance à modéliser
-    print "\tSubckt list :\n" ; print "$_\n" foreach ( keys %subckt ) ;
+##Sélection des instance à modéliser
+    print "\n\t-->Subckt list in netlist :\n" ; print "$_\n" foreach ( keys %subckt ) ;
     my @bmodel = stdin_answer_mult ('Select subckt to be modeled',( keys %subckt )); my $model ;
 
-#Génération des fichiers modèle
+##Génération des fichiers modèle
     foreach $model (@bmodel) {
-      print "Generation of vhdl model file for $model\n" if ( $verbose == 1 ) ;
+      print "\n$term_sep\nGeneration of verilog model file for $model\n" ;
       $bmodel_FH = outputfile($model.$bextension) ;
-      print ($bmodel_FH "$vhdl_sep\n--\n--\tBLOCK : $_\n--\tVHDL AMS FILE : $model".$bextension."\n--\n--\tDESCRIPTION :\n--\n--\n$vhdl_sep\n\n\n"); #Entête
-      print ($bmodel_FH "library ieee, discipline;\n--Insert here other libraires definition\n\n\n"); #Définition des librairies communes
-      print ($bmodel_FH "ENTITY $model is \n\n--Generic variable definition\ngeneric (\n"); #Définition des génériques
-      foreach ( keys %{$subckt{$model}{'pinlist'}} ) { ## Définitions des génériques de tests sur les alims si on les trouve dans le hash alim_def
-        if ($alim_def{$_}) {
-          print "Alim pin found : $_ Max / Min value for vhdl test : $alim_def{$_}{'vhdl'}{'max'} $alim_def{$_}{'vhdl'}{'min'}\n" if ( $verbose ==1 ) ;
-          print ($bmodel_FH "g_$_"."_min : real := $alim_def{$_}{'vhdl'}{'min'} ; -- Generic for power tests\n");
-          print ($bmodel_FH "g_$_"."_max : real := $alim_def{$_}{'vhdl'}{'max'} ; -- Generic for power tests\n");
-        }
-      }
-      print ($bmodel_FH "-- g_generic_name : real := generic_value ;\n-- g_generic_name : realvector (0 TO XX) := (gen_val1, gen_val2, ...,gen_valXX) ;\n);\n\n"); #Fin de définintion des génériques
+      print ($bmodel_FH "$veri_sep\n//\n//\tCompagny : ASYGN\n//\tEngineer : \n//\n//\tCreation Date : $date\n//\tModule type : $bname\n//\tDesign name :\n//\tModule name : $model\n//\tProject name :\n//\tTool versions :\n//\tDescription : \n//\n//\tDependencies : \n//\n//\tRevision : \n//\tAdditionnal comments : \n//\n$veri_sep\n\n\n"); #Entête
+      print ($bmodel_FH "`include \"example.v\"\n//Insert here other module/libraires definition\n\n\n"); #Définition des modules/librairies communes
 
-      print ($bmodel_FH "--Block port définition\nPORT(\n"); #Début de définintion des ports
-      foreach ( keys %{$subckt{$model}{'pinlist'}} ) { ## Définition des alims comme des ports de type terminal - electrical
-        if ($alim_def{$_}) {
-          print "Alim pin found : $_ will be defined as terminal, type electrical\n" if ( $verbose ==1 ) ;
-          print ($bmodel_FH "terminal $_ : electrical ; -- Power port\n");
+##Définition du module avec ses pins
+      print($bmodel_FH "module $model (\n") ;
+      foreach ( sort { $a <=> $b } keys %{$subckt{$model}{pinlist}} ) { ## Définitions ports du module
+        print ($bmodel_FH "\t$subckt{$model}{pinlist}{$_}{name},\n") if ($subckt{$model}{pinlist}{$_}{single}) ;
+        if ($subckt{$model}{pinlist}{$_}{vector} && $subckt{$model}{pinlist}{$_}{vector}{bit} eq "lsb") {
+          print ($bmodel_FH "\t") ;
+          print ($bmodel_FH $subckt{$model}{pinlist}{$_}{dir}) unless ($subckt{$model}{pinlist}{$_}{dir} eq "unknown");
+          print ($bmodel_FH $subckt{$model}{pinlist}{$_}{type}) unless ($subckt{$model}{pinlist}{$_}{type} eq "custom");
+          print ($bmodel_FH "_") unless ($subckt{$model}{pinlist}{$_}{type} eq "custom" || $subckt{$model}{pinlist}{$_}{dir} eq "unknown");
+          print ($bmodel_FH "$subckt{$model}{pinlist}{$_}{vector}{name},\n") ;
+          }
+        }
+      print ($bmodel_FH ");\n\n"); #Fin de définition du module, définition des types I/O pour les pins
+      
+      ## Définitions des I/O associés aux ports
+      print ($bmodel_FH "// I/O port definition\n");
+      foreach ( sort { $a <=> $b } keys %{$subckt{$model}{pinlist}} ) { 
+        if ($subckt{$model}{pinlist}{$_}{type} eq "alim") {
+          print "\tAlim pin found : $subckt{$model}{pinlist}{$_}{name} will be defined as inout\n" if ( $verbose ==1 ) ;
+          print ($bmodel_FH "inout $subckt{$model}{pinlist}{$_}{name} ; // Power port\n");
+        } elsif ($subckt{$model}{pinlist}{$_}{type} ne "alim") {
+          if ($subckt{$model}{pinlist}{$_}{single}) {
+            print "\tSingle pin found : $subckt{$model}{pinlist}{$_}{name} type $subckt{$model}{pinlist}{$_}{type}\n" if ( $verbose == 1 ) ;
+            print ($bmodel_FH "input ") if ($subckt{$model}{pinlist}{$_}{dir} eq "i");
+            print ($bmodel_FH "output ") if ($subckt{$model}{pinlist}{$_}{dir} eq "o");
+            print ($bmodel_FH "inout ") if ($subckt{$model}{pinlist}{$_}{dir} eq "io");
+            print ($bmodel_FH "input/output/inout ") if ($subckt{$model}{pinlist}{$_}{dir} eq "unknown");
+            print ($bmodel_FH "$subckt{$model}{pinlist}{$_}{name} ;");
+            if ($subckt{$model}{pinlist}{$_}{dir} eq "unknown") {print ($bmodel_FH "//Custom definition -> user modification required\n") } else {print ($bmodel_FH "\n")}
+          } elsif ($subckt{$model}{pinlist}{$_}{vector}{bit} eq "lsb") {
+            print "\tVector pin found : $subckt{$model}{pinlist}{$_}{vector}{name} type $subckt{$model}{pinlist}{$_}{type}\n" if ( $verbose == 1 ) ;
+            print ($bmodel_FH "input ") if ($subckt{$model}{pinlist}{$_}{dir} eq "i");
+            print ($bmodel_FH "output ") if ($subckt{$model}{pinlist}{$_}{dir} eq "o");
+            print ($bmodel_FH "inout ") if ($subckt{$model}{pinlist}{$_}{dir} eq "io");
+            print ($bmodel_FH "input/output/inout ") if ($subckt{$model}{pinlist}{$_}{dir} eq "unknown");
+            print ($bmodel_FH "[$subckt{$model}{pinlist}{$_}{vector}{max}:$subckt{$model}{pinlist}{$_}{vector}{min}] ") ;
+            print ($bmodel_FH $subckt{$model}{pinlist}{$_}{dir}) unless ($subckt{$model}{pinlist}{$_}{dir} eq "unknown");
+            print ($bmodel_FH $subckt{$model}{pinlist}{$_}{type}) unless ($subckt{$model}{pinlist}{$_}{type} eq "custom");
+            print ($bmodel_FH "_") unless ($subckt{$model}{pinlist}{$_}{type} eq "custom" || $subckt{$model}{pinlist}{$_}{dir} eq "unknown");
+            print ($bmodel_FH "$subckt{$model}{pinlist}{$_}{vector}{name} ;");
+            if ($subckt{$model}{pinlist}{$_}{dir} eq "unknown") {print ($bmodel_FH "//Custom definition -> user modification required\n") } else {print ($bmodel_FH "\n")}
+          }
+        }
+      } ## Fin de définition des types I/O pour les pins
+      ## Définitions des wires associés aux ports
+      print ($bmodel_FH "\n// Port wire definition\n");
+      foreach ( sort { $a <=> $b } keys %{$subckt{$model}{pinlist}} ) { 
+        if ($subckt{$model}{pinlist}{$_}{single}) {
+            print ($bmodel_FH "wire $subckt{$model}{pinlist}{$_}{name} ; ");
+            print ($bmodel_FH "// input wire \n") if ($subckt{$model}{pinlist}{$_}{dir} eq "i");
+            print ($bmodel_FH "// output wire \n") if ($subckt{$model}{pinlist}{$_}{dir} eq "o");
+            print ($bmodel_FH "// inout wire \n") if ($subckt{$model}{pinlist}{$_}{dir} eq "io");
+            print ($bmodel_FH "// custom wire \n") if ($subckt{$model}{pinlist}{$_}{dir} eq "unknown");
+        } elsif ($subckt{$model}{pinlist}{$_}{vector}{bit} eq "lsb") {
+            print ($bmodel_FH "wire [$subckt{$model}{pinlist}{$_}{vector}{max}:$subckt{$model}{pinlist}{$_}{vector}{min}] ") ;
+            print ($bmodel_FH $subckt{$model}{pinlist}{$_}{dir}) unless ($subckt{$model}{pinlist}{$_}{dir} eq "unknown");
+            print ($bmodel_FH $subckt{$model}{pinlist}{$_}{type}) unless ($subckt{$model}{pinlist}{$_}{type} eq "custom");
+            print ($bmodel_FH "_") unless ($subckt{$model}{pinlist}{$_}{type} eq "custom" || $subckt{$model}{pinlist}{$_}{dir} eq "unknown");
+            print ($bmodel_FH "$subckt{$model}{pinlist}{$_}{vector}{name} ; ");
+            print ($bmodel_FH "// input wire \n") if ($subckt{$model}{pinlist}{$_}{dir} eq "i");
+            print ($bmodel_FH "// output wire \n") if ($subckt{$model}{pinlist}{$_}{dir} eq "o");
+            print ($bmodel_FH "// inout wire \n") if ($subckt{$model}{pinlist}{$_}{dir} eq "io");
+            print ($bmodel_FH "// custom wire \n") if ($subckt{$model}{pinlist}{$_}{dir} eq "unknown");
         }
       }
-      #foreach ( sort { $subckt{$model}{'pinmod'}{$a}{position} <=> $subckt{$model}{'pinmod'}{$b}{position} } keys %{$subckt{$model}{'pinmod'}} ) { ## Définitions des autres ports, ordre original
-        #if ($subckt{$model}{'pinmod'}{$_}{type} ne "alim") {
-          #print "Standard pin found : $_ type $subckt{$model}{'pinmod'}{$_}{type}\n" if ( $verbose == 1 ) ;
-          #print ($bmodel_FH "terminal") if ($subckt{$model}{'pinmod'}{$_}{type} eq "a");
-          #print ($bmodel_FH "signal") if ($subckt{$model}{'pinmod'}{$_}{type} eq "d");
-          #print ($bmodel_FH " $_ : in") if ($subckt{$model}{'pinmod'}{$_}{dir} eq "i");
-          #print ($bmodel_FH " $_ : out") if ($subckt{$model}{'pinmod'}{$_}{dir} eq "o");
-          #print ($bmodel_FH " $_ : inout") if ($subckt{$model}{'pinmod'}{$_}{dir} eq "io");
-          #print ($bmodel_FH " electrical ;\n") if ($subckt{$model}{'pinmod'}{$_}{type} eq "a");
-          #print ($bmodel_FH " std_ulogic ;\n") if ($subckt{$model}{'pinmod'}{$_}{type} eq "d");
-        #}
-    #} #Fin des définitions des ports, fin de l'ENTITY, passage à la suite
-      ## Original
-      foreach ( sort { $subckt{$model}{'pinlist'}{$a}{position} <=> $subckt{$model}{'pinlist'}{$b}{position} } keys %{$subckt{$model}{'pinlist'}} ) { ## Définitions des autres ports, ordre original
-        if (!$alim_def{$_}) {
-          print "Standard pin found : $_ Custom definition\n" if ( $verbose == 1 ) ;
-          print ($bmodel_FH "terminal/signal $_ : in/out std_ulogic/electrical ;\n");
+      ## Définitions des wires internes
+      print ($bmodel_FH "\n// Internal wire definition\n\t//Define here internal wire\n\n");
+
+## Fin ports/wires. Ecriture des composants s'il y en a.
+      if ($subckt{$model}{dependency}) {
+        my $instance = -1 ;
+        print "\n\tDependency have been found. Trying to define them in the component section. Please check connectivity & syntax ...\n" if ( $verbose == 1 );
+        print ($bmodel_FH "\n$veri_sep\n// Component section\n$veri_sep\n\n");
+        foreach (@{$subckt{$model}{dependency}}) {
+          $instance++;
+          my ($key) = keys $_ ;
+          print "\t-->Defining component $key\n" if ( $verbose == 1 );
+          print($bmodel_FH "\t// Component $key definition. Please check syntax & connectivity\n\t$key ${$subckt{$model}{dependency}[$instance]}{$key}{sckt_ref} (\n");
+          my $index=0;
+          foreach my $pin (sort {$a <=> $b} keys %{$subckt{${$subckt{$model}{dependency}[$instance]}{$key}{sckt_ref}}{pinlist}}) {
+          #foreach my $pin (@{$subckt{$model}{dependency}[$instance]{$key}{pinlist}}) {
+            printf($bmodel_FH "\t\t");
+            printf($bmodel_FH "%-20s",".$subckt{${$subckt{$model}{dependency}[$instance]}{$key}{sckt_ref}}{pinlist}{$pin}{name}");
+            printf($bmodel_FH "\t\t");
+            printf($bmodel_FH "%-20s","(${$subckt{$model}{dependency}[$instance]}{$key}{pinlist}[$index])");
+            printf($bmodel_FH "\t,\n");
+            $index++; 
+          }
+          print ($bmodel_FH "\t);\n\t// Component $key definition end.\n\n");
         }
-    } #Fin des définitions des ports, fin de l'ENTITY, passage à la suite
+        print ($bmodel_FH "$veri_sep\n// End component section\n$veri_sep\n\n");
+      }
+      ## Reste du code avec définition des modules par connection
+      #print ($bmodel_FH "\nendmodule //End module $model\n\n");
+      close $bmodel_FH;
+    }
+  } ## End if model verilog
+  print "\n$term_sep\nGeneration of verilog model file done\n" ;
+
+##Génération des modèles vhdl
+  if ($bmodel eq "vhdl") { 
+    $bname = "VHDL" ; $bextension = ".hdl";
+    print ("Generation of $bname behavioral models ...\n") ; 
+##Sélection des instance à modéliser
+    print "\n\t-->Subckt list in netlist :\n" ; print "$_\n" foreach ( keys %subckt ) ;
+    my @bmodel = stdin_answer_mult ('Select subckt to be modeled',( keys %subckt )); my $model ;
+
+##Génération des fichiers modèle
+    foreach $model (@bmodel) {
+      print "\n$term_sep\nGeneration of vhdl model file for $model\n" ;
+      $bmodel_FH = outputfile($model.$bextension) ;
+      print ($bmodel_FH "$vhdl_sep\n--\n--\tCompagny : ASYGN\n--\tEngineer : \n--\n--\tCreation Date : $date\n--\tDesign name :\n--\tModule type : $bname\n--\tModule name : $model\n--\tProject name :\n--\tTool versions :\n--\tDescription : \n--\n--\tDependencies : \n--\n--\tRevision : \n--\tAdditionnal comments : \n--\n$vhdl_sep\n\n\n"); #Entête
+      print ($bmodel_FH "library ieee, discipline;\nuse IEEE.STD_LOGIC_1164.all;\nuse IEEE.numeric_std.all;\nuse work.internal_bus.all;\n--Insert here other libraires definition\n\n\n"); #Définition des librairies communes
+## Définitions des génériques
+      print($bmodel_FH "ENTITY $model is \n\n--Generic variable definition\nGENERIC (\n"); 
+      foreach ( keys %{$subckt{$model}{pinlist}} ) { ## Définitions des génériques de tests sur les alims si on les trouve dans le hash alim_def{$techno}
+        if ($alim_def{$techno}{$subckt{$model}{pinlist}{$_}{name}}) {
+          print "\tAlim pin found : $subckt{$model}{pinlist}{$_}{name} Max / Min value for vhdl test : $alim_def{$techno}{$subckt{$model}{pinlist}{$_}{name}}{vhdl}{max} $alim_def{$techno}{$subckt{$model}{pinlist}{$_}{name}}{vhdl}{min}\n" if ( $verbose ==1 ) ;
+          print ($bmodel_FH "\tg_$subckt{$model}{pinlist}{$_}{name}"."_min : real := $alim_def{$techno}{$subckt{$model}{pinlist}{$_}{name}}{vhdl}{min} ; -- Generic for power tests\n");
+          print ($bmodel_FH "\tg_$subckt{$model}{pinlist}{$_}{name}"."_max : real := $alim_def{$techno}{$subckt{$model}{pinlist}{$_}{name}}{vhdl}{max} ; -- Generic for power tests\n");
+        }
+      }
+      print ($bmodel_FH "\t--g_generic_name : real := generic_value ;\n\t--g_generic_name : realvector (0 TO XX) := (gen_val1, gen_val2, ...,gen_valXX) ;\n);\n\n"); #Fin de définintion des génériques
+
+##Début de définintion des ports
+      print($bmodel_FH "--I/O Block definition\nPORT(\n"); 
+      foreach ( sort { $a <=> $b } keys %{$subckt{$model}{pinlist}} ) { ## Définition des alims comme des ports de type terminal - electrical
+        if ($alim_def{$techno}{$subckt{$model}{pinlist}{$_}{name}}) {
+          print "\tAlim pin found : $subckt{$model}{pinlist}{$_}{name} will be defined as terminal, type electrical\n" if ( $verbose ==1 ) ;
+          print ($bmodel_FH "\tterminal $subckt{$model}{pinlist}{$_}{name} : electrical ; -- Power port\n");
+        }
+      }
+      foreach ( sort { $a <=> $b } keys %{$subckt{$model}{pinlist}} ) { ## Définitions des autres ports, ordre original
+        if ($subckt{$model}{pinlist}{$_}{type} ne "alim") {
+          if ($subckt{$model}{pinlist}{$_}{single}) {
+            print "\tStandard pin found : $subckt{$model}{pinlist}{$_}{name} type $subckt{$model}{pinlist}{$_}{type}\n" if ( $verbose == 1 ) ;
+            print ($bmodel_FH "\tterminal") if ($subckt{$model}{pinlist}{$_}{type} eq "a");
+            print ($bmodel_FH "\tsignal") if ($subckt{$model}{pinlist}{$_}{type} eq "d");
+            print ($bmodel_FH "\tsignal/terminal") if ($subckt{$model}{pinlist}{$_}{type} eq "custom");
+            print ($bmodel_FH " $subckt{$model}{pinlist}{$_}{name} : in") if ($subckt{$model}{pinlist}{$_}{dir} eq "i");
+            print ($bmodel_FH " $subckt{$model}{pinlist}{$_}{name} : out") if ($subckt{$model}{pinlist}{$_}{dir} eq "o");
+            print ($bmodel_FH " $subckt{$model}{pinlist}{$_}{name} : inout") if ($subckt{$model}{pinlist}{$_}{dir} eq "io");
+            print ($bmodel_FH " $subckt{$model}{pinlist}{$_}{name} : in/out/inout") if ($subckt{$model}{pinlist}{$_}{dir} eq "unknown");
+            print ($bmodel_FH " electrical ; \n") if ($subckt{$model}{pinlist}{$_}{type} eq "a") ;
+            print ($bmodel_FH " std_ulogic ; \n") if ($subckt{$model}{pinlist}{$_}{type} eq "d") ;
+            print ($bmodel_FH " electrical/std_ulogic ;") if ($subckt{$model}{pinlist}{$_}{type} eq "custom") ;
+            print ($bmodel_FH " -- Custom definition -> user modification required\n") if ($subckt{$model}{pinlist}{$_}{type} eq "custom" || $subckt{$model}{pinlist}{$_}{dir} eq "unknown") ;
+          } elsif ($subckt{$model}{pinlist}{$_}{vector} && $subckt{$model}{pinlist}{$_}{vector}{bit} eq "lsb") {
+            print "\tStandard vector lsb found : $subckt{$model}{pinlist}{$_}{vector}{name} type $subckt{$model}{pinlist}{$_}{type}\n" if ( $verbose == 1 ) ;
+            print ($bmodel_FH "\tterminal ") if ($subckt{$model}{pinlist}{$_}{type} eq "a");
+            print ($bmodel_FH "\tsignal ") if ($subckt{$model}{pinlist}{$_}{type} eq "d");
+            print ($bmodel_FH "\tsignal/terminal ") if ($subckt{$model}{pinlist}{$_}{type} eq "custom");
+            print ($bmodel_FH $subckt{$model}{pinlist}{$_}{dir}) unless ($subckt{$model}{pinlist}{$_}{dir} eq "unknown");
+            print ($bmodel_FH $subckt{$model}{pinlist}{$_}{type}) unless ($subckt{$model}{pinlist}{$_}{type} eq "custom");
+            print ($bmodel_FH "_") unless ($subckt{$model}{pinlist}{$_}{type} eq "custom" || $subckt{$model}{pinlist}{$_}{dir} eq "unknown");
+            print ($bmodel_FH "$subckt{$model}{pinlist}{$_}{vector}{name} : in") if ($subckt{$model}{pinlist}{$_}{dir} eq "i");
+            print ($bmodel_FH "$subckt{$model}{pinlist}{$_}{vector}{name} : out") if ($subckt{$model}{pinlist}{$_}{dir} eq "o");
+            print ($bmodel_FH "$subckt{$model}{pinlist}{$_}{vector}{name} : inout") if ($subckt{$model}{pinlist}{$_}{dir} eq "io");
+            print ($bmodel_FH "$subckt{$model}{pinlist}{$_}{vector}{name} : in/out/inout") if ($subckt{$model}{pinlist}{$_}{dir} eq "unknown");
+            print ($bmodel_FH " electrical_vector($subckt{$model}{pinlist}{$_}{vector}{max} downto $subckt{$model}{pinlist}{$_}{vector}{min}) ; \n") if ($subckt{$model}{pinlist}{$_}{type} eq "a") ;
+            print ($bmodel_FH " std_ulogic_vector($subckt{$model}{pinlist}{$_}{vector}{max} downto $subckt{$model}{pinlist}{$_}{vector}{min}) ; \n") if ($subckt{$model}{pinlist}{$_}{type} eq "d") ;
+            print ($bmodel_FH " electrical/std_ulogic_vector($subckt{$model}{pinlist}{$_}{vector}{max} downto $subckt{$model}{pinlist}{$_}{vector}{min}) ;") if ($subckt{$model}{pinlist}{$_}{type} eq "custom") ;
+            print ($bmodel_FH " -- Custom definition -> user modification required\n") if ($subckt{$model}{pinlist}{$_}{type} eq "custom" || $subckt{$model}{pinlist}{$_}{dir} eq "unknown") ;
+          }
+        }
+      } #Fin des définitions des ports, fin de l'ENTITY, passage à la suite
       print ($bmodel_FH ");\n\nEND ENTITY $model;\n\nARCHITECTURE FUNCTIONNAL OF $model IS\n\n--Quantity and signal definitions\n");
-      foreach ( keys %{$subckt{$model}{'pinlist'}} ) { ## Définition des signaux pour les power tests
-        if ($alim_def{$_}) {
-          print ($bmodel_FH "signal s_test_$_ : boolean = false ; -- Power test purpose\nquantity v_$_ --To be completed acoording to alim type : power/ground\n");
+      foreach ( keys %{$subckt{$model}{pinlist}} ) { ## Définition des signaux pour les power tests
+        if ($alim_def{$techno}{$subckt{$model}{pinlist}{$_}{name}}) {
+          print ($bmodel_FH "\tsignal s_test_$subckt{$model}{pinlist}{$_}{name} : boolean = false ; -- Power test purpose\n\tquantity v_$subckt{$model}{pinlist}{$_}{name} --To be completed acoording to alim type : power/ground\n");
         }
       }
-      print ($bmodel_FH "--signal s_signalname : boolean/std_ulogic/integer/real := basevalue ;\n\nBEGIN\n\n--Power tests\n");
-      foreach ( keys %{$subckt{$model}{'pinlist'}} ) { ## Ecriture des power tests
-        if ($alim_def{$_}) {
-          print ($bmodel_FH "s_test_$_ <= true when v_$_\'above(g_${_}_min)\nand not v_$_\'above(g_${_}_max) and domain=time_domain\nelse false;\n");
+      print ($bmodel_FH "\t--signal s_signalname : boolean/std_ulogic/integer/real/signed/unsigned := basevalue ;\n\nBEGIN\n\n--Power tests\n");
+      foreach ( keys %{$subckt{$model}{pinlist}} ) { ## Ecriture des power tests
+        if ($alim_def{$techno}{$subckt{$model}{pinlist}{$_}{name}}) {
+          print ($bmodel_FH "\ts_test_$subckt{$model}{pinlist}{$_}{name} <= true when v_$subckt{$model}{pinlist}{$_}{name}\'above(g_${subckt{$model}{pinlist}{$_}{name}}_min)\n\tand not v_$subckt{$model}{pinlist}{$_}{name}\'above(g_${subckt{$model}{pinlist}{$_}{name}}_max) and domain=time_domain\n\telse false;\n");
         }
       }
       print ($bmodel_FH "--Repports in transcript for power tests\n");
-      foreach ( keys %{$subckt{$model}{'pinlist'}} ) { ## Ecriture repports de power tests dans le transcript
-        if ($alim_def{$_}) {
-          print ($bmodel_FH "assert s_test_$_ or s_enable_fct = 0.0 \nreport \"$model  : $_ powercheck failure ; voltage value out of bound\" severity warning;\n");
+      foreach ( keys %{$subckt{$model}{pinlist}} ) { ## Ecriture repports de power tests dans le transcript
+        if ($alim_def{$techno}{$subckt{$model}{pinlist}{$_}{name}}) {
+          print ($bmodel_FH "\tassert s_test_$subckt{$model}{pinlist}{$_}{name} or s_enable_fct = 0.0 \n\treport \"$model : $subckt{$model}{pinlist}{$_}{name} powercheck failure ; voltage value out of bound\" severity warning;\n");
+        }
+      }
+## Fin des power tests/ecriture transcripts. Ecriture des composants s'il y en a.
+      if ($subckt{$model}{dependency}) {
+        my $instance = -1 ;
+        print "\n\tDependency have been found. Trying to define them in the component section. Please check connectivity & syntax ...\n" if ( $verbose == 1 );
+        print ($bmodel_FH "\n$vhdl_sep\n-- Component section\n$vhdl_sep\n\n");
+        foreach (@{$subckt{$model}{dependency}}) {
+          $instance++;
+          my ($key) = keys $_ ;
+          print "\t-->Defining component $key\n" if ( $verbose == 1 );
+          print($bmodel_FH "\t-- Component $key definition. Please check syntax & connectivity\n\t$key entity ${$subckt{$model}{dependency}[$instance]}{$key}{sckt_ref} port map (\n");
+          my $index=0;
+          foreach my $pin (sort {$a <=> $b} keys %{$subckt{${$subckt{$model}{dependency}[$instance]}{$key}{sckt_ref}}{pinlist}}) {
+          #foreach my $pin (@{$subckt{$sckt_name}{dependency}[$instance]{$key}{pinlist}}) {
+            printf($bmodel_FH "\t\t");
+            printf($bmodel_FH "%-20s","$subckt{${$subckt{$model}{dependency}[$instance]}{$key}{sckt_ref}}{pinlist}{$pin}{name}");
+            printf($bmodel_FH "=>\t\t");
+            printf($bmodel_FH "%-20s","${$subckt{$model}{dependency}[$instance]}{$key}{pinlist}[$index]");
+            printf($bmodel_FH "\t,\n");
+            $index++; 
+          }
+          print ($bmodel_FH "\t);\n\t-- Component $key definition end.\n\n");
         }
       }
       print ($bmodel_FH "\nEND ARCHITECTURE FUNCTIONNAL\n\n");
       close $bmodel_FH;
     }
-    print Dumper \%subckt;
-    print Dumper \%pin;
-    print Dumper \@pin;
-  }
+  print "\n$term_sep\nGeneration of VHDL model file done\n" ;
+  } ## End VHDL model generation
+  #print Dumper \%subckt;
+  #print Dumper \%pin;
+  #print Dumper \@pin;
 } # End sub gen_model
 
 sub scan_carac {
@@ -640,41 +593,38 @@ sub scan_netlist {
   print "$term_sep\n";
   print ("Scan phase : Netlist file scan...\n");
   while (<$fh>) {
-    if (/^\.subckt\s+(.*)/i) {
-## Detection structure commençant par .subckt. Increment de l'indice subckt, reset du tableau arglist et des autres tables
-      $arglist=();
-      @arglist=();
-      $subckt_nr++;
+    if (/^\.subckt\s+(\S+)(?:\s+)?(.*)?$/i) { ## Detection structure commençant par .subckt. Increment de l'indice subckt, reset du tableau arglist et des autres tables
+      $arglist=() ; @arglist=() ; $subckt_nr++;
 
 ## Affectation du nom du subckt, de sa position dans le fichier. On stocke la position dans la netlist de base. Traitement de la première ligne de définition du subckt
-      @arglist = split( /\s+/, $1 ) ;
-      $sckt_name = shift(@arglist) ; $arglist = join (" ",@arglist) if ( ! @arglist == 0) ; # On ne join que si la table arglist est non vide, cas correspondant à scktname seul sur la première ligne
-      push @{$subckt{$sckt_name}{'argument'}}, $arglist if ($arglist) ;
-      #print "@arglist\n$arglist\n";
-      $subckt{$sckt_name}{'number'} = $subckt_nr;
-      $subckt{$sckt_name}{'subckt_pos'}=$.;
+      @arglist = split( /\s+/, $2 ) if ( $2 ) ;
+      $sckt_name = $1 ; $arglist = join (" ",@arglist) if ( ! @arglist == 0 ) ; # On ne join que si la table arglist est non vide, cas correspondant à scktname seul sur la première ligne
+      push @{$subckt{$sckt_name}{argument}}, $2 if ($2) ;
 ## Debug
-      print "  -->Found subckt definition ; Subckt number $subckt{$sckt_name}{'number'}\n" if ( $verbose ==1 ) ;
+      #print "@arglist\n$arglist\n";
+      $subckt{$sckt_name}{number} = $subckt_nr;
+      $subckt{$sckt_name}{subckt_pos}=$.;
+      print "  -->Found subckt definition ; Subckt number $subckt{$sckt_name}{number}\n" if ( $verbose ==1 ) ;
       print "\tName : $sckt_name\n" if ( $verbose ==1 ) ;
-      print "\tLine position : $subckt{$sckt_name}{'subckt_pos'}\n" if ( $verbose ==1 ) ;
+      print "\tLine position : $subckt{$sckt_name}{subckt_pos}\n" if ( $verbose ==1 ) ;
 ## Fin traitement première ligne de structure
 
 ## Traitement de la suite de la déclaration du subckt. While dans un autre while.
       while (<$fh>) {
         next if /^\s*$/ ; #Rien si ligne vide
         if (! /^\+/) { # Si ça n'a pas commencé par une ligne vide ou un + on sort de la déclaration du subckt et on commence à remplir/parcourir le body
-          push @{$subckt{$sckt_name}{'allbody'}}, $_ ;
-          push @{$subckt{$sckt_name}{'comment'}}, $_ if /^\*/ ;
-          push @{$subckt{$sckt_name}{'body'}}, $_ ;
+          push @{$subckt{$sckt_name}{allbody}}, $_ ;
+          push @{$subckt{$sckt_name}{comment}}, $_ if /^\*/ ;
+          push @{$subckt{$sckt_name}{body}}, $_ ;
           last; 
         }
         next if /^\+ ! Pin List/i; # Saut de l'execution pour lignes spéciales
         next if /^\+ ! Param List/; # Saut de l'execution pour lignes spéciales
         next if /^\+ ! Comments/; # Saut de l'execution pour lignes spéciales
-        push @{$subckt{$sckt_name}{'arg_comments'}}, $1 and next if (/^\+\s+!(.*)/);
+        push @{$subckt{$sckt_name}{arg_comments}}, $1 and next if (/^\+\s+!(.*)/);
         chomp $_;
         push @arglist , ( split /\s+/, $_ ) ;
-        push @{$subckt{$sckt_name}{'argument'}}, $_ ;
+        push @{$subckt{$sckt_name}{argument}}, $_ ;
         }
 ## Séparation des pins et paramètres. Affectation des positions dans la déclaration et des valeurs de base
   $pin_index = 0 ;
@@ -692,14 +642,46 @@ sub scan_netlist {
     if ( /(\w+)=(\w+)/ ) {
       print "\tFound parameter definition ; name $1 ; basevalue : $2\n" if ($verbose == 1 );
       $param_index++;
-      $subckt{$sckt_name}{'paramlist'}{$1}{'position'}=$param_index;
-      $subckt{$sckt_name}{'paramlist'}{$1}{'basevalue'}=$2;
-    } else {
-      print "\tFound pin : $_\n" if ($verbose == 1 );
+      $subckt{$sckt_name}{paramlist}{$param_index}{name}=$1;
+      $subckt{$sckt_name}{paramlist}{$param_index}{basevalue}=$2;
+    } elsif (/([\w\.<>\[\]]+)/) { ## Ici, soucis avec le case sensitive, vérifier si la syntax spice marche avec [], autres ?
+## Définition des pins : On associe I/O, A/D et pin unique si vecteur. Attention, io_Vect<3:0> (io) écrase Vect (custom) ??
+      print "\tFound pin : $1\n" if ($verbose == 1 );
+      #my $pin = $1 ; $pin =~ tr/[A-Z]/[a-z]/ ;
       $pin_index++;
-      $subckt{$sckt_name}{'pinlist'}{$_}{'position'}=$pin_index;
+      if ( $alim_def{$techno}{$_} ) {
+        $subckt{$sckt_name}{pinlist}{$pin_index} = { "name" => $_ , "type" => "alim" , "dir" => "io" , "single" => 1 };
+      } elsif (/^(io|i|o)(a|d)_([0-9a-zA-Z_]+)[<>]{0}$/i) {
+        $subckt{$sckt_name}{pinlist}{$pin_index} = { "name" => $_ , "type" => $2 , "dir" => $1 , "single" => 1 };
+      } elsif (/^(io|i|o)(a|d)_([0-9a-zA-Z_]+)<(\d+)>$/i) {
+        $subckt{$sckt_name}{pinlist}{$pin_index} = { "name" => $_ , "type" => $2 , "dir" => $1 , "vector" => {"name" => $3 , "index" => $4 } } ;
+        $subckt{$sckt_name}{pinvector}{$3} = {"min" => $4 , "max" => $4} if (!$subckt{$sckt_name}{pinvector}{$3}) ; 
+        $subckt{$sckt_name}{pinvector}{$3}{min} = $4 if ($4<$subckt{$sckt_name}{pinvector}{$3}{min}) ;
+        $subckt{$sckt_name}{pinvector}{$3}{max} = $4 if ($4>$subckt{$sckt_name}{pinvector}{$3}{max}) ;
+      } elsif (/^([0-9a-zA-Z_]+)[<>]{0}$/i) {
+        $subckt{$sckt_name}{pinlist}{$pin_index} = { "name" => $_ , "type" => "custom" , "dir" => "unknown" , "single" => 1 };
+      } elsif (/^([0-9a-zA-Z_]+)<(\d+)>$/i) {
+        $subckt{$sckt_name}{pinlist}{$pin_index} = { "name" => $_ , "type" => "custom" , "dir" => "unknown" , "vector" => {"name" => $1 , "index" => $2} } ;
+        $subckt{$sckt_name}{pinvector}{$1} = {"min" => $2 , "max" => $2} if (!$subckt{$sckt_name}{pinvector}{$1}) ; 
+        $subckt{$sckt_name}{pinvector}{$1}{min} = $2 if ($2<$subckt{$sckt_name}{pinvector}{$1}{min}) ;
+        $subckt{$sckt_name}{pinvector}{$1}{max} = $2 if ($2>$subckt{$sckt_name}{pinvector}{$1}{max}) ;
+      }
     }
   }
+  foreach (keys %{$subckt{$sckt_name}{pinlist}}) {
+    if ($subckt{$sckt_name}{pinlist}{$_}{vector} && $subckt{$sckt_name}{pinvector}{$subckt{$sckt_name}{pinlist}{$_}{vector}{name}}) {
+        $subckt{$sckt_name}{pinlist}{$_}{vector}{min} = $subckt{$sckt_name}{pinvector}{$subckt{$sckt_name}{pinlist}{$_}{vector}{name}}{min} ;
+        $subckt{$sckt_name}{pinlist}{$_}{vector}{max} = $subckt{$sckt_name}{pinvector}{$subckt{$sckt_name}{pinlist}{$_}{vector}{name}}{max} ;
+        if ($subckt{$sckt_name}{pinlist}{$_}{vector}{index} == $subckt{$sckt_name}{pinlist}{$_}{vector}{min}) {
+          $subckt{$sckt_name}{pinlist}{$_}{vector}{bit} = "lsb"
+        } elsif ($subckt{$sckt_name}{pinlist}{$_}{vector}{index} == $subckt{$sckt_name}{pinlist}{$_}{vector}{max}) {
+          $subckt{$sckt_name}{pinlist}{$_}{vector}{bit} = "msb"
+        } else  {
+          $subckt{$sckt_name}{pinlist}{$_}{vector}{bit} = "sb"
+        }
+    }
+  }
+  delete $subckt{$sckt_name}{pinvector} ;
   print "\tSubckt declaration summary ; $pin_index pins found ; $param_index parameters found\n" if ($verbose == 1 );
 ## Traitement du body du subckt
  print "\tEntering body of subckt\n" if ($verbose == 1 );
@@ -708,11 +690,11 @@ sub scan_netlist {
           print "\tEnd of $sckt_name definition\n\n" if ($verbose == 1 ) ;
           last ;
         }# Test fin de subckt
-## Ici à modifier, il ne prends pas les sauts de ligne dans le allbody et le body ne dois pas prendre les commentaires
-        push @{$subckt{$sckt_name}{'allbody'}}, $_ ;
+## Ici à modifier, il ne prend pas les sauts de ligne dans le allbody et le body ne dois pas prendre les commentaires
+        push @{$subckt{$sckt_name}{allbody}}, $_ ;
         next if /^\s*$/ ;
-        push @{$subckt{$sckt_name}{'comment'}}, $_ if /^\*/ ;
-        push @{$subckt{$sckt_name}{'body'}}, $_ if !/(^\*)|(^\s*$)/;
+        push @{$subckt{$sckt_name}{comment}}, $_ if /^\*/ ;
+        push @{$subckt{$sckt_name}{body}}, $_ if !/(^\*)|(^\s*$)/;
         }
 ## Fin de boucle if sur le subckt
       } else { # On est alors dans du body de netlist
@@ -721,34 +703,13 @@ sub scan_netlist {
         push @netlist_comment , $_ if /^\*/;
       }
   } # Fin de boucle sur le fichier
-## Traitements supplémentaires sur les subckt : redéfinition des pins et analyse des dépendaces / autres subckt
-  foreach $sckt_name (keys %subckt) {
-## Redéfinition des pins : On associe I/O, A/D et pin unique si vecteur. Attention, io_Vect<3:0> (io) écrase Vect (custom)
-    foreach ( keys %{$subckt{$sckt_name}{pinlist}} ) { 
-      if ($alim_def{$_} ) {
-        $subckt{$sckt_name}{pinmod}{$_} = { "type" => "alim" , "dir" => "io" , "min" => 1 , "max" => 1 , "pos" => $subckt{$sckt_name}{'pinlist'}{$_}{position} };
-      } elsif (/^(io|i|o)(a|d)_([0-9a-zA-Z_]+)[<>]{0}$/) {
-        $subckt{$sckt_name}{pinmod}{$3} = { "type" => $2 , "dir" => $1 , "min" => 1 , "max" => 1 , "pos" => $subckt{$sckt_name}{'pinlist'}{$_}{position} };
-      } elsif (/^(io|i|o)(a|d)_([0-9a-zA-Z_]+)<(\d+)>$/) {
-        $subckt{$sckt_name}{pinmod}{$3} = { "type" => $2 , "dir" => $1 , "min" => $4 , "max" => $4 , "pos" => $subckt{$sckt_name}{'pinlist'}{$_}{position} } if (!$subckt{$sckt_name}{pinmod}{$3}) ;
-        $subckt{$sckt_name}{pinmod}{$3}{min} = $4 if ( $4<$subckt{$sckt_name}{pinmod}{$3}{min} ) ;
-        $subckt{$sckt_name}{pinmod}{$3}{max} = $4 if ( $4>$subckt{$sckt_name}{pinmod}{$3}{max} ) ;
-        #Ici, on peut mettre à jour la pos ... pas vraiment utile étant donné l'ordre de défilement.
-        #$subckt{$sckt_name}{pinmod}{$3}{pos} = $subckt{$sckt_name}{'pinlist'}{$_}{position} if ( $subckt{$sckt_name}{pinmod}{$3}{pos} > $subckt{$sckt_name}{'pinlist'}{$_}{position}) ;
-      } elsif (/^([0-9a-zA-Z_]+)[<>]{0}$/) {
-        $subckt{$sckt_name}{pinmod}{$1} = { "type" => "custom" , "dir" => "unknown" , "min" => 1 , "max" => 1 , "pos" => $subckt{$sckt_name}{'pinlist'}{$_}{position} };
-      } elsif (/^([0-9a-zA-Z_]+)<(\d+)>$/) {
-        $subckt{$sckt_name}{pinmod}{$1} = { "type" => "custom" , "dir" => "unknwon" , "min" => $2 , "max" => $2 , "pos" => $subckt{$sckt_name}{'pinlist'}{$_}{position} } if (!$subckt{$sckt_name}{pinmod}{$3}) ;
-        $subckt{$sckt_name}{pinmod}{$1}{min} = $2 if ( $2<$subckt{$sckt_name}{pinmod}{$3}{min} ) ;
-        $subckt{$sckt_name}{pinmod}{$1}{max} = $2 if ( $2>$subckt{$sckt_name}{pinmod}{$3}{max} ) ;
-      } else {
-        $subckt{$sckt_name}{pinmod}{$_} = { "type" => "custom" , "min" => 1 , "max" => 1 , "fullname" => $_ };
-      }
-    }
-    $instance = 0;
-    print "Analysis of $sckt_name subckt :\n";
-    foreach (@{$subckt{$sckt_name}{'body'}}) {
-      if (/^([cdegijklmpqrstuvwxy]|fns|fnz)(\w+)\s+/i) {
+## Traitements supplémentaires sur les subckt : analyse des dépendaces / autres subckt TODO
+  foreach $sckt_name (keys %subckt) { ## foreach sur tous les subckt
+    $instance = -1; ## On commence à -1 pour remplir le tableau à partir de 0 et ne pas avoir de problèmes ...
+    print "\t-->Analysis of $sckt_name subckt :\n";
+    foreach (@{$subckt{$sckt_name}{body}}) {
+      if (/^\s*([cdegijklmpqrstuvwxy]|fns|fnz)([\w<>]+)(?:\s+)?(.*)?/i) { ## Si on trouve une nouvelle définition d'instance, RAZ, incrément de $instance
+        @arglist = () ;
         $instance++;
         given ($1) { # Ici, à compléter pour le type d'instance
           when (/c/i) {$instance_type = 'Capacitance';}
@@ -770,22 +731,38 @@ sub scan_netlist {
           when (/w/i) {$instance_type = 'Transmission Line';}
           when (/y/i) {$instance_type = 'Specific Devices/Transmission Line';}
         }
-        $instance_name = "$1"."$2";
-        print "Instance $instance found : name : $instance_name type : $instance_type\n" if ($verbose == 1) ;
-        $subckt{$sckt_name}{'instance'}{$instance_name}{'pos'}=$instance;
-        chomp $_ and $subckt{$sckt_name}{'instance'}{$instance_name}{'declaration'}=$_;
-      } elsif (/^\+\s+(.*)/) { # Si la ligne commence par un + : la déclaration de l'instance continue
-        print "Instance declaration goes on\n" if ( $verbose == 1 );
-        chomp $1 ;
-        $subckt{$sckt_name}{'instance'}{$instance_name}{'declaration'} .= " ".$1 ; # On concatène la suite
-      } else { next } # Ici, prendre en compte les commentaires ?
+        $instance_name = $1.$2;
+        print "\tInstance n°$instance : name : $instance_name type : $instance_type\n" if ($verbose == 1) ;
+        ${$subckt{$sckt_name}{instance}}[$instance] = ( {$instance_name => {"type" => $instance_type , "position" => $instance , "arg" => []} } ) ;
+        push @{$subckt{$sckt_name}{instance}[$instance]{$instance_name}{arg}} , (split /\s+/, $3) if ($3) ; 
+      } elsif (/^\s*\+\s*(.*)/) { # Si la ligne commence par un + : la déclaration de l'instance continue
+        push @{$subckt{$sckt_name}{instance}[$instance]{$instance_name}{arg}} , (split /\s+/, $1) ;
+      } else { next } # Ici, prendre en compte les commentaires, les lignes vides ?
+    }
+## Analyse/traitement des dépendances ;
+    $instance = -1 ;
+    foreach (@{$subckt{$sckt_name}{instance}}) { ## $_ dans cette boucle est la référence des hash. C'est par construction avec les push plus haut
+      print "\n\t-->Problem encoutered during subckt scan : multiple declaration ; check netlist or programmer ...\n" and exit if (scalar(keys $_)>1) ; ## vérification clé unique dans le tableau
+      ($key) = keys $_; ## normalement, clé unique
+      #print Dumper $_ and getc ;
+      #print Dumper $_->{$key}{arg} and getc ;
+      #print "tableau : @{$_->{$key}{arg}}" and getc;
+      my @dep = grep {$subckt{$_}} @{$_->{$key}{arg}} ; ## @{} est le tableau dont la référence est entre {}
+      if ( !@dep == 0 ) {
+        $instance++; print "\t\t-->Dependency analysis\n";
+        foreach my $dep (@dep) {
+          print "\t\t\t-->Found declared instance $key in $sckt_name ; subckt name : $dep\n" ;
+          ${$subckt{$sckt_name}{dependency}}[$instance] = ( {$key => {"sckt_ref" => $dep ,  "pinlist" => [] , "arglist" => []}} ) ;
+          push @{$subckt{$sckt_name}{dependency}[$instance]{$key}{pinlist}} , grep (/^[\w<>\[\]]+$/ ,( grep {!$subckt{$_}} @{$_->{$key}{arg}} ) )  ;
+          push @{$subckt{$sckt_name}{dependency}[$instance]{$key}{arglist}} , grep (/\w+=\w+/ ,( grep {!$subckt{$_}} @{$_->{$key}{arg}} ) )  ;
+        }
+      }
 #Ici, il faudrait aussi faire la même chose sur le netlist_body
 #Au final, on veut extraire la hierarchie des instances
-    }
     print "\n";
-  }
+  } ## end foreach sur tous les subckt
 #Debug
-  print Dumper \%subckt ;
+  #print Dumper \%subckt ;
   print ("Ending netlist file scan phase.\n");
   print "$term_sep\n\n";
 } # end scan_netlist
@@ -942,27 +919,32 @@ sub make_netlistfile {
   if ( !(-f $netlistfile) ) {system ( "touch" , $path."netlist.cir") ;}
   open ($netlistFH, ">$netlistfile") or die ("open : $!");
   print ( $netlistFH "$eldo_sep\n**** Subcircuit definition\n$eldo_sep\n\n");
-  foreach $sckt_name ( sort { $subckt{$a}{'subckt_pos'} <=> $subckt{$b}{'subckt_pos'} } keys %subckt ) {
+  foreach $sckt_name ( sort { $subckt{$a}{subckt_pos} <=> $subckt{$b}{subckt_pos} } keys %subckt ) {
     print ( $netlistFH ".subckt $sckt_name\n");
     print ( $netlistFH "+ ! Pin List\n");
-    if ( exists $subckt{$sckt_name}{'pinlist'} ) {
+    if ( exists $subckt{$sckt_name}{pinlist} ) {
       @arglist = ();
-      foreach $arglist ( sort { $subckt{$sckt_name}{'pinlist'}{$a}{'position'} <=> $subckt{$sckt_name}{'pinlist'}{$b}{'position'} } keys %{$subckt{$sckt_name}{'pinlist'}} ) {
-        push @arglist, $arglist; }
+      foreach ( sort { $a <=> $b } keys %{$subckt{$sckt_name}{pinlist}} ) {
+        if ( $subckt{$sckt_name}{pinlist}{$_}{type} eq "alim" || $subckt{$sckt_name}{pinlist}{$_}{type} eq "custom") {
+          push @arglist, $subckt{$sckt_name}{pinlist}{$_}{name} ;
+        } else {
+          push @arglist, $subckt{$sckt_name}{pinlist}{$_}{name} ;
+        }
+      }
       print ( $netlistFH wrap($initial_tab, $other_tab, @arglist));
       print ( $netlistFH "\n"); }
     print ( $netlistFH "+ ! Param List\n");
-    if ( exists $subckt{$sckt_name}{'paramlist'} ) {
+    if ( exists $subckt{$sckt_name}{paramlist} ) {
       @arglist = ();
-      foreach $arglist ( sort { $subckt{$sckt_name}{'paramlist'}{$a}{'position'} <=> $subckt{$sckt_name}{'paramlist'}{$b}{'position'} } keys %{$subckt{$sckt_name}{'paramlist'}} ) {
-        push @arglist, $arglist."=".$subckt{$sckt_name}{'paramlist'}{$arglist}{'basevalue'}; }
+      foreach ( sort { $a <=> $b } keys %{$subckt{$sckt_name}{paramlist}} ) {
+        push @arglist, $subckt{$sckt_name}{paramlist}{$_}{name}."=".$subckt{$sckt_name}{paramlist}{$_}{basevalue}; }
       print ( $netlistFH wrap($initial_tab, $other_tab, @arglist));
       print ( $netlistFH "\n"); }
     print ( $netlistFH "+ ! Comments\n");
-    if ( exists $subckt{$sckt_name}{'arg_comments'} ) {
-      print ( $netlistFH wrap($comment_tab, $comment_tab, @{$subckt{$sckt_name}{'arg_comments'}})); print ($netlistFH "\n"); }
+    if ( exists $subckt{$sckt_name}{arg_comments} ) {
+      print ( $netlistFH wrap($comment_tab, $comment_tab, @{$subckt{$sckt_name}{arg_comments}})); print ($netlistFH "\n"); }
     print ( $netlistFH "\n");
-    foreach (@{$subckt{$sckt_name}{'allbody'}}) {
+    foreach (@{$subckt{$sckt_name}{allbody}}) {
       print ( $netlistFH wrap($no_tab, $other_tab, $_)); }
     print ( $netlistFH "\n");
     print ( $netlistFH ".ends \n\n");
@@ -1192,11 +1174,6 @@ print "$term_sep\n\n";
 ################################################################################
 
 make_eldofile();
-#my %h = (  "ELDO" => [ "/home/wiking/freedkits/PTM-MG/library/spice_models.lib" ]  ) ;
-my %h = (  "ELDO" => [ "/nfs/work-crypt/ic/common/altis/1.2.2/eldo/models/c11n_reg_sf_v3-14_07jun_bsim4v43.eldo" ]  ) ;
-my %techno = analyze_techno(\%h);
-
-#print Dumper \%techno ;
 
 close ( $netlistFH ) ;
 close ( $caracFH ) ;

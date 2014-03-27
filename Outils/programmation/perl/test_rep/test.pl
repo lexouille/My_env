@@ -169,7 +169,7 @@ use File::Find;
 
 #%param = () ;
 #$param{tab} = [ 35 , 14 , 326, 436 ] ;
-$param{hash} = { 'toi' => { 'nom' => 'Alex' , 'age' => 31 } , 'moi' => { 'nom' => 'J' , 'ville' => 'Grenoble' } } ;
+#$param{hash} = { 'toi' => { 'nom' => 'Alex' , 'age' => 31 } , 'moi' => { 'nom' => 'J' , 'ville' => 'Grenoble' } } ;
 #my %gate = ( 'nom' => 'add' , 'io' => '4' ) ;
 #push(@{$param{hash}{porte}}, \%gate ) ;
 #print Dumper \%param ;
@@ -304,6 +304,42 @@ $param{hash} = { 'toi' => { 'nom' => 'Alex' , 'age' => 31 } , 'moi' => { 'nom' =
 #}
 #print Dumper \%h;
 
+my %subckt = ( "sckt_name" => { "temp" => { "pinlist" => {
+"1" => "toto" ,
+"2" => "toto" ,
+"3" => "toto" ,
+"4" => "toto" ,
+"5" => "toto" ,
+"6" => "toto" ,
+"7" => "toto" ,
+"8" => "toto" ,
+"9" => "toto" ,
+"10" => "toto" ,
+"11" => "toto" ,
+"12" => "toto" ,
+"13" => "toto" ,
+"14" => "toto" ,
+"15" => "toto" ,
+"16" => "toto" ,
+"17" => "toto" ,
+"18" => "toto" ,
+"19" => "toto" ,
+"20" => "toto" ,
+"21" => "toto" ,
+"23" => "toto" ,
+"24" => "toto" ,
+"26" => "toto" ,
+"27" => "toto" ,
+"28" => "toto" ,
+"29" => "toto" ,
+"30" => "toto" ,
+"36" => "toto" ,
+"41" => "toto" } } } );
+print Dumper \%subckt;
+
+foreach ( sort { $a <=> $b } keys %{$subckt{sckt_name}{temp}{pinlist}} ) {
+  print "key : $_;\n"}
+
 ################################################################################
 #### Test math big float
 ################################################################################
@@ -342,55 +378,55 @@ $param{hash} = { 'toi' => { 'nom' => 'Alex' , 'age' => 31 } , 'moi' => { 'nom' =
 #### Test R/W file
 ################################################################################
 ## Fonction génériquen de sub quesion/réponse
-sub stdin_answer {
-  my @in = @_ ; 
-  my $question = shift @in ; map ( {tr/A-Z/a-z/} @in );#Si case insensitive
-  my %answer;
-  my $g_answer;
-  print "$question\n";
-  foreach (@in) { $answer{$_}++; }
-  $g_answer = <STDIN>; chomp $g_answer;
-  $g_answer =~ tr/A-Z/a-z/;
-  while ( !exists ( $answer{$g_answer} ) ) {
-    print "Wrong answer ; possible choices : @in\n$question\n";
-    $g_answer = <STDIN>; chomp $g_answer;
-    $g_answer =~ tr/A-Z/a-z/;
-  }
-  return $g_answer;
-}
+#sub stdin_answer {
+  #my @in = @_ ; 
+  #my $question = shift @in ; map ( {tr/A-Z/a-z/} @in );#Si case insensitive
+  #my %answer;
+  #my $g_answer;
+  #print "$question\n";
+  #foreach (@in) { $answer{$_}++; }
+  #$g_answer = <STDIN>; chomp $g_answer;
+  #$g_answer =~ tr/A-Z/a-z/;
+  #while ( !exists ( $answer{$g_answer} ) ) {
+    #print "Wrong answer ; possible choices : @in\n$question\n";
+    #$g_answer = <STDIN>; chomp $g_answer;
+    #$g_answer =~ tr/A-Z/a-z/;
+  #}
+  #return $g_answer;
+#}
 
-my $path=`pwd`; chomp $path; $path .="/" ;
+#my $path=`pwd`; chomp $path; $path .="/" ;
 
-print $path,"\n";
-opendir (PATH, $path) or die $!;
+#print $path,"\n";
+#opendir (PATH, $path) or die $!;
 
-sub outputfile { # prend en parametre un nom de fichier pour écriture
-# prend en parametre un nom de fichier pour écriture
-# vérifie s'il existe et demande confirmation d'overwrite
-# le crée sinon
-# retourne le filehandle
-# usage : outputfile("nom_du_fichier")
-  my $_outputfile;
-  my $_outputfile_filehandle;
-  ($_outputfile)=@_;
-  my $_other_outputfile=$_outputfile;
-  if (!(-f $_outputfile)) {
-    system ( "touch" , $path.$_outputfile) ;
-    open ($_outputfile_filehandle, ">$_outputfile") or die ("Open : $!");
-  } else {
-    my $choice = stdin_answer ("le fichier existe déjà remplacer ?",'Yes','No');
-    if ($choice eq "yes") {
-      open ($_outputfile_filehandle, ">$_outputfile") or die ("Open : $!") ;
-      } else {
-        while ($_other_outputfile eq $_outputfile) { print "Select new name :\n" ; $_other_outputfile = <STDIN> ; chomp $_other_outputfile ;}
-        system ( "touch" , $path.$_other_outputfile) ;
-        open ($_outputfile_filehandle, ">$_outputfile") or die ("Open : $!");
-      }
-  }
-  return $_outputfile_filehandle ;
-} # End sub outputfile ... manque le return
+#sub outputfile { # prend en parametre un nom de fichier pour écriture
+## prend en parametre un nom de fichier pour écriture
+## vérifie s'il existe et demande confirmation d'overwrite
+## le crée sinon
+## retourne le filehandle
+## usage : outputfile("nom_du_fichier")
+  #my $_outputfile;
+  #my $_outputfile_filehandle;
+  #($_outputfile)=@_;
+  #my $_other_outputfile=$_outputfile;
+  #if (!(-f $_outputfile)) {
+    #system ( "touch" , $path.$_outputfile) ;
+    #open ($_outputfile_filehandle, ">$_outputfile") or die ("Open : $!");
+  #} else {
+    #my $choice = stdin_answer ("le fichier existe déjà remplacer ?",'Yes','No');
+    #if ($choice eq "yes") {
+      #open ($_outputfile_filehandle, ">$_outputfile") or die ("Open : $!") ;
+      #} else {
+        #while ($_other_outputfile eq $_outputfile) { print "Select new name :\n" ; $_other_outputfile = <STDIN> ; chomp $_other_outputfile ;}
+        #system ( "touch" , $path.$_other_outputfile) ;
+        #open ($_outputfile_filehandle, ">$_outputfile") or die ("Open : $!");
+      #}
+  #}
+  #return $_outputfile_filehandle ;
+#} # End sub outputfile ... manque le return
 
-outputfile("toto");
+#outputfile("toto");
 ## Validé ...
 
 ################################################################################
@@ -433,4 +469,10 @@ outputfile("toto");
 #print @result;
 
 ## Validé
+
+################################################################################
+#### tout un fichier en lowercase
+################################################################################
+## sous vim n ou N en selection visuelle
+##perl -pe '$_= lc($_)' input.txt > output.txt
 

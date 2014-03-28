@@ -1,3 +1,20 @@
+""""""""""""""""""""VIMRC FILE""""""""""""""""""""
+""""""""""""""""""""LOCAL COPY""""""""""""""""""""
+" Ajout du répertoire .env/.vim pour les fichiers vim
+" set runtimepath=~aferret/.env/.vim,$VIMRUNTIME
+
+" Source du .my_vimrc common
+" source ~aferret/.env/.my_vimrc
+
+" Source du fichier de fonctions SPICE
+" source ~aferret/.env/.vim/spice.vim
+
+" Source du fichier de zoom ne marche que pour GUI
+" source ~aferret/.env/.vim/zoom.vim
+
+" Mise en commentaire - source du fichier de config
+" source ~aferret/.env/.vim/comments.vim
+
 """"""""""""""""""MY VIMRC FILE""""""""""""""""""""
 set fileformat=unix
 " ':help options.txt' ou ':help nom_du_paramètre' dans Vim
@@ -11,6 +28,7 @@ set nohidden
 
 "Active la numérotation de ligne
 set number
+set numberwidth=5
 
 """"""""""" Couleurs """""""""""
 " Utiliser un jeu de couleurs sur fond sombre (plutôt que le jeu Sun)
@@ -24,7 +42,7 @@ set background=dark
 "set t_AB=^[[48;5;%dm
 "set t_AF=^[[38;5;%dm
 "colorscheme burnttoast256 
-" Surligne ou cache les résultats de la dernière recherche
+" Surligne ou cache les résultats de la dernière recherche avec ctrl-n
 set nohlsearch
 map <silent> <C-n> :se invhlsearch<CR>
 highlight search cterm=none ctermfg=16 ctermbg=15
@@ -43,17 +61,14 @@ set statusline=%<%f%h%m%r%=%l,%c\ %P
 " Contenu des onglets
 set guitablabel=%t%m
 
-" Largeur maxi du texte inséré
-" '72' permet de wrapper automatiquement à 72 caractères
-" '0' désactive la fonction
-set textwidth=0
-
+" Ne pas créer de swap files .swp ...
+set noswapfile
 " Ne pas assurer la compatibilité avec l'ancien Vi
 set nocompatible
 " Nombre de colonnes
 "set columns=80
 " Nombre de commandes dans l'historique
-set history=50
+set history=500
 " Options du fichier ~/.viminfo
 "set viminfo='20,\"50 option de base, qq problems avec ce fichier...
 " Du coup, inactif
@@ -63,8 +78,8 @@ set backspace=2
 set backspace=indent,eol,start
 " Autorise le passage d'une ligne à l'autre avec les flèches gauche et droite
 set whichwrap=<,>,[,]
-" Garde toujours une ligne visible à l'écran au dessus du curseur
-set scrolloff=1
+" Garde toujours 5 ligne visible à l'écran au dessus du curseur
+set scrolloff=5
 " Affiche les commandes dans la barre de status
 set showcmd
 " Affiche la paire de parenthèses
@@ -75,9 +90,10 @@ set nostartofline
 set incsearch
 " Option de la complétion automatique
 
-" Ouvre le fichier dont le nom est sous le curseur et split
+" Ouvre le fichier dont le nom est sous le curseur
+map <F7> :wincmd f<CR> 
 map <F8> :vertical wincmd f<CR>
-map <F7> :wincmd f<CR>
+map <F9> <c-w>gf
 
 "A voir
 map <F6> [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
@@ -188,10 +204,10 @@ set pdev=bca_hpc_428
 set helpfile=$VIMRUNTIME/doc/help.txt
 
 " Le découpage des folders se base sur l'indentation
-set foldmethod=manual
+"set foldmethod=manual
 
 " 40 niveaux d'indentation par défaut pour les folders
-set foldlevel=40
+"set foldlevel=40
 
 " split preferentially above/right
 set splitright
@@ -209,41 +225,11 @@ filetype plugin on
 " Indentation par défaut
 set smartindent expandtab shiftwidth=2 tabstop=2
 
-autocmd BufNewfile,BufRead *Makefile* set syntax=make
-autocmd BufNewfile,BufRead *.c   set smartindent expandtab shiftwidth=2 tabstop=4 cindent
-autocmd BufNewfile,BufRead *.c++ set smartindent expandtab shiftwidth=2 tabstop=4 cindent
-autocmd BufNewfile,BufRead *.h   set smartindent expandtab shiftwidth=2 tabstop=4 cindent 
-autocmd BufNewfile,BufRead *.cpp set smartindent expandtab shiftwidth=2 tabstop=4 cindent
-autocmd BufNewfile,BufRead *.v   set smartindent expandtab shiftwidth=2 tabstop=2
-autocmd BufNewfile,BufRead *.sh  set smartindent expandtab shiftwidth=2 tabstop=2
-autocmd BufNewfile,BufRead *.sv  set smartindent expandtab shiftwidth=2 tabstop=2
-autocmd BufNewfile,BufRead *.sv  set syntax=verilog
-autocmd BufNewfile,BufRead *.sv  call SVAsyncColors()
-autocmd BufNewfile,BufRead *.p?  set smartindent expandtab shiftwidth=2 tabstop=8
-autocmd BufNewfile,BufRead *.vhd set smartindent expandtab shiftwidth=2 tabstop=2
-autocmd BufNewfile,BufRead *.vhd call VHDLMappings()
-autocmd BufNewfile,BufRead *.vhd call InitTaglist()
-"autocmd BufNewfile,BufRead *.vhd TlistToggle
-autocmd BufNewfile,BufRead *.template set smartindent expandtab shiftwidth=2 tabstop=8
-autocmd BufNewfile,BufRead *.template set fdc=4 fdm=syntax
-
-" Définition des fichiers type SPICE
-au BufRead,BufNewFile *.cir set filetype=cir
-au BufRead,BufNewFile *.sp set filetype=cir
-au BufRead,BufNewFile *.cdl set filetype=cir
-au BufRead,BufNewFile *.inc set filetype=cir
-au BufRead,BufNewFile *.pex set filetype=cir
-au BufRead,BufNewFile *.pxi set filetype=cir
-au BufRead,BufNewFile *.typ set filetype=cir
-au BufRead,BufNewFile *.lib set filetype=cir
-au BufRead,BufNewFile *.ext set filetype=cir
-au BufRead,BufNewFile *.ckt set filetype=cir
-au BufRead,BufNewFile *.sp2 set filetype=cir
-au BufRead,BufNewFile *.sp3 set filetype=cir
-au BufRead,BufNewFile carac set filetype=cir
+" Définition des fichiers type SPICE : par extension et fichiers particuliers
+" carac et netlist
+au BufRead,BufNewFile *.cir,*.sp,*.cdl,*.inc,*.pex,*.pxi,*.typ,*.lib,*.mod,*.ext,*.ckt,*.sp2,*.sp3,carac,netlist set filetype=cir
 
 " Source du fichier de coloration syntaxique
-au! Syntax cir source ~/.env/My_env/.vim/syntax/eldo.vim
 au! Syntax cir source ~/.env/.vim/syntax/eldo.vim
 
 function! Fill(nbchar)
@@ -251,10 +237,41 @@ function! Fill(nbchar)
   return str . repeat (' ', a:nbchar - strlen(str))
 endfunc
 
-function! SVAsyncColors()
-  syntax keyword SVAsyncComPrimitives Write BeginWrite EndWrite Read BeginRead EndRead
-  highlight link SVAsyncComPrimitives Function
+autocmd BufNewfile,BufRead * call General()
+function! General()
+  echohl Title | echo "Loading vim general functions ... done." | echohl None <CR>
+  command! -nargs=0 Fontaine :call Source_vimrc()
 endfunction
+
+function! Source_vimrc()
+  source ~/.vimrc
+  echo "Local .vimrc (re)loaded"
+endfunction
+" help functions / function-list
+
+" OLD STUFF, FROM J ?
+"autocmd BufNewfile,BufRead *Makefile* set syntax=make
+"autocmd BufNewfile,BufRead *.c   set smartindent expandtab shiftwidth=2 tabstop=4 cindent
+"autocmd BufNewfile,BufRead *.c++ set smartindent expandtab shiftwidth=2 tabstop=4 cindent
+"autocmd BufNewfile,BufRead *.h   set smartindent expandtab shiftwidth=2 tabstop=4 cindent 
+"autocmd BufNewfile,BufRead *.cpp set smartindent expandtab shiftwidth=2 tabstop=4 cindent
+"autocmd BufNewfile,BufRead *.v   set smartindent expandtab shiftwidth=2 tabstop=2
+"autocmd BufNewfile,BufRead *.sh  set smartindent expandtab shiftwidth=2 tabstop=2
+"autocmd BufNewfile,BufRead *.sv  set smartindent expandtab shiftwidth=2 tabstop=2
+"autocmd BufNewfile,BufRead *.sv  set syntax=verilog
+"autocmd BufNewfile,BufRead *.sv  call SVAsyncColors()
+"autocmd BufNewfile,BufRead *.p?  set smartindent expandtab shiftwidth=2 tabstop=8
+"autocmd BufNewfile,BufRead *.vhd set smartindent expandtab shiftwidth=2 tabstop=2
+"autocmd BufNewfile,BufRead *.vhd call VHDLMappings()
+"autocmd BufNewfile,BufRead *.vhd call InitTaglist()
+"autocmd BufNewfile,BufRead *.vhd TlistToggle
+"autocmd BufNewfile,BufRead *.template set smartindent expandtab shiftwidth=2 tabstop=8
+"autocmd BufNewfile,BufRead *.template set fdc=4 fdm=syntax
+
+"function! SVAsyncColors()
+"  syntax keyword SVAsyncComPrimitives Write BeginWrite EndWrite Read BeginRead EndRead
+"  highlight link SVAsyncComPrimitives Function
+"endfunction
 
 
 "function! VHDLMappings()

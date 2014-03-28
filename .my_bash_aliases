@@ -1,3 +1,4 @@
+#!/bin/bash
 # My alias definition
 # To be sourced by main bashrc file
 
@@ -6,4 +7,8 @@ alias l='ls -lrth'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias dua='du -ahc'
+alias vimenv='vim -p ~/.vimrc ~/.bashrc ~/.env/.my_bashrc ~/.env/.my_bash_aliases ~/.env/.my_vimrc'
+alias vimo='vim -o'
+alias vimO='vim -O'
+alias vimp='vim -p'
 

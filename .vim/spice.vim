@@ -4,22 +4,18 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Chargement des commandes SPICE à l'ouverture d'un .cir
-autocmd BufNewfile,BufRead *.cir call SpiceMappings()
+"autocmd BufNewfile,BufRead *.cir,*.sp,*.cdl,*.inc,*.pex,*.pxi,*.typ,*.lib,*.mod,*.ext,*.ckt,*.sp2,*.sp3,carac,netlist call SpiceMappings()
+autocmd BufNewFile,BufRead *.cir,*.sp,*.cdl,*.inc,*.pex,*.pxi,*.typ,*.lib,*.mod,*.ext,*.ckt,*.sp2,*.sp3,carac,netlist call SpiceInit()
 
-function! General()
-echohl Title | echo "General SPICE function loading ..." | echohl None <CR>
-command! -nargs=0 Fontaine :call Ssvrc()
-sleep 1
-echo ""
-endfunction
-
-function! Ssvrc()
-  source ~aferret/.vimrc
-  echo "Local .vimrc loaded"
+function! SpiceInit()
+  call SpiceMappings()
+  let s:pwd = getcwd() 
+  echo "Checking current directory for specific files ..."
+  echo "-->Directory name : "s:pwd
 endfunction
 
 function! SpiceMappings()
-  echohl Title | echo "Loading Spice functions ..." | echohl None <CR>
+  echohl Title | echo "Loading Spice functions ... done." | echohl None <CR>
   command! -nargs=0 Vs :call NewVoltageSource()
   command! -nargs=0 Nmos :call NewMOS()
   command! -nargs=0 Nsub :call Newsubckt()
@@ -164,7 +160,7 @@ function! Newsubckt()
   let subcktname = input("Subckt name : ","")
   let portlist = input("Port list : ","")
 
-  call append(curline,'.subckt ' . subcktname . ' ' . portlist )
+  call append(curline,'.subckt '.subcktname.' '.portlist )
   call append(curline+1,' ')
   call append(curline+2,'.ends')
   call append(curline+3,' ')
@@ -201,7 +197,9 @@ function! NewVSource()
     let vp = input("Positive Node : ")
     let vn = input("Negative Node : ","0")
     let dc_val = input("DC Value : ")
-    call append(curline, name . ' ' . vp . ' ' . vn . ' DC ' . dc_val )
+    let s:toprint=name." ".vp." ".vn. " DC ".dc_val
+    "call append(curline, name.' '.vp.' '.vn.' DC '.dc_val)
+    call append(curline, s:toprint)
 
     elseif vstypei==2
 

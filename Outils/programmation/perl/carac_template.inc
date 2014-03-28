@@ -3,22 +3,22 @@ Netlist_name user_name
 ********************************************************************************
 **** altis 130nm
 ********************************************************************************
-.option search=/nfs/work-crypt/ic/common/altis/1.2.2/eldo/models/
-.option search=/nfs/work-crypt/ic/usr/aferret/altis/simulation/include
+.option search = /nfs/work-crypt/ic/common/altis/1.2.2/eldo/models/
+.option search = /nfs/work-crypt/ic/usr/aferret/altis/simulation/include
 
 ********************************************************************************
 **** General option for simulation
 ********************************************************************************
-.OPTION
+.option
 + nowarn=240
 + nowarn=252
 + nowarn=255
 + nowarn=902
 + nowarn=209
-+ ALTER_NOMINAL_TEXT=nom
-+ AEX=2 ALIGNEXT
-+ TUNING = ACCURATE !FAST STANDARD ACCURATE VHIGH
-*+ PREMIER ! Only for gig netlist to improve CPU Time
++ alter_nominal_text=nom
++ aex=2 alignext
++ tuning = accurate ! global accuracy parameter => fast standard accurate vhigh
+*+ premier ! Only for gig netlist to improve CPU Time
 
 ********************************************************************************
 **** Netlist call. Text / schematic or PLS
@@ -197,7 +197,11 @@ Cout out dvss cload
 ********************************************************************************
 **** Testbench call
 ********************************************************************************
+.Operating_Point
+.DC_Analysis
 .Transient_Analysis
+.AC_Analysis
+
 
 ********************************************************************************
 **** User defined stuff

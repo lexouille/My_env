@@ -1,2 +1,24 @@
+#!/bin/bash
 # My personnal bashrc file
+
+
+# Source common aliases
+source ~/.env/.my_bash_aliases
+
+# Source common bashrc
+#source ~/.env/.my_bashrc
+
+# Other, work only
+# Source global definitions
+alias cdnfs='cd /nfs'
+alias cdwork='cd /nfs/work-crypt'
+alias cdic='cd /nfs/work-crypt/ic/usr/aferret'
+
+# Export location
+export ic=/nfs/work-crypt/ic/usr/aferret
+
+function logserver () 
+{
+~aferret/scripts/log_server.csh
+}
 

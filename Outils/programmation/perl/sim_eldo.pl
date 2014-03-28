@@ -121,9 +121,9 @@ opendir (PATH, $path) or die $!;
 my $caracfile = $path . "carac.inc";
 my $netlistfile = $path . "netlist.cir";
 my $eldofile = $path . "carac";
-my $basenetlistfile ;
+my $basenetlistfile ; my $lc_netlistfile ;
 
-my ($netlistFH,$caracFH,$eldoFH,$basenetlistFH);
+my ($netlistFH,$caracFH,$eldoFH,$basenetlistFH,$lc_netlistFH);
 
 my $fh;
 
@@ -241,6 +241,8 @@ sub init { # Initialisation du répertoire
   print "\n";
   my @cirfile = grep /\.cir$/, @file;
   my @incfile = grep /\.inc$/, @file;
+  $lc_netlistfile = $path."temp.cir" ;
+
   if ($file{'netlist.cir'}) {
     $choice = stdin_answer ('netlist.cir file detected. Do you want to overwrite it ?','yes','no');
     if ($choice eq 'yes') {
@@ -252,9 +254,14 @@ sub init { # Initialisation du répertoire
       print "\n";
       $choice = stdin_answer ('Select file to use for generation of netlist.cir',@file);
       $basenetlistfile = $path.$choice ;
+      system ("touch", $lc_netlistfile) ;
       open ($basenetlistFH, "<$basenetlistfile") or die ("open : $!");
-      scan_netlist($basenetlistFH); 
+      open ($lc_netlistFH, ">$lc_netlistfile") or die ("open : $!");
+      while (<$basenetlistFH>) { printf( $lc_netlistFH  lc $_ ) ; }
+      close ($lc_netlistFH) ; open ($lc_netlistFH, "<$lc_netlistfile") or die ("open : $!");
+      scan_netlist($lc_netlistFH); 
       make_netlistfile();
+      system ("rm", $lc_netlistfile) ;
       } elsif ($choice eq 'no') {
       $choice = stdin_answer ("Do you want to :\n 1-->make a backup copy of netlist.cir and regenerate it from another file ?\n 2-->keep netlist.cir as is ?",1,2) ;
         if ( $choice == 1 ) { # Backup et régén
@@ -267,9 +274,14 @@ sub init { # Initialisation du répertoire
           print "\n";
           $choice = stdin_answer ('Select file to use for generation of netlist.cir',@file);
           $basenetlistfile = $path.$choice ;
+          system ("touch", $lc_netlistfile) ;
           open ($basenetlistFH, "<$basenetlistfile") or die ("open : $!");
-          scan_netlist($basenetlistFH); 
+          open ($lc_netlistFH, ">$lc_netlistfile") or die ("open : $!");
+          while (<$basenetlistFH>) { printf( $lc_netlistFH  lc $_ ) ; }
+          close ($lc_netlistFH) ; open ($lc_netlistFH, "<$lc_netlistfile") or die ("open : $!");
+          scan_netlist($lc_netlistFH); 
           make_netlistfile();
+          system ("rm", $lc_netlistfile) ;
         } elsif ( $choice == 2 ) {
           $basenetlistfile = $path."netlist.cir" ;
           open ($basenetlistFH, "<$basenetlistfile") or die ("open : $!");
@@ -277,11 +289,16 @@ sub init { # Initialisation du répertoire
           }
       }
     } else { # Si le fichier netlist.cir n'existe pas : création à partir d'un fichier au choix
-      $choice = stdin_answer ('Select file to use for generation of netlist.cir',@file) ;
+      $choice = stdin_answer ('Select file to use for generation of netlist.cir',@file);
       $basenetlistfile = $path.$choice ;
+      system ("touch", $lc_netlistfile) ;
       open ($basenetlistFH, "<$basenetlistfile") or die ("open : $!");
-      scan_netlist($basenetlistFH); 
+      open ($lc_netlistFH, ">$lc_netlistfile") or die ("open : $!");
+      while (<$basenetlistFH>) { printf( $lc_netlistFH  lc $_ ) ; }
+      close ($lc_netlistFH) ; open ($lc_netlistFH, "<$lc_netlistfile") or die ("open : $!");
+      scan_netlist($lc_netlistFH); 
       make_netlistfile();
+      system ("rm", $lc_netlistfile) ;
     }
 ## Test existance carac et carac.inc, overwrite éventuel
   if ($file{'carac.inc'}) {
@@ -562,22 +579,22 @@ sub scan_carac {
         #print "\tParameter definition line $. ; name : $_ ; Default value $paramlist{$_}\n" if ($verbose == 1 ) ;
       #}
       my %split=split(/[\s=]+/,$1) ;
-      foreach (keys %split) { push @paramlist , ($_,$split{$_}) ; print "\tParameter definition line $. ; name : $_ ; Default value $split{$_}\n" if ($verbose == 1 ) ; }
+      foreach (keys %split) { push @paramlist , ($_,$split{$_}) ; print "\tParameter definition line $. ; name : $_ ; Default value $split{$_}\n" ; }
     } elsif ( /^\.define_testbench\s+(\w+)/i ) {
-      print "\tTestbench definition found line $. ; name : $1\n" if ($verbose == 1 );
+      print "\tTestbench definition found line $. ; name : $1\n";
       my $t = $1;
       #$t =~ tr/A-Z/a-z/;
       ++$tbenchlist{$t};
     } elsif ( /^\.lib include\.inc\s+(\w+)/i) {
-      print "\tModel definition found line $. ; name : $1\n" if ($verbose == 1 );
+      print "\tModel definition found line $. ; name : $1\n" ;
     } elsif ( /^\.step\s+param\s+(\w+)\s+(incr|dec|oct|lin|list|file)[\s+|\s*=\s*]([\w+\.?\w* +]+)/i) { #Détection .step sur un paramètre unique
       $step{$1}{'incr_spec'}=$2;
       @{$step{$1}{'arg'}}=split(/\s+/,$3);
-      print "\tParameter step found line $. ; Single param : $1 ; Incr_spec : $step{$1}{'incr_spec'} ; Incr_arg : @{$step{$1}{'arg'}}\n" if ($verbose == 1 );
+      print "\tParameter step found line $. ; Single param : $1 ; Incr_spec : $step{$1}{'incr_spec'} ; Incr_arg : @{$step{$1}{'arg'}}\n";
     } elsif ( /^\.step\s+param\s+\(([\w+\s+]+)\)\s+(incr|dec|oct|lin|list|file)[\s+|\s*=\s*]((:?(.*)\s+)+)/i ) { #Détection .step sur des paramètres multiples
       $step{$1}{'incr_spec'}=$2;
       @{$step{$1}{'arg'}}=split(/\s+/,$3);
-      print "\tParameter step found line $. ; Multi param : $1 ; Incr_spec : $step{$1}{'incr_spec'} ; Incr_arg : @{$step{$1}{'arg'}}\n" if ($verbose == 1 );
+      print "\tParameter step found line $. ; Multi param : $1 ; Incr_spec : $step{$1}{'incr_spec'} ; Incr_arg : @{$step{$1}{'arg'}}\n";
     }
   }
   %paramlist=@paramlist;
@@ -604,7 +621,7 @@ sub scan_netlist {
       #print "@arglist\n$arglist\n";
       $subckt{$sckt_name}{number} = $subckt_nr;
       $subckt{$sckt_name}{subckt_pos}=$.;
-      print "  -->Found subckt definition ; Subckt number $subckt{$sckt_name}{number}\n" if ( $verbose ==1 ) ;
+      print "  -->Found subckt definition ; Subckt number $subckt{$sckt_name}{number}\n" ;
       print "\tName : $sckt_name\n" if ( $verbose ==1 ) ;
       print "\tLine position : $subckt{$sckt_name}{subckt_pos}\n" if ( $verbose ==1 ) ;
 ## Fin traitement première ligne de structure
@@ -613,9 +630,9 @@ sub scan_netlist {
       while (<$fh>) {
         next if /^\s*$/ ; #Rien si ligne vide
         if (! /^\+/) { # Si ça n'a pas commencé par une ligne vide ou un + on sort de la déclaration du subckt et on commence à remplir/parcourir le body
-          push @{$subckt{$sckt_name}{allbody}}, $_ ;
-          push @{$subckt{$sckt_name}{comment}}, $_ if /^\*/ ;
-          push @{$subckt{$sckt_name}{body}}, $_ ;
+          push @{$subckt{$sckt_name}{allbody}}, $1."\n" if (/^\s*(.*)/) ;
+          push @{$subckt{$sckt_name}{comment}}, $_ if (/^\*/) ;
+          push @{$subckt{$sckt_name}{body}}, $1 if (/^\s*(.*)/) ;
           last; 
         }
         next if /^\+ ! Pin List/i; # Saut de l'execution pour lignes spéciales
@@ -637,7 +654,7 @@ sub scan_netlist {
   @arglist = split /\s+/, $arglist;
 ##Debug
   #print "Table traitée : @arglist\n";
-  print "\tAnalysis of subckt declaration\n" if ($verbose == 1 );
+  print "\tAnalysis of subckt declaration\n";
   foreach (@arglist) {
     if ( /(\w+)=(\w+)/ ) {
       print "\tFound parameter definition ; name $1 ; basevalue : $2\n" if ($verbose == 1 );
@@ -645,8 +662,8 @@ sub scan_netlist {
       $subckt{$sckt_name}{paramlist}{$param_index}{name}=$1;
       $subckt{$sckt_name}{paramlist}{$param_index}{basevalue}=$2;
     } elsif (/([\w\.<>\[\]]+)/) { ## Ici, soucis avec le case sensitive, vérifier si la syntax spice marche avec [], autres ?
-## Définition des pins : On associe I/O, A/D et pin unique si vecteur. Attention, io_Vect<3:0> (io) écrase Vect (custom) ??
-      print "\tFound pin : $1\n" if ($verbose == 1 );
+## Définition des pins : On associe I/O, A/D, custom et pin unique / vecteur. Attention, io_Vect<3:0> (io) écrase Vect (custom) ??
+      print "\tFound pin : $1\n";
       #my $pin = $1 ; $pin =~ tr/[A-Z]/[a-z]/ ;
       $pin_index++;
       if ( $alim_def{$techno}{$_} ) {
@@ -682,7 +699,7 @@ sub scan_netlist {
     }
   }
   delete $subckt{$sckt_name}{pinvector} ;
-  print "\tSubckt declaration summary ; $pin_index pins found ; $param_index parameters found\n" if ($verbose == 1 );
+  print "\tSubckt declaration summary ; $pin_index pins found ; $param_index parameters found\n";
 ## Traitement du body du subckt
  print "\tEntering body of subckt\n" if ($verbose == 1 );
  while (<$fh>) {
@@ -691,19 +708,19 @@ sub scan_netlist {
           last ;
         }# Test fin de subckt
 ## Ici à modifier, il ne prend pas les sauts de ligne dans le allbody et le body ne dois pas prendre les commentaires
-        push @{$subckt{$sckt_name}{allbody}}, $_ ;
+        push @{$subckt{$sckt_name}{allbody}}, $1."\n" if (/^\s*(.*)/) ;
         next if /^\s*$/ ;
-        push @{$subckt{$sckt_name}{comment}}, $_ if /^\*/ ;
-        push @{$subckt{$sckt_name}{body}}, $_ if !/(^\*)|(^\s*$)/;
-        }
-## Fin de boucle if sur le subckt
-      } else { # On est alors dans du body de netlist
-        push @netlist_fullbody , $_; # Ici le body est à modifier, il prends tous les sauts de ligne, commentaires ...
-        push @netlist_body , $_ if !/(^\*)|(^\s*$)|(^\.global)|(^\.probe\s+v)|(^\.end)/i; # On push le body si ce n'est pas un commentaire et s'il n'y a pas les commands spécifiées parfois par cadence
-        push @netlist_comment , $_ if /^\*/;
+        push @{$subckt{$sckt_name}{comment}}, $_ if (/^\*/) ;
+        push @{$subckt{$sckt_name}{body}}, $1 if (/^\s*(.*)/) ;
       }
+## Fin de boucle if sur le subckt
+    } else { # On est alors dans du body de netlist
+      push @netlist_fullbody , $_; # Ici le body est à modifier, il prends tous les sauts de ligne, commentaires ...
+      push @netlist_body , $_ if !/(^\*)|(^\s*$)|(^\.global)|(^\.probe\s+v)|(^\.end)/i; # On push le body si ce n'est pas un commentaire et s'il n'y a pas les commands spécifiées parfois par cadence
+      push @netlist_comment , $_ if /^\*/;
+    }
   } # Fin de boucle sur le fichier
-## Traitements supplémentaires sur les subckt : analyse des dépendaces / autres subckt TODO
+## Traitements supplémentaires sur les subckt : analyse des dépendaces / autres subckt 
   foreach $sckt_name (keys %subckt) { ## foreach sur tous les subckt
     $instance = -1; ## On commence à -1 pour remplir le tableau à partir de 0 et ne pas avoir de problèmes ...
     print "\t-->Analysis of $sckt_name subckt :\n";
@@ -732,7 +749,7 @@ sub scan_netlist {
           when (/y/i) {$instance_type = 'Specific Devices/Transmission Line';}
         }
         $instance_name = $1.$2;
-        print "\tInstance n°$instance : name : $instance_name type : $instance_type\n" if ($verbose == 1) ;
+        print "\tInstance n°$instance : name : $instance_name type : $instance_type\n" ;
         ${$subckt{$sckt_name}{instance}}[$instance] = ( {$instance_name => {"type" => $instance_type , "position" => $instance , "arg" => []} } ) ;
         push @{$subckt{$sckt_name}{instance}[$instance]{$instance_name}{arg}} , (split /\s+/, $3) if ($3) ; 
       } elsif (/^\s*\+\s*(.*)/) { # Si la ligne commence par un + : la déclaration de l'instance continue
@@ -741,15 +758,16 @@ sub scan_netlist {
     }
 ## Analyse/traitement des dépendances ;
     $instance = -1 ;
+    print "\t\t-->Dependency analysis\n";
     foreach (@{$subckt{$sckt_name}{instance}}) { ## $_ dans cette boucle est la référence des hash. C'est par construction avec les push plus haut
       print "\n\t-->Problem encoutered during subckt scan : multiple declaration ; check netlist or programmer ...\n" and exit if (scalar(keys $_)>1) ; ## vérification clé unique dans le tableau
       ($key) = keys $_; ## normalement, clé unique
       #print Dumper $_ and getc ;
       #print Dumper $_->{$key}{arg} and getc ;
       #print "tableau : @{$_->{$key}{arg}}" and getc;
-      my @dep = grep {$subckt{$_}} @{$_->{$key}{arg}} ; ## @{} est le tableau dont la référence est entre {}
+      my @dep = grep {$subckt{$_}} @{$_->{$key}{arg}} ; ## @{} est le tableau dont la référence est entre {}. $_-> est la référence vers un hash un peu plus profond
       if ( !@dep == 0 ) {
-        $instance++; print "\t\t-->Dependency analysis\n";
+        $instance++;
         foreach my $dep (@dep) {
           print "\t\t\t-->Found declared instance $key in $sckt_name ; subckt name : $dep\n" ;
           ${$subckt{$sckt_name}{dependency}}[$instance] = ( {$key => {"sckt_ref" => $dep ,  "pinlist" => [] , "arglist" => []}} ) ;
@@ -757,6 +775,7 @@ sub scan_netlist {
           push @{$subckt{$sckt_name}{dependency}[$instance]{$key}{arglist}} , grep (/\w+=\w+/ ,( grep {!$subckt{$_}} @{$_->{$key}{arg}} ) )  ;
         }
       }
+    }
 #Ici, il faudrait aussi faire la même chose sur le netlist_body
 #Au final, on veut extraire la hierarchie des instances
     print "\n";
@@ -922,7 +941,7 @@ sub make_netlistfile {
   foreach $sckt_name ( sort { $subckt{$a}{subckt_pos} <=> $subckt{$b}{subckt_pos} } keys %subckt ) {
     print ( $netlistFH ".subckt $sckt_name\n");
     print ( $netlistFH "+ ! Pin List\n");
-    if ( exists $subckt{$sckt_name}{pinlist} ) {
+    if ( exists $subckt{$sckt_name}{pinlist} ) { ## Ecriture des pins
       @arglist = ();
       foreach ( sort { $a <=> $b } keys %{$subckt{$sckt_name}{pinlist}} ) {
         if ( $subckt{$sckt_name}{pinlist}{$_}{type} eq "alim" || $subckt{$sckt_name}{pinlist}{$_}{type} eq "custom") {

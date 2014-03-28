@@ -19,9 +19,9 @@ my ($o_verb, $o_help, $o_debug);
 my $term_sep='################################################################################';
 my $numberspice=qr/(?:[+-]?\d+(?:\.\d+)?(?:meg|[afgnmpu]|e[+-]?\d+)?)|(?:[+-]?\.\d+(?:meg|[afgnmpu]|e[+-]?\d+)?)/i;
 
-my %file;
+my %file ; my %h ; my %op ;
+my $file ; my $device ; my $param ;
 my $fh;
-my %h;
 
 ################################################################################
 # Gestion des fichiers d'entrée sortie
@@ -95,4 +95,14 @@ foreach my $filepath ( keys %file ) {
 }
 
 print Dumper \%h ;
+
+foreach $file (keys %h) {
+  foreach $device (keys %{$h{$file}{device}}) {
+    foreach $param (keys %{$h{$file}{param}}) {
+      $op{$device}{param}{$param} = ($param => $h{$file}{param}{$param}) ;
+    }
+  }
+}
+
+print Dumper \%op ;
 

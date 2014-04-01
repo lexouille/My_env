@@ -229,7 +229,7 @@ set smartindent expandtab shiftwidth=2 tabstop=2
 " carac et netlist
 au BufRead,BufNewFile *.cir,*.sp,*.cdl,*.inc,*.pex,*.pxi,*.typ,*.lib,*.mod,*.ext,*.ckt,*.sp2,*.sp3,carac,netlist set filetype=cir
 
-" Source du fichier de coloration syntaxique
+" Source du fichier de coloration syntaxique et des commandes spice
 au! Syntax cir source ~/.env/.vim/syntax/eldo.vim
 
 function! Fill(nbchar)

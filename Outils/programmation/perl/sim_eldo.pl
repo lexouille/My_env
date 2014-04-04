@@ -28,9 +28,11 @@ my ($index,$choice);
 my %tech_def = (
 "ats130rf" => { ## begin ats130rf
   "searchpath" => ['/nfs/work-crypt/ic/common/altis/1.2.2/eldo/models/', '/nfs/work-crypt/ic/usr/aferret/altis/simulation/include'] ,
+  "file" => ['/nfs/home/aferret/.env/.vim/syntax/.subckt.vim'] ,
+  "techlink" => '/nfs/home/aferret/.env/.vim/syntax/xh018.vim' ,
   "sub" => { "vhdl" => { "min" => -0.01 , "max" => 0.01 } } ,
-  "dvss" => { "vhdl" => { "min" => -0.01 , "max" => 0.01 } } ,
-  "avss" => { "vhdl" => { "min" => -0.01 , "max" => 0.01 } } ,
+  "dvss" => { "vhdl" => { "min" => -0.01 , "max" => 0.01 , "itest" => "1.0e-06"} } ,
+  "avss" => { "vhdl" => { "min" => -0.01 , "max" => 0.01 , "itest" => "1.0e-06"} } ,
   "dvddgo1" => { "vhdl" => { "min" => 1.0 , "max" => 2.0 } , "process" => { "vnom" => 1.5 , "vmin" => 1.35 , "vmax" => 1.65 } } ,
   "dvddgo2" => { "vhdl" => { "min" => 1.8 , "max" => 3.2 } , "process" => { "vnom" => 2.5 , "vmin" => 2.25 , "vmax" => 2.75 } } ,
   "avddgo1" => { "vhdl" => { "min" => 1.0 , "max" => 2.0 } , "process" => { "vnom" => 1.5 , "vmin" => 1.35 , "vmax" => 1.65 } } ,
@@ -38,6 +40,22 @@ my %tech_def = (
   "avddio" =>  { "vhdl" => { "min" => 2.2 , "max" => 4.4 } , "process" => { "vnom" => 3.3 , "vmin" => 2.97 , "vmax" => 3.63 } } 
 } , ## end ats130rf
 "xh018" => { ## begin xh018
+  "searchpath" => [ "/nfs/work-crypt/ic/common/xfab/xh018/mentor/v4_0/eldo/v4_0_4/lpmos/models/cap" ,
+                    "/nfs/work-crypt/ic/common/xfab/xh018/mentor/v4_0/eldo/v4_0_4/lpmos/models/bsim3v3" ,
+                    "/nfs/work-crypt/ic/common/xfab/xh018/mentor/v4_0/eldo/v4_0_4/lpmos/models/photo" ,
+                    "/nfs/work-crypt/ic/common/xfab/xh018/mentor/v4_0/eldo/v4_0_4/lpmos/models/res" ,
+                    "/nfs/work-crypt/ic/common/xfab/xh018/mentor/v4_0/eldo/v4_0_4/lpmos/models/dio" ,
+                    "/nfs/work-crypt/ic/common/xfab/xh018/mentor/v4_0/eldo/v4_0_4/lpmos/models/bip" ,
+                    "/nfs/work-crypt/ic/common/xfab/xh018/mentor/v4_0/eldo/v4_0_4/mc_params" ,
+                    #"*/nfs/work-crypt/ic/common/xfab/xh018/mentor/v4_0/eldo/v4_0_4/occ/models/cap" ,
+                    #"*/nfs/work-crypt/ic/common/xfab/xh018/mentor/v4_0/eldo/v4_0_4/occ/models/bsim3v3" ,
+                    #"*/nfs/work-crypt/ic/common/xfab/xh018/mentor/v4_0/eldo/v4_0_4/occ/models/photo" ,
+                    #"*/nfs/work-crypt/ic/common/xfab/xh018/mentor/v4_0/eldo/v4_0_4/occ/models/res" ,
+                    #"*/nfs/work-crypt/ic/common/xfab/xh018/mentor/v4_0/eldo/v4_0_4/occ/models/dio" ,
+                    #"*/nfs/work-crypt/ic/common/xfab/xh018/mentor/v4_0/eldo/v4_0_4/occ/models/bip" ,
+                    "/nfs/work-crypt/ic/usr/aferret/charac_techno/xfab/xh018/" ] ,
+  "file" => ['/nfs/home/aferret/.env/.vim/syntax/.subckt.vim'] ,
+  "techlink" => '/nfs/home/aferret/.env/.vim/syntax/xh018.vim' ,
   "sub" => { "vhdl" => { "min" => -0.01 , "max" => 0.01 } } ,
   "dvss" => { "vhdl" => { "min" => -0.01 , "max" => 0.01 } } ,
   "avss" => { "vhdl" => { "min" => -0.01 , "max" => 0.01 } } ,
@@ -78,7 +96,8 @@ my (@corner_mos,@corner_bip,@corner_res,@corner_cap);
 my (@paramlist,%paramlist,%tbenchlist);
 my ($mc,$step_param,@step,@step_param);
 
-my $key ;
+my $key;
+my $fh;
 
 my ($t1,$t2,$t3,$t4);
 my (@t1,@t2,@t3,@t4);
@@ -95,7 +114,7 @@ my (@arglist,$arglist);
 my ($pin_index,$param_index) = (0,0) ;
 my ($instance,$instance_type,$instance_name);
 
-my $numberspice=qr/(?:[+-]?\d+(?:\.\d+)?(?:meg|[afgnmpu]|e[+-]?\d+)?)|(?:[+-]?\.\d+(?:meg|[afgnmpu]|e[+-]?\d+)?)/i;
+my $numberspice=qr/(?:[+-]?\d+(?:\.\d+)?(?:meg|[tgkmunpfa]|e[+-]?\d+)?)|(?:[+-]?\.\d+(?:meg|[tgkmunpfa]|e[+-]?\d+)?)/i;
 
 ################################################################################
 # Gestion des fichiers d'entrée sortie
@@ -118,8 +137,6 @@ my $templatefile ;
 
 my ($templateFH,$netlistFH,$caracFH,$eldoFH,$basenetlistFH,$lc_netlistFH);
 
-my $fh;
-
 sub filehandle {
   print ("Scanning for simulation files in path $path ...\n");
 
@@ -130,7 +147,7 @@ sub filehandle {
   open ($netlistFH, "<$netlistfile") or die ("open : $!");
 
   print ("File $eldofile not found. Check directory or init.\n") if ( !(-f $eldofile) );
-  open ($eldoFH, ">$eldofile") or die ("open : $!");
+  open ($eldoFH, ">$eldofile") or die ("open : $!") unless ($scan==1);
   print ("Scanning done ;\n\tNetlist file : $netlistfile\n\tCarac file : $caracfile\n\tFile launched by eldo simulator : $eldofile\n\n");
 }
 
@@ -140,7 +157,7 @@ sub filehandle {
 
 sub doublons_grep {
 ## Fonction suppression des doublons dans un hash. Retourne les clés dans l'ordre.
-## usage : @tableau_sans_doublons = doublons_grep (\@tableau_avec_doublons?);
+## usage : @tableau_sans_doublons = doublons_grep (\@tableau_avec_doublons);
   my ($ref_tabeau) = @_;
   my %hash_sans_doublon;
   return grep { !$hash_sans_doublon{$_}++ } @{$ref_tabeau};
@@ -196,11 +213,11 @@ sub stdin_answer_mult {
 } # End stdin_answer_mult sub
 
 sub outputfile {
-# prend en parametre un nom de fichier pour écriture
-# vérifie s'il existe et demande confirmation d'overwrite
-# le crée sinon
-# retourne le filehandle
-# usage : outputfile("nom_du_fichier")
+## prend en parametre un nom de fichier pour écriture
+## vérifie s'il existe et demande confirmation d'overwrite
+## le crée sinon
+## retourne le filehandle
+## usage : outputfile("nom_du_fichier")
   my $_outputfile;
   my $_outputfile_filehandle;
   ($_outputfile)=@_;
@@ -227,6 +244,7 @@ sub outputfile {
 sub init { # Initialisation du répertoire
 # Génération du fichier netlist.cir à partir d'un fichier s'il n'existe pas
 # Génération du carac.inc et du carac à partir des templates s'ils n'existent pas
+# Création des liens vers certains fichiers liés à la techno
   print "$term_sep\n";
   print ("Initialization phase : Generation of simulation files...\n\n\tFiles found :\n");
   my %file; my @file ;
@@ -237,6 +255,62 @@ sub init { # Initialisation du répertoire
     print "\t-- .inc file found" if /\.inc$/; }
   print "\n";
   $lc_netlistfile = $path."temp.cir" ;
+
+## Test existance carac et carac.inc, overwrite éventuel
+  if ($file{'carac.inc'}) {
+    $choice = stdin_answer ('carac.inc file exists. Overvrite it ?','yes','no') ;
+    if ($choice eq 'yes') {
+      print "Generation of carac.inc file from template\n";
+      system ( "rm" , $path."carac.inc") ; system ( "touch", $path."carac.inc") ;
+      $templatefile = $commonpath . "carac_template.inc";
+      open ($caracFH, ">$caracfile") or die ("Unable to open : $!");
+      open ($templateFH, "<$templatefile") or die ("Unable to open : $!");
+      $techno = stdin_answer ('Select techno to be used',( keys %tech_def )) ;
+      print "\nPlease enter name for your netlist :\n" ; $netlist_name = <STDIN>; chomp $netlist_name;
+        while (<$templateFH>) {
+        if (/Netlist_name user_name/) {print($caracFH "$netlist_name $user\n")}
+        elsif (/\.option search = searchpath/) {print($caracFH "\.option search = $_\n") foreach @{$tech_def{$techno}{searchpath}} }
+        elsif (/\*\*\*\* Search path for technology/i) {print($caracFH "\*\*\*\* Search path for technology $techno\n") }
+        else {print ($caracFH $_)}
+      }
+      close ($caracFH) ;
+    } elsif ($choice eq 'no') {
+      open ($caracFH, "<$caracfile") or die ("Unable to open : $!");
+      while (<$caracFH>) {
+        if (/\*\*\*\* Search path for technology (\S+)/i) {
+          print "Defined technology in carac.inc file : $1\n";
+          if ($tech_def{$1}) {
+            print "This technology has been defined for this script ... init goes on\n" ; $techno=$1 ;
+          } else {
+            print "This technology has not been defined for this script ... exit\n" ; exit ;
+          }
+        }
+      }
+      close ($caracFH) ;
+    }
+  } else {
+    print "Generation of carac.inc file from template\n";
+    system ( "touch", $path."carac.inc");
+    $templatefile = $commonpath . "carac_template.inc";
+    open ($caracFH, ">$caracfile") or die ("Unabale to open : $!");
+    open ($templateFH, "<$templatefile") or die ("Unabale to open : $!");
+    $techno = stdin_answer ('Select techno to be used',( keys %tech_def )) ;
+    print "\nPlease enter name for your netlist :\n" ; $netlist_name = <STDIN>; chomp $netlist_name;
+      while (<$templateFH>) {
+      if (/Netlist_name user_name/i) {print($caracFH "$netlist_name $user\n")}
+      elsif (/\.option search = searchpath/i) { print($caracFH "\.option search = $_\n") foreach @{$tech_def{$techno}{searchpath}} }
+      elsif (/\*\*\*\* Search path for technology/i) { print($caracFH "\*\*\*\* Search path for technology $techno\n") }
+      else {print ($caracFH $_)}
+    }
+    close ($caracFH) ; close ($templateFH) ;
+  }
+  if ($file{'carac'}) {
+    $choice = stdin_answer ('carac file exists. Overvrite it ?','yes','no') ;
+    system ( "cp", $path."carac.inc", $path."carac") if ($choice eq 'yes');
+  } else {
+    print "Generation of carac.inc file from template\n";
+    system ( "cp", $path."carac.inc", $path."carac");
+  }
 
   if ($file{'netlist.cir'}) {
     $choice = stdin_answer ('netlist.cir file detected. Do you want to overwrite it ?','yes','no');
@@ -292,47 +366,45 @@ sub init { # Initialisation du répertoire
       system ("rm", $lc_netlistfile) ;
     }
 
-## Test existance carac et carac.inc, overwrite éventuel
-  if ($file{'carac.inc'}) {
-    $choice = stdin_answer ('carac.inc file exists. Overvrite it ?','yes','no') ;
-    if ($choice eq 'yes') {
-      print "Generation of carac.inc file from template\n";
-      system ( "rm" , $path."carac.inc") ; system ( "touch", $path."carac.inc") ;
-      $templatefile = $commonpath . "carac_template.inc";
-      open ($caracFH, ">$caracfile") or die ("Unable to open : $!");
-      open ($templateFH, "<$templatefile") or die ("Unable to open : $!");
-      $techno = stdin_answer ('Select techno to be used',( keys %tech_def )) ;
-      print "\nPlease enter name for your netlist :\n" ; $netlist_name = <STDIN>; chomp $netlist_name;
-        while (<$templateFH>) {
-        if (/Netlist_name user_name/) {print($caracFH "$netlist_name $user\n")}
-        elsif (/\.option search = searchpath/) {print($caracFH "\.option search = $_\n") foreach @{$tech_def{$techno}{searchpath}} }
-        elsif (/\*\*\*\* Search path for technology/i) {print($caracFH "\*\*\*\* Search path for technology $techno\n") }
-        else {print ($caracFH $_)}
+## Génération des fichiers et liens spécifiques
+  $choice = stdin_answer ('Do you want to (re)generate specific files and links','yes','no') ;
+  if ($choice eq "yes") {
+    if (scalar @{$tech_def{$techno}{file}}>0) {
+      foreach (@{$tech_def{$techno}{file}}) {
+        system ("cp", $_, $path) ; print "Copy and modification of $_ in current directory\n" ;
+        if (/\.subckt\.vim/i) { ## Génération du fichier .vim permettant d'appeler les subckt présents dans la netlist
+          open ($templateFH, ">>$path.subckt.vim"); ## On ouvre en écriture ajout
+          foreach $sckt_name ( sort { $subckt{$a}{number} <=> $subckt{$b}{number} } keys %subckt ) {
+            print ($templateFH "\techo \"-->$subckt{$sckt_name}{number} : $sckt_name\"\n");
+          }
+          print ($templateFH "\tlet s:sckti=input(\"\")\n\n") ;
+          foreach $sckt_name ( sort { $subckt{$a}{number} <=> $subckt{$b}{number} } keys %subckt ) {
+            print ($templateFH "\telse") unless ($subckt{$sckt_name}{number}==1);
+            print ($templateFH "\t") if ($subckt{$sckt_name}{number}==1);
+            print ($templateFH "if s:sckti==$subckt{$sckt_name}{number}\n");
+            print ($templateFH "\t\tlet s:scktpin=Askpin(\"");
+            foreach ( sort { $a <=> $b } keys %{$subckt{$sckt_name}{pinlist}} ) {
+              print ($templateFH " ") if $_>1 ;
+              print ($templateFH "$subckt{$sckt_name}{pinlist}{$_}{name}") ;
+            }
+            print ($templateFH "\")\n\t\tlet s:scktname=\"$sckt_name\"\n");
+          }
+          print ($templateFH "\tendif\n");
+          print ($templateFH "\tlet s:name=input(\"Choose subckt name : \",\"\")\n");
+          print ($templateFH "\tlet s:pin=join(s:scktpin)\n");
+          print ($templateFH "\tlet s:sckt2print=[\"X_\".s:name]\n");
+          print ($templateFH "\tcall add(s:sckt2print,s:pin)\n");
+          print ($templateFH "\tcall add(s:sckt2print,s:scktname)\n");
+          print ($templateFH "\tlet s:s2print=join(s:sckt2print)\n");
+          print ($templateFH "\tlet s:str2print=Eldo_string_wrap(s:s2print)\n");
+          print ($templateFH "\tlet s:index=0\n");
+          print ($templateFH "\twhile s:index<len(s:str2print)\n\t\tcall append(curline+s:index,s:str2print[s:index]) | let s:index += 1\n\tendwhile\n");
+          print ($templateFH "\tlet curline=curline+s:index\n");
+          print ($templateFH "\nendfunction\n") ;
+        }
       }
-      close ($caracFH) ;
     }
-  } else {
-    print "Generation of carac.inc file from template\n";
-    system ( "touch", $path."carac.inc");
-    $templatefile = $commonpath . "carac_template.inc";
-    open ($caracFH, ">$caracfile") or die ("Unabale to open : $!");
-    open ($templateFH, "<$templatefile") or die ("Unabale to open : $!");
-    $techno = stdin_answer ('Select techno to be used',( keys %tech_def )) ;
-    print "\nPlease enter name for your netlist :\n" ; $netlist_name = <STDIN>; chomp $netlist_name;
-      while (<$templateFH>) {
-      if (/Netlist_name user_name/i) {print($caracFH "$netlist_name $user\n")}
-      elsif (/\.option search = searchpath/i) {print($caracFH "\.option search = $_\n") foreach @{$tech_def{$techno}{searchpath}} }
-      elsif (/\*\*\*\* Search path for technology/i) {print($caracFH "\*\*\*\* Search path for technology $techno\n") }
-      else {print ($caracFH $_)}
-    }
-    close ($caracFH) ;
-  }
-  if ($file{'carac'}) {
-    $choice = stdin_answer ('carac file exists. Overvrite it ?','yes','no') ;
-    system ( "cp", $path."carac.inc", $path."carac") if ($choice eq 'yes');
-  } else {
-    print "Generation of carac.inc file from template\n";
-    system ( "cp", $path."carac.inc", $path."carac");
+    system ("ln", "-s", $tech_def{$techno}{techlink}, ".tech.vim") and print "Linking .tech.vim in current directory\n" if ($tech_def{$techno}{techlink})
   }
   print ("Ending initialization phase.\n");
   print "$term_sep\n\n";
@@ -480,6 +552,7 @@ sub gen_model { # Génération des modèles VHDL et Verilog à partir des subckt
       foreach ( keys %{$subckt{$model}{pinlist}} ) { ## Définitions des génériques de tests sur les alims si on les trouve dans le hash tech_def{$techno}
         if ($tech_def{$techno}{$subckt{$model}{pinlist}{$_}{name}}) {
           print "\tAlim pin found : $subckt{$model}{pinlist}{$_}{name} Max / Min value for vhdl test : $tech_def{$techno}{$subckt{$model}{pinlist}{$_}{name}}{vhdl}{max} $tech_def{$techno}{$subckt{$model}{pinlist}{$_}{name}}{vhdl}{min}\n" if ( $verbose ==1 ) ;
+          print ($bmodel_FH "\tg_$subckt{$model}{pinlist}{$_}{name}"."_current_test : real := $tech_def{$techno}{$subckt{$model}{pinlist}{$_}{name}}{vhdl}{itest} ; -- Generic for power tests\n") if($subckt{$model}{pinlist}{$_}{name} =~ /vss/) ;
           print ($bmodel_FH "\tg_$subckt{$model}{pinlist}{$_}{name}"."_min : real := $tech_def{$techno}{$subckt{$model}{pinlist}{$_}{name}}{vhdl}{min} ; -- Generic for power tests\n");
           print ($bmodel_FH "\tg_$subckt{$model}{pinlist}{$_}{name}"."_max : real := $tech_def{$techno}{$subckt{$model}{pinlist}{$_}{name}}{vhdl}{max} ; -- Generic for power tests\n");
         }
@@ -531,19 +604,25 @@ sub gen_model { # Génération des modèles VHDL et Verilog à partir des subckt
       print ($bmodel_FH ");\n\nEND ENTITY $model;\n\nARCHITECTURE FUNCTIONNAL OF $model IS\n\n--Quantity and signal definitions\n");
       foreach ( keys %{$subckt{$model}{pinlist}} ) { ## Définition des signaux pour les power tests
         if ($tech_def{$techno}{$subckt{$model}{pinlist}{$_}{name}}) {
-          print ($bmodel_FH "\tsignal s_test_$subckt{$model}{pinlist}{$_}{name} : boolean = false ; -- Power test purpose\n\tquantity v_$subckt{$model}{pinlist}{$_}{name} --To be completed acoording to alim type : power/ground\n");
+          print ($bmodel_FH "\tsignal s_test_$subckt{$model}{pinlist}{$_}{name} : boolean = false ; -- Power test purpose\n");
+          if ($subckt{$model}{pinlist}{$_}{name} =~ /vss/) { ## Alim de type ground
+          print ($bmodel_FH "\tquantity v_$subckt{$model}{pinlist}{$_}{name} across i_$subckt{$model}{pinlist}{$_}{name} through $subckt{$model}{pinlist}{$_}{name};\n");
+          } elsif ($subckt{$model}{pinlist}{$_}{name} =~ /vdd/) { ## Alim de type vdd
+          print ($bmodel_FH "\tquantity v_$subckt{$model}{pinlist}{$_}{name} across $subckt{$model}{pinlist}{$_}{name} to ground; --Specify ground name\n");
+          }
         }
       }
       print ($bmodel_FH "\t--signal s_signalname : boolean/std_ulogic/integer/real/signed/unsigned := basevalue ;\n\nBEGIN\n\n--Power tests\n");
       foreach ( keys %{$subckt{$model}{pinlist}} ) { ## Ecriture des power tests
         if ($tech_def{$techno}{$subckt{$model}{pinlist}{$_}{name}}) {
-          print ($bmodel_FH "\ts_test_$subckt{$model}{pinlist}{$_}{name} <= true when v_$subckt{$model}{pinlist}{$_}{name}\'above(g_${subckt{$model}{pinlist}{$_}{name}}_min)\n\tand not v_$subckt{$model}{pinlist}{$_}{name}\'above(g_${subckt{$model}{pinlist}{$_}{name}}_max) and domain=time_domain\n\telse false;\n");
+          print ($bmodel_FH "--Current for groud test\n\ti_$subckt{$model}{pinlist}{$_}{name} = g_$subckt{$model}{pinlist}{$_}{name}"."_current_test;\n") if ($subckt{$model}{pinlist}{$_}{name} =~ /vss/) ;
+          print ($bmodel_FH "\ts_test_$subckt{$model}{pinlist}{$_}{name} <= true when v_$subckt{$model}{pinlist}{$_}{name}\'above(g_${subckt{$model}{pinlist}{$_}{name}}_min)\n\tand not v_$subckt{$model}{pinlist}{$_}{name}\'above(g_${subckt{$model}{pinlist}{$_}{name}}_max) and domain=time_domain\n\telse false ;\n");
         }
       }
       print ($bmodel_FH "--Repports in transcript for power tests\n");
       foreach ( keys %{$subckt{$model}{pinlist}} ) { ## Ecriture repports de power tests dans le transcript
         if ($tech_def{$techno}{$subckt{$model}{pinlist}{$_}{name}}) {
-          print ($bmodel_FH "\tassert s_test_$subckt{$model}{pinlist}{$_}{name} or s_enable_fct = 0.0 \n\treport \"$model : $subckt{$model}{pinlist}{$_}{name} powercheck failure ; voltage value out of bound\" severity warning;\n");
+          print ($bmodel_FH "\tassert s_test_$subckt{$model}{pinlist}{$_}{name} or s_enable_fct = 0.0 \n\treport \"$model : $subckt{$model}{pinlist}{$_}{name} powercheck failure ; voltage value out of bound\" severity warning ;\n");
         }
       }
 ## Fin des power tests/ecriture transcripts. Ecriture des composants s'il y en a.
@@ -583,9 +662,13 @@ sub scan_carac {
   print "$term_sep\n";
   print ("Scan phase : Carac file scan...\n");
   while (<$caracFH>) {
+    if (/\*\*\*\* Search path for technology\s+(\S+)/i) {
+      print "\tTechnology for this carac.inc file : $1\n" ;
+      $techno=$1 ;
+    }
     next if /^\*/ ;
     next if /^\s*$/ ;
-    if (/^\.param\s+(.*)/i) { # Il va peut être falloir ajouter un autre while pour prendre en compte les \n + 
+      if (/^\.param\s+(.*)/i) { # Il va peut être falloir ajouter un autre while pour prendre en compte les \n + 
       #Old version
       #$1 =~ s/\s*=\s*/=/g;
       #print "\$1 : $1\n" ;
@@ -702,7 +785,7 @@ sub scan_netlist {
       }
     }
   }
-  foreach (keys %{$subckt{$sckt_name}{pinlist}}) {
+  foreach (keys %{$subckt{$sckt_name}{pinlist}}) { ## Réaffectation des pins de type vector, c'est un peu confus I know
     if ($subckt{$sckt_name}{pinlist}{$_}{vector} && $subckt{$sckt_name}{pinvector}{$subckt{$sckt_name}{pinlist}{$_}{vector}{name}}) {
         $subckt{$sckt_name}{pinlist}{$_}{vector}{min} = $subckt{$sckt_name}{pinvector}{$subckt{$sckt_name}{pinlist}{$_}{vector}{name}}{min} ;
         $subckt{$sckt_name}{pinlist}{$_}{vector}{max} = $subckt{$sckt_name}{pinvector}{$subckt{$sckt_name}{pinlist}{$_}{vector}{name}}{max} ;
@@ -874,7 +957,7 @@ sub make_eldofile {
           print "\tUser voltage / temp / pvt command and step parameter on voltage/temperature. Priority on script command => step removed from carac file\n" and next  ; 
         } else { print ( $eldoFH $_ ) ; }
       } else {
-        print ( $eldoFH $_ ) and next; 
+        print ( $eldoFH $_ ) and next; ## Ce next n'est pas utile ?
       }
 
 #Traitement des simulations Monte Carlo
@@ -892,7 +975,7 @@ sub make_eldofile {
 #Traitement des appels de testbenches
     } elsif (/^\.(\w+).*/i) {
       my $t = $1;
-      #$t =~ tr/A-Z/a-z/;
+      #$t =~ tr/A-Z/a-z/; ## Pb avec les case sensitive
       if ( exists $tbenchlist{$t} ) {
         print "\tFound $1 testbench call line $.\n" if ($verbose == 1 ) ; 
         if ( !@testbench ) {

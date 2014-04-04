@@ -74,9 +74,9 @@ vddio vddio iovss dc vddio
 *****************************************
 * Probing
 *****************************************
-.probe vtop
-*.probe v
-.probe i
+.probe op vtop
+*.probe op v
+.probe op i
 
 *****************************************
 * Outputs list
@@ -106,9 +106,9 @@ vddio vddio iovss dc vddio
 *****************************************
 * Probing
 *****************************************
-.probe vtop
-*.probe v
-.probe i
+.probe dc vtop
+*.probe dc v
+.probe dc i
 
 *****************************************
 * Outputs list
@@ -131,7 +131,7 @@ Vckin IN dvss DC 0 PULSE
 *****************************************
 * Simulation parameters
 *****************************************
-.param cload*50f
+.param cload=50f
 
 *****************************************
 * Run simulation option
@@ -179,6 +179,38 @@ Cout out dvss cload
 *****************************************
 * Probing
 *****************************************
+.probe ac vtop
+*.probe ac v
+.probe ac i
+
+*****************************************
+* Outputs list
+*****************************************
+
+*****************************************
+* Extraction function
+*****************************************
+
+.end_define_testbench
+
+.define_testbench SOA_check
+
+*****************************************
+* Inputs definition
+*****************************************
+
+*****************************************
+* Simulation parameters
+*****************************************
+
+*****************************************
+* Run simulation option
+*****************************************
+.checksoa
+
+*****************************************
+* Probing
+*****************************************
 .probe vtop
 *.probe v
 .probe i
@@ -200,7 +232,7 @@ Cout out dvss cload
 .DC_Analysis
 .Transient_Analysis
 .AC_Analysis
-
+.SOA_check
 
 ********************************************************************************
 **** User defined stuff

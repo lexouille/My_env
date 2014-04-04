@@ -17,7 +17,7 @@ use Getopt::Long; ## Fonctions pour les récupérations d'arguments ; GetOptions
 ################################################################################
 my ($o_verb, $o_help, $o_debug);
 my $term_sep='################################################################################';
-my $numberspice=qr/(?:[+-]?\d+(?:\.\d+)?(?:meg|[afgnmpu]|e[+-]?\d+)?)|(?:[+-]?\.\d+(?:meg|[afgnmpu]|e[+-]?\d+)?)/i;
+my $numberspice=qr/(?:[+-]?\d+(?:\.\d+)?(?:meg|[tgkmunpfa]|e[+-]?\d+)?)|(?:[+-]?\.\d+(?:meg|[tgkmunpfa]|e[+-]?\d+)?)/i;
 
 ################################################################################
 # Gestion des fichiers d'entrée sortie

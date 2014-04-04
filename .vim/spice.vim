@@ -19,13 +19,17 @@ function! SpiceInit()
   echo "Checking current directory for specific files ..."
   echo "-->Directory name : ".s:pwd
   let vimfile=[]
-  call add(vimfile,glob('`find . -maxdepth 1 -type f -name \.tech.vim`') )
+  " En dur pour le test
+  "call add(vimfile,glob('`find . -maxdepth 1 -type f -name \.tech.vim`') )
+  "call add(vimfile,glob('`find . -maxdepth 1 -type f -name \.subckt.vim`') )
+  " En lien pour le vrai fonctionnement
+  call add(vimfile,glob('`find . -maxdepth 1 -type l -name \.tech.vim`') )
   call add(vimfile,glob('`find . -maxdepth 1 -type f -name \.subckt.vim`') )
   call map(vimfile, "substitute(v:val, '\./', '', 'g')" ) "On greppe les fichiers spéxiaux
   if len(vimfile)>0
     let id=0
     while id<len(vimfile)
-      "source vimfile[id]
+      "source vimfile[id] "marche pas, il prend pas le texte
       if vimfile[id]==".tech.vim"
         source ./.tech.vim
         echohl Title | echo "Found specific ".vimfile[id]." file in working directory ... load done"
@@ -103,7 +107,7 @@ function! NewMOS()
     let dopage='P'
     endif
   echo '\nChoose MOS model : '
-  let modeli=input('')
+  let modeli = input('')
   let name = input('MOS Name : ','')
   let drain = input('Drain node name : ','')
   let gate = input('Gate node name : ','')
@@ -340,9 +344,9 @@ function! NewVSource()
     call append(curline, '.sigbus ' . name)
     exe "normal j$a "
     for id in range(id1, id2)
-      exe "normal a" . name
+      exe "normal a".name
       exe "normal a<"
-      exe "normal a" . id
+      exe "normal a".id
       exe "normal a>"
       exe "normal a "
     endfor

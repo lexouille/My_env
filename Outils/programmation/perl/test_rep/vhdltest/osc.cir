@@ -1,0 +1,65 @@
+
+.subckt inv
++ ! Pin List
++ dvddgo1 dvss in out
++ ! Param List
++ ! Comments
+
+xn0 out in dvss dvss nreg w={360.0n} l={240.0n} xdefdrain={contact}
++xdefsource={contact} nf={1} m={1}
+xp0 out in dvddgo1 dvddgo1 preg w={720.0n} l={240.0n}
++xdefdrain={contact} xdefsource={contact} nf={1} m={1}
+
+.ends 
+
+.subckt nand
++ ! Pin List
++ a b dvddgo1 dvss out
++ ! Param List
++ ! Comments
+
+xp1 out b dvddgo1 dvddgo1 preg w={720.0n} l={120.0n}
++xdefdrain={contact} xdefsource={contact} nf={1} m={1}
+xp0 out a dvddgo1 dvddgo1 preg w={720.0n} l={120.0n}
++xdefdrain={contact} xdefsource={contact} nf={1} m={1}
+xn1 net14 b dvss dvss nreg w={720.0n} l={120.0n} xdefdrain={contact}
++xdefsource={contact} nf={1} m={1}
+xn0 out a net14 dvss nreg w={720.0n} l={120.0n} xdefdrain={contact}
++xdefsource={contact} nf={1} m={1}
+
+.ends 
+
+.subckt ms_dff
++ ! Pin List
++ clk d dvddgo1 dvss q qb
++ ! Param List
++ ! Comments
+
+xnand7 net20 qb dvddgo1 dvss q nand
+xnand8 q net19 dvddgo1 dvss qb nand
+xnand6 net20 clkbb dvddgo1 dvss net19 nand
+xnand5 net35 clkbb dvddgo1 dvss net20 nand
+xnand3 net40 net31 dvddgo1 dvss net35 nand
+xnand4 net35 net39 dvddgo1 dvss net31 nand
+xnand2 net40 clkb dvddgo1 dvss net39 nand
+xnand1 d clkb dvddgo1 dvss net40 nand
+xinv2 dvddgo1 dvss clkb clkbb inv
+xinv1 dvddgo1 dvss clk clkb inv
+
+.ends 
+
+.subckt osc
++ ! Pin List
++ id_en od_clk dvddgo1 dvss
++ ! Param List
++
++ ! Comments
+xi2 dvddgo1 dvss clk3 clk4 inv
+xi3 dvddgo1 dvss clk4 clk_core inv
+xi1 dvddgo1 dvss clk2 clk3 inv
+xi0 dvddgo1 dvss clk1 clk2 inv
+xnand id_en clk_core dvddgo1 dvss clk1 nand
+xdff2 clkdiv1 qb2 dvddgo1 dvss od_clk qb2 ms_dff
+xdff1 clk_core qb1 dvddgo1 dvss clkdiv1 qb1 ms_dff
+.ends
+

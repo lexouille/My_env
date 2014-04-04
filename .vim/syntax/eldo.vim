@@ -195,6 +195,7 @@ syntax match s_cmd "^\.Operating_Point\s*"
 syntax match s_cmd "^\.DC_Analysis\s*"
 syntax match s_cmd "^\.Transient_Analysis\s*"
 syntax match s_cmd "^\.AC_Analysis\s*"
+syntax match s_cmd "^\.SOA_check\s*"
 
 
 "COMMANDS OPTIONS & ARGUMENTS : ELDO 
@@ -688,7 +689,7 @@ syntax keyword s_option TUNING
 
 " Notes perso
 syntax keyword s_option DC
-"syntax keyword s_option AC
+syntax keyword s_option AC
 syntax keyword s_option FOUR
 syntax keyword s_option MA
 syntax keyword s_option PHNOISE

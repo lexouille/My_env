@@ -11,4 +11,7 @@ alias vimenv='vim -p ~/.vimrc ~/.bashrc ~/.env/.my_bashrc ~/.env/.my_bash_aliase
 alias vimo='vim -o'
 alias vimO='vim -O'
 alias vimp='vim -p'
+alias abc='~/.env/Outils/programmation/perl/alpha.pl'
+
+alias O='exit'
 

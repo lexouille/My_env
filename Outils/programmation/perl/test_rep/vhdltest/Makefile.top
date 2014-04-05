@@ -1,0 +1,275 @@
+LIB_NAME     = vd5380_tbench_lib
+SRC_DIR      = ${MICKEY}/TBENCH/${LIB_NAME}/rtl_vlog
+SRC_FILE     = $(shell ls ${SRC_DIR}/*.v | grep -v task | grep -v exc)
+TEST_LIST    = $(shell ls ${SRC_DIR}/*.v | grep exc | awk -F "rtl_vlog" '{print $$2}' | sed 's;/vd5380_tbench_;;g' | sed 's;_exc.v;;g')
+DEFAULT_TEST = $(shell ls ${SRC_DIR}/*.v | grep -m 1 exc | awk -F "rtl_vlog" '{print $$2}' | sed 's;/vd5380_tbench_;;g' | sed 's;_exc.v;;g')
+SIM_INIT     = sim_init
+SIM_INC      = ${MICKEY}/TBENCH/vd5380_spi_tbench_lib/rtl_vlog   \
+               ${MICKEY}/TBENCH/vd5380_tchip_tbench_lib/rtl_vlog \
+               ${MICKEY}/SRC/vd5380_dft_lib/rtl_vlog             \
+               ${MICKEY}/SRC/vd5380_tchip_lib/rtl_vlog
+EMPTY        =
+ifndef TEST
+TEST := ${DEFAULT_TEST}
+endif
+
+ifndef MICKEYAA
+    export MICKEYAA=${WORK_DIR}/vd5380_work/
+endif
+
+
+
+TOP_MODULE   = vd5380_tbench
+LIB_DEP      = ${MICKEY}/TBENCH/vd5380_core_lib/rtl_vlog         \
+	       ${MICKEY}/SRC/vd5380_cell_lib/rtl_vlog            \
+               ${MICKEY}/SRC/vd5380_mem_lib/rtl_vlog             \
+               ${MICKEY}/SRC/vd5380_dft_lib/rtl_vlog             \
+               ${MICKEY}/SRC/vd5380_go1_lib/rtl_vlog             \
+               ${MICKEY}/SRC/vd5380_go2_lib/rtl_vlog             \
+               ${MICKEY}/SRC/vd5380_motion_lib/rtl_vlog          \
+               ${MICKEY}/SRC/vd5380_video_lib/rtl_vlog           \
+               ${MICKEY}/SRC/vd5380_slim_lib/rtl_vlog            \
+               ${MICKEY}/SRC/vd5380_spi_lib/rtl_vlog             \
+               ${MICKEY}/SRC/vd5380_tchip_lib/rtl_vlog           \
+	       ${MICKEY}/SRC/vd5380_lib/rtl_vlog                 \
+	       ${MICKEY}/TBENCH/vd5380_ana_lib/rtl_vlog		 \
+	       ${MICKEY}/SRC/vd5380_cpld_lib/rtl_vlog            
+
+GATE_LIB_DEP = ${MICKEY}/TBENCH/vd5380_core_lib/rtl_vlog         \
+	       ${MICKEY}/TBENCH/vd5380_ana_lib/rtl_vlog		 \
+	       ${MICKEY}/NETLIST/ENCOUNTER/asic
+
+GATE_BE_LIB_DEP = ${MICKEY}/TBENCH/vd5380_core_lib/rtl_vlog      \
+	       ${MICKEY}/TBENCH/vd5380_ana_lib/rtl_vlog		 \
+	       ${MICKEY}/NETLIST/SIGNOFF/asic
+
+ifneq (,$(findstring $(TEST),video_timingORanalog_debugORmotion_videoORtrimming_osc_anaORana_dig_slimORdft_cabORgrab_cabdftORanalogORtesteur_iled_00_anaORanalogORtesteur_iled_01_anaORanalogORtesteur_iled_02_anaORanalogORtesteur_iled_03_anaORanalogORtesteur_iled_04_anaORanalogORtesteur_iled_05_anaORanalogORtesteur_iled_06_anaORanalogORtesteur_iled_07_anaORanalogORtesteur_iled_08_anaORanalogORtesteur_iled_09_anaORanalogORtesteur_iled_0A_anaORtesteur_SPI_IDDQ))
+ANALOG = ANALOG
+ANALOG_LIB_DEP = ${MICKEY}/AMS/scripts
+SIM_OPTS      = -outpath ${WORK} -L vd5380_dft_lib      -L vd5380_ana_lib      -L vd5380_lib      -L vd5380_go1_lib      -L vd5380_go2_lib      -L vd5380_slim_lib      -L vd5380_video_lib      -L vd5380_motion_lib      -L vd5380_mem_lib      -L vd5380_cell_lib      -L vd5380_spi_lib      -L vd5380_tchip_lib      -L vd5380_core_lib      -L vd5380_tchip_tbench_lib -cmd charac.cmd -ms +notimingchecks -t ps
+SIM_OPTS_GATE_BE      = -outpath ${WORK} -L vd5380_ana_lib -L vd5380_core_lib -L MICKEY_AMS -L vd5380_gate_be_lib -cmd charac.cmd -ms -t ps
+SIM_OPTS_FPGA = -outpath ${WORK} -L vd5380_fpga_dft_lib -L vd5380_fpga_ana_lib -L vd5380_fpga_lib -L vd5380_fpga_go1_lib -L vd5380_fpga_go2_lib -L vd5380_fpga_slim_lib -L vd5380_fpga_video_lib -L vd5380_fpga_motion_lib -L vd5380_fpga_mem_lib -L vd5380_fpga_cell_lib -L vd5380_fpga_spi_lib -L vd5380_fpga_tchip_lib -L vd5380_fpga_core_lib                            -cmd charac.cmd -ms +notimingchecks -t ps
+endif
+
+ifneq (,$(findstring $(TEST),dft_cab))
+CAB_BIST = CAB_BIST
+endif
+
+ifeq (cpld,$(findstring cpld,${TEST}))
+CPLD = CPLD
+endif
+
+ifeq (testeur_all,$(findstring testeur_all,${TEST}))
+TESTEUR = TESTEUR
+export TESTEUR
+endif
+
+All: sim
+
+sim_init:
+	mkdir -p ${WORK_LOG}
+	@cd ${MICKEY}/SRC/vd5380_slim_lib/firmware && make
+ifeq (dft_rom_bist,$(findstring dft_rom_bist,${TEST}))
+	@cd ${WORK} && ln -sf ${MICKEY}/SRC/vd5380_slim_lib/firmware/save/ST_ROM_2048x12_TB_video_motion.cde ST_ROM_2048x12.cde
+else
+	@cd ${WORK} && ln -sf ST_ROM_2048x12_TB_${TEST}.cde ST_ROM_2048x12.cde
+endif
+	@echo "\`include \"vd5380_tbench_${TEST}_exc.v\"" > ${WORK}/vd5380_tbench_test_include.v
+ifeq ($(TEST),video_motion)
+	mkdir -p ${WORK}/result
+	mkdir -p ${WORK}/result_preproc_stat
+	@cd ${MICKEY}/TBENCH/vd5380_tbench_lib/octave/input/ && cp -f result/* ${WORK}/result
+	@cd ${MICKEY}/TBENCH/vd5380_tbench_lib/octave/input/ && cp -f result_preproc_stat/* ${WORK}/result_preproc_stat
+else ifeq (dft_video,$(findstring dft_video,${TEST}))
+	@cd ${MICKEY}/TBENCH/vd5380_tbench_lib/c/mickey && make clean && make
+else ifeq (CvsRTL_grab,$(findstring CvsRTL_grab,${TEST}))
+	@cd ${MICKEY}/TBENCH/vd5380_tbench_lib/c/mickey && make clean && make
+else ifeq (CvsRTL,$(findstring CvsRTL,${TEST}))
+	@cd ${MICKEY}/TBENCH/vd5380_tbench_lib/c/mickey && make clean && make
+else ifeq (_rest,$(findstring _rest,${TEST}))
+	@cd ${MICKEY}/TBENCH/vd5380_tbench_lib/c/s377 && make clean && make
+else ifeq (grab_spi_20ms,$(findstring grab_spi_20ms,${TEST}))
+	@cd ${MICKEY}/TBENCH/vd5380_tbench_lib/c/s377 && make clean && make
+else ifeq (hysteresis,$(findstring hysteresis,${TEST}))
+	@cd ${MICKEY}/TBENCH/vd5380_tbench_lib/c/s377 && make clean && make
+else ifeq (AEC,$(findstring AEC,${TEST}))
+	@cd ${MICKEY}/TBENCH/vd5380_tbench_lib/c/s377 && make clean && make
+else ifeq (live_streaming_standard,$(findstring live_streaming_standard,${TEST}))
+	@cd ${MICKEY}/TBENCH/vd5380_tbench_lib/c/s377 && make clean && make
+endif
+
+include ${MICKEY}/SCRIPTS/vd5380_include.mk
+
+non_reg:
+	@mkdir -p ${WORK}
+	@mkdir -p ${WORK_LOG}
+	@printf "Launching non-regression tests (log file : %s)\n" ${WORK_LOG}/non_reg.log |tee ${WORK_LOG}/non_reg.log 
+	@printf "Non-regression started at %s\n" "`date`" |tee -a ${WORK_LOG}/non_reg.log
+ifdef NR_RTL
+	@printf "RTL mode selected\n"
+	@for TEST_NAME in ${TEST_LIST} ; do \
+		echo `date`", Launching test $${TEST_NAME} for rtl (log file : ${WORK_LOG}/$${TEST_NAME}_rtl.log)" |tee -a ${WORK_LOG}/non_reg.log; \
+		{ /usr/bin/time -f %E make sim_rtl TEST=$${TEST_NAME}; } >> ${WORK_LOG}/$${TEST_NAME}_rtl.log 2>&1 ; \
+		echo "********** Error Summary from 'grep Error:' **********" >> ${WORK_LOG}/$${TEST_NAME}_rtl.log 2>&1 ; \
+		grep -A1 "Error:" ${WORK_LOG}/$${TEST_NAME}_rtl.log >> ${WORK_LOG}/$${TEST_NAME}_rtl.log; \
+		printf "Test finished at %s\n" "`date`" >> ${WORK_LOG}/$${TEST_NAME}_rtl.log; \
+	done
+endif
+ifdef NR_FPGA
+	@printf "FPGA mode selected\n"
+	@for TEST_NAME in ${TEST_LIST} ; do \
+		echo `date`", Launching test $${TEST_NAME} for fpga (log file : ${WORK_LOG}/$${TEST_NAME}_fpga.log)" |tee -a ${WORK_LOG}/non_reg.log; \
+		{ /usr/bin/time -f %E make sim_fpga TEST=$${TEST_NAME}; } >> ${WORK_LOG}/$${TEST_NAME}_fpga.log 2>&1; \
+		echo "********** Error Summary from 'grep Error:' **********" >> ${WORK_LOG}/$${TEST_NAME}_fpga.log 2>&1 ; \
+		grep -A1 "Error:" ${WORK_LOG}/$${TEST_NAME}_fpga.log >> ${WORK_LOG}/$${TEST_NAME}_fpga.log; \
+		printf "Test finished at %s\n" "`date`" >> ${WORK_LOG}/$${TEST_NAME}_fpga.log; \
+	done
+endif
+ifdef NR_GATE_BE_BC_MAX
+	@printf "GATE BE BC MAX  mode selected\n"
+	@for TEST_NAME in ${TEST_LIST} ; do \
+		echo `date`", Launching test $${TEST_NAME} for gate_be_bc_max (log file : ${WORK_LOG}/$${TEST_NAME}_gate_be_bc_max.log)" |tee -a ${WORK_LOG}/non_reg.log; \
+		{ /usr/bin/time -f %E make sim_gate_be TEST=$${TEST_NAME} SDF_CORNER=bc SDF_TYPE=max; } >> ${WORK_LOG}/$${TEST_NAME}_gate_be_bc_max.log 2>&1; \
+		echo "********** Error Summary from 'grep Error:' **********" >> ${WORK_LOG}/$${TEST_NAME}_gate_be_bc_max.log 2>&1 ; \
+		grep -A1 "Error:" ${WORK_LOG}/$${TEST_NAME}_gate_be_bc_max.log >> ${WORK_LOG}/$${TEST_NAME}_gate_be_bc_max.log; \
+		printf "Test finished at %s\n" "`date`" >> ${WORK_LOG}/$${TEST_NAME}_gate_be_bc_max.log; \
+	done
+endif
+ifdef NR_GATE_BE_BC_MIN
+	@printf "GATE BE BC MIN  mode selected\n"
+	@for TEST_NAME in ${TEST_LIST} ; do \
+		echo `date`", Launching test $${TEST_NAME} for gate_be_bc_min (log file : ${WORK_LOG}/$${TEST_NAME}_gate_be_bc_min.log)" |tee -a ${WORK_LOG}/non_reg.log; \
+		{ /usr/bin/time -f %E make sim_gate_be TEST=$${TEST_NAME} SDF_CORNER=bc SDF_TYPE=min; } >> ${WORK_LOG}/$${TEST_NAME}_gate_be_bc_min.log 2>&1; \
+		echo "********** Error Summary from 'grep Error:' **********" >> ${WORK_LOG}/$${TEST_NAME}_gate_be_bc_min.log 2>&1 ; \
+		grep -A1 "Error:" ${WORK_LOG}/$${TEST_NAME}_gate_be_bc_min.log >> ${WORK_LOG}/$${TEST_NAME}_gate_be_bc_min.log; \
+		printf "Test finished at %s\n" "`date`" >> ${WORK_LOG}/$${TEST_NAME}_gate_be_bc_min.log; \
+	done
+endif
+ifdef NR_GATE_BE_WC_MAX
+	@printf "GATE BE WC MAX  mode selected\n"
+	@for TEST_NAME in ${TEST_LIST} ; do \
+		echo `date`", Launching test $${TEST_NAME} for gate_be_wc_max (log file : ${WORK_LOG}/$${TEST_NAME}_gate_be_wc_max.log)" |tee -a ${WORK_LOG}/non_reg.log; \
+		{ /usr/bin/time -f %E make sim_gate_be TEST=$${TEST_NAME} SDF_CORNER=wc SDF_TYPE=max; } >> ${WORK_LOG}/$${TEST_NAME}_gate_be_wc_max.log 2>&1; \
+		echo "********** Error Summary from 'grep Error:' **********" >> ${WORK_LOG}/$${TEST_NAME}_gate_be_wc_max.log 2>&1 ; \
+		grep -A1 "Error:" ${WORK_LOG}/$${TEST_NAME}_gate_be_wc_max.log >> ${WORK_LOG}/$${TEST_NAME}_gate_be_wc_max.log; \
+		printf "Test finished at %s\n" "`date`" >> ${WORK_LOG}/$${TEST_NAME}_gate_be_wc_max.log; \
+	done
+endif
+ifdef NR_GATE_BE_WC_MIN
+	@printf "GATE BE WC MIN  mode selected\n"
+	@for TEST_NAME in ${TEST_LIST} ; do \
+		echo `date`", Launching test $${TEST_NAME} for gate_be_wc_min (log file : ${WORK_LOG}/$${TEST_NAME}_gate_be_wc_min.log)" |tee -a ${WORK_LOG}/non_reg.log; \
+		{ /usr/bin/time -f %E make sim_gate_be TEST=$${TEST_NAME} SDF_CORNER=wc SDF_TYPE=min; } >> ${WORK_LOG}/$${TEST_NAME}_gate_be_wc_min.log 2>&1; \
+		echo "********** Error Summary from 'grep Error:' **********" >> ${WORK_LOG}/$${TEST_NAME}_gate_be_wc_min.log 2>&1 ; \
+		grep -A1 "Error:" ${WORK_LOG}/$${TEST_NAME}_gate_be_wc_min.log >> ${WORK_LOG}/$${TEST_NAME}_gate_be_wc_min.log; \
+		printf "Test finished at %s\n" "`date`" >> ${WORK_LOG}/$${TEST_NAME}_gate_be_wc_min.log; \
+	done
+endif
+	@printf "Non-regression finished at %s\n" "`date`" |tee -a ${WORK_LOG}/non_reg.log
+
+non_reg_multimachine:
+	@mkdir -p ${WORK}
+	@mkdir -p ${MICKEY}/SIMU/vd5380_work/non_reg
+	@printf "Launching multi machine non-regression tests (results in $MICKEY/SIMU/vd5380_work/non_reg)\n"
+ifdef NR_RTL
+	@printf "RTL mode selected\n"
+	@for TEST_NAME in ${TEST_LIST} ; do \
+		echo `date`", Launching test $${TEST_NAME} for rtl (log file : ${WORK}/$${TEST_NAME}_rtl.log)"; \
+		rm -f ${MICKEY}/SIMU/vd5380_work/non_reg/$${TEST_NAME}_rtl.log; \
+		bsub -q long -R rh50 "iniams 13.1;setenv WORK ${WORK_DIR}/vd5380_work;cd ${MICKEY}/TBENCH/vd5380_tbench_lib/rtl_vlog;mkdir -p ${WORK};rm -f ${WORK}/$${TEST_NAME}_rtl.log;date > ${WORK}/$${TEST_NAME}_rtl.log;make clean;make sim_rtl TEST=$${TEST_NAME} >>& ${WORK}/$${TEST_NAME}_rtl.log;date >> ${WORK}/$${TEST_NAME}_rtl.log;cp ${WORK}/$${TEST_NAME}_rtl.log ${MICKEY}/SIMU/vd5380_work/non_reg"; \
+	done
+endif
+ifdef NR_FPGA
+	@printf "FPGA mode selected\n"
+	@for TEST_NAME in ${TEST_LIST} ; do \
+		echo `date`", Launching test $${TEST_NAME} for fpga (log file : ${WORK}/$${TEST_NAME}_fpga.log)"; \
+		rm -f ${MICKEY}/SIMU/vd5380_work/non_reg/$${TEST_NAME}_fpga.log; \
+		bsub -q long -R rh50 "iniams 13.1;setenv WORK ${WORK_DIR}/vd5380_work;cd ${MICKEY}/TBENCH/vd5380_tbench_lib/rtl_vlog;mkdir -p ${WORK};rm -f ${WORK}/$${TEST_NAME}_fpga.log;date > ${WORK}/$${TEST_NAME}_fpga.log;make clean;make sim_fpga TEST=$${TEST_NAME} >>& ${WORK}/$${TEST_NAME}_fpga.log;date >> ${WORK}/$${TEST_NAME}_fpga.log;cp ${WORK}/$${TEST_NAME}_fpga.log ${MICKEY}/SIMU/vd5380_work/non_reg"; \
+	done
+endif
+ifdef NR_GATE_CPF
+	@printf "GATE+CPF mode selected\n"
+	@for TEST_NAME in ${TEST_LIST} ; do \
+		echo `date`", Launching test $${TEST_NAME} for gate (log file : ${WORK}/$${TEST_NAME}_gate.log)"; \
+		rm -f ${MICKEY}/SIMU/vd5380_work/non_reg/$${TEST_NAME}_gate.log; \
+		bsub -q long -R rh50 "iniinci 13.10.013;setenv WORK ${WORK_DIR}/vd5380_work;setenv HDL_TOOL ius;setenv LP_SIM true;setenv DESIGN_STAGE synth;cd ${MICKEY}/TBENCH/vd5380_tbench_lib/rtl_vlog;mkdir -p ${WORK};rm -f ${WORK}/$${TEST_NAME}_gate.log;date > ${WORK}/$${TEST_NAME}_gate.log;make clean;make sim_gate TEST=$${TEST_NAME} >>& ${WORK}/$${TEST_NAME}_gate.log ;date >> ${WORK}/$${TEST_NAME}_gate.log;cp ${WORK}/$${TEST_NAME}_gate.log ${MICKEY}/SIMU/vd5380_work/non_reg"; \
+	done
+endif
+ifdef NR_GATE_BE
+	@printf "GATE BE mode selected\n"
+	@for TEST_NAME in ${TEST_LIST} ; do \
+		echo `date`", Launching test $${TEST_NAME} for gate (log file : ${WORK}/$${TEST_NAME}_gate.log)"; \
+		rm -f ${MICKEY}/SIMU/vd5380_work/non_reg/$${TEST_NAME}_gate.log; \
+		bsub -q long -R rh50 "iniams 13.1;setenv WORK ${WORK_DIR}/vd5380_work;cd ${MICKEY}/TBENCH/vd5380_tbench_lib/rtl_vlog;mkdir -p ${WORK};rm -f ${WORK}/$${TEST_NAME}_gate_be.log;date > ${WORK}/$${TEST_NAME}_gate_be.log;make clean;make sim_gate_be TEST=$${TEST_NAME} SDF_CORNER=bc SDF_TYPE=max >>& ${WORK}/$${TEST_NAME}_gate_be.log;date >> ${WORK}/$${TEST_NAME}_gate_be.log;cp ${WORK}/$${TEST_NAME}_gate_be.log ${MICKEY}/SIMU/vd5380_work/non_reg"; \
+	done
+endif
+
+
+
+non_reg_testeur:
+	@rm -rf ${WORK_DIR}
+	@mkdir  ${WORK_DIR}/
+	@rm -f ${MICKEY}/TBENCH/vd5380_tbench_lib/testeur/tbench_output/*
+	@for TEST_NAME in ${TEST_LIST} ; do \
+		make launch_testeur_sim TEST=$${TEST_NAME} ;\
+	done
+	@cd ${MICKEY}/TBENCH/vd5380_tbench_lib/testeur/tbench_output; rm -f test_pattern.zip; zip test_pattern.zip *
+
+
+launch_testeur_sim:
+ifeq (testeur,$(findstring testeur,${TEST})) 
+	@echo "Running test : " ${TEST} 
+	@touch ${WORK_DIR}/tmp
+	@make  sim_testeur TEST=${TEST} &> ${WORK_DIR}/tmp 
+	@echo "test status => "; grep PASS ${WORK}/transcript
+else 
+	@echo "nothing to do for test :" ${TEST}
+endif 
+
+
+
+
+
+
+help:
+	@echo "######################### VD5380 TEST MANUAL ############################################"
+	@echo "make sim             : launch a test in batch mode using asic, FPGA and syn model."
+	@echo "make sim_rtl         : launch a test in batch mode using asic model."
+	@echo "make sim_fpga        : launch a test in batch mode using FPGA model."
+	@echo "make sim_syn         : launch a test in batch mode using syn  model."
+	@echo "make sim_gate        : launch a test in batch mode using gate model."
+	@echo "make sim_gui         : launch a test in gui   mode using asic, FPGA and syn model."
+	@echo "make sim_rtl_gui     : launch a test in gui   mode using asic model."
+	@echo "make sim_fpga_gui    : launch a test in gui   mode using FPGA model."
+	@echo "make sim_syn_gui     : launch a test in gui   mode using syn  model."
+	@echo "make non_reg         : launch all tests using asic, FPGA and syn model."
+	@echo "make sim_testeur     : launch a test in sim_rtl mode and output file are saved"
+	@echo "make sim_testeur_gui : launch a test in sim_rtl_gui mode and output file are saved"
+	@echo "make non_reg_testeur : launch all testeur_test in sim_rtl mode and output file are saved"
+
+	@echo "make file option :"
+	@echo "-> make --no-print-directory    = do not print entering / leaving directory error"
+	@echo ""
+	@echo "Default test is : ${DEFAULT_TEST}."
+	@echo "To use another test, variable TEST must be defined with one of the following values :"
+	@ls ${SRC_DIR}/*.v | grep exc | awk -F "rtl_vlog" '{print $$2}' | sed 's;/vd5380_tbench_;make sim TEST=;g' | sed 's;_exc.v;;g'
+	@echo ""
+	@echo "To create a new test, a new test file must be created named as vd5380_tbench_<test_name>_exc.v"
+	@echo ""
+	@echo "Several environment variables are used (and can be overriden):"
+	@echo ""
+	@echo "WORK_LOG          : where the logs are stored (defaults to ${WORK_LOG})"
+	@echo "FAST              : set to 1 to run fast versions of testbenches"
+	@echo "SDF_CORNER        : set to wc or bc depending on the SDF case used in gate_be sim"
+	@echo "SDF_TYPE          : set to min or max depending on the SDF case used in gate_be sim"
+	@echo "NR_RTL            : set to 1 to run non_reg in RTL mode"
+	@echo "NR_FPGA           : set to 1 to run non_reg in FPGA mode"
+	@echo "NR_GATE_BE_BC_MAX : set to 1 to run non_reg in GATE BE mode, BC, MAX SDF corner"
+	@echo "NR_GATE_BE_BC_MIN : set to 1 to run non_reg in GATE BE mode, BC, MIN SDF corner"
+	@echo "NR_GATE_BE_WC_MAX : set to 1 to run non_reg in GATE BE mode, WC, MAX SDF corner"
+	@echo "NR_GATE_BE_WC_MIN : set to 1 to run non_reg in GATE BE mode, WC, MIN SDF corner"
+	@echo ""
+	@echo "Example call 1 : make clean ; make non_reg FAST=1 NR_RTL=1 WORK_LOG=$MICKEY/SIMU/vd5380_work/rc7"
+	@echo "Example call 2 : make clean ; make sim_gate_be SDF_CORNER=bc SDF_TYPE=min TEST=grab_spi_20ms_rst"
+	@echo ""
+	@echo "#########################################################################################"

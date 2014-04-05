@@ -1,0 +1,4 @@
+* spice tbench
+Yams osc(functional) PORT: dvddgo1 dvss id_en od_clk_ams
+Xspice id_en od_clk_spice dvddgo1 dvss osc
+

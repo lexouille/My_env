@@ -1,12 +1,13 @@
-"""""""" Fichier de configuration de VIM pour la syntaxe ELDO """"""""
+"""""""" Fichier de configuration de VIM pour la syntaxe ELDO/SPICE """"""""
+source ~/.env/.vim/spice.vim
 
 "Ignore Maj / Min
 syntax case ignore
 
 " Largeur max du texte inséré. On peut wrapper en selectionnant visuel + gq
 " 0 désactive la fonction
-setlocal textwidth=80
-let &showbreak = '+ ' 
+"setlocal textwidth=80
+"let &showbreak = '+ ' 
 "setlocal fo=al voir wrap, showbreak, linebreak, ...
 
 "Options de folding
@@ -194,6 +195,7 @@ syntax match s_cmd "^\.Operating_Point\s*"
 syntax match s_cmd "^\.DC_Analysis\s*"
 syntax match s_cmd "^\.Transient_Analysis\s*"
 syntax match s_cmd "^\.AC_Analysis\s*"
+syntax match s_cmd "^\.SOA_check\s*"
 
 
 "COMMANDS OPTIONS & ARGUMENTS : ELDO 
@@ -687,7 +689,7 @@ syntax keyword s_option TUNING
 
 " Notes perso
 syntax keyword s_option DC
-"syntax keyword s_option AC
+syntax keyword s_option AC
 syntax keyword s_option FOUR
 syntax keyword s_option MA
 syntax keyword s_option PHNOISE

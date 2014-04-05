@@ -154,7 +154,7 @@ map <A-DOWN> :tabfirst <CR>
 :map <S-F12> :r!xclip -o<CR>
 
 " Complétion des chemins dans la barre de commande et en insert
-" A compléter, corriger
+" A compléter, corriger, ça marche bizarement
 if has("wildmenu")
     set wildignore+=*.a,*.o
     set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png
@@ -229,7 +229,7 @@ set smartindent expandtab shiftwidth=2 tabstop=2
 " carac et netlist
 au BufRead,BufNewFile *.cir,*.sp,*.cdl,*.inc,*.pex,*.pxi,*.typ,*.lib,*.mod,*.ext,*.ckt,*.sp2,*.sp3,carac,netlist set filetype=cir
 
-" Source du fichier de coloration syntaxique
+" Source du fichier de coloration syntaxique et des commandes spice
 au! Syntax cir source ~/.env/.vim/syntax/eldo.vim
 
 function! Fill(nbchar)
@@ -243,10 +243,13 @@ function! General()
   command! -nargs=0 Fontaine :call Source_vimrc()
 endfunction
 
-function! Source_vimrc()
-  source ~/.vimrc
-  echo "Local .vimrc (re)loaded"
-endfunction
+if !exists("*Source_vimrc")
+  function! Source_vimrc()
+    source ~/.vimrc
+    echo "Local .vimrc (re)loaded"
+    edit
+  endfunction
+endif
 " help functions / function-list
 
 " OLD STUFF, FROM J ?

@@ -17,7 +17,7 @@ use Getopt::Long; ## Fonctions pour les récupérations d'arguments ; GetOptions
 ################################################################################
 my ($o_verb, $o_help, $o_debug);
 my $term_sep='################################################################################';
-my $numberspice=qr/(?:[+-]?\d+(?:\.\d+)?(?:meg|[afgnmpu]|e[+-]?\d+)?)|(?:[+-]?\.\d+(?:meg|[afgnmpu]|e[+-]?\d+)?)/i;
+my $numberspice=qr/(?:[+-]?\d+(?:\.\d+)?(?:meg|[tgkmunpfa]|e[+-]?\d+)?)|(?:[+-]?\.\d+(?:meg|[tgkmunpfa]|e[+-]?\d+)?)/i;
 
 my %file ; my %h ; my %op ;
 my $file ; my $device ; my $param ;
@@ -37,18 +37,18 @@ sub check_options {
     'h' => \$o_help,  'help'	=> \$o_help,
     'v' => \$o_verb,  'verbose'	=> \$o_verb,
   );
-  help() if(defined ($o_help)) ;
+  help() and exit if(defined ($o_help)) ;
 }
 
 sub help() {
   print "$term_sep\n";
-  print ("Usage fonction sim_eldo : sim_eldo [args]\n");
+  print ("Usage fonction extract_op : extract_op [args]\n");
   print "$term_sep\n";
   print ("Arguments  :\n\n");
   print ("  -d, --debug   : Debug information (very verbose)\n\n");
   print ("  -h, --help    : Help command display\n\n");
   print ("  -v, --verbose : Debug purpose\n\n");
-  exit 1;
+  exit;
 }
 
 sub printv { print @_ if (defined $o_verb || defined $o_debug) ; }
@@ -69,7 +69,9 @@ find ( sub { if (/\.op(\d+)$/i ) {  ## On va chercher dans path les fichiers de 
 }
 , $path ) ;
 
-print Dumper \%file ;
+my $dut="mos" ;
+
+print Dumper \%file and print "Dumper %file hash\n" and getc if (defined $o_debug) ;
 
 printv ("$term_sep\nProcessing .op files ...\n");
 foreach my $filepath ( keys %file ) {
@@ -94,15 +96,16 @@ foreach my $filepath ( keys %file ) {
   } ## End while sur le fichier
 }
 
-print Dumper \%h ;
+print Dumper \%h and print "Dumper %h hash\n" and getc if (defined $o_debug) ;
 
 foreach $file (keys %h) {
   foreach $device (keys %{$h{$file}{device}}) {
     foreach $param (keys %{$h{$file}{param}}) {
-      $op{$device}{param}{$param} = ($param => $h{$file}{param}{$param}) ;
+      $op{$device}{$file}{param}{$param} = ($param => $h{$file}{param}{$param}) ;
+      $op{$device}{$file}{param}{$param} = ($param => $h{$file}{param}{$param}) ;
     }
   }
 }
 
-print Dumper \%op ;
+print Dumper \%op and print "Dumper %op hash\n" and getc if (defined $o_debug) ; 
 

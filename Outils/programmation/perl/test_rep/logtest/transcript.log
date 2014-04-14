@@ -1,0 +1,12 @@
+# //  Questa Sim
+# //  Version 10.2b linux May 16 2013
+# //
+# //  Copyright 1991-2013 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //
+# ** Error: (vish-3296) Unknown option '--version'.
+# Use the -help option for complete vsim usage.

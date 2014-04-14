@@ -15,7 +15,7 @@ set foldmethod=syntax
 "Folds initialement fermés
 set foldlevel=0
 "Ferme le fold quand on en sort
-set foldclose=all
+"set foldclose=all
 syntax region s_ckt start="\.subckt" end="\.ends" fold
 syntax region s_ckt start="\.define_testbench" end="\.end_define_testbench" fold
 "syntax sync fromstart 

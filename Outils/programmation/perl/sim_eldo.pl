@@ -27,17 +27,24 @@ my ($index,$choice);
 
 my %tech_def = (
 "ats130rf" => { ## begin ats130rf
+## Boulot
+  #"searchpath" => ['/nfs/work-crypt/ic/common/altis/1.2.2/eldo/models/', "/nfs/work-crypt/ic/usr/$user/drcheckyle/common_files/tech_file/include_altis130rf.inc"] ,
+## Home
   "searchpath" => ['/nfs/work-crypt/ic/common/altis/1.2.2/eldo/models/', '/nfs/work-crypt/ic/usr/aferret/altis/simulation/include'] ,
+## Boulot to be done
+  #"file" => ['/nfs/work-crypt/ic/usr/$user/drcheckyle/common_files/.subckt.vim'] ,
+  #"techlink" => '/nfs/work-crypt/ic/usr/$user/drcheckyle/common_files/xh018.vim' ,
+## Home
   "file" => ['/nfs/home/aferret/.env/.vim/syntax/.subckt.vim'] ,
   "techlink" => '/nfs/home/aferret/.env/.vim/syntax/xh018.vim' ,
   "sub" => { "vhdl" => { "min" => -0.01 , "max" => 0.01 } } ,
   "dvss" => { "vhdl" => { "min" => -0.01 , "max" => 0.01 , "itest" => "1.0e-06"} } ,
   "avss" => { "vhdl" => { "min" => -0.01 , "max" => 0.01 , "itest" => "1.0e-06"} } ,
-  "dvddgo1" => { "vhdl" => { "min" => 1.0 , "max" => 2.0 } , "process" => { "vnom" => 1.5 , "vmin" => 1.35 , "vmax" => 1.65 } } ,
-  "dvddgo2" => { "vhdl" => { "min" => 1.8 , "max" => 3.2 } , "process" => { "vnom" => 2.5 , "vmin" => 2.25 , "vmax" => 2.75 } } ,
-  "avddgo1" => { "vhdl" => { "min" => 1.0 , "max" => 2.0 } , "process" => { "vnom" => 1.5 , "vmin" => 1.35 , "vmax" => 1.65 } } ,
-  "avddgo2" => { "vhdl" => { "min" => 1.8 , "max" => 3.2 } , "process" => { "vnom" => 2.5 , "vmin" => 2.25 , "vmax" => 2.75 } } ,
-  "avddio" =>  { "vhdl" => { "min" => 2.2 , "max" => 4.4 } , "process" => { "vnom" => 3.3 , "vmin" => 2.97 , "vmax" => 3.63 } } 
+  "dvddgo1" => { "vhdl" => { "min" => "1.0" , "max" => "2.0" } , "process" => { "vnom" => 1.5 , "vmin" => 1.35 , "vmax" => 1.65 } } ,
+  "dvddgo2" => { "vhdl" => { "min" => "1.8" , "max" => "3.2" } , "process" => { "vnom" => 2.5 , "vmin" => 2.25 , "vmax" => 2.75 } } ,
+  "avddgo1" => { "vhdl" => { "min" => "1.0" , "max" => "2.0" } , "process" => { "vnom" => 1.5 , "vmin" => 1.35 , "vmax" => 1.65 } } ,
+  "avddgo2" => { "vhdl" => { "min" => "1.8" , "max" => "3.2" } , "process" => { "vnom" => 2.5 , "vmin" => 2.25 , "vmax" => 2.75 } } ,
+  "avddio" =>  { "vhdl" => { "min" => "2.2" , "max" => "4.4" } , "process" => { "vnom" => 3.3 , "vmin" => 2.97 , "vmax" => 3.63 } } 
 } , ## end ats130rf
 "xh018" => { ## begin xh018
   "searchpath" => [ "/nfs/work-crypt/ic/common/xfab/xh018/mentor/v4_0/eldo/v4_0_4/lpmos/models/cap" ,
@@ -53,7 +60,11 @@ my %tech_def = (
                     #"*/nfs/work-crypt/ic/common/xfab/xh018/mentor/v4_0/eldo/v4_0_4/occ/models/res" ,
                     #"*/nfs/work-crypt/ic/common/xfab/xh018/mentor/v4_0/eldo/v4_0_4/occ/models/dio" ,
                     #"*/nfs/work-crypt/ic/common/xfab/xh018/mentor/v4_0/eldo/v4_0_4/occ/models/bip" ,
-                    "/nfs/work-crypt/ic/usr/aferret/charac_techno/xfab/xh018/" ] ,
+                    "/nfs/work-crypt/ic/usr/$user/charac_techno/xfab/xh018/" ] ,
+## Boulot to be done
+  #"file" => ['/nfs/work-crypt/ic/usr/$user/drcheckyle/common_files/.subckt.vim'] ,
+  #"techlink" => '/nfs/work-crypt/ic/usr/$user/drcheckyle/common_files/xh018.vim' ,
+## Home
   "file" => ['/nfs/home/aferret/.env/.vim/syntax/.subckt.vim'] ,
   "techlink" => '/nfs/home/aferret/.env/.vim/syntax/xh018.vim' ,
   "sub" => { "vhdl" => { "min" => -0.01 , "max" => 0.01 } } ,
@@ -120,11 +131,11 @@ my $numberspice=qr/(?:[+-]?\d+(?:\.\d+)?(?:meg|[tgkmunpfa]|e[+-]?\d+)?)|(?:[+-]?
 # Gestion des fichiers d'entrée sortie
 ################################################################################
 # Définition du path de travail.
-#my $path="/nfs/work-crypt/ic/usr/aferret/altis/simulation/inv/eldoD/schematic/netlist/";
 my $path=`pwd`; chomp $path; $path .="/" ;
 ## Boulot
-my $commonpath = "/nfs/home/aferret/.env/Outils/programmation/perl/";
+my $commonpath = "/nfs/work-crypt/ic/usr/$user/drcheckyle/common_files/";
 ## Home
+#my $commonpath = "/nfs/home/aferret/.env/Outils/programmation/perl/";
 #my $commonpath = $path;
 
 opendir (PATH, $path) or die $!;
@@ -172,10 +183,10 @@ sub uniq {
 }
 
 sub stdin_answer {
-## Fonction "Je te pose une question" avec un range de réponses ; réponse unique
+## Fonction "Je te pose une question" avec un range de réponses ; réponse unique, case sensitive ou pas
 ## Usage réponse_de_retour = stdin_answer ('Question', @liste_de_réponses_possible);
   my @in = @_ ; 
-  my $question = shift @in ; map ( {tr/A-Z/a-z/} @in );#Si case insensitive
+  my $question = shift @in ; map ( {tr/A-Z/a-z/} @in ); #Si case insensitive
   my %answer;
   my $g_answer;
   print "\n$term_sep\n$question\n#### Possible answers :\n";
@@ -217,7 +228,7 @@ sub outputfile {
 ## vérifie s'il existe et demande confirmation d'overwrite
 ## le crée sinon
 ## retourne le filehandle
-## usage : outputfile("nom_du_fichier")
+## usage : my $filehandle = outputfile("nom_du_fichier")
   my $_outputfile;
   my $_outputfile_filehandle;
   ($_outputfile)=@_;
@@ -535,7 +546,7 @@ sub gen_model { # Génération des modèles VHDL et Verilog à partir des subckt
 
 ##Génération des modèles vhdl
   if ($bmodel eq "vhdl") { 
-    $bname = "VHDL" ; $bextension = ".hdl";
+    $bname = "VHDL" ; $bextension = ".vhd";
     print ("Generation of $bname behavioral models ...\n") ; 
 ##Sélection des instance à modéliser
     print "\n\t-->Subckt list in netlist :\n" ; print "$_\n" foreach ( keys %subckt ) ;
@@ -546,7 +557,7 @@ sub gen_model { # Génération des modèles VHDL et Verilog à partir des subckt
       print "\n$term_sep\nGeneration of vhdl model file for $model\n" ;
       $bmodel_FH = outputfile($model.$bextension) ;
       print ($bmodel_FH "$vhdl_sep\n--\n--\tCompagny : ASYGN\n--\tEngineer : \n--\n--\tCreation Date : $date\n--\tDesign name :\n--\tModule type : $bname\n--\tModule name : $model\n--\tProject name :\n--\tTool versions :\n--\tDescription : \n--\n--\tDependencies : \n--\n--\tRevision : \n--\tAdditionnal comments : \n--\n$vhdl_sep\n\n\n"); #Entête
-      print ($bmodel_FH "library ieee, discipline;\nuse IEEE.STD_LOGIC_1164.all;\nuse IEEE.numeric_std.all;\nuse work.internal_bus.all;\n--Insert here other libraires definition\n\n\n"); #Définition des librairies communes
+      print ($bmodel_FH "library ieee, discipline, work;\nuse disciplines.electromagnetic_system.all;\nuse ieee.std_logic_arith.all;\nuse ieee.std_logic_1164.all;\nuse ieee.math_real.all;\nuse ieee.numeric_std.all;\n--Insert here other libraires definition\n\n\n"); #Définition des librairies communes
 ## Définitions des génériques
       print($bmodel_FH "ENTITY $model is \n\n--Generic variable definition\nGENERIC (\n"); 
       foreach ( keys %{$subckt{$model}{pinlist}} ) { ## Définitions des génériques de tests sur les alims si on les trouve dans le hash tech_def{$techno}
@@ -557,7 +568,7 @@ sub gen_model { # Génération des modèles VHDL et Verilog à partir des subckt
           print ($bmodel_FH "\tg_$subckt{$model}{pinlist}{$_}{name}"."_max : real := $tech_def{$techno}{$subckt{$model}{pinlist}{$_}{name}}{vhdl}{max} ; -- Generic for power tests\n");
         }
       }
-      print ($bmodel_FH "\t--g_generic_name : real := generic_value ;\n\t--g_generic_name : realvector (0 TO XX) := (gen_val1, gen_val2, ..., gen_valXX) ;\n);\n\n"); #Fin de définintion des génériques
+      print ($bmodel_FH "\tg_generic_name : real := generic_value ; -- Generic definition example\n\tg_generic_name : realvector (0 TO XX) := (gen_val1, gen_val2, ..., gen_valXX) \n\t--Don't foreget to remove last \";\"\n);\n\n"); #Fin de définintion des génériques
 
 ##Début de définintion des ports
       print($bmodel_FH "--I/O Block definition\nPORT(\n"); 
@@ -601,10 +612,10 @@ sub gen_model { # Génération des modèles VHDL et Verilog à partir des subckt
           }
         }
       } #Fin des définitions des ports, fin de l'ENTITY, passage à la suite
-      print ($bmodel_FH ");\n\nEND ENTITY $model;\n\nARCHITECTURE FUNCTIONNAL OF $model IS\n\n--Quantity and signal definitions\n");
+      print ($bmodel_FH "\n\tterminal/signal IO_name : electrical/in/out std_logic \n\t-- Don't foreget to remove last \";\"\n);\n\nEND ENTITY $model;\n\nARCHITECTURE FUNCTIONAL OF $model IS\n\n--Quantity and signal definitions\n");
       foreach ( keys %{$subckt{$model}{pinlist}} ) { ## Définition des signaux pour les power tests
         if ($tech_def{$techno}{$subckt{$model}{pinlist}{$_}{name}}) {
-          print ($bmodel_FH "\tsignal s_test_$subckt{$model}{pinlist}{$_}{name} : boolean = false ; -- Power test purpose\n");
+          print ($bmodel_FH "\tsignal s_test_$subckt{$model}{pinlist}{$_}{name} : boolean := false ; -- Power test purpose\n");
           if ($subckt{$model}{pinlist}{$_}{name} =~ /vss/) { ## Alim de type ground
           print ($bmodel_FH "\tquantity v_$subckt{$model}{pinlist}{$_}{name} across i_$subckt{$model}{pinlist}{$_}{name} through $subckt{$model}{pinlist}{$_}{name};\n");
           } elsif ($subckt{$model}{pinlist}{$_}{name} =~ /vdd/) { ## Alim de type vdd
@@ -612,6 +623,7 @@ sub gen_model { # Génération des modèles VHDL et Verilog à partir des subckt
           }
         }
       }
+      print ($bmodel_FH "\tsignal s_enable_fct : std_ulogic := '1'; --Define functionnality enable behavior later\n");
       print ($bmodel_FH "\t--signal s_signalname : boolean/std_ulogic/integer/real/signed/unsigned := basevalue ;\n\nBEGIN\n\n--Power tests\n");
       foreach ( keys %{$subckt{$model}{pinlist}} ) { ## Ecriture des power tests
         if ($tech_def{$techno}{$subckt{$model}{pinlist}{$_}{name}}) {
@@ -622,7 +634,7 @@ sub gen_model { # Génération des modèles VHDL et Verilog à partir des subckt
       print ($bmodel_FH "--Repports in transcript for power tests\n");
       foreach ( keys %{$subckt{$model}{pinlist}} ) { ## Ecriture repports de power tests dans le transcript
         if ($tech_def{$techno}{$subckt{$model}{pinlist}{$_}{name}}) {
-          print ($bmodel_FH "\tassert s_test_$subckt{$model}{pinlist}{$_}{name} or s_enable_fct = 0.0 \n\treport \"$model : $subckt{$model}{pinlist}{$_}{name} powercheck failure ; voltage value out of bound\" severity warning ;\n");
+          print ($bmodel_FH "\tassert s_test_$subckt{$model}{pinlist}{$_}{name} or s_enable_fct = '0'\n\treport \"$model : $subckt{$model}{pinlist}{$_}{name} powercheck failure ; voltage value out of bound\" severity warning ;\n");
         }
       }
 ## Fin des power tests/ecriture transcripts. Ecriture des composants s'il y en a.
@@ -648,7 +660,7 @@ sub gen_model { # Génération des modèles VHDL et Verilog à partir des subckt
           print ($bmodel_FH "\t);\n\t-- Component $key definition end.\n\n");
         }
       }
-      print ($bmodel_FH "\nEND ARCHITECTURE FUNCTIONNAL\n\n");
+      print ($bmodel_FH "\n$vhdl_sep\n-- Core VHDL code\n$vhdl_sep\n\nEND ARCHITECTURE FUNCTIONAL\n\n");
       close $bmodel_FH;
     }
   print "\n$term_sep\nGeneration of VHDL model file done\n" ;

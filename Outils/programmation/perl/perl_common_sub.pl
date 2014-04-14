@@ -33,9 +33,10 @@ sub uniq {
 
 sub stdin_answer {
 ## Fonction "Je te pose une question" avec un range de réponses ; réponse unique
-## Usage réponse_de_retour = stdin_answer ('Question', @liste_de_réponses_possible);
+## Usage réponse_de_retour = stdin_answer ('tr/nrt', 'Question', @liste_de_réponses_possible);
   my @in = @_ ; 
-  my $question = shift @in ; map ( {tr/A-Z/a-z/} @in );#Si case insensitive
+  my $tr = shift @in ; 
+  my $question = shift @in ; map ( {tr/A-Z/a-z/} @in ) if ($tr eq "tr") ; ## Si case insensitive on lowercase toutes les réponses possibles
   my %answer;
   my $g_answer;
   print "\n$term_sep\n$question\n$term_sep\n";
@@ -52,10 +53,11 @@ sub stdin_answer {
 
 sub stdin_answer_mult {
 ## Fonction question avec un range de réponses ; réponse multiple retournée sous forme de tableau ; Elimination des doublons
-## Retourne un résultat s'il en trouve au moins un et élimine les autres. Case sensitive
-## Usage : @réponse_de_retour = stdin_answer_mult ('Question', @liste_de_réponses_possible)n
+## Retourne un résultat s'il en trouve au moins un et élimine les autres. Case sensitive ou insensitive
+## Usage : @réponse_de_retour = stdin_answer_mult ('tr/ntr', 'Question', @liste_de_réponses_possible)
   my @in = @_ ; 
-  my $question = shift @in ;
+  my $tr = shift @in ; 
+  my $question = shift @in ; map ( {tr/A-Z/a-z/} @in ) if ($tr eq "tr") ; ## Si case insensitive on lowercase toutes les réponses possibles
   my %answer;
   my @g_answer;
   print "$question\n";

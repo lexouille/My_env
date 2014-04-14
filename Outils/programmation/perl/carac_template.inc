@@ -15,6 +15,7 @@ Netlist_name user_name
 + nowarn=902
 + nowarn=209
 + alter_nominal_text=nom
++probeop2
 + aex=2 alignext
 + tuning = accurate ! global accuracy parameter => fast standard accurate vhigh
 *+ premier ! Only for gig netlist to improve CPU Time

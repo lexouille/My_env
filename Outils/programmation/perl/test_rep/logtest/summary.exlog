@@ -1,0 +1,838 @@
+################################################################################
+##Summary of extract_log procedure :
+
+##	Date : 2014-04-08T19:45+0200
+##	Directory under scan : /nfs/home/aferret/.env/Outils/programmation/perl/test_rep/logtest/
+##	Log file found that are parsed : 
+##	transcript.log
+##	precision.log
+##	simuff_ex.log
+##	transcript_ex.log
+
+################################################################################
+##Processing transcript log file ... 
+
+##	Error found line 11 ; Full line :
+##	# ** Error: (vish-3296) Unknown option '--version'.
+
+
+################################################################################
+
+################################################################################
+##Processing precision log file ... 
+
+##	Warning found line 19 ; Full line :
+##	# Warning: [556]: transform_tristates option is set to value all internally for the current technology.
+
+##	Warning found line 21 ; Full line :
+##	# Warning: [568]: Setting 'optimize_power_effort' is not allowed in RTL product mode. Ignoring.
+
+
+################################################################################
+
+################################################################################
+##Processing simuff_ex log file ... 
+
+##	Warning found line 698 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(79): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 699 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(80): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 700 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(81): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 701 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(82): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 702 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(83): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 703 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(84): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 704 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(85): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 705 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(86): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 706 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(87): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 707 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(88): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 708 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(89): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 709 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(90): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 710 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(91): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 711 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(92): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 712 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(93): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 713 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(94): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 714 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(95): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 715 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(96): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 716 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(97): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 717 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(98): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 718 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(99): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 719 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(100): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 720 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(101): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 721 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(102): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 722 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(103): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 723 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(104): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 724 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(105): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 725 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(106): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 726 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(107): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 727 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(108): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 728 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(109): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 729 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(110): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 730 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(111): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 731 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(112): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 732 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(113): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 733 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(114): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 734 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(115): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 735 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(116): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 736 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(117): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 737 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(118): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 738 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(119): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 739 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(120): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 740 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(121): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 741 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(122): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 742 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(123): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 743 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(124): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 744 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(125): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 745 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(126): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 746 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(127): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 747 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(128): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 748 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(129): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 749 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(130): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 750 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(131): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 751 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(132): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 752 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(133): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 753 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(134): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 754 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(135): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 755 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(136): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 756 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(137): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 757 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(138): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 758 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(139): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 759 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(140): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 760 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(141): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 761 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(142): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 762 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(143): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 763 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(144): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 764 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(145): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 765 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(146): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 766 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(147): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 767 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(148): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 768 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(149): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 769 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(150): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 770 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(151): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 771 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(152): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 772 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(153): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 773 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(154): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 774 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(155): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 775 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(156): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 776 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(157): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 777 ; Full line :
+##	# ** Warning: (vsim-3616) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/TBENCH/vd5380_core_lib/rtl_vlog/IMG140_SC_33_CORE_OD25.v(8887): Instance ':vd5380_tbench:dut:go2_inst:shadow_reg_inst:MY_CKGAT_NAME_RC_CG_HIER_INST150:RC_CGIC_INST' - Bad $setuphold constraints: 147 ps and -151 ps. Negative limit(s) set to zero.
+
+##	Warning found line 786 ; Full line :
+##	# ** Warning: (vsim-8786) Logging of a Verilog optimized gate-level cell port uses the hiconn as visibility to the loconn is restricted.
+
+##	Warning found line 842 ; Full line :
+##	# vd5380_tbench.dut.go1_inst.slim_top_inst.rom_inst.rom_bist_inst.I1.ST_ROM_2048x12m32_U_maininst - 0.00 ns (MSG_ID 003) WARNING: Illegal Value on Clock. Output Corrupted 
+
+##	Warning found line 1513 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(79): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 1514 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(80): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 1515 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(81): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 1516 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(82): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 1517 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(83): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 1518 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(84): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 1519 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(85): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 1520 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(86): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 1521 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(87): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 1522 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(88): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 1580 ; Full line :
+##	# vd5380_tbench.dut.go1_inst.slim_top_inst.rom_inst.rom_bist_inst.I1.ST_ROM_2048x12m32_U_maininst - 0.00 ns (MSG_ID 003) WARNING: Illegal Value on Clock. Output Corrupted 
+
+##	Warning found line 1588 ; Full line :
+##	# ** Warning: (vsim-3819) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/TBENCH/vd5380_core_lib/rtl_vlog/IMG140_SC_19_CORE_HVT.v(23455): Scheduled event on delay net dTI was cancelled.
+
+##	Warning found line 1590 ; Full line :
+##	# ** Warning: (vsim-3819) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/TBENCH/vd5380_core_lib/rtl_vlog/IMG140_SC_19_CORE_HVT.v(23455): Scheduled event on delay net dTI was cancelled.
+
+##	Warning found line 1592 ; Full line :
+##	# ** Warning: (vsim-3819) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/TBENCH/vd5380_core_lib/rtl_vlog/IMG140_SC_19_CORE_HVT.v(23455): Scheduled event on delay net dTI was cancelled.
+
+##	Warning found line 1594 ; Full line :
+##	# ** Warning: (vsim-3819) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/TBENCH/vd5380_core_lib/rtl_vlog/IMG140_SC_19_CORE_HVT.v(23455): Scheduled event on delay net dTI was cancelled.
+
+
+################################################################################
+
+################################################################################
+##Processing transcript_ex log file ... 
+
+##	Warning found line 2266 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(79): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2267 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(80): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2268 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(81): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2269 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(82): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2270 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(83): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2271 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(84): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2272 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(85): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2273 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(86): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2274 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(87): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2275 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(88): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2276 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(89): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2277 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(90): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2278 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(91): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2279 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(92): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2280 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(93): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2281 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(94): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2282 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(95): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2283 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(96): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2284 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(97): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2285 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(98): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2286 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(99): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2287 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(100): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2288 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(101): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2289 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(102): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2290 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(103): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2291 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(104): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2292 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(105): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2293 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(106): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2294 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(107): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2295 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(108): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2296 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(109): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2297 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(110): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2298 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(111): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2299 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(112): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2300 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(113): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2301 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(114): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2302 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(115): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2303 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(116): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2304 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(117): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2305 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(118): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2306 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(119): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2307 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(120): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2308 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(121): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2309 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(122): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2310 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(123): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2311 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(124): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2312 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(125): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2313 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(126): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2314 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(127): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2315 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(128): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2316 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(129): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2317 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(130): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2318 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(131): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2319 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(132): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2320 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(133): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2321 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(134): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2322 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(135): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2323 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(136): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2324 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(137): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2325 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(138): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2326 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(139): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2327 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(140): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2328 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(141): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2329 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(142): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2330 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(143): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2331 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(144): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2332 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(145): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2333 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(146): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2334 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(147): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2335 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(148): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2336 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(149): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2337 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(150): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2338 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(151): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2339 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(152): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2340 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(153): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2341 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(154): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2342 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(155): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2343 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(156): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2344 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(157): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 2345 ; Full line :
+##	# ** Warning: (vsim-3616) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/TBENCH/vd5380_core_lib/rtl_vlog/IMG140_SC_33_CORE_OD25.v(8887): Instance ':vd5380_tbench:dut:go2_inst:shadow_reg_inst:MY_CKGAT_NAME_RC_CG_HIER_INST150:RC_CGIC_INST' - Bad $setuphold constraints: 147 ps and -151 ps. Negative limit(s) set to zero.
+
+##	Warning found line 2354 ; Full line :
+##	# ** Warning: (vsim-8786) Logging of a Verilog optimized gate-level cell port uses the hiconn as visibility to the loconn is restricted.
+
+##	Warning found line 2410 ; Full line :
+##	# vd5380_tbench.dut.go1_inst.slim_top_inst.rom_inst.rom_bist_inst.I1.ST_ROM_2048x12m32_U_maininst - 0.00 ns (MSG_ID 003) WARNING: Illegal Value on Clock. Output Corrupted 
+
+##	Warning found line 3081 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(79): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3082 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(80): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3083 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(81): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3084 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(82): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3085 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(83): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3086 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(84): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3087 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(85): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3088 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(86): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3089 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(87): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3090 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(88): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3091 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(89): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3092 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(90): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3093 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(91): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3094 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(92): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3095 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(93): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3096 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(94): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3097 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(95): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3098 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(96): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3099 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(97): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3100 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(98): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3101 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(99): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3102 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(100): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3103 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(101): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3104 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(102): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3105 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(103): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3106 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(104): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3107 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(105): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3108 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(106): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3109 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(107): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3110 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(108): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3111 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(109): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3112 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(110): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3113 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(111): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3114 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(112): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3115 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(113): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3116 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(114): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3117 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(115): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3118 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(116): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3119 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(117): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3120 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(118): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3121 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(119): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3122 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(120): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3123 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(121): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3124 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(122): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3125 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(123): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3126 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(124): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3127 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(125): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3128 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(126): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3129 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(127): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3130 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(128): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3131 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(129): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3132 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(130): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3133 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(131): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3134 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(132): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3135 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(133): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3136 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(134): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3137 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(135): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3138 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(136): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3139 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(137): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3140 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(138): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3141 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(139): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3142 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(140): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3143 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(141): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3144 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(142): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3145 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(143): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3146 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(144): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3147 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(145): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3148 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(146): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3149 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(147): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3150 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(148): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3151 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(149): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3152 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(150): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3153 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(151): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3154 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(152): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3155 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(153): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3156 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(154): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3157 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(155): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3158 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(156): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3159 ; Full line :
+##	# ** Warning: (vsim-SDF-3438) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/NETLIST/SIGNOFF/asic/vd5380_top_TA_functional_bc_3.00V_m40C_RCMIN.verilog.sdf(157): Annotating cell drivers of INTERCONNECT source port.
+
+##	Warning found line 3160 ; Full line :
+##	# ** Warning: (vsim-3616) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/TBENCH/vd5380_core_lib/rtl_vlog/IMG140_SC_33_CORE_OD25.v(8887): Instance ':vd5380_tbench:dut:go2_inst:shadow_reg_inst:MY_CKGAT_NAME_RC_CG_HIER_INST150:RC_CGIC_INST' - Bad $setuphold constraints: 147 ps and -151 ps. Negative limit(s) set to zero.
+
+##	Warning found line 3218 ; Full line :
+##	# vd5380_tbench.dut.go1_inst.slim_top_inst.rom_inst.rom_bist_inst.I1.ST_ROM_2048x12m32_U_maininst - 0.00 ns (MSG_ID 003) WARNING: Illegal Value on Clock. Output Corrupted 
+
+##	Warning found line 3226 ; Full line :
+##	# ** Warning: (vsim-3819) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/TBENCH/vd5380_core_lib/rtl_vlog/IMG140_SC_19_CORE_HVT.v(23455): Scheduled event on delay net dTI was cancelled.
+
+##	Warning found line 3228 ; Full line :
+##	# ** Warning: (vsim-3819) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/TBENCH/vd5380_core_lib/rtl_vlog/IMG140_SC_19_CORE_HVT.v(23455): Scheduled event on delay net dTI was cancelled.
+
+##	Warning found line 3230 ; Full line :
+##	# ** Warning: (vsim-3819) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/TBENCH/vd5380_core_lib/rtl_vlog/IMG140_SC_19_CORE_HVT.v(23455): Scheduled event on delay net dTI was cancelled.
+
+##	Warning found line 3232 ; Full line :
+##	# ** Warning: (vsim-3819) /nfs/work-crypt/board/mbarre/workspace/ST/VD5380/trunk/TBENCH/vd5380_core_lib/rtl_vlog/IMG140_SC_19_CORE_HVT.v(23455): Scheduled event on delay net dTI was cancelled.
+
+
+################################################################################
+
+################################################################################
+## End processing.

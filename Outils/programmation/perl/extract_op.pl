@@ -1,7 +1,7 @@
 #!/usr/bin/perl -w
 # Script d'extraction des fichiers .op. Fonctionnel pour les transistors MOS
 # Quelques problèmes, mais qui sont dus aux simulations ELDO, parfois il n'est pas possible de faire un step simultanné sur w et l,
-# Il faut alors faire les sims avec l donné et faire une modif sur les .op
+# à cause des changements de modèles. Il faut alors faire les sims avec l donné et faire une modif sur les .op
 
 use strict;
 use warnings;
@@ -297,7 +297,7 @@ sub mod_op { ## Modification des .op, requis dans certains cas où on ne peut pa
     my @toprint ;
     while (<$fh>) { ## while sur le fichier
       if ( /param\s*:(?:\s*\w+\s*=\s*$numberspice,?)+/i ) {
-        chomp $_ ; push @toprint, $_.",L = 2.00000E-7\n" ;
+        chomp $_ ; push @toprint, $_.",L = 4.000E-7\n" ;
       } else {
         push @toprint, $_ ;
       }

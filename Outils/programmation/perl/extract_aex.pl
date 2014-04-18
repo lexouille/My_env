@@ -14,9 +14,9 @@ use List::Util qw(max);
 ################################################################################
 # Déclaration des variables, tableaux, hashes
 ################################################################################
-my ($o_verb, $o_help,$o_infile,$o_outfile);
+my ($o_verb, $o_help, $o_debug,$o_infile,$o_outfile);
 my ($infile,$outfile);
-my $term_sep='################################################################################'."\n";
+my $term_sep='################################################################################';
 my $extract_count=-1;
 my (%h,%maxmin);
 my (@paramlist,@extractlist,@alterindex);
@@ -30,9 +30,13 @@ my $numberspice=qr/(?:[+-]?\d+(?:\.\d+)?(?:meg|[afgnmpu]|e[+-]?\d+)?)|(?:[+-]?\.
 ################################################################################
 # Définition des fonctions
 ################################################################################
+sub printv { print @_ if (defined $o_verb || defined $o_debug) ; }
+sub printd { print @_ if (defined $o_debug) ; }
+
 sub check_options {
   Getopt::Long::Configure ("bundling");
   GetOptions(
+    'd' => \$o_debug, 'debug'	=> \$o_debug,
     'v' => \$o_verb, 'verbose'	=> \$o_verb,
     'h' => \$o_help, 'help'	=> \$o_help,
     'i=s' => \$o_infile,
@@ -54,12 +58,15 @@ sub filehandle {
 }
 
 sub help() {
-  print "$term_sep\n";
-  print ("Extraction of aex files : ./extract_aex [args]\n");
+  print "\n$term_sep\n";
+  print ("Extraction of aex files : extract_aex [args]\n");
   print "$term_sep\n";
   print ("Arguments  :\n\n");
-  print ("  -h, --help    : Help command display\n\n");
-  print ("  -v, --verbose : Debug purpose\n\n");
+  print ("  -h, --help        : Help command display\n\n");
+  print ("  -v, --verbose     : Debug purpose\n\n");
+  print ("  -d, --debug       : Debug purpose(very verbose)\n\n");
+  print ("  -i inputfilename  : Input name of .aex file\n\n");
+  print ("  -o outputfilename : Output file name (create it first, generally aex.log)\n\n");
   exit 1;
 }
 
@@ -96,9 +103,9 @@ while (<$infile>) {
   }
 }
 
-#print Dumper \@paramlist;
+print Dumper \@paramlist and print "Dumper \@paramlist" and getc if defined $o_debug ;
 #my %param=@paramlist;
-#print Dumper \%h;
+print Dumper \%h and print "Dumper \%h" and getc if defined $o_debug ;
 
 print "\n$term_sep";
 print "Extraction Result Summary :\n";
@@ -118,7 +125,7 @@ printf($outfile "\n\n");
 foreach my $key (sort { $a <=> $b } keys %h ) {
   #print("Run number $key\t");
   printf($outfile "%-18s","Run number $key");
-  @{$h{$key}{"alter_index"}} = qw(UserDef UserDef UserDef UserDef) unless $h{$key}{"alter_index"};
+  @{$h{$key}{"alter_index"}} = qw(UserDef UserDef UserDef UserDef) unless scalar @{$h{$key}{"alter_index"}}>0;
   printf($outfile "%-15s", $_) foreach (@{$h{$key}{"alter_index"}}) ;
   foreach (keys %{$h{$key}{"param_set"}}) {
     printf($outfile "%-18s","$h{$key}{'param_set'}{$_}") ;

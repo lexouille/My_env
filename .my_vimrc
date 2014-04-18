@@ -225,9 +225,14 @@ filetype plugin on
 " Indentation par défaut
 set smartindent expandtab shiftwidth=2 tabstop=2
 
+" Possibilité d'appel des alias bash from command line
+" Marche pas, ça plante à l'ouverture de vim
+"set shellcmdflag+=i
+"set shell=/bin/bash\ -i
+
 " Définition des fichiers type SPICE : par extension et fichiers particuliers
 " carac et netlist
-au BufRead,BufNewFile *.cir,*.sp,*.cdl,*.inc,*.pex,*.pxi,*.typ,*.lib,*.mod,*.ext,*.ckt,*.sp2,*.sp3,carac,netlist set filetype=cir
+au BufRead,BufNewFile *.cir,*.sp,*.cdl,*.inc,*.pex,*.pxi,*.typ,*.lib,*.mod,*.ext,*.ckt,*.sp2,*.sp3,*.cmd,carac,netlist,models_hdl set filetype=cir
 
 " Source du fichier de coloration syntaxique et des commandes spice
 au! Syntax cir source ~/.env/.vim/syntax/eldo.vim

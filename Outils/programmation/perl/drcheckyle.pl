@@ -27,9 +27,6 @@ my ($index,$choice);
 
 my %tech_def = (
 "ats130rf" => { ## begin ats130rf
-## Boulot
-  #"searchpath" => ['/nfs/work-crypt/ic/common/altis/1.2.2/eldo/models/', "/nfs/work-crypt/ic/usr/$user/drcheckyle/common_files/tech_file/include_altis130rf.inc"] ,
-## Home
   "searchpath" => [ '/nfs/work-crypt/ic/common/altis/1.2.2/eldo/models',
                     "/nfs/work-crypt/ic/usr/$user/drcheckyle/common_files/tech_file" ] ,
 ## Old 1
@@ -40,32 +37,24 @@ my %tech_def = (
 ## Home
   #"file" => ['/nfs/home/aferret/.env/.vim/syntax/.subckt.vim'] ,
   #"techlink" => '/nfs/home/aferret/.env/.vim/syntax/xh018.vim' ,
-  "sub" => { "vhdl" => { "min" => -0.01 , "max" => 0.01 } } ,
-  "dvss" => { "vhdl" => { "min" => -0.01 , "max" => 0.01 , "itest" => "1.0e-06"} } ,
-  "avss" => { "vhdl" => { "min" => -0.01 , "max" => 0.01 , "itest" => "1.0e-06"} } ,
+  "sub" => { "vhdl" => { "min" => -0.01 , "max" => 0.01 } , "process" => { "vnom" => 0.0 , "vmin" => -0.1 , "vmax" => 0.1 } } ,
+  "dvss" => { "vhdl" => { "min" => -0.01 , "max" => 0.01 , "itest" => "1.0e-06" } , "process" => { "vnom" => 0.0 , "vmin" => -0.1 , "vmax" => 0.1 } } ,
+  "avss" => { "vhdl" => { "min" => -0.01 , "max" => 0.01 , "itest" => "1.0e-06" } , "process" => { "vnom" => 0.0 , "vmin" => -0.1 , "vmax" => 0.1 } } ,
   "dvddgo1" => { "vhdl" => { "min" => "1.0" , "max" => "2.0" } , "process" => { "vnom" => 1.5 , "vmin" => 1.35 , "vmax" => 1.65 } } ,
   "dvddgo2" => { "vhdl" => { "min" => "1.8" , "max" => "3.2" } , "process" => { "vnom" => 2.5 , "vmin" => 2.25 , "vmax" => 2.75 } } ,
   "avddgo1" => { "vhdl" => { "min" => "1.0" , "max" => "2.0" } , "process" => { "vnom" => 1.5 , "vmin" => 1.35 , "vmax" => 1.65 } } ,
   "avddgo2" => { "vhdl" => { "min" => "1.8" , "max" => "3.2" } , "process" => { "vnom" => 2.5 , "vmin" => 2.25 , "vmax" => 2.75 } } ,
-  "avddio" =>  { "vhdl" => { "min" => "2.2" , "max" => "4.4" } , "process" => { "vnom" => 3.3 , "vmin" => 2.97 , "vmax" => 3.63 } } 
+  "avddio" =>  { "vhdl" => { "min" => "2.2" , "max" => "4.4" } , "process" => { "vnom" => 3.3 , "vmin" => 2.97 , "vmax" => 3.63 } } , 
+  "voltage_def" => { "vnom"  => [ 1.5, 2.5 , 3.3 ] , 
+                     "vmin"  => [1.35, 2.25, 2.97] ,
+                     "vmax"  => [1.65, 2.75, 3.63] ,
+                     "v1min" => [1.35, 2.5 , 3.3 ] ,
+                     "v1max" => [1.65, 2.5 , 3.3 ] ,
+                     "v2min" => [ 1.5, 2.25, 2.97] ,
+                     "v2max" => [ 1.5, 2.75, 3.63] }
 } , ## end ats130rf
 "xh018" => { ## begin xh018
-  "searchpath" => [ "/nfs/work-crypt/ic/common/xfab/xh018/mentor/v4_0/eldo/v4_0_4/lpmos/models/cap" ,
-                    "/nfs/work-crypt/ic/common/xfab/xh018/mentor/v4_0/eldo/v4_0_4/lpmos/models/bsim3v3" ,
-                    "/nfs/work-crypt/ic/common/xfab/xh018/mentor/v4_0/eldo/v4_0_4/lpmos/models/photo" ,
-                    "/nfs/work-crypt/ic/common/xfab/xh018/mentor/v4_0/eldo/v4_0_4/lpmos/models/res" ,
-                    "/nfs/work-crypt/ic/common/xfab/xh018/mentor/v4_0/eldo/v4_0_4/lpmos/models/dio" ,
-                    "/nfs/work-crypt/ic/common/xfab/xh018/mentor/v4_0/eldo/v4_0_4/lpmos/models/bip" ,
-                    "/nfs/work-crypt/ic/common/xfab/xh018/mentor/v4_0/eldo/v4_0_4/mc_params" ,
-                    #"*/nfs/work-crypt/ic/common/xfab/xh018/mentor/v4_0/eldo/v4_0_4/occ/models/cap" ,
-                    #"*/nfs/work-crypt/ic/common/xfab/xh018/mentor/v4_0/eldo/v4_0_4/occ/models/bsim3v3" ,
-                    #"*/nfs/work-crypt/ic/common/xfab/xh018/mentor/v4_0/eldo/v4_0_4/occ/models/photo" ,
-                    #"*/nfs/work-crypt/ic/common/xfab/xh018/mentor/v4_0/eldo/v4_0_4/occ/models/res" ,
-                    #"*/nfs/work-crypt/ic/common/xfab/xh018/mentor/v4_0/eldo/v4_0_4/occ/models/dio" ,
-                    #"*/nfs/work-crypt/ic/common/xfab/xh018/mentor/v4_0/eldo/v4_0_4/occ/models/bip" ,
-                    "/nfs/work-crypt/ic/usr/$user/drcheckyle/common_files/tech_file" ] ,
-## Old 1
-                    #"/nfs/work-crypt/ic/usr/$user/charac_techno/xfab/xh018/" ] ,
+  "searchpath" => ["/nfs/work-crypt/ic/usr/$user/drcheckyle/common_files/tech_file"] ,
 ## Boulot
   "file" => ["/nfs/work-crypt/ic/usr/$user/drcheckyle/common_files/.subckt.vim"] ,
   "techlink" => "/nfs/work-crypt/ic/usr/$user/drcheckyle/common_files/xh018.vim" ,
@@ -73,13 +62,20 @@ my %tech_def = (
   #"file" => ['/nfs/home/aferret/.env/.vim/syntax/.subckt.vim'] ,
   #"techlink" => '/nfs/home/aferret/.env/.vim/syntax/xh018.vim' ,
   "sub" => { "vhdl" => { "min" => -0.01 , "max" => 0.01 } } ,
-  "dvss" => { "vhdl" => { "min" => -0.01 , "max" => 0.01 } } ,
-  "avss" => { "vhdl" => { "min" => -0.01 , "max" => 0.01 } } ,
-  "dvddgo1" => { "vhdl" => { "min" => 1.0 , "max" => 2.0 } , "process" => { "vnom" => 1.5 , "vmin" => 1.35 , "vmax" => 1.65 } } ,
-  "dvddgo2" => { "vhdl" => { "min" => 1.8 , "max" => 3.2 } , "process" => { "vnom" => 2.5 , "vmin" => 2.25 , "vmax" => 2.75 } } ,
-  "avddgo1" => { "vhdl" => { "min" => 1.0 , "max" => 2.0 } , "process" => { "vnom" => 1.5 , "vmin" => 1.35 , "vmax" => 1.65 } } ,
-  "avddgo2" => { "vhdl" => { "min" => 1.8 , "max" => 3.2 } , "process" => { "vnom" => 2.5 , "vmin" => 2.25 , "vmax" => 2.75 } } ,
-  "avddio" =>  { "vhdl" => { "min" => 2.2 , "max" => 4.4 } , "process" => { "vnom" => 3.3 , "vmin" => 2.97 , "vmax" => 3.63 } } 
+  "dvss" => { "vhdl" => { "min" => -0.01 , "max" => 0.01 , "itest" => "1.0e-06" } , "process" => { "vnom" => 0.0 , "vmin" => -0.1 , "vmax" => 0.1 } } ,
+  "avss" => { "vhdl" => { "min" => -0.01 , "max" => 0.01 , "itest" => "1.0e-06" } , "process" => { "vnom" => 0.0 , "vmin" => -0.1 , "vmax" => 0.1 } } ,
+  "dvddgo1" => { "vhdl" => { "min" => 1.0 , "max" => 2.0 } , "process" => { "vnom" => 1.8 , "vmin" => 1.62 , "vmax" => 1.98 } } ,
+  "dvddgo2" => { "vhdl" => { "min" => 1.8 , "max" => 3.2 } , "process" => { "vnom" => 3.3 , "vmin" => 3.0  , "vmax" => 3.6  } } ,
+  "avddgo1" => { "vhdl" => { "min" => 1.0 , "max" => 2.0 } , "process" => { "vnom" => 1.8 , "vmin" => 1.62 , "vmax" => 1.98 } } ,
+  "avddgo2" => { "vhdl" => { "min" => 1.8 , "max" => 3.2 } , "process" => { "vnom" => 3.3 , "vmin" => 3.0  , "vmax" => 3.6  } } ,
+  "avddio" =>  { "vhdl" => { "min" => 2.2 , "max" => 4.4 } , "process" => { "vnom" => 3.3 , "vmin" => 3.0  , "vmax" => 3.6  } } ,
+  "voltage_def" => { "vnom"  => [ 1.8, 3.3 , 3.3 ] , 
+                     "vmin"  => [1.62, 3.0 , 3.0 ] ,
+                     "vmax"  => [1.98, 3.6 , 3.6 ] ,
+                     "v1min" => [1.62, 2.5 , 3.3 ] ,
+                     "v1max" => [1.98, 2.5 , 3.3 ] ,
+                     "v2min" => [ 1.8, 3.0 , 3.0 ] ,
+                     "v2max" => [ 1.8, 3.6 , 3.6 ] }
 } ## end xh018
 ) ;
 
@@ -87,18 +83,10 @@ my %tech_def = (
 
 ## Ici, je pense qu'on peut mettre tout ça dans un tableau unique
 ## Je le commence au dessus, il faudra migrer et faire de le non reg plus tard
-my %voltage_def = ( "vnom"  => [ 1.5, 2.5 , 3.3 ] , 
-                    "vmin"  => [1.35, 2.25, 2.97] ,
-                    "vmax"  => [1.65, 2.75, 3.63] ,
-                    "v1min" => [1.35, 2.5 , 3.3 ] ,
-                    "v1max" => [1.65, 2.5 , 3.3 ] ,
-                    "v2min" => [ 1.5, 2.25, 2.97] ,
-                    "v2max" => [ 1.5, 2.75, 3.63] );
 my %temp_def = ( "tnom"  => 0  , 
                  "tmin"  => 25 ,
                  "tmax"  => 50 );
 
-#print Dumper \%voltage_def;
 #print Dumper \%temp_def; exit ;
 my $eldo_sep='********************************************************************************';
 my $vhdl_sep='--------------------------------------------------------------------------------';
@@ -114,9 +102,7 @@ my ($mc,$step_param,@step,@step_param);
 
 my $key;
 my $fh;
-
-my ($t1,$t2,$t3,$t4);
-my (@t1,@t2,@t3,@t4);
+my @lines ; my $line ;
 
 my ($t,@t);
 my ($k,$v) = () ;
@@ -220,7 +206,7 @@ sub stdin_answer_mult {
   @g_answer = doublons_grep(\@g_answer);
   @g_answer = grep { $answer{$_} } @g_answer;
   while(@g_answer==0) {
-    print "#### Inadequate Answer ; possible choices : "; foreach (@in) {print "\t-->$_\n";}
+    print "#### Inadequate Answer ; possible choices : \n"; foreach (@in) {print "\t-->$_\n";}
     @g_answer = split /\s+/, <STDIN>;
     @g_answer = doublons_grep(\@g_answer);
     @g_answer = grep { $answer{$_} } @g_answer;
@@ -262,9 +248,9 @@ sub init { # Initialisation du répertoire
 # Génération du carac.inc et du carac à partir des templates s'ils n'existent pas
 # Création des liens vers certains fichiers liés à la techno
   print "$term_sep\n";
-  print ("Initialization phase : Generation of simulation files...\n\n\tFiles found :\n");
+  print ("Initialization phase : Generation of simulation files...\n\n\t##Files found in current directory :\n");
   my %file; my @file ;
-  opendir (PATH, $path) or die "Unable to open directory $!" ; @file = grep {$_ if ((-f $_)&&(!/^\./))} readdir PATH ; ## Ouverture du directory path et grep des fichiers non cachés
+  opendir (PATH, $path) or die "Unable to open directory $path ; $!" ; @file = grep {$_ if ((-f $_)&&(!/^\./))} readdir PATH ; ## Ouverture du directory path et grep des fichiers non cachés
   foreach (@file) {
     printf ("%-40s", "\n\t --> $_") and $file{$_}++;
     print "\t-- .cir file found" if /\.cir$/; 
@@ -274,8 +260,8 @@ sub init { # Initialisation du répertoire
 
 ## Test existance carac et carac.inc, overwrite éventuel
   if ($file{'carac.inc'}) {
-    $choice = stdin_answer ('carac.inc file exists. Overvrite it ?','yes','no') ;
-    if ($choice eq 'yes') {
+    $choice = stdin_answer ('carac.inc file exists. Overvrite it ?','yes','no','y','n') ;
+    if ($choice eq 'yes' || $choice eq 'y') {
       print "Generation of carac.inc file from template\n";
       system ( "rm" , $path."carac.inc") ; system ( "touch", $path."carac.inc") ;
       $templatefile = $commonpath . "carac_template.inc";
@@ -283,16 +269,20 @@ sub init { # Initialisation du répertoire
       open ($templateFH, "<$templatefile") or die ("Unable to open : $!");
       $techno = stdin_answer ('Select techno to be used',( keys %tech_def )) ;
       print "\nPlease enter name for your netlist :\n" ; $netlist_name = <STDIN>; chomp $netlist_name;
-        while (<$templateFH>) {
-        if (/\$netlist_name \$user_name/) {print($caracFH "$netlist_name $user\n")}
-        elsif (/\.option search = \@searchpath/) {print($caracFH "\.option search = $_\n") foreach @{$tech_def{$techno}{searchpath}} }
-        elsif (/\*\*\*\* Search path for technology/i) {print($caracFH "\*\*\*\* Search path for technology $techno\n") }
-        elsif (/(\.lib include_)\$tech(\.inc.*)/i) {print($caracFH "$1$techno$2\n") }
-        else {print ($caracFH $_)}
-      }
-      close ($caracFH) ;
-    } elsif ($choice eq 'no') {
-      open ($caracFH, "<$caracfile") or die ("Unable to open : $!");
+      @lines = <$templateFH> ;
+      $line .= ".option search = $_\n" foreach @{$tech_def{$techno}{searchpath}} ;
+      map { s/\$netlist_name/$netlist_name/ig ;
+            s/\$user_name/$user/ig ;
+            s/\$techno/$techno/ig ;
+            s/.option search = \@searchpath/$line/ig ;
+            s/\$vddgo1(vnom|vmin|vmax)/$tech_def{$techno}{avddgo1}{process}{$1}/ig ;
+            s/\$vddgo2(vnom|vmin|vmax)/$tech_def{$techno}{avddgo2}{process}{$1}/ig ;
+            s/\$vddio(vnom|vmin|vmax)/$tech_def{$techno}{avddio}{process}{$1}/ig ;
+      } @lines ;
+      print $caracFH $_ foreach @lines ;
+      close $templateFH ; close $caracFH ;
+    } elsif ($choice eq 'no' || $choice eq 'n') {
+      open ($caracFH, "<$caracfile") or die ("Unable to open $caracfile : $!");
       while (<$caracFH>) {
         if (/\*\*\*\* Search path for technology (\S+)/i) {
           print "Defined technology in carac.inc file : $1\n";
@@ -303,38 +293,42 @@ sub init { # Initialisation du répertoire
           }
         }
       }
-      close ($caracFH) ;
+      close $caracFH ;
     }
   } else {
     print "Generation of carac.inc file from template\n";
     system ( "touch", $path."carac.inc");
     $templatefile = $commonpath . "carac_template.inc";
-    open ($caracFH, ">$caracfile") or die ("Unabale to open : $!");
-    open ($templateFH, "<$templatefile") or die ("Unabale to open : $!");
+    open ($caracFH, ">$caracfile") or die ("Unabale to open $caracfile : $!");
+    open ($templateFH, "<$templatefile") or die ("Unabale to open $templatefile : $!");
     $techno = stdin_answer ('Select techno to be used',( keys %tech_def )) ;
     print "\nPlease enter name for your netlist :\n" ; $netlist_name = <STDIN>; chomp $netlist_name;
-      while (<$templateFH>) {
-      if (/Netlist_name user_name/i) {print($caracFH "$netlist_name $user\n")}
-      elsif (/\.option search = searchpath/i) { print($caracFH "\.option search = $_\n") foreach @{$tech_def{$techno}{searchpath}} }
-      elsif (/\*\*\*\* Search path for technology/i) { print($caracFH "\*\*\*\* Search path for technology $techno\n") }
-      else {print ($caracFH $_)}
-    }
+    @lines = <$templateFH> ;
+    $line .= ".option search = $_\n" foreach @{$tech_def{$techno}{searchpath}} ;
+    map { s/\$netlist_name/$netlist_name/ig ;
+          s/\$user_name/$user/ig ;
+          s/\$techno/$techno/ig ;
+          s/.option search = \@searchpath/$line/ig ;
+          s/\$vddgo1(vnom|vmin|vmax)/$tech_def{$techno}{avddgo1}{process}{$1}/ig ;
+          s/\$vddgo2(vnom|vmin|vmax)/$tech_def{$techno}{avddgo2}{process}{$1}/ig ;
+          s/\$vddio(vnom|vmin|vmax)/$tech_def{$techno}{avddio}{process}{$1}/ig ;
+    } @lines ;
     close ($caracFH) ; close ($templateFH) ;
   }
   if ($file{'carac'}) {
-    $choice = stdin_answer ('carac file exists. Overvrite it ?','yes','no') ;
-    system ( "cp", $path."carac.inc", $path."carac") if ($choice eq 'yes');
+    $choice = stdin_answer ('carac file exists. Overvrite it ?','yes','no','y','n') ;
+    system ( "cp", $path."carac.inc", $path."carac") if ($choice eq 'yes' || $choice eq 'y');
   } else {
     print "Generation of carac.inc file from template\n";
     system ( "cp", $path."carac.inc", $path."carac");
   }
 
   if ($file{'netlist.cir'}) {
-    $choice = stdin_answer ('netlist.cir file detected. Do you want to overwrite it ?','yes','no');
-    if ($choice eq 'yes') { ## Overwrite
+    $choice = stdin_answer ('netlist.cir file detected. Do you want to overwrite it ?','yes','no','y','n');
+    if ($choice eq 'yes' || $choice eq 'y') { ## Overwrite
       system ( "rm" , $path."netlist.cir") ;
       opendir (PATH, $path) or die "Unable to open directory $!" ; @file = grep {$_ if ((-f $_)&&(!/^\./))} readdir PATH ; ## Ouverture du directory path et grep des fichiers non cachés
-      foreach (@file) { printf ("%-40s", "\n\t --> $_") and $file{$_}++ if ((-f $_)&&(!/^\./)); }
+      foreach (@file) { printf ("%-40s", "\n\t --> $_") and $file{$_}++ if ((-f $_)&&(!/^\./)); } ## Le if est inutile ?
       print "\n";
       $choice = stdin_answer ('Select file to use for generation of netlist.cir',@file);
       $basenetlistfile = $path.$choice ;
@@ -346,10 +340,10 @@ sub init { # Initialisation du répertoire
       scan_netlist($lc_netlistFH); 
       make_netlistfile();
       system ("rm", $lc_netlistfile) ;
-      } elsif ($choice eq 'no') {
+      } elsif ($choice eq 'no' || $choice eq 'n') {
       $choice = stdin_answer ("Do you want to :\n 1-->make a backup copy of netlist.cir and regenerate it from another file ?\n 2-->keep netlist.cir as is ?",1,2) ;
         if ( $choice == 1 ) { # Backup et régén
-          system ( "cp", $path."netlist.cir", $path."netlist_bkp".$date.".cir");
+          system ( "cp", $path."netlist.cir", $path."netlist_bkp_$date.cir");
           opendir (PATH, $path) or die $! ; @file = readdir PATH;
           $index=0;
           foreach (@file) { printf ("%-40s", "\n\t --> $_") and $file{$_}++ if ((-f $_)&&(!/^\./)); }
@@ -384,8 +378,8 @@ sub init { # Initialisation du répertoire
     }
 
 ## Génération des fichiers et liens spécifiques
-  $choice = stdin_answer ('Do you want to (re)generate specific files and links','yes','no') ;
-  if ($choice eq "yes") {
+  $choice = stdin_answer ('Do you want to (re)generate specific files and links','yes','no','y','n') ;
+  if ($choice eq "yes" || $choice eq "y") {
     if (scalar @{$tech_def{$techno}{file}}>0) {
       foreach (@{$tech_def{$techno}{file}}) {
         system ("cp", $_, $path) ; print "Copy and modification of $_ in current directory\n" ;
@@ -399,12 +393,12 @@ sub init { # Initialisation du répertoire
             print ($templateFH "\telse") unless ($subckt{$sckt_name}{number}==1);
             print ($templateFH "\t") if ($subckt{$sckt_name}{number}==1);
             print ($templateFH "if s:sckti==$subckt{$sckt_name}{number}\n");
-            print ($templateFH "\t\tlet s:scktpin=Askpin(\"");
+            print($templateFH "\t\tlet s:scktpin=Askpin(\"");
             foreach ( sort { $a <=> $b } keys %{$subckt{$sckt_name}{pinlist}} ) {
               print ($templateFH " ") if $_>1 ;
               print ($templateFH "$subckt{$sckt_name}{pinlist}{$_}{name}") ;
             }
-            print ($templateFH "\")\n\t\tlet s:scktname=\"$sckt_name\"\n");
+            print($templateFH "\")\n\t\tlet s:scktname=\"$sckt_name\"\n");
           }
           print ($templateFH "\tendif\n");
           print ($templateFH "\tlet s:name=input(\"Choose subckt name : \",\"\")\n");
@@ -421,7 +415,8 @@ sub init { # Initialisation du répertoire
         }
       }
     }
-    system ("ln", "-s", $tech_def{$techno}{techlink}, ".tech.vim") and print "Linking .tech.vim in current directory\n" if ($tech_def{$techno}{techlink})
+    print ".tech.vim already exists. It will not be remooved until you delete it." if -l ".tech.vim" ;
+    system ("ln", "-s", $tech_def{$techno}{techlink}, ".tech.vim") and print "Linking $tech_def{$techno}{techlink} .tech.vim in current directory\n" unless (!$tech_def{$techno}{techlink} || -l ".tech.vim") ;
   }
   print ("Ending initialization phase.\n");
   print "$term_sep\n\n";
@@ -448,7 +443,7 @@ sub gen_model { # Génération des modèles VHDL et Verilog à partir des subckt
     foreach $model (@bmodel) {
       print "\n$term_sep\nGeneration of verilog model file for $model\n" ;
       $bmodel_FH = outputfile($model.$bextension) ;
-      print ($bmodel_FH "$veri_sep\n//\n//\tCompagny : ASYGN\n//\tEngineer : \n//\n//\tCreation Date : $date\n//\tModule type : $bname\n//\tDesign name :\n//\tModule name : $model\n//\tProject name :\n//\tTool versions :\n//\tDescription : \n//\n//\tDependencies : \n//\n//\tRevision : \n//\tAdditionnal comments : \n//\n$veri_sep\n\n\n"); #Entête
+      print ($bmodel_FH "$veri_sep\n//\n//\tCompagny : ASYGN\n//\tEngineer : $user\n//\n//\tCreation Date : $date\n//\tModule type : $bname\n//\tDesign name :\n//\tModule name : $model\n//\tProject name :\n//\tTool versions :\n//\tDescription : \n//\n//\tDependencies : \n//\n//\tRevision : \n//\tAdditionnal comments : \n//\n$veri_sep\n\n\n"); #Entête
       print ($bmodel_FH "`include \"example.v\"\n//Insert here other module/libraires definition\n\n\n"); #Définition des modules/librairies communes
 
 ##Définition du module avec ses pins
@@ -465,7 +460,7 @@ sub gen_model { # Génération des modèles VHDL et Verilog à partir des subckt
         }
       print ($bmodel_FH ");\n\n"); #Fin de définition du module, définition des types I/O pour les pins
       
-      ## Définitions des I/O associés aux ports
+## Définitions des I/O associés aux ports
       print ($bmodel_FH "// I/O port definition\n");
       foreach ( sort { $a <=> $b } keys %{$subckt{$model}{pinlist}} ) { 
         if ($subckt{$model}{pinlist}{$_}{type} eq "alim") {
@@ -495,7 +490,8 @@ sub gen_model { # Génération des modèles VHDL et Verilog à partir des subckt
           }
         }
       } ## Fin de définition des types I/O pour les pins
-      ## Définitions des wires associés aux ports
+
+## Définitions des wires associés aux ports
       print ($bmodel_FH "\n// Port wire definition\n");
       foreach ( sort { $a <=> $b } keys %{$subckt{$model}{pinlist}} ) { 
         if ($subckt{$model}{pinlist}{$_}{single}) {
@@ -516,34 +512,32 @@ sub gen_model { # Génération des modèles VHDL et Verilog à partir des subckt
             print ($bmodel_FH "// custom wire \n") if ($subckt{$model}{pinlist}{$_}{dir} eq "unknown");
         }
       }
-      ## Définitions des wires internes
+## Définitions des wires internes
       print ($bmodel_FH "\n// Internal wire definition\n\t//Define here internal wire\n\n");
 
 ## Fin ports/wires. Ecriture des composants s'il y en a.
       if ($subckt{$model}{dependency}) {
-        my $instance = -1 ;
         print "\n\tDependency have been found. Trying to define them in the component section. Please check connectivity & syntax ...\n" if ( $verbose == 1 );
         print ($bmodel_FH "\n$veri_sep\n// Component section\n$veri_sep\n\n");
-        foreach (@{$subckt{$model}{dependency}}) {
-          $instance++;
-          my ($key) = keys $_ ;
-          print "\t-->Defining component $key\n" if ( $verbose == 1 );
-          print($bmodel_FH "\t// Component $key definition. Please check syntax & connectivity\n\t$key ${$subckt{$model}{dependency}[$instance]}{$key}{sckt_ref} (\n");
-          my $index=0;
-          foreach my $pin (sort {$a <=> $b} keys %{$subckt{${$subckt{$model}{dependency}[$instance]}{$key}{sckt_ref}}{pinlist}}) {
-          #foreach my $pin (@{$subckt{$model}{dependency}[$instance]{$key}{pinlist}}) {
-            printf($bmodel_FH "\t\t");
-            printf($bmodel_FH "%-20s",".$subckt{${$subckt{$model}{dependency}[$instance]}{$key}{sckt_ref}}{pinlist}{$pin}{name}");
-            printf($bmodel_FH "\t\t");
-            printf($bmodel_FH "%-20s","(${$subckt{$model}{dependency}[$instance]}{$key}{pinlist}[$index])");
-            printf($bmodel_FH "\t,\n");
-            $index++; 
-          }
-          print ($bmodel_FH "\t);\n\t// Component $key definition end.\n\n");
+        foreach $instance (keys %{$subckt{$model}{instance}}) {
+          if ($subckt{$model}{instance}{$instance}{dependency} ne "unknown") { ## Ici, vérifier ce if, si pb, condition : scalar des eys dependency>1. Apparement, ça marche
+            print "\t-->Defining component $instance\n" if ( $verbose == 1 );
+            print($bmodel_FH "\t// Component $instance definition. Please check syntax & connectivity\n\t$instance $subckt{$model}{instance}{$instance}{dependency}{sckt_ref} (\n");
+            my $index=0;
+            foreach my $pin (sort {$a <=> $b} keys %{$subckt{$subckt{$model}{instance}{$instance}{dependency}{sckt_ref}}{pinlist}}) {
+              printf($bmodel_FH "\t\t");
+              printf($bmodel_FH "%-20s",".$subckt{$subckt{$model}{instance}{$instance}{dependency}{sckt_ref}}{pinlist}{$pin}{name}");
+              printf($bmodel_FH "\t\t");
+              printf($bmodel_FH "%-20s","(${$subckt{$model}{instance}{$instance}{dependency}}{pinlist}[$index])");
+              printf($bmodel_FH "\t,\n");
+              $index++; 
+            }
+            print ($bmodel_FH "\t);\n\t// Component $instance definition end.\n\n");
+          } 
         }
         print ($bmodel_FH "$veri_sep\n// End component section\n$veri_sep\n\n");
       }
-      ## Reste du code avec définition des modules par connection
+## Reste du code avec définition des modules par connection
       print ($bmodel_FH "\nendmodule //End module $model\n\n");
       close $bmodel_FH;
     }
@@ -563,7 +557,7 @@ sub gen_model { # Génération des modèles VHDL et Verilog à partir des subckt
       print "\n$term_sep\nGeneration of vhdl model file for $model\n" ;
       $bmodel_FH = outputfile($model.$bextension) ;
       print ($bmodel_FH "$vhdl_sep\n--\n--\tCompagny : ASYGN\n--\tEngineer : \n--\n--\tCreation Date : $date\n--\tDesign name :\n--\tModule type : $bname\n--\tModule name : $model\n--\tProject name :\n--\tTool versions :\n--\tDescription : \n--\n--\tDependencies : \n--\n--\tRevision : \n--\tAdditionnal comments : \n--\n$vhdl_sep\n\n\n"); #Entête
-      print ($bmodel_FH "library ieee, discipline, work;\nuse disciplines.electromagnetic_system.all;\nuse ieee.std_logic_arith.all;\nuse ieee.std_logic_1164.all;\nuse ieee.math_real.all;\nuse ieee.numeric_std.all;\n--Insert here other libraires definition\n\n\n"); #Définition des librairies communes
+      print ($bmodel_FH "library ieee, disciplines, work;\nuse disciplines.electromagnetic_system.all;\nuse ieee.std_logic_arith.all;\nuse ieee.std_logic_1164.all;\nuse ieee.math_real.all;\nuse ieee.numeric_std.all;\n--Insert here other libraires definition\n\n\n"); #Définition des librairies communes
 ## Définitions des génériques
       print($bmodel_FH "ENTITY $model is \n\n--Generic variable definition\nGENERIC (\n"); 
       foreach ( keys %{$subckt{$model}{pinlist}} ) { ## Définitions des génériques de tests sur les alims si on les trouve dans le hash tech_def{$techno}
@@ -574,7 +568,7 @@ sub gen_model { # Génération des modèles VHDL et Verilog à partir des subckt
           print ($bmodel_FH "\tg_$subckt{$model}{pinlist}{$_}{name}"."_max : real := $tech_def{$techno}{$subckt{$model}{pinlist}{$_}{name}}{vhdl}{max} ; -- Generic for power tests\n");
         }
       }
-      print ($bmodel_FH "\tg_generic_name : real := generic_value ; -- Generic definition example\n\tg_generic_name : realvector (0 TO XX) := (gen_val1, gen_val2, ..., gen_valXX) \n\t--Don't foreget to remove last \";\"\n);\n\n"); #Fin de définintion des génériques
+      print ($bmodel_FH "\t--g_generic_name : real := generic_value ; -- Generic definition example\n\t--g_generic_name : realvector (0 TO XX) := (gen_val1, gen_val2, ..., gen_valXX) \n\t--Don't foreget to remove last \";\"\n);\n\n"); #Fin de définintion des génériques
 
 ##Début de définintion des ports
       print($bmodel_FH "--I/O Block definition\nPORT(\n"); 
@@ -618,7 +612,7 @@ sub gen_model { # Génération des modèles VHDL et Verilog à partir des subckt
           }
         }
       } #Fin des définitions des ports, fin de l'ENTITY, passage à la suite
-      print ($bmodel_FH "\n\tterminal/signal IO_name : electrical/in/out std_logic \n\t-- Don't foreget to remove last \";\"\n);\n\nEND ENTITY $model;\n\nARCHITECTURE FUNCTIONAL OF $model IS\n\n--Quantity and signal definitions\n");
+      print ($bmodel_FH "\n\tterminal/signal IO_name : electrical/in/out std_logic ; -- Example of IO definition\n\t-- Don't foreget to remove last \";\"\n);\n\nEND ENTITY $model;\n\nARCHITECTURE FUNCTIONAL OF $model IS\n\n--Quantity and signal definitions\n");
       foreach ( keys %{$subckt{$model}{pinlist}} ) { ## Définition des signaux pour les power tests
         if ($tech_def{$techno}{$subckt{$model}{pinlist}{$_}{name}}) {
           print ($bmodel_FH "\tsignal s_test_$subckt{$model}{pinlist}{$_}{name} : boolean := false ; -- Power test purpose\n");
@@ -633,7 +627,7 @@ sub gen_model { # Génération des modèles VHDL et Verilog à partir des subckt
       print ($bmodel_FH "\t--signal s_signalname : boolean/std_ulogic/integer/real/signed/unsigned := basevalue ;\n\nBEGIN\n\n--Power tests\n");
       foreach ( keys %{$subckt{$model}{pinlist}} ) { ## Ecriture des power tests
         if ($tech_def{$techno}{$subckt{$model}{pinlist}{$_}{name}}) {
-          print ($bmodel_FH "--Current for groud test\n\ti_$subckt{$model}{pinlist}{$_}{name} = g_$subckt{$model}{pinlist}{$_}{name}"."_current_test;\n") if ($subckt{$model}{pinlist}{$_}{name} =~ /vss/) ;
+          print ($bmodel_FH "--Current for groud test\n\ti_$subckt{$model}{pinlist}{$_}{name} == g_$subckt{$model}{pinlist}{$_}{name}"."_current_test;\n") if ($subckt{$model}{pinlist}{$_}{name} =~ /vss/) ;
           print ($bmodel_FH "\ts_test_$subckt{$model}{pinlist}{$_}{name} <= true when v_$subckt{$model}{pinlist}{$_}{name}\'above(g_${subckt{$model}{pinlist}{$_}{name}}_min)\n\tand not v_$subckt{$model}{pinlist}{$_}{name}\'above(g_${subckt{$model}{pinlist}{$_}{name}}_max) and domain=time_domain\n\telse false ;\n");
         }
       }
@@ -645,30 +639,147 @@ sub gen_model { # Génération des modèles VHDL et Verilog à partir des subckt
       }
 ## Fin des power tests/ecriture transcripts. Ecriture des composants s'il y en a.
       if ($subckt{$model}{dependency}) {
-        my $instance = -1 ;
         print "\n\tDependency have been found. Trying to define them in the component section. Please check connectivity & syntax ...\n" if ( $verbose == 1 );
         print ($bmodel_FH "\n$vhdl_sep\n-- Component section\n$vhdl_sep\n\n");
-        foreach (@{$subckt{$model}{dependency}}) {
-          $instance++;
-          my ($key) = keys $_ ;
-          print "\t-->Defining component $key\n" if ( $verbose == 1 );
-          print($bmodel_FH "\t-- Component $key definition. Please check syntax & connectivity\n\t$key entity ${$subckt{$model}{dependency}[$instance]}{$key}{sckt_ref} port map (\n");
-          my $index=0;
-          foreach my $pin (sort {$a <=> $b} keys %{$subckt{${$subckt{$model}{dependency}[$instance]}{$key}{sckt_ref}}{pinlist}}) {
-          #foreach my $pin (@{$subckt{$sckt_name}{dependency}[$instance]{$key}{pinlist}}) {
-            printf($bmodel_FH "\t\t");
-            printf($bmodel_FH "%-20s","$subckt{${$subckt{$model}{dependency}[$instance]}{$key}{sckt_ref}}{pinlist}{$pin}{name}");
-            printf($bmodel_FH "=>\t\t");
-            printf($bmodel_FH "%-20s","${$subckt{$model}{dependency}[$instance]}{$key}{pinlist}[$index]");
-            printf($bmodel_FH "\t,\n");
-            $index++; 
+        foreach $instance (keys %{$subckt{$model}{instance}}) {
+          if ($subckt{$model}{instance}{$instance}{dependency} ne "unknown") {
+            print "\t-->Defining component $instance\n" if ( $verbose == 1 );
+            print($bmodel_FH "\t-- Component $instance definition. Please check syntax & connectivity\n\t$instance $subckt{$model}{instance}{$instance}{dependency}{sckt_ref} (\n");
+            my $index=0;
+            foreach my $pin (sort {$a <=> $b} keys %{$subckt{$subckt{$model}{instance}{$instance}{dependency}{sckt_ref}}{pinlist}}) {
+              printf($bmodel_FH "\t\t");
+              printf($bmodel_FH "%-20s","$subckt{$subckt{$model}{instance}{$instance}{dependency}{sckt_ref}}{pinlist}{$pin}{name}");
+              printf($bmodel_FH "\t\t");
+              printf($bmodel_FH "%-20s","${$subckt{$model}{instance}{$instance}{dependency}}{pinlist}[$index]");
+              printf($bmodel_FH "\t,\n");
+              $index++; 
+            }
+            print ($bmodel_FH "\t);\n\t-- Component $instance definition end.\n\n");
           }
-          print ($bmodel_FH "\t);\n\t-- Component $key definition end.\n\n");
         }
+        print ($bmodel_FH "$vhdl_sep\n-- End component section\n$vhdl_sep\n\n");
       }
-      print ($bmodel_FH "\n$vhdl_sep\n-- Core VHDL code\n$vhdl_sep\n\nEND ARCHITECTURE FUNCTIONAL\n\n");
+      ## Reste du code avec définition des modules par connection
+      print ($bmodel_FH "\n$vhdl_sep\n-- Core VHDL code\n$vhdl_sep\n\nEND ARCHITECTURE FUNCTIONAL ;\n\n");
       close $bmodel_FH;
-    }
+
+## Génération des fichiers pour la simulation mixte : création dossier, copie adms.converters, copie de la netlist sans top instance, génération du Makefile, du tbench.cir, du tbench.cmd et du models_hdl.
+      $choice = stdin_answer ('Do you want to generate folder and files for mixed-simulations ?',"yes","no","y","n");
+      if ($choice eq "yes" || $choice eq "y") {
+        print "\n\tRepertory for model model_${bmodel}_$model already exists. Please cleanup.\n" and next if (-d $path."model_${bmodel}_$model") ;
+        system ("mkdir", "model_${bmodel}_$model") ; ## Création du répertoire
+        system ("cp", "${commonpath}adms.converters", "${path}model_${bmodel}_$model") ; ## Copie du fichier adms.converters
+        system ("touch", "${path}model_${bmodel}_${model}/${model}.ckt") ; ## Génération de la netlist sans la top instance
+        open ($fh, ">","${path}model_${bmodel}_$model/${model}.ckt") ;
+        print ( $fh "$eldo_sep\n**** Subcircuit definition\n$eldo_sep\n\n");
+        foreach $sckt_name ( sort { $subckt{$a}{subckt_pos} <=> $subckt{$b}{subckt_pos} } keys %subckt ) {
+          print ( $fh ".subckt $sckt_name\n");
+          print ( $fh "+ ! Pin List\n");
+          if ( exists $subckt{$sckt_name}{pinlist} ) { ## Ecriture des pins
+            @arglist = ();
+            foreach ( sort { $a <=> $b } keys %{$subckt{$sckt_name}{pinlist}} ) {
+              if ( $subckt{$sckt_name}{pinlist}{$_}{type} eq "alim" || $subckt{$sckt_name}{pinlist}{$_}{type} eq "custom") {
+                push @arglist, $subckt{$sckt_name}{pinlist}{$_}{name} ;
+              } else {
+                push @arglist, $subckt{$sckt_name}{pinlist}{$_}{name} ;
+              }
+            }
+            print ( $fh wrap($initial_tab, $other_tab, @arglist));
+            print ( $fh "\n"); }
+          print ( $fh "+ ! Param List\n");
+          if ( exists $subckt{$sckt_name}{paramlist} ) {
+            @arglist = ();
+            foreach ( sort { $a <=> $b } keys %{$subckt{$sckt_name}{paramlist}} ) {
+              push @arglist, $subckt{$sckt_name}{paramlist}{$_}{name}."=".$subckt{$sckt_name}{paramlist}{$_}{basevalue}; }
+            print ( $fh wrap($initial_tab, $other_tab, @arglist));
+            print ( $fh "\n"); }
+          print ( $fh "+ ! Comments\n");
+          if ( exists $subckt{$sckt_name}{arg_comments} ) {
+            print ( $fh wrap($comment_tab, $comment_tab, @{$subckt{$sckt_name}{arg_comments}})); print ($fh "\n"); }
+          print ( $fh "\n");
+          foreach (@{$subckt{$sckt_name}{allbody}}) {
+            print ( $fh wrap($no_tab, $other_tab, $_)); }
+          print ( $fh "\n");
+          print ( $fh ".ends \n\n");
+        }
+        close $fh ;
+## Génération du Makefile
+        system ("touch", "model_${bmodel}_$model/Makefile") ;
+        open ($fh, ">","${path}model_${bmodel}_$model/Makefile") ;
+        print ($fh "## Makefile for mixed simulation\n## Functionnal verification & performance check between vhdl model and transistor model\n\n") ;
+        print ($fh "WORK=\${WORK_DIR}/${model}_work\nLIB_NAME=work\nSRC_DIR=$path\nMODEL_DIR=${path}model_${bmodel}_$model/\n\n") ;
+        print ($fh "all: \${WORK}/\${LIB_NAME}/\${LIB_NAME}.analog.done\n\n") ;
+        print ($fh "\${WORK}/\${LIB_NAME}/\${LIB_NAME}.analog.done:\${SRC_DIR}netlist.cir \${SRC_DIR}$model.vhd\n\n") ;
+        print ($fh "\t\@mkdir -p \${WORK}\n") ;
+        print ($fh "\tcd \${WORK} && cp \${MODEL_DIR}tbench.cmd .\n") ;
+        print ($fh "\tcd \${WORK} && cp \${MODEL_DIR}tbench.cir .\n") ;
+        print ($fh "\tcd \${WORK} && cp \${MODEL_DIR}adms.converters .\n") ;
+        print ($fh "\tcd \${WORK} && cp \${MODEL_DIR}models_hdl .\n") ;
+        print ($fh "\tcd \${WORK} && ( test -d \${LIB_NAME} || valib \${LIB_NAME} )\n") ;
+        print ($fh "\tcd \${WORK} && vacom -work \${LIB_NAME} \${SRC_DIR}osc.vhd\n") ;
+        print ($fh "\tcd \${WORK} && vasim -cmd tbench.cmd -ms +notimingchecks -t ps\n") ;
+        print ($fh "\t\@touch \$@\n") ;
+        print ($fh "clean:\n") ;
+        print ($fh "\t\@rm -rf \${WORK}/\${LIB_NAME}\n") ;
+        close $fh ;
+## Génération du fichier tbench.cir
+        system ("touch", "model_${bmodel}_$model/tbench.cir") ;
+        open ($fh, ">",$path."model_${bmodel}_$model/tbench.cir") ;
+        print ($fh "** Spice netlist instanciate VHDL model and transistor model\n\n") ;
+        print ($fh "yams $model(functional) PORT:") ;
+        foreach ( sort { $a <=> $b } keys %{$subckt{$model}{pinlist}} ) { ## Définition des alims dans l'ordre du .vhd
+          if ($tech_def{$techno}{$subckt{$model}{pinlist}{$_}{name}}) {
+            print ($fh " $subckt{$model}{pinlist}{$_}{name}") ;
+          }
+        }
+        foreach ( sort { $a <=> $b } keys %{$subckt{$model}{pinlist}} ) { ## Définitions des autres ports, ordre .vhd. Vérifier la connectivité avec les vecteurs.
+          if ($subckt{$model}{pinlist}{$_}{type} ne "alim") {
+            if ($subckt{$model}{pinlist}{$_}{single}) {
+              print ($fh " $subckt{$model}{pinlist}{$_}{name}_hdl") ;
+            } elsif ($subckt{$model}{pinlist}{$_}{vector} && $subckt{$model}{pinlist}{$_}{vector}{bit} eq "lsb") {
+            }
+          }
+        }
+        print ($fh "\nXspice") ;
+        foreach ( sort { $a <=> $b } keys %{$subckt{$model}{pinlist}} ) { ## Définitions des autres ports, ordre .vhd
+          print ($fh " $subckt{$model}{pinlist}{$_}{name}") ; print ($fh "_sch") if ($subckt{$model}{pinlist}{$_}{type} ne "alim") ;
+        }
+        print ($fh " $model\n") ;
+        print ($fh "**Complete connectivity with .connect command or pin name modification if you want to have same input/inout on model and schematic pins\n") ;
+        close $fh ;
+## Génération du fichier tbench.cmd
+        system ("touch", "model_${bmodel}_$model/tbench.cmd") ;
+        open ($fh, ">",$path."model_${bmodel}_$model/tbench.cmd") ;
+        print ($fh "** Spice Testbench for mixed simulation\n\n**Include of model files and testbench\n") ;
+        print ($fh ".include models_hdl\n.include ${path}model_${bmodel}_$model/${model}.ckt\n.include tbench.cir\n\n") ;
+        print ($fh "**Alim and I:O definition\n") ;
+        foreach ( sort { $a <=> $b } keys %{$subckt{$model}{pinlist}} ) { ## Définitions des sources de tensions d'alimentation
+          if ($tech_def{$techno}{$subckt{$model}{pinlist}{$_}{name}}) {
+            print ($fh "v$subckt{$model}{pinlist}{$_}{name} $subckt{$model}{pinlist}{$_}{name} 0 DC $tech_def{$techno}{$subckt{$model}{pinlist}{$_}{name}}{process}{vnom}\n") ;
+          }
+        }
+        print ($fh "\n**Insert here input signals and output loads/connectivity\n") ;
+        print ($fh "\n**Converters\n.include adms.converters\n") ;
+        print ($fh "\n**Path for technology $techno model\n") ;
+        print ($fh ".option search = $_\n") foreach @{$tech_def{$techno}{searchpath}} ;
+        print ($fh "\n.lib include_$techno.inc common\n.lib include_$techno.inc process\n.lib include_$techno.inc mostyp\n.lib include_$techno.inc btyp\n.lib include_$techno.inc rtyp\n.lib include_$techno.inc ctyp\n\n") ;
+        print ($fh "**Transient generic command for simulation\n.tran 1m 1m\n\n.end\n\n") ;
+        close $fh ;
+## Génération du fichier models_hdl
+        system ("touch", "model_${bmodel}_$model/models_hdl") ;
+        open ($fh, ">",$path."model_${bmodel}_$model/models_hdl") ;
+        print ($fh "** Definition of model for vhdl entity call\n") ;
+        if ($subckt{$model}{dependency}) {
+          print ($fh "\n** Hierachy component. This part may cause error if dependency is not used in the vhdl code.\n");
+          foreach (keys %{$subckt{$model}{dependency}}) {
+            print ($fh ".model $_(functional) macro lang=vhdlams lib=work\n") ;
+          }
+        }
+        print ($fh "\n** Main Model definition\n.model $model(functional) macro lang=vhdlams lib=work\n") ;
+        close $fh ;
+      } ## End if génération dossier/files
+
+    } ## End foreach @model
   print "\n$term_sep\nGeneration of VHDL model file done\n" ;
   } ## End VHDL model generation
   print Dumper \%subckt and print "Dumper subckt hash at the end of gen_model\n" and getc if ( $debug==1 ) ;
@@ -687,36 +798,25 @@ sub scan_carac {
     next if /^\*/ ;
     next if /^\s*$/ ;
       if (/^\.param\s+(.*)/i) { # Il va peut être falloir ajouter un autre while pour prendre en compte les \n + 
-      #Old version
-      #$1 =~ s/\s*=\s*/=/g;
-      #print "\$1 : $1\n" ;
-      #push @paramlist , split(/[\s=]+/,$1) ;
-      #%paramlist=split(/[\s=]+/,$1) ;
-      #foreach my $p (split(/\s+/,$_)) {
-      #  ($k,$v) = ( $p =~ /(\w+)=([\+-\.\w]+)/ ) and $param{$k}=$v ;
-      #}
-      #foreach(keys(%paramlist)) {
-        #print "\tParameter definition line $. ; name : $_ ; Default value $paramlist{$_}\n" if ($verbose == 1 ) ;
-      #}
-      my %split=split(/[\s=]+/,$1) ;
-      foreach (keys %split) { push @paramlist , ($_,$split{$_}) ; print "\tParameter definition line $. ; name : $_ ; Default value $split{$_}\n" ; }
-    } elsif ( /^\.define_testbench\s+(\w+)/i ) {
-      print "\tTestbench definition found line $. ; name : $1\n";
-      my $t = $1;
-      #$t =~ tr/A-Z/a-z/;
-      ++$tbenchlist{$t};
-    } elsif ( /^\.lib include\.inc\s+(\w+)/i) {
-      print "\tModel definition found line $. ; name : $1\n" ;
-    } elsif ( /^\.step\s+param\s+(\w+)\s+(incr|dec|oct|lin|list|file)[\s+|\s*=\s*]([\w+\.?\w* +]+)/i) { #Détection .step sur un paramètre unique
-      $step{$1}{incr_spec}=$2;
-      @{$step{$1}{arg}}=split(/\s+/,$3);
-      print "\tParameter step found line $. ; Single param : $1 ; Incr_spec : $step{$1}{incr_spec} ; Incr_arg : @{$step{$1}{arg}}\n";
-    } elsif ( /^\.step\s+param\s+\(([\w+\s+]+)\)\s+(incr|dec|oct|lin|list|file)[\s+|\s*=\s*]((:?(.*)\s+)+)/i ) { #Détection .step sur des paramètres multiples
-      $step{$1}{incr_spec}=$2;
-      @{$step{$1}{arg}}=split(/\s+/,$3);
-      print "\tParameter step found line $. ; Multi param : $1 ; Incr_spec : $step{$1}{incr_spec} ; Incr_arg : @{$step{$1}{arg}}\n";
+        my %split=split(/[\s=]+/,$1) ;
+        foreach (keys %split) { push @paramlist , ($_,$split{$_}) ; print "\tParameter definition line $. ; name : $_ ; Default value $split{$_}\n" ; }
+      } elsif ( /^\.define_testbench\s+(\w+)/i ) {
+        print "\tTestbench definition found line $. ; name : $1\n";
+        my $t = $1;
+        #$t =~ tr/A-Z/a-z/;
+        ++$tbenchlist{$t};
+      } elsif ( /^\.lib include_$techno\.inc\s+(\w+)/i) {
+        print "\tModel definition found line $. ; name : $1\n" ;
+      } elsif ( /^\.step\s+param\s+(\w+)\s+(incr|dec|oct|lin|list|file)[\s+|\s*=\s*]([\w+\.?\w* +]+)/i) { #Détection .step sur un paramètre unique
+        $step{$1}{incr_spec}=$2;
+        @{$step{$1}{arg}}=split(/\s+/,$3);
+        print "\tParameter step found line $. ; Single param : $1 ; Incr_spec : $step{$1}{incr_spec} ; Incr_arg : @{$step{$1}{arg}}\n";
+      } elsif ( /^\.step\s+param\s+\(([\w+\s+]+)\)\s+(incr|dec|oct|lin|list|file)[\s+|\s*=\s*]((:?(.*)\s+)+)/i ) { #Détection .step sur des paramètres multiples
+        $step{$1}{incr_spec}=$2;
+        @{$step{$1}{arg}}=split(/\s+/,$3);
+        print "\tParameter step found line $. ; Multi param : $1 ; Incr_spec : $step{$1}{incr_spec} ; Incr_arg : @{$step{$1}{arg}}\n";
+      }
     }
-  }
   %paramlist=@paramlist;
   print Dumper \%paramlist and print "Dumper hash paramlist\n" and getc if ($debug == 1 ) ;
   print Dumper \%tbenchlist and print "Dumper hash tbenchlist\n" and getc if ($debug == 1 ) ;
@@ -838,9 +938,10 @@ sub scan_netlist {
       push @netlist_comment , $_ if /^\*/;
     }
   } # Fin de boucle sur le fichier
-## Traitements supplémentaires sur les subckt : analyse des dépendaces / autres subckt 
+## Traitements supplémentaires sur les subckt : analyse des instances trouvées, analyse des dépendances / autres subckt 
+  print "\n" ;
   foreach $sckt_name (keys %subckt) { ## foreach sur tous les subckt
-    $instance = -1; ## On commence à -1 pour remplir le tableau à partir de 0 et ne pas avoir de problèmes ...
+    $instance = 0; ## On commence à -1 pour remplir le tableau à partir de 0 et ne pas avoir de problèmes ...
     print "\t-->Analysis of $sckt_name subckt :\n";
     foreach (@{$subckt{$sckt_name}{body}}) {
       if (/^\s*([cdegijklmpqrstuvwxy]|fns|fnz)([\w<>]+)(?:\s+)?(.*)?/i) { ## Si on trouve une nouvelle définition d'instance, RAZ, incrément de $instance
@@ -864,33 +965,29 @@ sub scan_netlist {
           when (/x/i) {$instance_type = 'Subckt';}
           when (/u/i) {$instance_type = 'Transmission Line';}
           when (/w/i) {$instance_type = 'Transmission Line';}
-          when (/y/i) {$instance_type = 'Specific Devices/Transmission Line';}
+          when (/y/i) {$instance_type = 'Specific Devices/Macro Devices/Transmission Line';}
         }
         $instance_name = $1.$2;
         print "\tInstance n°$instance : name : $instance_name type : $instance_type\n" ;
-        ${$subckt{$sckt_name}{instance}}[$instance] = ( {$instance_name => {"type" => $instance_type , "position" => $instance , "arg" => []} } ) ;
-        push @{$subckt{$sckt_name}{instance}[$instance]{$instance_name}{arg}} , (split /\s+/, $3) if ($3) ; 
+        ${$subckt{$sckt_name}{instance}}{$instance_name} = ( {"type" => $instance_type , "position" => $instance , "arg" => [] , "dependency"  => "unknown" } ) ;
+        push @{$subckt{$sckt_name}{instance}{$instance_name}{arg}} , (split /\s+/, $3) if ($3) ; 
       } elsif (/^\s*\+\s*(.*)/) { # Si la ligne commence par un + : la déclaration de l'instance continue
-        push @{$subckt{$sckt_name}{instance}[$instance]{$instance_name}{arg}} , (split /\s+/, $1) ;
+        push @{$subckt{$sckt_name}{instance}{$instance_name}{arg}} , (split /\s+/, $1) ;
       } else { next } # Ici, prendre en compte les commentaires, les lignes vides ?
     }
 ## Analyse/traitement des dépendances ;
     $instance = -1 ;
     print "\t\t-->Dependency analysis\n";
-    foreach (@{$subckt{$sckt_name}{instance}}) { ## $_ dans cette boucle est la référence du hash. C'est par construction avec les push plus haut
-      print "\n\t-->Problem encoutered during subckt scan : multiple declaration ; check netlist or programmer ...\n" and exit if (scalar(keys $_)>1) ; ## vérification clé unique dans le tableau
-      ($key) = keys $_; ## normalement, clé unique
-      #print Dumper $_ and getc ;
-      #print Dumper $_->{$key}{arg} and getc ;
-      #print "tableau : @{$_->{$key}{arg}}" and getc;
-      my @dep = grep {$subckt{$_}} @{$_->{$key}{arg}} ; ## @{} est le tableau dont la référence est entre {}. $_-> est la référence vers un hash un peu plus profond
+    foreach (keys %{$subckt{$sckt_name}{instance}}) { 
+      #my @dep = grep {$subckt{$_}} @{$_->{$key}{arg}} ; ## @{} est le tableau dont la référence est entre {}. $_-> est la référence vers un hash un peu plus profond. Pour info ... ancienne version
+      my @dep = grep {$subckt{$_}} @{$subckt{$sckt_name}{instance}{$_}{arg}} ; ## On grep les noms de subckt définis dans les arguments des instances
       if ( !@dep == 0 ) {
-        $instance++;
         foreach my $dep (@dep) {
-          print "\t\t\t-->Found declared instance $key in $sckt_name ; subckt name : $dep\n" ;
-          ${$subckt{$sckt_name}{dependency}}[$instance] = ( {$key => {"sckt_ref" => $dep ,  "pinlist" => [] , "arglist" => []}} ) ;
-          push @{$subckt{$sckt_name}{dependency}[$instance]{$key}{pinlist}} , grep (/^[\w<>\[\]]+$/ ,( grep {!$subckt{$_}} @{$_->{$key}{arg}} ) )  ;
-          push @{$subckt{$sckt_name}{dependency}[$instance]{$key}{arglist}} , grep (/\w+=\w+/ ,( grep {!$subckt{$_}} @{$_->{$key}{arg}} ) )  ;
+          print "\t\t\t-->Found declared instance $_ in $sckt_name ; subckt name : $dep\n" ;
+          ${$subckt{$sckt_name}}{dependency}{$dep}++ ;
+          ${$subckt{$sckt_name}{instance}{$_}}{dependency} = ( {"sckt_ref" => $dep ,  "pinlist" => [] , "arglist" => []} ) ;
+          push @{$subckt{$sckt_name}{instance}{$_}{dependency}{pinlist}} , grep (/^[\w<>\[\]]+$/ ,( grep {!$subckt{$_}} @{$subckt{$sckt_name}{instance}{$_}{arg}} ) )  ;
+          push @{$subckt{$sckt_name}{instance}{$_}{dependency}{arglist}} , grep (/\w+=\w+/ ,( grep {!$subckt{$_}} @{$subckt{$sckt_name}{instance}{$_}{arg}} ) )  ;
         }
       }
     }
@@ -899,6 +996,7 @@ sub scan_netlist {
     print "\n";
   } ## end foreach sur tous les subckt
   print Dumper \%subckt and print "Dumper hash subckt\n" and getc if ( $debug==1 ) ;
+  close ($fh) ;
   print ("Ending netlist file scan phase.\n");
   print "$term_sep\n\n";
 } # end scan_netlist
@@ -920,8 +1018,8 @@ sub make_eldofile {
         print "\tNo voltage argument specified or step required, voltage definition unmodified\n" if ($verbose == 1 ) ;
         print ( $eldoFH $_) ; 
       } elsif ( scalar(@voltage) == 1 ) { ## Corner unique => modification du .param
-        print "\tNew voltage domain definition : vddgo1 : ${$voltage_def{$voltage[0]}}[0] ; vddgo2 : ${$voltage_def{$voltage[0]}}[1] ; vddio : ${$voltage_def{$voltage[0]}}[2]\n" if ($verbose == 1 ) ;
-        print ( $eldoFH "\.param vddgo1=${$voltage_def{$voltage[0]}}[0] vddgo2=${$voltage_def{$voltage[0]}}[1] vddio=${$voltage_def{$voltage[0]}}[2]\n") ;
+        print "\tNew voltage domain definition : vddgo1 : $tech_def{$techno}{avddgo1}{process}{$voltage[0]} ; vddgo2 : $tech_def{$techno}{avddgo1}{process}{$voltage[0]} ; vddio : $tech_def{$techno}{avddio}{process}{$voltage[0]}\n" if ($verbose == 1 ) ;
+        print ( $eldoFH "\.param vddgo1=$tech_def{$techno}{avddgo1}{process}{$voltage[0]} vddgo2=$tech_def{$techno}{avddgo2}{process}{$voltage[0]} vddio=$tech_def{$techno}{avddio}{process}{$voltage[0]}\n") ;
       }
 
 #Traitement des définition de température
@@ -937,16 +1035,23 @@ sub make_eldofile {
       }
 
 #Traitement des include librairie techno, corner, etc ...
-    } elsif (/^\.lib\s+include\.inc\s+(\w+)/i) {
-    #} elsif (/^\.lib\s+include\.inc/i) {
+    } elsif (/^\.lib\s+include_$techno\.inc\s+(\w+)/i) {
       print "\tFound model definition line $. : $1\n" if ($verbose == 1 );
 #Aucun corner spécifié, pas de mc :  simulation avec librairies définies dans le fichier carac.inc => on laisse inchangé
 #Sinon, on ne recopie rien, écriture à la fin du fichier
+      print ( $eldoFH $_ ) and next if ( $1 eq "common" ) ;
+      if ( $1 eq "process" ) { ## Traitement pour l'éventuel SOA_check
+        $t = $1 ;
+        foreach (@testbench) {
+          $t = "soa" if ($_ eq "SOA_check") ;
+        }
+        print ( $eldoFH ".lib include_$techno.inc $t\n" ) and next if ( !@mc ) ;
+      }
       print ( $eldoFH $_ ) if ( !@process && !@mc ) ;
       next;
 
 #Traitement des step param
-    } elsif ( /^\.step\s+param\s+(\w+)\s+(incr|dec|oct|lin|list|file)/i) { #Détection .step sur un paramètre unique
+    } elsif (/^\.step\s+param\s+(\w+)\s+(incr|dec|oct|lin|list|file)/i) { #Détection .step sur un paramètre unique
       print "\tParameter step found line $. ; Single param : $1 ; Incr_spec : $2 ;\n" if ( $verbose==1 );
       if ($step_param{$1}) { ## Check sim_eldo step command et step dans le carac.inc
         print "\tUser defined step on this parameter ; This step will be removed from carac file\n" and next ;
@@ -1001,7 +1106,7 @@ sub make_eldofile {
           print ($eldoFH $_); }
           else {
             print "\tUser testbench input argument specified => testbench call deleted\n" if ($verbose == 1 ); }
-        } else { print ( $eldoFH $_ ) ; } #La ligne commence par .qqchose, qqchose n'est pas un testbench, on recopie
+        } else { print ( $eldoFH $_ ) ; } #La ligne commence par .qqchose, qqchose n'est pas un testbench reconnu, on recopie
     }
 
 #Sinon on copie
@@ -1022,9 +1127,7 @@ sub make_eldofile {
   if (scalar(@voltage) > 1 ) {
     print ($eldoFH "$eldo_sep\n\*\*\*\* Voltage step by perl script\n$eldo_sep\n");
     print ($eldoFH "\.step param (vddgo1 vddgo2 vddio) list");
-    foreach (@voltage) {
-      print ($eldoFH " (@{$voltage_def{$_}})");
-    }
+    print ($eldoFH " (@{$tech_def{$techno}{voltage_def}{$_}})") foreach (@voltage) ;
     print ($eldoFH "\n\n");
   }
 
@@ -1038,8 +1141,9 @@ sub make_eldofile {
   if ( exists $mc{mc} ) {
     print ($eldoFH "$eldo_sep\n\*\*\*\* Monte Carlo by perl script\n$eldo_sep\n");
     print ($eldoFH "\.mc $mc{nbruns} nbbins=$mc{nbbins} vary=$mc{mc}\n\n");
-    print ($eldoFH ".lib include.inc common\n\n"); # Ici, vérifier que c'est nécessaire niveau ELDO
-    print ($eldoFH ".lib include.inc mc\n\n");
+    # Ici, à voir au niveau de la construction des librairies include_$techno.inc
+    #print ($eldoFH ".lib include_$techno.inc common\n\n"); # Ici, vérifier que c'est nécessaire niveau ELDO. Ca dépend de la construction du fichier include.inc, qui est fait par nous. Réponse : oui.
+    print ($eldoFH ".lib include_$techno.inc mc\n\n");
   }
 
 #Ecriture de la liste des corners dans le cas de corners multiples : .alter nécessaire
@@ -1054,11 +1158,11 @@ sub make_eldofile {
         foreach my $arg_res (@corner_res) {
           foreach my $arg_cap (@corner_cap) {
             print ($eldoFH ".alter ") and print ($eldoFH join ('_', ($arg_mos,$arg_bip,$arg_res,$arg_cap)) ) and print ($eldoFH "\n\n") if ( scalar(@process) > 1 ) ;
-            print ($eldoFH ".lib include.inc common\n");
-            print ($eldoFH ".lib include.inc $arg_mos\n");
-            print ($eldoFH ".lib include.inc $arg_bip\n");
-            print ($eldoFH ".lib include.inc $arg_res\n");
-            print ($eldoFH ".lib include.inc $arg_cap\n");
+            print ($eldoFH ".lib include_$techno.inc common\n.lib include_$techno.inc process\n"); #Ici, bug ELDO avec l'alter, on est obligé de reprinter ces lib et la première sim plante ...
+            print ($eldoFH ".lib include_$techno.inc $arg_mos\n");
+            print ($eldoFH ".lib include_$techno.inc $arg_bip\n");
+            print ($eldoFH ".lib include_$techno.inc $arg_res\n");
+            print ($eldoFH ".lib include_$techno.inc $arg_cap\n");
             print ($eldoFH "\n"); }}}}}
 
 #Dernière étape, écriture de .end
@@ -1320,7 +1424,11 @@ if (@testbench) { # A voir, problème de case sensitive sur eldo ou le script
   @testbench = split /,/, join (',',@testbench);
   #map {tr/A-Z/a-z/} @testbench;
   @testbench = doublons_grep(\@testbench);
-  foreach (@testbench) { if (!exists( $tbenchlist{$_} )) { print "Syntax error on testbench argument or testbench not defined in carac file\n" and f_tbench_help() and exit ; } }
+  foreach (@testbench) {
+    if (!exists( $tbenchlist{$_} )) {
+      print "Syntax error on testbench argument or testbench not defined in carac file.\n" and f_tbench_help() ; print "Available testbench :\n" ; print $_."\n" foreach (keys %tbenchlist ) ; exit ;
+    }
+  }
   print ("\tTable \@testbench : @testbench\n") if ($verbose == 1 );
 }
 print "Processing input arguments done.\n";
@@ -1332,8 +1440,7 @@ print "$term_sep\n\n";
 
 make_eldofile();
 
-close ( $netlistFH ) ;
-close ( $caracFH ) ;
-close ( $eldoFH ) ;
-
+close $netlistFH ;
+close $caracFH ;
+close $eldoFH ;
 
